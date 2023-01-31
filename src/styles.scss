@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Tipografia Exo para títulos y subtítulos. Italic 500 y Regular 400.
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;1,400&display=swap');
+
+// Tipografia ABeeZee para el cuerpo y párrafos. Regular 400. 
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+// Directivas para Tailwind. 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1, h2, h3, h4, h5 { font-family: "Exo", sans-serif; }
+body { margin: 0; font-family: "ABeeZee", sans-serif; }
