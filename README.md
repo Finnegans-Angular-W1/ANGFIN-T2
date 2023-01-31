@@ -44,3 +44,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Creada con Angular v14
 - Utiliza Angular Material Framework para app compoments
 - CSS template engine is SCSS
+ 
