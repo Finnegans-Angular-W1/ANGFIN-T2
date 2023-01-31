@@ -4,7 +4,6 @@ export interface User {
     first_name: string;
     last_name: string;
     email: string;
-// password: string; Encrypted password
     points: number;
     roleId: number;
     createdAt: string;//Creation date
