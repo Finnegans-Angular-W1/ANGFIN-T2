@@ -1,25 +1,20 @@
-// import { Action, ActionReducerMap, createFeatureSelector } from '@ngrx/store';
+import { Action, ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
-// //*States and Keys
-// import * as Auth from 
+//*States and Keys
+import * as Auth from '../../pages/auth-login/state/auth.state';
 
-// //*Reducers
-// import * as fromAuthReducer from './../auth-login/AuthState/auth.reducer';
+//*Reducers
+import * as fromAuthReducer from './../../pages/auth-login/state/auth.reducer';
 
-// //Feature key === nombre dinamico(Variable) del State
-// export interface AppState { //!Store 
-//     [Auth.featureKey]: Auth.AuthState;
-//     // [Spinner.featureKey]: Spinner.SpinnerState;
-//     // [Alert.featureKey]: Alert.AlertState;
-// }
+//Feature key === dinamic name(Variable) of State
+export interface AppState { //!Store 
+    [Auth.featureKey]: Auth.AuthState;
+}
 
-// export const reducers: ActionReducerMap<AppState, Action> = {
-//     [Auth.featureKey]: fromAuthReducer.authReducer,
-//     // [Spinner.featureKey]: fromSpinnerReducer.spinnerReducer,
-//     // [Alert.featureKey]: fromAlertReducer.alertReducer
-// };
+export const reducers: ActionReducerMap<AppState, Action> = {
+    [Auth.featureKey]: fromAuthReducer.authReducer,
+};
 
-// export const featureKey = 'AppStore';
-// export const selectAppState = createFeatureSelector<AppState>(featureKey);
-
-
+//*Selector key
+export const featureKey = 'AppStore';
+export const selectAppState = createFeatureSelector<AppState>(featureKey);
