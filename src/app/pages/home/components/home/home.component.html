@@ -1,0 +1,43 @@
+<div class="container m-10 mx-auto">
+<h1 class="text-xl text-secondary mb-3">Hola, nombreUsuario
+</h1>
+<div class="stats bg-secondary text-primary-content w-full">
+  <div class="stat">
+    <div class="stat-title text-white">Balance</div>
+    <div class="stat-value text-white">$89,400</div>
+  </div>
+  <div class="stat">
+    <div class="stat-title text-white">Ingreso</div>
+    <div class="stat-value text-white">$79,400</div>
+  </div>
+  <div class="stat">
+    <div class="stat-title text-white">Egreso</div>
+    <div class="stat-value text-white">$10,000</div>
+  </div>
+</div>
+</div>
+
+<div class="container mt-10 mx-auto">
+<h1 class="text-neutral">Movimentos</h1>
+<table class="table-auto w-full border-separate">
+  <thead class="text-neutral bg-gray-100 text-center">
+    <tr>
+      <th class="hidden">ID</th>
+      <th class="py-2 px-4 ">FECHA</th>
+      <th class="py-2 px-4 ">CONCEPTO</th>
+      <th class="py-2 px-4 ">TIPO</th>
+      <th class="py-2 px-4 ">MONTO</th>
+    </tr>
+  </thead>
+  <tbody class="text-neutral text-center">
+    <tr *ngFor="let transaction of transaction">
+      <td class="hidden">{{ transaction.id }}</td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.concept }}</td>
+      <td>{{ transaction.type }}</td>
+      <td>{{ transaction.amount }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
