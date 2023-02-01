@@ -4,11 +4,13 @@ import { LoginComponent } from './pages/auth-login/login/login.component';
 
 const routes: Routes = [  
   {
-    path: 'auth', //Cuando alguien entra al auth, se empieza a cargar este módulo.
-    loadChildren: () => import('./pages/auth-login/auth-login.module').then( module => module.AuthLoginModule) 
-    /* el import es una función que retorna una promesa. Cuando se ejecuta, es decir, cuando se carga el módulo
-    se activa "then" */
+    path: 'auth-login', 
+    loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
+  {
+    path: 'auth-registro',
+    loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
+  }
 ];
 
 
