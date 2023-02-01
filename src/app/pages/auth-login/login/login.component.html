@@ -1,130 +1,63 @@
-<<<<<<< HEAD
 <div class="hero min-h-screen bg-base">
     <div class="hero-content flex-col lg:flex-row-reverse">
-      
+
         <div class="text-center lg:text-left text-black">
             <h1 class="text-5xl font-bold">Login now</h1>
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
         </div>
-      
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-primary">   <!-- bg-secondary no ----  bg-primary: sí ----- --> 
+
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-primary">
+            <!-- bg-secondary no ----  bg-primary: sí ----- -->
             <div class="card-body">
-                
-                <form [formGroup]="form" (ngSubmit)="onEnviar($event)"> <!-- formGroup is used to bind an existing FormGroup to a DOM element-->
-                    
+
+                <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+                    <!-- formGroup is used to bind an existing FormGroup to a DOM element-->
+
                     <!--======================Mail===================-->
                     <div class="form-control">
-                        <label class="label" for="email"> 
-                        <span class="label-text text-black font-bold">Email</span> 
+                        <label class="label" for="email">
+                            <span class="label-text text-black font-bold">Email</span>
                         </label>
-                        
-                        <input 
-                        type="email" 
-                        formControlName="email" 
-                        class="input input-bordered" />
+
+                        <input type="email" formControlName="email" class="input input-bordered" />
                     </div>
 
                     <div *ngIf="Mail?.errors && Mail?.touched">
-                    <p *ngIf="Mail?.hasError('required')" class="error">
-                        El email es requerido.
-                    </p>
-                    <p *ngIf="Mail?.hasError('email')" class="error">
-                        El formato del email debe ser válido.
-                    </p>
+                        <p *ngIf="Mail?.hasError('required')" class="error">
+                            El email es requerido.
+                        </p>
+                        <p *ngIf="Mail?.hasError('email')" class="error">
+                            El formato del email debe ser válido.
+                        </p>
                     </div>
-                    
+
                     <!--======================Contraseña===================-->
                     <div class="form-control">
                         <label for="password" class="form-label label">
-                            <span class="label-text text-black font-bold">Contraseña</span> 
+                            <span class="label-text text-black font-bold">Contraseña</span>
                         </label>
 
-                        <input
-                        type="password"
-                        formControlName="password"
-                        [class.border-danger]="MailValid"
-                        class="input input-bordered" />
+                        <input type="password" formControlName="password" [class.border-danger]="MailValid"
+                            class="input input-bordered" />
                     </div>
-                    
-                    <div *ngIf="Password?.errors && Password?.touched">
-                    <p *ngIf="Password?.hasError('required')" class="error">
-                        La contraseña es requerida.
-                    </p>
-                    <p *ngIf="Password?.errors?.['minlength']" class="error">
-                        La contraseña debe ser de 8 o más caracteres.
-                    </p>
-                    </div>
-                    
-                    <div class="form-control mt-6">
-                    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Iniciar Sesión</button>
-                    </div>
-                
-                </form>
-            </div>    
-        </div>
-      
-    </div>
-</div>
-=======
-<div class="hero min-h-screen bg-base-200">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Login now</h1>
-      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-    </div>
-    
-    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div class="card-body">
-          <form [formGroup]="form" (ngSubmit)="onEnviar($event)"> <!-- formGroup is used to bind an existing FormGroup to a DOM element-->
-            
-          <div class="form-control">
-              <label class="label" for="email"> 
-                <span class="label-text">Email</span> 
-              </label>
-              <input 
-                type="email" 
-                formControlName="email" 
-                class="input input-bordered" />
-          </div>
-          <div *ngIf="Mail?.errors && Mail?.touched">
-            <p *ngIf="Mail?.hasError('required')" class="error">
-              El email es requerido.
-            </p>
-            <p *ngIf="Mail?.hasError('email')" class="error">
-              El formato del email debe ser válido.
-            </p>
-          </div>
-          </div>
-            
-          <div class="form-control">
-            <label for="password" class="form-label label">
-              <span class="label-text">Contraseña</span> 
-            </label>
-            <input
-              type="password"
-              formControlName="password"
-              [class.border-danger]="MailValid"
-              class="input input-bordered"
-            />
-          </div>
-          <div *ngIf="Password?.errors && Password?.touched">
-            <p *ngIf="Password?.hasError('required')" class="error">
-              La contraseña es requerida.
-            </p>
-            <p *ngIf="Password?.errors?.minlength" class="error">
-              La contraseña debe ser de 8 o más caracteres.
-            </p>
-          </div>
-            
-          <div class="form-control mt-6">
-            <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Iniciar Sesión</button>
-          </div>
-            
-          </form>
-      </div>    
-    </div>
-    
-  </div>
-</div>
 
->>>>>>> 029407a410999afa5271b779e85e1139aef4225a
+                    <div *ngIf="Password?.errors && Password?.touched">
+                        <p *ngIf="Password?.hasError('required')" class="error">
+                            La contraseña es requerida.
+                        </p>
+                        <p *ngIf="Password?.errors?.['minlength']" class="error">
+                            La contraseña debe ser de 8 o más caracteres.
+                        </p>
+                    </div>
+
+                    <div class="form-control mt-6">
+                        <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Iniciar Sesión</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
