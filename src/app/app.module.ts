@@ -7,13 +7,15 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 
 @NgModule({
 
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
