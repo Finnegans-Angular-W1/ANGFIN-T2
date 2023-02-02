@@ -19,7 +19,10 @@ const routes: Routes = [
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
 
-  {path: "**", component:PageNotFoundComponent}
+  {
+    path: "**", 
+    loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundModule)
+  }
 
 ];
 
