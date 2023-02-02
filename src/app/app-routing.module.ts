@@ -11,7 +11,7 @@ const routes: Routes = [
     import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'login', 
+    path: 'login',
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
   {
-  path: "**", 
+    path: "**", 
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundModule)
   }
 

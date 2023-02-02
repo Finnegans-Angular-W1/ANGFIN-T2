@@ -5,7 +5,6 @@ import { RegistroComponent } from './registro/registro.component';
 const routes: Routes = [
   { path:'', 
     component: RegistroComponent},
-    
 ];
 
 @NgModule({
