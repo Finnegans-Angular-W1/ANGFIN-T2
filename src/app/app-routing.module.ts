@@ -6,6 +6,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found/pag
 
 const routes: Routes = [  
   {
+    path: "home",
+    loadChildren: () => 
+    import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
     path: 'login', 
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
@@ -15,6 +20,7 @@ const routes: Routes = [
   },
 
   {path: "**", component:PageNotFoundComponent}
+
 ];
 
 

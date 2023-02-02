@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './pages/home/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
+    HomeComponent,
+    SharedModule
+    
 
   ],
   providers: [],
