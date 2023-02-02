@@ -7,8 +7,11 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from "./pages/home/home.module";
 
 @NgModule({
+
   declarations: [
     AppComponent
   ],
@@ -19,9 +22,12 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
+    HttpClientModule,
+    HomeModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

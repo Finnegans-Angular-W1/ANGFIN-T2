@@ -9,4 +9,5 @@ import { NgModule } from '@angular/core';
     CommonModule
   ]
 })
+
 export class SharedModule { }
