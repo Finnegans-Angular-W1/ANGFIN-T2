@@ -6,9 +6,11 @@ import { RegistroComponent } from './registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
-    RegistroComponent
+    RegistroComponent,
+    
   ],
   imports: [
     CommonModule,

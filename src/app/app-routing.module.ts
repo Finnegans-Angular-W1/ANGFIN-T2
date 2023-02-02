@@ -7,14 +7,19 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found/pag
 const routes: Routes = [  
   {
     path: 'auth-login', 
+    title: 'Login',
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
     path: 'auth-registro',
+    title: 'Registro',
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
-
-  {path: "**", component:PageNotFoundComponent}
+  
+  {path: "**", 
+  title:"Pagina no encontrada",
+  component:PageNotFoundComponent
+}
 ];
 
 

@@ -7,21 +7,26 @@ import { SharedModule } from './shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
+import { AuthLoginModule } from './pages/auth-login/auth-login.module';
+import { TitleComponent } from './shared/components/title/title.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    SharedModule,    
-    BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    AppRoutingModule,
+    declarations: [
+        AppComponent,
+        
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        BrowserAnimationsModule,
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+        AppRoutingModule,
+        AuthLoginModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    ]
 })
 export class AppModule { }
