@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
