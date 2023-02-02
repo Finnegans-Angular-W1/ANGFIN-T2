@@ -6,11 +6,12 @@
 // Tipografia ABeeZee para el cuerpo y párrafos. Regular 400. 
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
+// Tipografia Kanit para el cuerpo y párrafos. Thin 100 Ligth 300 Regular 400. 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;500;600;700;800;900&display=swap');
+
 // Directivas para Tailwind. 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body { height: 100%; }
-h1, h2, h3, h4, h5 { font-family: "Exo", sans-serif; }
-body { margin: 0; font-family: "ABeeZee", sans-serif; }
