@@ -22,8 +22,6 @@ import { HomeComponent } from './pages/home/components/home/home.component';
     AppRoutingModule,
     HomeComponent,
     SharedModule
-    
-
   ],
   providers: [],
   bootstrap: [AppComponent]
