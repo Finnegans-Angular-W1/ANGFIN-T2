@@ -6,11 +6,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found/pag
 
 const routes: Routes = [  
   {
-    path: 'auth-login', 
+    path: 'login', 
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
-    path: 'auth-registro',
+    path: 'register',
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
 
