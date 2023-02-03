@@ -1,8 +1,8 @@
-import { RouterModule, Routes } from "@angular/router";
 
+import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./pages/auth-login/login/login.component";
 import { NgModule } from "@angular/core";
-import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found/page-not-found.component";
+
 
 const routes: Routes = [
   {
@@ -11,21 +11,19 @@ const routes: Routes = [
       import("./pages/home/home.module").then((m) => m.HomeModule),
   },
   {
-    path: "auth-login",
-    loadChildren: () =>
-      import("./pages/auth-login/auth-login.module").then(
-        (m) => m.AuthLoginModule
-      ),
+
+    path: 'login',
+    loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
-    path: "auth-registro",
-    loadChildren: () =>
-      import("./pages/auth-registro/auth-registro.module").then(
-        (m) => m.AuthRegistroModule
-      ),
+    path: 'register',
+    loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
+  {
+    path: "**", 
+    loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundModule)
+  }
 
-  { path: "**", component: PageNotFoundComponent },
 ];
 
 @NgModule({
