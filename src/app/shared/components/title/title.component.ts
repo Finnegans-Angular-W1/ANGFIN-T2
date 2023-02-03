@@ -8,15 +8,15 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class TitleComponent implements OnInit {
   
-  @Input() title!: string;
+  title : string | undefined = "qqq";
 
   constructor(private route: ActivatedRoute) { 
     
   }
-  ngOnInit(): void{
-    this.route.queryParams.subscribe(params => {
-         this.title = params['title'];
-         console.log(this.title);
-    });
+
+  ngOnInit(){
+    this.route.title.subscribe(resp => {
+      this.title = resp?.toString();
+    })
   }
 }

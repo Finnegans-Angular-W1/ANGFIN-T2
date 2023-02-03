@@ -6,6 +6,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found/pag
 
 const routes: Routes = [  
   {
+    path: "home",
+    title: "Home",
+    loadChildren: () => 
+    import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
     path: 'auth-login', 
     title: 'Login',
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
@@ -16,10 +22,11 @@ const routes: Routes = [
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
   
-  {path: "**", 
+  {
+  path: "**", 
   title:"Pagina no encontrada",
   component:PageNotFoundComponent
-}
+  }
 ];
 
 
