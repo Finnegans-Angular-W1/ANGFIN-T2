@@ -1,13 +1,13 @@
+
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgModule } from '@angular/core';
 
-
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: "home",
-    loadChildren: () => 
-    import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () =>
+      import("./pages/home/home.module").then((m) => m.HomeModule),
   },
   {
     path: 'login',
@@ -21,12 +21,10 @@ const routes: Routes = [
     path: "**", 
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundModule)
   }
-
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
