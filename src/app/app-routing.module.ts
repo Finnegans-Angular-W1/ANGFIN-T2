@@ -1,15 +1,17 @@
-import { RouterModule, Routes } from '@angular/router';
 
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from "@angular/router";
+import { LoginComponent } from "./pages/auth-login/login/login.component";
+import { NgModule } from "@angular/core";
 
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: "home",
-    loadChildren: () => 
-    import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () =>
+      import("./pages/home/home.module").then((m) => m.HomeModule),
   },
   {
+
     path: 'login',
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
@@ -24,9 +26,8 @@ const routes: Routes = [
 
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
