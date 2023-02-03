@@ -1,0 +1,79 @@
+<!-- Layout del drawer -->
+<div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    
+    <div class="drawer-content">
+
+        <div class="flex flex-row">
+
+            <!-- Sidebar estática -->
+            <div class="w-20 shrink-0 bg-[#111827]">
+              <div class="w-20 fixed flex flex-col h-full justify-evenly items-center">
+
+                <label for="my-drawer" class="btn btn-circle btn-neutral drawer-button">
+                  <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                  <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+                </label>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/home.png" alt="home">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/ingresos.png" alt="ingresos">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/egresos.png" alt="egresos">
+                </button>
+                
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/send.png" alt="transferencias">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/prestamos.png" alt="prestamos">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/user.png" alt="perfil">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/contacts.png" alt="contactos">
+                </button>
+
+                <button class="btn btn-circle btn-secondary w-12">
+                  <img class="w-10 h-10" src="../../../../assets/images/wallet.png" alt="wallet">
+                </button>
+
+              </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div app-home class="basis-full"></div>
+
+        </div>
+
+    </div>
+    <!-- Sidebar -->
+    <div class="drawer-side">
+      <label for="my-drawer" class="drawer-overlay"></label>
+      <div class="flex flex-col menu p-4 w-80 bg-neutral text-base-content justify-between">
+        <!-- Sidebar content here -->
+        <div class="h-20 flex flex-row border-2 border-accent rounded-lg justify-evenly items-center">
+          <img class="w-14 h-14 rounded-full" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
+          <div class="flex flex-col w-3/5 border-l-2 p-3 border-accent items-center">
+            <p>usuario</p>
+            <p>ver perfil ➡</p>
+          </div>
+        </div>
+        
+        <div class="p-4 border-t-2 border-accent">
+          <p>Ajustes</p>
+          <p>Cerrar sesión</p>
+        </div>
+      </div>
+    </div>
+    <!-- Sidebar -->
+  </div>

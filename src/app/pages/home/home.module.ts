@@ -3,9 +3,10 @@ import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { NgModule } from "@angular/core";
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [HomeComponent, FooterComponent],
+  declarations: [HomeComponent, FooterComponent, SidebarComponent],
   imports: [CommonModule, HomeRoutingModule],
 })
 export class HomeModule {}

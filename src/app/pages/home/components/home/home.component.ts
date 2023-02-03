@@ -4,7 +4,7 @@ import { TransactionsService } from '../../services/transactions.service';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home, [app-home]',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
