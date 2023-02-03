@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
+import { AlertServiceService } from './shared/services/alert-service.service';
 
 @NgModule({
 
@@ -26,7 +27,7 @@ import { HomeModule } from "./pages/home/home.module";
     HomeModule
 
   ],
-  providers: [],
+  providers: [AlertServiceService],
   bootstrap: [AppComponent]
 
 })
