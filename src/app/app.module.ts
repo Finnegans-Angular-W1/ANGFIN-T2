@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 
 @NgModule({
-
   declarations: [
     AppComponent
   ],
@@ -28,6 +27,5 @@ import { HomeModule } from "./pages/home/home.module";
   ],
   providers: [],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }
