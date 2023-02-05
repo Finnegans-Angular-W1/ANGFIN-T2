@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { AuthRegistroRoutingModule } from './auth-registro-routing.module';
 import { RegistroComponent } from './registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TermsComponent } from './registro/terms/terms.component';
 
 
 @NgModule({
   declarations: [
-    RegistroComponent
+    RegistroComponent,
+    TermsComponent
   ],
   imports: [
     CommonModule,

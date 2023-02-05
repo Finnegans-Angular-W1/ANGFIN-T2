@@ -15,6 +15,7 @@ export class RegistroComponent implements OnInit {
       apellido: [''],
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
+      conditionsTerms: [false, [Validators.requiredTrue]]
     });
   }
 
@@ -43,6 +44,10 @@ export class RegistroComponent implements OnInit {
 
   get MailValid() {
     return false;
+  }
+  
+  get ConditionsTermsValid() {
+    return this.form.get('conditionsTerms')?.touched && !this.form.get('conditionsTerms')?.valid;
   }
 
   onEnviar(event: Event) {

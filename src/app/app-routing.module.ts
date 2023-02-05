@@ -1,8 +1,6 @@
-
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./pages/auth-login/login/login.component";
 import { NgModule } from "@angular/core";
-
 
 const routes: Routes = [
   {
@@ -23,7 +21,6 @@ const routes: Routes = [
     path: "**", 
     loadChildren: () => import('./pages/page-not-found/page-not-found.module').then( m => m.PageNotFoundModule)
   }
-
 ];
 
 @NgModule({
