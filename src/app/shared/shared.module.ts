@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TitleComponent } from './components/title/title.component';
-
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    TitleComponent
-
+    TitleComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule
   ],
 
   exports: [
-    TitleComponent
+    TitleComponent,
+    LoaderComponent
   ]
 })
 

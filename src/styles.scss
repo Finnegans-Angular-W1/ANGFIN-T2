@@ -15,3 +15,8 @@
 @tailwind utilities;
 
 html, body { height: 100%; }
+
+.neumorphism{
+    /* box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff; */
+    box-shadow:  -2px -2px 30px #b6b2b2a8, 5px 5px 20px #dcd3d38a;
+}
