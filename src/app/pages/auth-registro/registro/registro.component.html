@@ -1,8 +1,12 @@
-<div class="hero min-h-screen bg-base">
+<div class="flex w-full justify-center">
+    <h3 class="font-[Kanit] 
+    text-xl md:text-4xl absolute translate-y-8 lg:translate-y-16 font-semibold -skew-y-2">Registrarse en <span class="text-2xl md:text-5xl text-accent">Alkemy Bank Wallet!</span></h3>
+</div>
+<div class="hero min-h-screen">
     <div class="hero-content flex flex-col lg:flex-row space-x-32 justify-center "> <!-- hero-content flex-col lg:flex-row-reverse -->
 
         <div class=""> 
-            <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-col lg:flex-row text-white bg-gray-100 rounded-xl neumorphism">
                 <div class="px-10 py-6">
                     <svg fill="#000000" width="8rem" height="8rem" viewBox="-2.4 -2.4 28.80 28.80" id="bank-2" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
 
@@ -59,7 +63,7 @@
                 </div>
             </div>
             
-            <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-col lg:flex-row bg-gray-100 rounded-xl mt-8 neumorphism">
                 
                 <div class="px-10 py-6">
                     <!-- <span class="p-2 rounded-full flex" style="background-color: #8453b5; opacity: 0.5;"> -->
@@ -133,14 +137,14 @@
             </div>
         </div>
 
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-primary">
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-primary neumorphism">
             <div class="card-body">
 
                 <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
                     <!-- formGroup is used to bind an existing FormGroup to a DOM element-->
 
                     <!--======================Primer nombre===================-->
-                    <div class="form-control">
+                    <div class="form-control h-24">
                         <label class="label" for="nombre">
                             <span class="label-text text-white font-bold">Nombre</span>
                         </label>
@@ -149,7 +153,7 @@
                     </div>
 
                     <!--====================== Apellido ===================-->
-                    <div class="form-control">
+                    <div class="form-control h-24">
                         <label class="label" for="apellido">
                             <span class="label-text text-white font-bold">Apellido</span>
                         </label>
@@ -158,40 +162,62 @@
                     </div>
                     
                     <!--======================Mail===================-->
-                    <div class="form-control">
+                    <div class="form-control h-28">
                         <label class="label" for="email">
                             <span class="label-text text-white font-bold">Correo electrónico</span>
                         </label>
 
                         <input type="email" formControlName="email" class="input input-bordered" />
+
+                        <div class="min-h-max" *ngIf="Mail?.errors && Mail?.touched">
+                            <p *ngIf="Mail?.hasError('required')" class="text-error">
+                                El correo electrónico es requerido.
+                            </p>
+                            <p *ngIf="Mail?.hasError('email')" class="text-error">
+                                El formato del correo electrónico debe ser válido.
+                            </p>
+                        </div>
                     </div>
 
-                    <div *ngIf="Mail?.errors && Mail?.touched">
-                        <p *ngIf="Mail?.hasError('required')" class="text-error">
-                            El correo electrónico es requerido.
-                        </p>
-                        <p *ngIf="Mail?.hasError('email')" class="text-error">
-                            El formato del correo electrónico debe ser válido.
-                        </p>
-                    </div>
+                    
 
                     <!--======================Contraseña===================-->
-                    <div class="form-control">
+                    <div class="form-control h-28">
                         <label for="password" class="form-label label">
                             <span class="label-text text-white font-bold">Contraseña</span>
                         </label>
 
                         <input type="password" formControlName="password" [class.border-danger]="MailValid"
                             class="input input-bordered" />
+                        <div class="min-h-max" *ngIf="Password?.errors && Password?.touched">
+                            <p *ngIf="Password?.hasError('required')" class="text-error">
+                                La contraseña es requerida.
+                            </p>
+                            <p *ngIf="Password?.errors?.['minlength']" class="text-error">
+                                La contraseña debe ser de 8 o más caracteres.
+                            </p>
+                        </div>
                     </div>
-
-                    <div *ngIf="Password?.errors && Password?.touched">
-                        <p *ngIf="Password?.hasError('required')" class="text-error">
-                            La contraseña es requerida.
-                        </p>
-                        <p *ngIf="Password?.errors?.['minlength']" class="text-error">
-                            La contraseña debe ser de 8 o más caracteres.
-                        </p>
+                    
+                    <div>
+                        <label class="label cursor-pointer w-fit mt-2">
+                            <div class="flex flex-col h-8">
+                                <div>
+                                    <input type="checkbox" formControlName="conditionsTerms"
+                                    class="checkbox checkbox-accent" />
+                                    <span class="label-text ml-2">Acepto los <label for="my-modal-4" class="link link-accent">terminos y condiciones</label>.</span>
+                                </div>
+                                <ng-container *ngIf="ConditionsTermsValid" class="w-full min-h-max">
+                                    <span class="text-red-500 text-xs">Debes aceptar los terminos y condiciones para continuar.</span>
+                                </ng-container>
+                            </div>
+                            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+                            <label for="my-modal-4" class="modal cursor-pointer">
+                                <label class="modal-box relative bg-accent text-black" for="">
+                                    <app-terms></app-terms>
+                                </label>
+                            </label>
+                        </label>
                     </div>
 
                     <div class="form-control mt-6">
