@@ -1,82 +1,104 @@
-<div class="min-h-screen bg-orange-300">
+<!-- <div class="min-h-screen bg-orange-300">
 
     <div class="h-3/6 w-3/6 bg-pink-200">
         <p>as</p>
     </div>
 
-</div>
+</div> -->
 <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
     <div class="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
         <div class="w-full">
             <div class="text-center">
-                <h1 class="text-3xl font-semibold text-gray-900">Registrar nueva Operacion</h1>
+                <h1 class="text-3xl font-semibold text-gray-900">{{titleForm}}</h1>
                 <p class="mt-2 text-gray-500"></p>
             </div>
             <div class="mt-5">
-                <form>
-                    <ng-container *ngIf="transactionTypeEqualToPayment()">
+                <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm">
+                    <ng-container *ngIf="operationTypeEqualToNew(); else editOperation">
+                        <ng-container *ngIf="transactionTypeEqualToPayment()">
+                            <div class="flex h-16 flex-col">
+                                <div class="relative mt-6">
+                                    <input formControlName="toAccountID" type="number" name="toAccountID" id="toAccountID" placeholder="Alias/Id de la cuenta destino"
+                                    [ngClass]="{'invalid-input': touchedAndInvalid('toAccountID'),
+                                        'valid-or-untouched-input': !touchedAndInvalid('toAccountID')}"
+                                        class="peer input-style" autocomplete="NA" />
+                                    <label for="toAccountID"
+                                    [ngClass]="{'invalid-label': touchedAndInvalid('toAccountID'),
+                                        'valid-label': !touchedAndInvalid('toAccountID')}"
+                                        class="label-style">Alias/Id de la cuenta destino</label>
+                                </div>
+                                <ng-container class="w-full min-h-max"
+                                *ngIf="touchedAndHasError('toAccountID', 'required');
+                                else second_transaction_toAccountID">
+                                    <span class="text-red-500 text-xs">Este campo es requerido.</span>
+                                </ng-container>
+                                <ng-template #second_transaction_toAccountID>
+                                    <ng-container class="w-full min-h-max"
+                                    *ngIf="touchedAndHasError('toAccountID', 'min')">
+                                        <span class="text-red-500 text-xs">El ID debe ser mayor a 0</span>
+                                    </ng-container>
+                                </ng-template>
+                            </div>
+                        </ng-container>
                         <div class="flex h-16 flex-col">
                             <div class="relative mt-6">
-
                                 <input formControlName="amount" type="number" name="amount" id="amount" placeholder="Importe de la Operacion"
+                                [ngClass]="{'invalid-input': touchedAndInvalid('amount'),
+                                'valid-or-untouched-input': !touchedAndInvalid('amount')}"
                                     class="peer input-style" autocomplete="NA" />
-
+                                    <!--TODO: input value="{{amount | number :'1.2-2' | currency }}" -->
                                 <label for="amount"
-                                
+                                [ngClass]="{'invalid-label': touchedAndInvalid('amount'),
+                                'valid-label': !touchedAndInvalid('amount')}"
                                     class="label-style">Importe de la operacion</label>
                             </div>
-
                         </div>
+                        <div class="flex h-16 flex-col">
+                            <div class="relative mt-6">
+                                <input formControlName="concept"
+                                [ngClass]="{'invalid-input': touchedAndInvalid('concept'),
+                                'valid-or-untouched-input': !touchedAndInvalid('concept')}"
+                                type="text" name="concept" id="concept" placeholder="Descripcion"
+                                    class="peer peer input-style"/>
+                                <label for="concept" 
+                                [ngClass]="{'invalid-label': touchedAndInvalid('concept'),
+                                'valid-label': !touchedAndInvalid('concept')}"
+                                class="label-style">Descripcion / Concepto</label>
+                            </div>
+                        </div>
+                        <!-- <div class="flex h-16 flex-col">
+                            <div class="relative mt-6">
+                                <input formControlName="password"
+                                [ngClass]="{'invalid-input': touchedAndInvalid('toAccountID'),
+                                'valid-or-untouched-input': !touchedAndInvalid('toAccountID')}"
+                                type="password" name="password" id="password" placeholder="Password"
+                                    class="peer peer input-style"/>
+                                <label for="password" 
+
+                                class="label-style">Campo 3</label>
+                            </div>
+                        </div> -->
                     </ng-container>
-                    
-                    <div class="flex h-16 flex-col">
-                        <div class="relative mt-6">
-                            <input formControlName="amount" type="number" name="amount" id="amount" placeholder="Importe de la Operacion"
-                                class="peer input-style" autocomplete="NA" />
-                                <!--TODO: input value="{{amount | number :'1.2-2' | currency }}" -->
-                            <label for="amount"
-                            
-                                class="label-style">Importe de la operacion</label>
+                    <ng-template #editOperation>
+                        <div class="flex h-16 flex-col">
+                            <div class="relative mt-6">
+                                <input formControlName="concept"
+                                [ngClass]="{'invalid-input': touchedAndInvalid('concept'),
+                                'valid-or-untouched-input': !touchedAndInvalid('concept')}"
+                                type="text" name="concept" id="concept" placeholder="Descripcion"
+                                    class="peer peer input-style"/>
+                                <label for="concept" 
+                                [ngClass]="{'invalid-label': touchedAndInvalid('concept'),
+                                'valid-label': !touchedAndInvalid('concept')}"
+                                class="label-style">Descripcion / Concepto</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex h-16 flex-col">
-                        <div class="relative mt-6">
-                            <input formControlName="concept"
-
-                            type="text" name="concept" id="concept" placeholder="Descripcion"
-                                class="peer peer input-style"/>
-                            <label for="concept" 
-                            class="label-style">Descripcion / Concepto</label>
-                        </div>
-
-                    </div>
-                    <div class="flex h-16 flex-col">
-                        <div class="relative mt-6">
-                            <input formControlName="password"
-
-                            type="password" name="password" id="password" placeholder="Password"
-                                class="peer peer input-style"/>
-                            <label for="password" 
-
-                            class="label-style">Campo 3</label>
-                        </div>
-
-                    </div>
-                    <div class="flex h-16 flex-col">
-                        <div class="relative mt-6">
-                            <input formControlName="password"
-
-                            type="password" name="password" id="password" placeholder="Password"
-                                class="peer peer input-style"/>
-                            <label for="password" 
-
-                            class="label-style">campo 4</label>
-                        </div>
-
-                    </div>
+                    </ng-template>
                     <div class="mt-2 mb-4">
                         <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200">Actualizar / Registrar</button>
                     </div>
+
+                    
                 </form>
             </div>
         </div>

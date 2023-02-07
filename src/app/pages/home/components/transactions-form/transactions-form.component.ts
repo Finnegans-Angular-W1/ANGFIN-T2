@@ -24,6 +24,8 @@ export class TransactionsFormComponent implements OnInit {
 
   transactionForm!:FormGroup;
 
+  titleForm:string = '';
+
 
 
   constructor(
@@ -31,37 +33,31 @@ export class TransactionsFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.operationType === 'new') {
-      const transaction = this.transaction as TransactionNewDTO;
 
-      if (transaction.transactionType === 'payment') {
-        this.transactionForm = this.fb.group({
-          transactionAccountID: [transaction.transactionAccountID, [Validators.required]],
-          transactionConcept: ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(55)]],
-          transactionAmount: ['', [Validators.required, Validators.min(1)]],
-          transactionDate: ['', [Validators.required]],
-          transactionType: [`payment`, [Validators.required]],
-        });
-      }else if (transaction.transactionType === 'topup') {
-        this.transactionForm = this.fb.group({
-          transactionAccountID: [, [Validators.required]],
-          transactionConcept: ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(55)]],
-          transactionAmount: ['', [Validators.required, Validators.min(1)]],
-          transactionDate: ['', [Validators.required]],
-          transactionType: [`topup`, [Validators.required]],
-        });
-      }
-    }else {
-      const transaction = this.transaction as TransactionEditDTO;
-      //TODO: HTTP GET to get the transaction data by transactionID
+    if (this.operationType === 'new') {
+      this.titleForm = 'Registrar nuevo ingreso'
+      //topup (ingreso)
       this.transactionForm = this.fb.group({
-        transactionID: [transaction.transactionID, [Validators.required]],
-        transactionConcept: [transaction.transactionConcept, [Validators.required, Validators.minLength(5) ,Validators.maxLength(55)]],
+        concept:   ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(55)]],
+        amount:    ['', [Validators.required, Validators.min(1)]],
+        date:      ['', [Validators.required]]
+      });
+      //payment (egreso)
+      if (( {... this.transaction} as TransactionNewDTO ).transactionType === 'payment'){
+        this.titleForm = 'Registrar nuevo egreso'
+        this.transactionForm.addControl('toAccountID', this.fb.control('', [Validators.required, Validators.min(1)]));
+      }
+    }
+    else if (this.operationType === 'edit'){
+      this.titleForm = 'Editar concepto de transacción'
+      const transaction = {...this.transaction} as TransactionEditDTO;
+      console.log(transaction.transactionID);
+      //TODO: HTTP GET to get transaction data by transactionID
+      this.transactionForm = this.fb.group({
+        transactionConcept: ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(55)]],
       });
     }
-
   }
-
 
   operationTypeEqualToNew():boolean{
     return this.operationType === 'new';
@@ -69,6 +65,40 @@ export class TransactionsFormComponent implements OnInit {
 
   transactionTypeEqualToPayment():boolean{
     return ( {...this.transaction} as TransactionNewDTO).transactionType === 'payment';
+  }
+
+  touchedAndInvalid(field:string):boolean {
+    if (this.transactionForm){
+      return ( this.transactionForm.get(field)!.touched
+        && this.transactionForm.get(field)!.invalid  );
+    }
+    return false;
+  }
+
+  touchedAndHasError(field:string, error:string):boolean {
+    if (this.transactionForm){
+      return ( this.transactionForm.get(field)!.touched
+        && this.transactionForm.get(field)!.hasError(error)  );
+    }
+    return false;
+  }
+
+
+  onSubmitForm(){
+
+    //TODO: NO OLVIDARME USERID(ORIGEN), en un topup el to_account_id es null o igual al account_id(del user)
+
+    if (this.transactionForm.valid){
+      if (this.operationType === 'new'){
+
+      }else if (this.operationType === 'edit'){
+
+      }
+    }
+    else{
+
+      
+    }
   }
 
 
