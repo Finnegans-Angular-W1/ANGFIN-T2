@@ -1,7 +1,3 @@
-export interface TransactionNewDTO {
-    transactionType: string; // 'topup' or 'payment'
-}
-
 
 // export interface TransactionNewDTO {
 //     transactionAccountID?: string; //in topup: equal to accountID

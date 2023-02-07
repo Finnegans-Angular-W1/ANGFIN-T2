@@ -1,17 +1,16 @@
-import { TransactionEditDTO } from './../../interfaces/transactionEditDTO';
-import { TransactionNewDTO } from './../../interfaces/transactionNewDTO';
+import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interfaces/transactionFormInterfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+import { Required } from 'src/app/shared/decorators/required.decorator';
 
 @Component({
   selector: 'app-transactions-form',
-  templateUrl: './transactions-form.component.html',
-  styleUrls: ['./transactions-form.component.scss']
+  templateUrl: './transactions-form.component.html'
 })
 export class TransactionsFormComponent implements OnInit {
 
   //!Required
-  @Input() operationType: string = ''; // 'new' or 'edit'
+  @Input() @Required('operationType') operation!:Operation; // 'new' or 'edit'
 
   @Input() transaction!: TransactionNewDTO | TransactionEditDTO; 
 
@@ -26,7 +25,7 @@ export class TransactionsFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.operationType === 'new') {
+    if (this.operation.type === 'new') {
       this.titleForm = 'Registrar nuevo ingreso'
       this.buttonText = 'Registrar'
       //topup (ingreso)
@@ -41,7 +40,7 @@ export class TransactionsFormComponent implements OnInit {
         this.transactionForm.addControl('toAccountID', this.fb.control('', [Validators.required, Validators.min(1)]));
       }
     }
-    else if (this.operationType === 'edit'){
+    else if (this.operation.type === 'edit'){
       this.buttonText = 'Guardar'
       this.titleForm = 'Editar concepto de transacción'
       this.transactionForm = this.fb.group({ concept:   ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(35)]] });
@@ -49,7 +48,7 @@ export class TransactionsFormComponent implements OnInit {
   }
 
   operationTypeEqualToNew():boolean{
-    return this.operationType === 'new';
+    return this.operation.type === 'new';
   }
 
   transactionTypeEqualToPayment():boolean{
@@ -78,7 +77,7 @@ export class TransactionsFormComponent implements OnInit {
     let body = {};
 
     if (this.transactionForm.valid){
-      if (this.operationType === 'new'){
+      if (this.operation.type === 'new'){
 
         let idAccount = 0; //TODO: Inicializar con el ID de la cuenta del usuario(HTTP) ACCOUNT_ID
         if(( {...this.transaction} as TransactionNewDTO).transactionType === 'payment'){
@@ -94,7 +93,7 @@ export class TransactionsFormComponent implements OnInit {
         //*Send HTTP POST to create new transaction
         //!POST /accounts/{id} + body
 
-      }else if (this.operationType === 'edit'){
+      }else if (this.operation.type === 'edit'){
 
         //TODO:USERID(ORIGEN) + TRANSACTION DATA(get by id transaction) + CONCEPT EDITED
         //only concept edited
