@@ -13,20 +13,12 @@ export class TransactionsFormComponent implements OnInit {
   //!Required
   @Input() operationType: string = ''; // 'new' or 'edit'
 
-//New Transaction
-//payment
   @Input() transaction!: TransactionNewDTO | TransactionEditDTO; 
-
-//deposit
-//ID Equally to AccountID 
-
-//Edit = only edit concept.
 
   transactionForm!:FormGroup;
 
   titleForm:string = '';
-
-
+  buttonText:string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -36,11 +28,12 @@ export class TransactionsFormComponent implements OnInit {
 
     if (this.operationType === 'new') {
       this.titleForm = 'Registrar nuevo ingreso'
+      this.buttonText = 'Registrar'
       //topup (ingreso)
       this.transactionForm = this.fb.group({
         concept:   ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(35)]],
         amount:    ['', [Validators.required, Validators.min(1)]],
-        date:      ['', [Validators.required]]
+        transactionDate:      ['', [Validators.required]]
       });
       
       if (( {... this.transaction} as TransactionNewDTO ).transactionType === 'payment'){//payment (egreso)
@@ -49,6 +42,7 @@ export class TransactionsFormComponent implements OnInit {
       }
     }
     else if (this.operationType === 'edit'){
+      this.buttonText = 'Guardar'
       this.titleForm = 'Editar concepto de transacción'
       this.transactionForm = this.fb.group({ concept:   ['', [Validators.required, Validators.minLength(5) ,Validators.maxLength(35)]] });
     }    
@@ -94,7 +88,7 @@ export class TransactionsFormComponent implements OnInit {
           type: ( {...this.transaction} as TransactionNewDTO).transactionType,
           concept: this.transactionForm.get('concept')!.value,
           amount: this.transactionForm.get('amount')!.value,
-          // date: this.transactionForm.get('date')!.value //Not required
+          // date: this.transactionForm.get('transactionDate')!.value //Not required
         }
 
         //*Send HTTP POST to create new transaction

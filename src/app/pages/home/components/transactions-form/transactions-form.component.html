@@ -10,6 +10,22 @@
             <div class="mt-5">
                 <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm">
                     <ng-container *ngIf="operationTypeEqualToNew()">
+                        <div class="flex h-16 flex-col">
+                            <div class="relative  mt-6">
+                                <input 
+                                [ngClass]="{'invalid-input':(transactionForm.controls['transactionDate'].invalid && transactionForm.controls['transactionDate'].touched),
+                                'valid-or-untouched-input': (transactionForm.controls['transactionDate'].valid || transactionForm.controls['transactionDate'].untouched)}"
+                                formControlName="transactionDate" type="date" name="transactionDate" id="transactionDate"
+                                    class="input-style"/>
+                                <label for="transactionDate"
+                                [ngClass]="{ 'text-red-800' : touchedAndInvalid('transactionDate'), 'valid-label': !touchedAndInvalid('transactionDate')}"
+                                    class="label-style">Fecha de transaccion</label>
+                            </div>
+                            <ng-container class="w-full min-h-max"
+                            *ngIf="touchedAndHasError('transactionDate', 'required');">
+                                <span class="text-red-500 text-xs">Este campo es requerido.</span>
+                            </ng-container>
+                        </div>
                         <ng-container *ngIf="transactionTypeEqualToPayment()">
                             <div class="flex h-16 flex-col">
                                 <div class="relative mt-6">
@@ -92,7 +108,7 @@
                         </ng-template>
                     </div>
                     <div class="mt-2 mb-4">
-                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200">Actualizar / Registrar</button>
+                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200">{{buttonText}}</button>
                     </div>
                 </form>
             </div>
