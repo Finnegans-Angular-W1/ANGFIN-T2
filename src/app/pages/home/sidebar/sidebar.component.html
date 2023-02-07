@@ -78,3 +78,6 @@
   </div>
   <!--  -->
 </div>
+<app-transactions-form [operationType]="'new'" [transaction]="{ transactionType: 'topup'}"> </app-transactions-form>
+<app-transactions-form [operationType]="'new'" [transaction]="{ transactionType: 'payment'}"> </app-transactions-form>
+<app-transactions-form [operationType]="'edit'"> </app-transactions-form>
