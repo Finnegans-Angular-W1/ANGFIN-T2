@@ -5,4 +5,4 @@ export const selectModalState = createSelector( selectAppState, (state) => state
 
 export const getModalOpen = createSelector( selectModalState, (state) => state.open )
 
-export const getModalAction = createSelector( selectModalState, (state) => state.action )
+export const getModalAction = createSelector( selectModalState, (state) => state.modalAction )

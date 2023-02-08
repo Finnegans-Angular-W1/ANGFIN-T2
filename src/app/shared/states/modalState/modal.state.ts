@@ -1,13 +1,12 @@
 
-
 export interface ModalState {
     open: boolean;
-    action: 'accept' | 'cancel' | '';
+    modalAction:string;
 }
 
 export const initalModalState = {
     open: false,
-    action: ''
+    modalAction: ''
 }
 
 

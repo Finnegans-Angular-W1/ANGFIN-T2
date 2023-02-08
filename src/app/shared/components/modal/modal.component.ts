@@ -1,5 +1,12 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { acceptModal, cancelModal, closeModal } from '../../states/modalState/modal.actions';
+import { getModalOpen } from './../../states/modalState/modal.selectors';
 import { Modal } from './../../interfaces/modal';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ModalState } from './../../states/modalState/modal.state';
+
 
 @Component({
   selector: 'app-modal',
@@ -10,24 +17,26 @@ export class ModalComponent implements OnInit {
 
   @Input() modalInfo:Modal = { paragraphs: [], title: ''};
 
-  // @Output() close = new EventEmitter<boolean>();
-  // @Output() accept = new EventEmitter<boolean>();
+  open$:Observable<boolean>;
 
-  constructor( ) { }
-
-  ngOnInit(): void {}
-
-  closeModal(){
-
-    // this.accept.emit(false); //Emits false to parent component
-    // this.close.emit(false);//close modal
+  constructor(
+    private store:Store<ModalState>
+  ) {
+    this.open$ = this.store.select(getModalOpen);
   }
 
-  acceptModal(){
+  ngOnInit(): void {
 
-    // this.accept.emit(true);//Emits true to parent component
+  }
 
-    // this.close.emit(false);//close Modaal
+  onCloseModal(){
+    this.store.dispatch(cancelModal())
+    this.store.dispatch(closeModal())
+  }
+
+  onAcceptModal(){
+    this.store.dispatch(acceptModal())
+    this.store.dispatch(closeModal())
   }
 
 }
