@@ -205,18 +205,12 @@
                                 <div>
                                     <input type="checkbox" formControlName="conditionsTerms"
                                     class="checkbox checkbox-accent" />
-                                    <span class="label-text ml-2">Acepto los <label for="my-modal-4" class="link link-accent">terminos y condiciones</label>.</span>
+                                    <label class="label-text ml-2">Acepto los <a class="z-20 link link-accent" (click)="onOpenModal()">terminos y condiciones</a>.</label>
                                 </div>
                                 <ng-container *ngIf="ConditionsTermsValid" class="w-full min-h-max">
                                     <span class="text-red-500 text-xs">Debes aceptar los terminos y condiciones para continuar.</span>
                                 </ng-container>
                             </div>
-                            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-                            <label for="my-modal-4" class="modal cursor-pointer">
-                                <label class="modal-box relative bg-accent text-black" for="">
-                                    <app-terms></app-terms>
-                                </label>
-                            </label>
                         </label>
                     </div>
 
@@ -231,3 +225,5 @@
 
     </div>
 </div>
+
+<app-modal [modalInfo]="modalInfo"></app-modal>

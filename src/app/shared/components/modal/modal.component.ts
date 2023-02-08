@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { acceptModal, cancelModal, closeModal } from '../../states/modalState/modal.actions';
 import { getModalOpen } from './../../states/modalState/modal.selectors';
-import { Modal } from './../../interfaces/modal';
+import { ModalInfo } from './../../interfaces/modal';
 import { ModalState } from './../../states/modalState/modal.state';
 
 
@@ -15,7 +15,7 @@ import { ModalState } from './../../states/modalState/modal.state';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() modalInfo:Modal = { paragraphs: [], title: ''};
+  @Input() modalInfo:ModalInfo = { paragraphs: [], title: '', subtitle: ''};
 
   open$:Observable<boolean>;
 
