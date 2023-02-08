@@ -16,7 +16,8 @@ import { AlertComponent } from './components/alert/alert.component';
 
   exports: [
     TitleComponent,
-    LoaderComponent
+    LoaderComponent,
+    AlertComponent
   ]
 })
 
