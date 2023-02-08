@@ -8,27 +8,26 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() modalInfo:Modal = {open: false, paragraphs: [], title: ''};
+  @Input() modalInfo:Modal = { paragraphs: [], title: ''};
 
-  @Output() close = new EventEmitter<boolean>();
-  @Output() accept = new EventEmitter<boolean>();
+  // @Output() close = new EventEmitter<boolean>();
+  // @Output() accept = new EventEmitter<boolean>();
 
   constructor( ) { }
 
   ngOnInit(): void {}
 
   closeModal(){
-    this.modalInfo.open = false;
 
-    this.accept.emit(false); //Emits false to parent component
-    this.close.emit(false);//close modal
+    // this.accept.emit(false); //Emits false to parent component
+    // this.close.emit(false);//close modal
   }
 
   acceptModal(){
-    this.modalInfo.open = false;
-    
-    this.accept.emit(true);//Emits true to parent component
-    this.close.emit(false);//close Modaal
+
+    // this.accept.emit(true);//Emits true to parent component
+
+    // this.close.emit(false);//close Modaal
   }
 
 }
