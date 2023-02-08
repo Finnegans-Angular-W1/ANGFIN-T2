@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 
 export class IdEndpointsService {
+  private _groupId !: string;
+  private _headers !: HttpHeaders;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this._headers = new HttpHeaders({Group: this._groupId})
+   }
 
-  getGeneric(bodyParam: any, endPointParam: any): Observable<any>{
-    return this.http.get<Observable<any>>(`${this.http}/${endPointParam}`, bodyParam);
+  public getId(url: string, id: number, activateHeader: boolean = false): Observable<T>{
+    return this.http.get<T>(url + id , activateHeader ? { headers: this._headers }: {});
 
   }
 }
