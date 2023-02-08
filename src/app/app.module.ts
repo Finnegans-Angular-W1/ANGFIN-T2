@@ -10,10 +10,12 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
+import { TipoDeCambioComponent } from './pages/tipo-de-cambio/tipo-de-cambio.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TipoDeCambioComponent
   ],
   imports: [
     BrowserModule,  
