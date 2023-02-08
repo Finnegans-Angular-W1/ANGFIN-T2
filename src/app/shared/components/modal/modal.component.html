@@ -1,0 +1,11 @@
+<div class="modal" [ngClass]="{ 'modal-open' : modalInfo.open}">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">{{modalInfo.title}}</h3>
+        
+        <p class="py-4" *ngFor="let p of modalInfo.paragraphs; index as i">{{p + i}}</p>
+        <div class="modal-action">
+            <label for="my-modal" class="btn" (click)="acceptModal()">Aceptar</label>
+            <label for="my-modal" class="btn" (click)="closeModal()">Cancelar</label>
+        </div>
+    </div>
+</div>
