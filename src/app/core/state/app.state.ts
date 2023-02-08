@@ -1,4 +1,4 @@
-import { Action, ActionReducerMap, createFeatureSelector } from '@ngrx/store';
+import { Action, ActionReducerMap, createSelector } from '@ngrx/store';
 
 //*States and Keys
 import * as Auth from '../../pages/auth-login/state/auth.state';
@@ -7,6 +7,11 @@ import * as Auth from '../../pages/auth-login/state/auth.state';
 import * as fromAuthReducer from './../../pages/auth-login/state/auth.reducer';
 
 //Feature key === dinamic name(Variable) of State
+
+export const initialAppState: AppState = {
+    [Auth.featureKey]: Auth.initialAuthState,
+};
+
 export interface AppState { //!Store 
     [Auth.featureKey]: Auth.AuthState;
 }
@@ -16,5 +21,5 @@ export const reducers: ActionReducerMap<AppState, Action> = {
 };
 
 //*Selector key
-export const featureKey = 'AppStore';
-export const selectAppState = createFeatureSelector<AppState>(featureKey);
+export const selectAppState = createSelector( (state: any) => state, (state: AppState) => state );
+

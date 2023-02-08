@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
 
+import * as AppState from './core/state/app.state';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +19,7 @@ import { AuthLoginModule } from './pages/auth-login/auth-login.module';
   imports: [
     BrowserModule,  
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(AppState.reducers, { initialState: AppState.initialAppState }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     AuthLoginModule,
