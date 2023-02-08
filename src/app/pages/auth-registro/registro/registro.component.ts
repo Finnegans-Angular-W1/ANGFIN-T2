@@ -18,7 +18,6 @@ export class RegistroComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   modalInfo:ModalInfo;
-
   subActionModal!:Subscription;
 
   constructor(
