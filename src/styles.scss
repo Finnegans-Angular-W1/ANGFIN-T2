@@ -14,6 +14,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+    .valid-or-untouched-input{
+        @apply border-gray-300 text-gray-400 focus:border-gray-500 focus:text-gray-500;
+    }
+
+    .invalid-input{
+        @apply text-red-500 focus:text-red-800 focus:border-red-800 border-red-500;
+    }
+    
+    .input-style{
+        @apply mt-[0.34rem] rounded-t bg-gray-100
+        w-full border-b-2 px-0 py-1 placeholder:text-transparent focus:outline-none;
+    }
+    
+    .label-style{
+        @apply pointer-events-none ml-0.5 absolute top-0 left-0 origin-left
+        -translate-y-1/2 transform text-sm opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base
+        peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm;
+    }
+    
+    .valid-label{
+        @apply peer-focus:text-gray-800 text-gray-800 peer-placeholder-shown:text-gray-500;
+    }
+    
+    .invalid-label{
+        @apply text-red-500 peer-focus:text-red-800;
+    }
+}
+
 html, body { height: 100%; }
 
 .neumorphism{
