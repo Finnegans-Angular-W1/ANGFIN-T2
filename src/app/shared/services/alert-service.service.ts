@@ -15,5 +15,5 @@ export class AlertServiceService {
   //Para la simulación del boton - End
   constructor() { }
 
-  //usar state
+  //Este es un esqueleto, se deberá hacer funcional cuando se deba usar la alerta
 }
