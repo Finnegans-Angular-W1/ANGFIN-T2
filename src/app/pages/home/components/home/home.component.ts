@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.transactionsService.getTransactions()
             .subscribe( (resp:any) => {
-              console.log(resp);
+              // console.log(resp);
               this.transaction = resp.data.splice(0,5);
             });
   }
