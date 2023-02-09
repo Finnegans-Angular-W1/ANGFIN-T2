@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { api_url } from "../../../environments/environment";
+
+//import { api_url } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -26,5 +27,9 @@ export class HttpService {
     return this.http.post<T>(api_url + idParam, body);
   }
 
+
+  public delete<T>(url: string, id:number, activateHeader:boolean = false ):Observable<T> {
+    return this.http.delete<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
+  }
 
 }

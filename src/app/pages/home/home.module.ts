@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SendMoneyComponent } from './components/home/send-money/send-money.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
 @NgModule({
@@ -15,13 +17,18 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeComponent, 
     SidebarComponent, 
     TransactionsFormComponent,
+<<<<<<< Updated upstream
     SendMoneyComponent
+=======
+    GananciaInversionComponent
+>>>>>>> Stashed changes
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
+    HomeRoutingModule,
     SharedModule,
-    HomeRoutingModule, 
     ReactiveFormsModule
   ],
+
 })
 export class HomeModule {}
