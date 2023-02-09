@@ -7,6 +7,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
 @NgModule({
@@ -22,5 +24,6 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeRoutingModule, 
     ReactiveFormsModule
   ],
+
 })
 export class HomeModule {}
