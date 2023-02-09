@@ -8,7 +8,6 @@ import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
-
 import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
@@ -18,7 +17,8 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeComponent, 
     SidebarComponent, 
     TransactionsFormComponent,
-    GananciaInversionComponent
+    GananciaInversionComponent,
+    TipoDeCambioComponent
   ],
   imports: [
     CommonModule,

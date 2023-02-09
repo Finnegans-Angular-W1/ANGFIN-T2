@@ -10,7 +10,7 @@ import { AlertComponent } from './components/alert/alert.component';
   declarations: [
     TitleComponent,
     LoaderComponent,
-    ModalComponent
+    ModalComponent,
     AlertComponent
   ],
   imports: [
@@ -20,7 +20,7 @@ import { AlertComponent } from './components/alert/alert.component';
   exports: [
     TitleComponent,
     LoaderComponent,
-    ModalComponent
+    ModalComponent,
     AlertComponent
   ]
 })
