@@ -7,14 +7,17 @@ import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    FooterComponent,
-    SidebarComponent,
-    TransactionsFormComponent
+    FooterComponent, 
+    HomeComponent, 
+    SidebarComponent, 
+    TransactionsFormComponent,
+    GananciaInversionComponent
   ],
   imports: [
     CommonModule,
@@ -22,5 +25,6 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SharedModule,
     ReactiveFormsModule
   ],
+
 })
 export class HomeModule {}
