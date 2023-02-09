@@ -20,9 +20,9 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     GananciaInversionComponent
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
+    HomeRoutingModule,
     SharedModule,
-    HomeRoutingModule, 
     ReactiveFormsModule
   ],
 
