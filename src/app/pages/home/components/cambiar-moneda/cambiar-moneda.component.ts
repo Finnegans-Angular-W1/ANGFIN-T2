@@ -1,3 +1,4 @@
+import { ROTATE_SVG2 } from '../../constants/SvgsConstants';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -34,6 +35,8 @@ export class CambiarMonedaComponent implements OnInit, OnDestroy {
   actualAmountValue:number = 0;
 
   coinsAndPaperSVG:string;
+  rotateSVG:string;
+  rotateSVG2:string;
   
 
   constructor (
@@ -41,6 +44,9 @@ export class CambiarMonedaComponent implements OnInit, OnDestroy {
     svgs:SvgsService
     ) { 
     this.coinsAndPaperSVG = svgs.getMoneySVG();
+    this.rotateSVG = svgs.getRotateSVG();
+    this.rotateSVG2 = svgs.getRotateSVG2();
+
     this.dollarTypeForm = new FormGroup({ radioDollarType: new FormControl('blue') });
     this.amountFormControl = new FormControl(null , [Validators.required, Validators.min(1), Validators.max(9000000)]);
   }
