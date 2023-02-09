@@ -8,7 +8,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class TitleComponent implements OnInit {
   
-  title : string | undefined = "qqq";
+  title : string | undefined = "Titulo";
 
   constructor(private route: ActivatedRoute) { 
     
