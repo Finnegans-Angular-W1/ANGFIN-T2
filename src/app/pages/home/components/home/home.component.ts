@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.transactionsService.getTransactions()
             .subscribe( (resp:any) => {
               console.log(resp);
-              this.transaction = resp.data.splice(0,5);
+              this.transaction = resp.data;
             });
   }
   

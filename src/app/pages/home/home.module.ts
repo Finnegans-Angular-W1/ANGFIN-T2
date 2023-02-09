@@ -8,7 +8,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { SidebarComponent } from './sidebar/sidebar.component';
 
-import { SharedModule } from 'src/app/shared/shared.module';
+import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
 @NgModule({
@@ -16,7 +16,8 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     FooterComponent, 
     HomeComponent, 
     SidebarComponent, 
-    TransactionsFormComponent
+    TransactionsFormComponent,
+    GananciaInversionComponent
   ],
   imports: [
     CommonModule, 
