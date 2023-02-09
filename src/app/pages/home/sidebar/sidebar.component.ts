@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
-  constructor() { }
+  modalOpen=false;
+  acceptModal=false;
 
+  constructor() { }
 }

@@ -78,3 +78,13 @@
   </div>
   <!--  -->
 </div>
+<div class="min-h-screen flex justify-center items-center">
+
+
+  <button class="btn" (click)="openModal()">OPEN MODAL</button>
+  <app-modal 
+  [modalInfo]="{paragraphs: ['asd', 'awds', 'awds'], title: 'awds'}"
+  ></app-modal>
+  {{acceptModal}}
+
+</div>

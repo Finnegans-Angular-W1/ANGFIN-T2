@@ -14,6 +14,7 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
 
 @NgModule({
   declarations: [
+<<<<<<< Updated upstream
     FooterComponent, 
     HomeComponent, 
     SidebarComponent, 
@@ -26,6 +27,16 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeRoutingModule,
     SharedModule,
     ReactiveFormsModule
+=======
+    HomeComponent,
+    FooterComponent,
+    SidebarComponent
+  ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    SharedModule
+>>>>>>> Stashed changes
   ],
 })
 export class HomeModule {}
