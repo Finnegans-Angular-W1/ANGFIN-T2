@@ -1,4 +1,3 @@
-import { ROTATE_SVG2 } from '../../constants/SvgsConstants';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
