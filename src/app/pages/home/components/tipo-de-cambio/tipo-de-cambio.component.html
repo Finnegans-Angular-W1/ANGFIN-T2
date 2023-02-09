@@ -1,32 +1,27 @@
-<div class="stats text-primary-content justify-center bg-gradient-to-b from-success to-[#0D9488] neumorphism">
-  
-    <div *ngFor="let item of dolares" class="stat border-l-4 border-white px-10 flex justify center items-center">
-        <div class="stat-value text-white">{{item.casa.nombre}}</div>
-        <div class="stat-title py-4 px-4 text-3xl font-extrabold text-black"> 
-            <p>Compra:</p> 
-            ${{item.casa.compra}}
-        </div>
-        <div class="stat-title py-1 text-3xl font-extrabold text-black justify-center items-center">
-            <p>Venta:</p>
-             ${{item.casa.venta}}
-        </div>
-    </div>
+<div class="flex flex-col">
     
+    <div class="py-5 flex flex-row justify-evenly">
+        <h1 class="font-['Exo'] text-4xl text-[#19181a] font-bold">Tipo de Cambio</h1>
+    </div>
+
+    
+    <div class="stats text-primary-content bg-gradient-to-b from-[#b65ab0] to-[#EAA3E4] neumorphism">
+    
+        <div *ngFor="let item of dolares" class="stat border-l-4 border-white px-10 flex flex-row justify-evenly items-center">
+            <div class="stat-value text-white">{{item.casa.nombre}}</div>
+            <div class="py-4 px-4 text-3xl text-[#19181a]"> 
+                <p class="font-bold">Compra:</p> 
+                <p class="font-extrabold">${{item.casa.compra}}</p>
+            </div>
+            <div class="py-1 text-3xl text-[#19181a]">
+                <p class="font-bold">Venta:</p>
+                <p class="font-extrabold">${{item.casa.venta}}</p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
-<!-- <div class="stats text-primary-content justify-center bg-gradient-to-b from-[#AEB0B4] to-[#D8DADC] neumorphism ">
-  
-    <div *ngFor="let item of dolares" class="stat border-l-4 border-white px-10 flex justify center items-center">
-        <div class="stat-value text-accent">{{item.casa.nombre}}</div>
-        <div class="stat-title py-4 px-4 text-3xl font-extrabold text-[#010101]"> 
-            <p class="text-accent">Compra:</p> 
-            ${{item.casa.compra}}
-        </div>
-        <div class="stat-title py-1 text-3xl font-extrabold text-[#010101] justify-center items-center">
-            <p class="text-accent">Venta:</p>
-             ${{item.casa.venta}}
-        </div>
-    </div> 
-    
-</div> -->
+
 
