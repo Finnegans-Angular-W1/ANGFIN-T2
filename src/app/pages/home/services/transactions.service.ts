@@ -14,7 +14,7 @@ export class TransactionsService {
     date: "", type: "", accountId: 0, userId: 0, toAccountId: 0};
   
   
-  tokenManual: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Nywicm9sZUlkIjoyfSwiaWF0IjoxNjc1MjY1NjUzLCJleHAiOjE2NzUzNTIwNTN9.w4sJp1vXP1pBE_keF7tAKxyiEnYhN8hN-76LUuU_8_U";
+  tokenManual: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Nywicm9sZUlkIjoyfSwiaWF0IjoxNjc2MDM0MzMxLCJleHAiOjE2NzYxMjA3MzF9.oIWLwULNGOiljLnlRVx2TRk5VUzpGwPXuA6k5sxxjqw";
   header:HttpHeaders = new HttpHeaders({
       'Authorization': `Bearer ${this.tokenManual}`,
     });

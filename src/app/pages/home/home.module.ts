@@ -8,13 +8,15 @@ import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 @NgModule({
   declarations: [
     FooterComponent, 
     HomeComponent, 
     SidebarComponent, 
-    TransactionsFormComponent
+    TransactionsFormComponent, 
+    TransactionListComponent
   ],
   imports: [
     CommonModule, 
