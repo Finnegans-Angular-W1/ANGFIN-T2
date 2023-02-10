@@ -6,6 +6,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { TitleComponent } from './components/title/title.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     LoaderComponent,
     ModalComponent,
     AlertComponent,
-    SafeHTMLPipe
+    SafeHTMLPipe,
+    CardComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     LoaderComponent,
     ModalComponent,
     AlertComponent,
-    SafeHTMLPipe
+    SafeHTMLPipe,
+    CardComponent
   ]
 })
 
