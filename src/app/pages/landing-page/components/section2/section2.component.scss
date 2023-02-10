@@ -6,3 +6,9 @@
     background-repeat: no-repeat;
 
 }
+
+@media (max-width: 639px) {
+    .div_cards{
+        width: 100%!important;
+    }
+}

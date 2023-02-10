@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +8,9 @@ import { LandingLayoutComponent } from './landing-layout/landing-layout.componen
 import { Section2Component } from './components/section2/section2.component';
 import { Section1Component } from './components/section1/section1.component';
 import { Section3Component } from './components/section3/section3.component';
+import { Section4Component } from './components/section4/section4.component';
+import { TabComponent } from './components/tab/tab.component';
+import { CollapseComponent } from './components/collapse/collapse.component';
 
 
 @NgModule({
@@ -15,10 +19,14 @@ import { Section3Component } from './components/section3/section3.component';
     LandingLayoutComponent,
     Section2Component,
     Section1Component,
-    Section3Component
+    Section3Component,
+    Section4Component,
+    TabComponent,
+    CollapseComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     LandingPageRoutingModule
   ]
 })

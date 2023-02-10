@@ -10,6 +10,11 @@ export class LandingNavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  showMenu = false;
+  toggleNavbar(){
+    this.showMenu = !this.showMenu;
+  }
 }

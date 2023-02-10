@@ -1,4 +1,3 @@
-import { SharedModule } from 'src/app/shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,7 +7,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
 
 import * as AppState from './core/state/app.state';
@@ -24,8 +22,6 @@ import * as AppState from './core/state/app.state';
     AppRoutingModule,
     AuthLoginModule,
     HttpClientModule,
-    SharedModule,
-    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
