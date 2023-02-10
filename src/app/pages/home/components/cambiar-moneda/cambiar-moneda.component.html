@@ -1,0 +1,142 @@
+<div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-cloud-pink py-6 sm:py-12">
+
+        <div class="w-full flex flex-wrap sm:flex-nowrap">
+            <div class="flex w-full ml-52">
+                <span [innerHTML]="coinsAndPaperSVG | safeHTML"></span>
+            </div>
+            <div class="relative sm:mr-64 w-full px-6 pt-4 pb-10 sm:px-10 my-5 shadow-lg ring-1 ring-gray-900/5 rounded-lg">
+                <div class="w-full text-justify">
+                    <div class="w-full flex justify-between">
+                        <h4 class="text-2xl font-light mb-6 text-[#b65ab0]/[0.90] tracking-wider sm:tracking-widest">Servicios Finacieros</h4>
+                        <form [formGroup]="dollarTypeForm" class="flex">
+                            <div class="flex mx-2">
+                                <input type="radio" formControlName="radioDollarType" id="radio1" name="radioDollarType" value="blue" class="radio radio-base mx-0.5"
+                                [ngClass]="{'radio-accent': dollarTypeIsBlue()}"
+                                checked />
+                                <label 
+                                [ngClass]="{'text-accent': dollarTypeIsBlue()}"
+                                for="radio1" class="sm:transition sm:duration-300 cursor-pointer sm:hover:text-accent">Dolar Blue</label>
+                            </div>
+                            <div class="flex mx-2">
+                                <input type="radio" formControlName="radioDollarType" id="radio2" name="radioDollarType" value="oficial"
+                                [ngClass]="{'radio-accent': !dollarTypeIsBlue()}"
+                                class="radio mx-0.5"/>
+                                <label
+                                [ngClass]="{'text-accent': !dollarTypeIsBlue()}"
+                                for="radio2" class="sm:transition sm:duration-300 cursor-pointer sm:hover:text-accent">Dolar Oficial</label>
+                            </div>
+                        </form>
+                    </div>
+                    <h2 class="text-2xl text-center sm:text-3xl font-semibold  text-[#19181a]">Simular conversión de divisas</h2>
+                    
+                </div>
+                <div class="w-full flex justify-center">
+                    <div class="flex h-16 flex-col mt-8 w-2/6 mt-6 bg-gray-100 px-2 py-1 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg">
+                        <div class="relative">
+                            <input 
+                            [formControl]="amountFormControl" type="number" name="amount" id="amount" placeholder="Ingrese un monto"
+                            class="peer border-[#b65ab0]/50  text-[#b65ab0] input-style" autocomplete="NA"
+                            [ngClass]="{'border-red-600 text-red-600 invalid-input': amountFormControl.invalid && amountFormControl.touched, 
+                            'border-[#b65ab0] valid-input': amountFormControl.valid && !amountFormControl.touched}"/>
+                            <label for="toAccountID" class="text-[#b65ab0] rounded-none label-style"
+                            [ngClass]="{'text-red-600 invalid-label': amountFormControl.invalid && amountFormControl.touched,
+                            'valid-label': amountFormControl.valid && !amountFormControl.touched}"
+                            >Ingrese un monto</label>
+                        </div>
+                        <ng-container class="w-full min-h-max"
+                        *ngIf="amountFormControl.invalid && amountFormControl.touched && amountFormControl.hasError('required');
+                        else amountInvalid2">
+                            <span class="text-red-500 text-xs">Este campo es requerido.</span>
+                        </ng-container>
+                        <ng-template #amountInvalid2>
+                            <ng-container class="w-full min-h-max"
+                            *ngIf="amountFormControl.invalid && amountFormControl.hasError('min') && amountFormControl.touched; else amountInvalid3">
+                                <span class="text-red-500 text-xs">El monto debe ser mayor a 0</span>
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #amountInvalid3>
+                            <ng-container class="w-full min-h-max"
+                            *ngIf="amountFormControl.invalid && amountFormControl.hasError('max') && amountFormControl.touched">
+                                <span class="text-red-500 text-xs">El monto debe ser menor a $9.000.000</span>
+                            </ng-container>
+                        </ng-template>
+                    </div>
+                    <div class="mx-6 indicator text-black font-semibold sm:hover:shadow-xl sm:transition sm:hover:scale-[1.03] sm:duration-300 flex h-16 mt-8 w-2/6 mt-6 bg-accent/50 py-3 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg justify-center">
+                            <span class="indicator-item px-1.5 text-regular sm:px-2.5 font-semibold sm:text-lg bg-[#2b2a2d] rounded-full text-white">*</span> 
+                        <label class="swap">
+                            <input (change)="rotateCurrency()" type="checkbox"/>
+                            <div class="swap-on flex">
+                                <span [innerHTML]="rotateSVG2 | safeHTML"></span>
+                                USD$ a ARS$
+                            </div>
+                            <div class="swap-off flex">
+                                <span [innerHTML]="rotateSVG | safeHTML"></span>
+                                ARS$ a USD$
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center w-full lg:flex-row mt-12">
+                    <div class="grid grow-0 h-32 card bg-base-300/75 rounded-box place-items-center">
+                        <div class="stack h-full w-full">
+                            <div class="text-center text-[#f2c5ee] shadow-md  max-w-[16rem] h-full w-64 card bg-[#b65ab0] ring-1 ring-gray-900/[0.03]">
+                                <div class="flex py-6 justify-center flex-col items-center">
+                                    <h3 class="text-lg font-semibold">{{arsToUsd? 'ARS' : 'USD'}}</h3>
+                                    <ng-container *ngIf="amountFormControl.valid; else invalidInput">
+                                        <span class="text-xl font-semibold  sm:text-2xl">{{actualAmountValue | currency}}</span>
+                                    </ng-container>
+                                    <ng-template #invalidInput>
+                                        <span class="text-xl font-semibold  sm:text-2xl"></span>
+                                    </ng-template>
+                                </div>
+                            </div> 
+                            <div class="text-center shadow mt-1.5 max-w-[16rem]	h-full w-64 card bg-[#b65ab0]">
+                                <div class="card-body"></div>
+                            </div> 
+                            <div class="text-center shadow-sm mt-2 max-w-[16rem] h-full w-64 card bg-[#b65ab0]">
+                                <div class="card-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider lg:divider-horizontal"></div>
+                    <div class="grid grow-0 h-32 card bg-base-300/75 rounded-box place-items-center">
+                        <div class="stack h-full w-full">
+                            <div class="text-center shadow-md max-w-[16rem]	h-full w-64 card bg-stone-800 ring-1 ring-gray-900/[0.03]">
+                                <div class="flex py-6 justify-center flex-col items-center">
+                                    <h3 class="text-lg font-semibold">{{arsToUsd? 'USD' : 'ARS'}}</h3>
+                                    <ng-container *ngIf="amountFormControl.valid; else invalidInput2">
+                                        <ng-container *ngIf="arsToUsd;else usdToArs">
+                                            <span class="text-xl font-semibold  sm:text-2xl">
+                                                {{( actualAmountValue / (dollarTypeIsBlue() ?  saleOficialUsdPrice : saleBlueUsdPrice ) ) | currency}}
+                                            </span>
+                                        </ng-container>
+                                        <ng-template #usdToArs>
+                                            <span class="text-xl font-semibold  sm:text-2xl">
+                                                {{ (actualAmountValue * ( dollarTypeIsBlue() ? buyOficialUsdPrice : buyBlueUsdPrice ) ) | currency}}
+                                            </span>
+                                        </ng-template>
+                                    </ng-container>
+                                    <ng-template #invalidInput2>
+                                        <span class="text-xl font-semibold  sm:text-2xl"></span>
+                                    </ng-template>
+                                </div>
+                            </div> 
+                            <div class="text-center shadow mt-1.5 max-w-[16rem] h-full w-64 card bg-stone-800"><div class="card-body"></div></div> 
+                            <div class="text-center shadow-sm mt-2 max-w-[16rem] h-full w-64 card bg-stone-900"><div class="card-body"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full mt-14">
+                    <p class=" mt-2 mb-1">
+                        Última actualización: {{ficticeUpdateTime | date:'dd/MM/yyyy HH:mm' }}
+                    </p>
+                    <p class="text-xs">
+                        *Los precios de compra/venta varian.
+                    </p>
+                    <p class="text-xs">
+                        *Podrás obtener una estimación aproximada del valor de una divisa en relación a otra. Es importante tener en cuenta que esta simulación no garantiza una exactitud absoluta debido a los constantes cambios en el mercado y la volatilidad de las divisas. Utiliza esta herramienta como una guía y ten en cuenta que la tasa real puede variar.
+                    </p>
+                </div>
+            </div>
+        </div>
+</div>

@@ -1,3 +1,4 @@
+import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,8 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SidebarComponent, 
     TransactionsFormComponent,
     GananciaInversionComponent,
-    TipoDeCambioComponent
+    TipoDeCambioComponent,
+    CambiarMonedaComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,5 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SharedModule,
     ReactiveFormsModule
   ],
-
 })
 export class HomeModule {}
