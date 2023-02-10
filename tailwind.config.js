@@ -1,14 +1,19 @@
 // Archivo de configuración para Tailwind y el plugin DaisyUI. 
 
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    screens: {
+      'sm': '640px',
+      'md': '1024px',
+      'lg': '1280px',
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
-    styled: true,
+  styled: true,
     themes: [
       {
         claro: {
@@ -33,11 +38,6 @@ module.exports = {
         },
       },
     ],
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    prefix: "",
     darkTheme: "oscuro",
   },
 }
