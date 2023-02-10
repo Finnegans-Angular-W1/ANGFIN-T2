@@ -11,6 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
+import { DivisasComponent } from './components/divisas/divisas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     TransactionsFormComponent,
     GananciaInversionComponent,
     TipoDeCambioComponent,
-    CambiarMonedaComponent
+    CambiarMonedaComponent,
+    DivisasComponent
   ],
   imports: [
     CommonModule,

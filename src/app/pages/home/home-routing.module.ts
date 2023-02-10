@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DivisasComponent } from './components/divisas/divisas.component';
 import { HomeComponent } from './components/home/home.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -16,8 +17,8 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'divisa',
-        component: TipoDeCambioComponent,
+        path: 'divisas',
+        component: DivisasComponent,
       }]
   }
 ];
