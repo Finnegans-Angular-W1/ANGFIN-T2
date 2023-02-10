@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TitleComponent } from './components/title/title.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     TitleComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule
@@ -14,7 +16,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 
   exports: [
     TitleComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProfileComponent
   ]
 })
 
