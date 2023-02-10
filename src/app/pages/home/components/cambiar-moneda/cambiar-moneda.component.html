@@ -107,12 +107,12 @@
                                     <ng-container *ngIf="amountFormControl.valid; else invalidInput2">
                                         <ng-container *ngIf="arsToUsd;else usdToArs">
                                             <span class="text-xl font-semibold  sm:text-2xl">
-                                                {{( actualAmountValue / (dollarTypeIsBlue() ?  saleOficialUsdPrice : saleBlueUsdPrice ) ) | currency}}
+                                                {{( actualAmountValue / (dollarTypeIsBlue() ?  saleBlueUsdPrice : saleOficialUsdPrice ) ) | currency}}
                                             </span>
                                         </ng-container>
                                         <ng-template #usdToArs>
                                             <span class="text-xl font-semibold  sm:text-2xl">
-                                                {{ (actualAmountValue * ( dollarTypeIsBlue() ? buyOficialUsdPrice : buyBlueUsdPrice ) ) | currency}}
+                                                {{ (actualAmountValue * ( dollarTypeIsBlue() ? buyBlueUsdPrice : buyOficialUsdPrice ) ) | currency}}
                                             </span>
                                         </ng-template>
                                     </ng-container>
