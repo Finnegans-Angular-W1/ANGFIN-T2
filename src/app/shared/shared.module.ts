@@ -13,7 +13,8 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     LoaderComponent,
     ModalComponent,
     AlertComponent,
-    SafeHTMLPipe
+    SafeHTMLPipe,
+    AlertComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +24,8 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     LoaderComponent,
     ModalComponent,
     AlertComponent,
-    SafeHTMLPipe
+    SafeHTMLPipe,
+    AlertComponent
   ]
 })
 

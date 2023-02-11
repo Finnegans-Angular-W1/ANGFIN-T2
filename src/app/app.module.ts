@@ -10,11 +10,11 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
-
 import * as AppState from './core/state/app.state';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,  

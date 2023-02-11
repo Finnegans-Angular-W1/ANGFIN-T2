@@ -1,0 +1,27 @@
+<div class="flex flex-col">
+    
+    <div class="py-5 flex flex-row justify-evenly">
+        <h1 class="font-['Exo'] text-4xl text-[#19181a] font-bold">Tipo de Cambio</h1>
+    </div>
+
+    
+    <div class="stats text-primary-content bg-gradient-to-b from-[#b65ab0] to-[#EAA3E4] neumorphism">
+    
+        <div *ngFor="let item of dolares" class="stat border-l-4 border-white px-10 flex flex-row justify-evenly items-center">
+            <div class="stat-value text-white">{{item.casa.nombre}}</div>
+            <div class="py-4 px-4 text-3xl text-[#19181a]"> 
+                <p class="font-bold">Compra:</p> 
+                <p class="font-extrabold">${{item.casa.compra}}</p>
+            </div>
+            <div class="py-1 text-3xl text-[#19181a]">
+                <p class="font-bold">Venta:</p>
+                <p class="font-extrabold">${{item.casa.venta}}</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
