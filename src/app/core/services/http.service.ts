@@ -23,9 +23,7 @@ export class HttpService {
     );
   }
 
-  api_url = "http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/";
-
-  public postGeneric<T>(body: T, idParam: string): Observable<T> {
+  public postGeneric<T>(api_url: string, body: T, idParam: string): Observable<T> {
     return this.http.post<T>(api_url + idParam, body);
   }
 

@@ -10,17 +10,10 @@ import { TransactionsService } from '../../services/transactions.service';
 })
 export class HomeComponent implements OnInit {
   
-  transaction: Transaction[] = [];
-  
-
-  constructor(private transactionsService: TransactionsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.transactionsService.getTransactions()
-            .subscribe( (resp:any) => {
-              // console.log(resp);
-              this.transaction = resp.data.splice(0,5);
-            });
+
   }
   
 }
