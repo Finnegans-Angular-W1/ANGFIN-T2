@@ -7,14 +7,15 @@ import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
-
 import * as AppState from './core/state/app.state';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,  
@@ -27,7 +28,11 @@ import * as AppState from './core/state/app.state';
     SharedModule,
     HomeModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
