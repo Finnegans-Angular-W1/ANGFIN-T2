@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { LoaderComponent } from './components/loader/loader.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { TitleComponent } from './components/title/title.component';
 import { AlertComponent } from './components/alert/alert.component';
@@ -11,8 +12,8 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
   declarations: [
     TitleComponent,
     LoaderComponent,
+    ProfileComponent,
     ModalComponent,
-    AlertComponent,
     SafeHTMLPipe,
     AlertComponent
   ],
@@ -22,10 +23,10 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
   exports: [
     TitleComponent,
     LoaderComponent,
+    ProfileComponent,
     ModalComponent,
     AlertComponent,
     SafeHTMLPipe,
-    AlertComponent
   ]
 })
 
