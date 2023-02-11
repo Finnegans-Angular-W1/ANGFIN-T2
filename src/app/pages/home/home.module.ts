@@ -11,6 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
+import { DivisasComponent } from './components/divisas/divisas.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 @NgModule({
@@ -21,8 +22,9 @@ import { TransactionListComponent } from './components/transaction-list/transact
     TransactionListComponent,
     TransactionsFormComponent,
     GananciaInversionComponent,
-    CambiarMonedaComponent,
     TipoDeCambioComponent,
+    CambiarMonedaComponent,
+    DivisasComponent,
     SendMoneyComponent,
   ],
   imports: [
