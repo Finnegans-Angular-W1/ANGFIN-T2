@@ -11,6 +11,7 @@ import { Section3Component } from './components/section3/section3.component';
 import { Section4Component } from './components/section4/section4.component';
 import { TabComponent } from './components/tab/tab.component';
 import { CollapseComponent } from './components/collapse/collapse.component';
+import { Section5Component } from './components/section5/section5.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CollapseComponent } from './components/collapse/collapse.component';
     Section3Component,
     Section4Component,
     TabComponent,
-    CollapseComponent
+    CollapseComponent,
+    Section5Component
   ],
   imports: [
     CommonModule,
