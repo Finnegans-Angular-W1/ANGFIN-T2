@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DivisasComponent } from './components/divisas/divisas.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 const routes: Routes = [
   {
@@ -10,8 +12,12 @@ const routes: Routes = [
     component: SidebarComponent,
     children: 
       [{
-        path: "",
+        path: "home",
         component: HomeComponent
+      },
+      {
+        path: 'divisas',
+        component: DivisasComponent,
       }]
   }
 ];

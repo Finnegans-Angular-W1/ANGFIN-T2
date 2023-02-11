@@ -1,23 +1,31 @@
-import { SharedModule } from 'src/app/shared/shared.module';
-import { NgModule } from '@angular/core';
+import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SendMoneyComponent } from './components/home/send-money/send-money.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
+import { DivisasComponent } from './components/divisas/divisas.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 
 @NgModule({
   declarations: [
     FooterComponent, 
     HomeComponent, 
     SidebarComponent, 
+    TransactionListComponent,
     TransactionsFormComponent,
-    GananciaInversionComponent
+    GananciaInversionComponent,
+    TipoDeCambioComponent,
+    CambiarMonedaComponent,
+    DivisasComponent,
+    SendMoneyComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +33,5 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SharedModule,
     ReactiveFormsModule
   ],
-
 })
 export class HomeModule {}
