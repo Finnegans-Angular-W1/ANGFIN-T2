@@ -17,11 +17,8 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeComponent, 
     SidebarComponent, 
     TransactionsFormComponent,
-<<<<<<< Updated upstream
-    SendMoneyComponent
-=======
+    SendMoneyComponent,
     GananciaInversionComponent
->>>>>>> Stashed changes
   ],
   imports: [
     CommonModule,
