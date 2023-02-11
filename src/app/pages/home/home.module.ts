@@ -1,3 +1,4 @@
+import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from "./footer/footer.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -18,6 +19,7 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SidebarComponent, 
     TransactionsFormComponent,
     GananciaInversionComponent,
+    CambiarMonedaComponent,
     TipoDeCambioComponent,
     SendMoneyComponent,
   ],
@@ -27,6 +29,5 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     SharedModule,
     ReactiveFormsModule
   ],
-
 })
 export class HomeModule {}
