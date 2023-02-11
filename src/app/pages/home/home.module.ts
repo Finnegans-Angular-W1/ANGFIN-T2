@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SendMoneyComponent } from './components/home/send-money/send-money.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 
@@ -17,8 +17,9 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
     HomeComponent, 
     SidebarComponent, 
     TransactionsFormComponent,
+    GananciaInversionComponent,
+    TipoDeCambioComponent,
     SendMoneyComponent,
-    GananciaInversionComponent
   ],
   imports: [
     CommonModule,
