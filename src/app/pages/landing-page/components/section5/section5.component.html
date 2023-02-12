@@ -1,0 +1,19 @@
+
+
+<div class="min-h-screen">
+    <h3 class="text-center text-3xl tracking-wider lg:tracking-widest mb-3">Redes Sociales</h3>
+    <div class="w-full justify-center flex">
+        <div class="w-full md:w-3/12 text-center mb-6">
+            <p class="text-lg">Síguenos en Facebook, Twitter e Instagram y mantente al tanto de todas las novedades y promociones que tenemos para ti. ¡Te esperamos!</p>
+        </div>
+        
+    </div>
+    
+    <div class="mt-8 flex justify-center">
+        <div class="flex flex-col md:flex-row md:justify-between flex-wrap font-light">
+            <app-social [socialItem]="fbSocial" ></app-social>
+            <app-social [socialItem]="twSocial" ></app-social>
+            <app-social [socialItem]="igSocial" ></app-social>
+        </div>    
+    </div>
+</div>
