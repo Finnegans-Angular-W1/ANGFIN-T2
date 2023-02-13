@@ -1,10 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { LoaderComponent } from './components/loader/loader.component';
-import { ModalComponent } from './components/modal/modal.component';
-import { TitleComponent } from './components/title/title.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { CommonModule } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { NgModule } from '@angular/core';
+import { PasswordResetComponent } from './components/profile/renew-password/renew-password.component';
+import { TitleComponent } from './components/title/title.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { CardComponent } from './components/card/card.component';
 
@@ -16,9 +19,14 @@ import { CardComponent } from './components/card/card.component';
     LoaderComponent,
     ModalComponent,
     TitleComponent,
+    SafeHTMLPipe,
+    PasswordResetComponent,
+    ProfileComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     SafeHTMLPipe,
@@ -27,6 +35,9 @@ import { CardComponent } from './components/card/card.component';
     LoaderComponent,
     ModalComponent,
     TitleComponent,
+    PasswordResetComponent,
+    ProfileComponent,
+    SafeHTMLPipe,
   ]
 })
 

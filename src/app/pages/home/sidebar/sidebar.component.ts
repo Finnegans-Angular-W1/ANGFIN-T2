@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-
-  modalOpen=false;
-  acceptModal=false;
-
   constructor() { }
+
+  onLogout(){
+    // Llamada al this.authService.logout()
+    // Deberá borrar los datos, setear el estado y
+    // redireccionar a la página de login.
+  }
 }
