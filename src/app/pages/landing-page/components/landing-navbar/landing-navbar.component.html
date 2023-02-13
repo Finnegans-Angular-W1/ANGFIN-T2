@@ -8,21 +8,19 @@
           <li>Sobre Nosotros</li>
           <li>Beneficios</li>
           <li>Servicios</li>
-          <li>Tarjetas</li>
           <li>Preguntas Frecuentes</li>
-          <li>Contacto</li>
+          <li>Redes</li>
         </ul>
       </div>
       <a class="btn btn-ghost normal-case text-xl">Alky Bank</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Sobre Nosotros</li>
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Beneficios</li>
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Servicios</li>
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Tarjetas</li>
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Preguntas Frecuentes</li>
-        <li class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Contacto</li>
+        <li [ngClass]="{'border-b border-[#b65ab0]' : section === 1}" class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:hover:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Sobre Nosotros</li>
+        <li [ngClass]="{'border-b border-[#b65ab0]' : section === 2}" class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:hover:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Beneficios</li>
+        <li [ngClass]="{'border-b border-[#b65ab0]' : section === 3}" class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:hover:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Servicios</li>
+        <li [ngClass]="{'border-b border-[#b65ab0]' : section === 4}" class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:hover:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Preguntas Frecuentes</li>
+        <li [ngClass]="{'border-b border-[#b65ab0]' : section === 5}" class="mx-0.5 lg:mx-1 p-2 cursor-pointer sm:hover:duration-300 sm:hover:border-b sm:hover:border-[#b65ab0]">Redes</li>
       </ul>
     </div>
     <div class="navbar-end">

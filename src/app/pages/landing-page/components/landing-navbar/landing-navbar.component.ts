@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-landing-navbar',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-navbar.component.scss']
 })
 export class LandingNavbarComponent implements OnInit {
+
+  @Input() section: number = 1;
 
   constructor() { }
 

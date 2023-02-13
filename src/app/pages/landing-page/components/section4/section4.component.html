@@ -1,9 +1,7 @@
-<div class="min-h-screen flex justify-around flex-wrap">
-    <div class="w-full text-center"><h2 class="text-4xl mb-0 pb-0 text-white font-bold tracking-widest">Preguntas Frecuentes</h2></div>
+<div class="flex justify-around flex-wrap min-h-screen">
+    <div class="w-full text-center pb-8"><h2 class="text-4xl mb-0 pb-0 text-white font-bold tracking-widest">Preguntas Frecuentes</h2></div>
     <ng-container *ngFor="let q of questions">
         <app-collapse class="w-3/12 mx-4 h-64 max-h-fit" [question]="q.question" [description]="q.description"></app-collapse>
     </ng-container>
-    
-    
 </div>
 
