@@ -1,7 +1,6 @@
 import { ViewChild, Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 
 import * as AOS from "aos";
-
 @Component({
   selector: 'app-landing-layout',
   templateUrl: './landing-layout.component.html',
@@ -11,19 +10,12 @@ export class LandingLayoutComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
-  // changeSectionHeader(sectionId: any) {
-  //   console.log(sectionId);
-  //   this.actualSection = sectionId;
-  // }
-
   @ViewChild('scrollableSection', { static: false }) scrollableSection!: ElementRef<HTMLDivElement>;
-  
   activeSection = 1;
 
   ngOnInit() {
     AOS.init();
     AOS.refresh()
-
   }
 
   ngAfterViewInit() {
@@ -58,12 +50,16 @@ export class LandingLayoutComponent implements OnInit, AfterViewInit {
     }, options);
 
     const sections = this.scrollableSection.nativeElement.children;
+    // console.log(sections);
     for (let i = 0; i < sections.length; i++) {
       observer.observe(sections[i]);
     }
-
   }
 
-
+  clickSection(section: number) {
+    // this.activeSection = section;
+    const sections = this.scrollableSection.nativeElement.children;
+    sections[section - 1].scrollIntoView({ behavior: 'smooth' });
+  }
 
 }

@@ -1,16 +1,12 @@
-<app-landing-navbar [section]="activeSection"></app-landing-navbar>
+<app-landing-navbar [section]="activeSection" (sectionChange)="clickSection($event)"></app-landing-navbar>
 <div class="bg-cloud-pink-with-black">
     <div class="bg-gradient-to-b from-pink-800/[0.25] to-stone-900/50" 
-    #scrollableSection
-    >
-    <!-- appSectionScroll
-    (sectionChange)="changeSectionHeader($event)" -->
+    #scrollableSection> <!-- appSectionScroll (sectionChange)="changeSectionHeader($event)" -->
         <app-section1 id="section1"></app-section1>
-        <app-section2 id="section2" ></app-section2>
+        <app-section2 id="section2"></app-section2>
         <app-section3 id="section3"></app-section3>
         <app-section4 id="section4"></app-section4>
         <app-section5 id="section5"></app-section5>
-
     </div>
 </div>
 <app-landing-footer></app-landing-footer>

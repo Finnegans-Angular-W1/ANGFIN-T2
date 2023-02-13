@@ -10,23 +10,23 @@ import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
-    TitleComponent,
+    SafeHTMLPipe,
+    AlertComponent,
+    CardComponent,
     LoaderComponent,
     ModalComponent,
-    AlertComponent,
-    SafeHTMLPipe,
-    CardComponent
+    TitleComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    TitleComponent,
+    SafeHTMLPipe,
+    AlertComponent,
+    CardComponent,
     LoaderComponent,
     ModalComponent,
-    AlertComponent,
-    SafeHTMLPipe,
-    CardComponent
+    TitleComponent,
   ]
 })
 
