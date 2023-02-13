@@ -12,7 +12,6 @@ import { Section2Component } from './components/section2/section2.component';
 import { Section3Component } from './components/section3/section3.component';
 import { Section4Component } from './components/section4/section4.component';
 import { Section5Component } from './components/section5/section5.component';
-import { Section6Component } from './components/section6/section6.component';
 import { SocialComponent } from './components/social/social.component';
 import { TabComponent } from './components/tab/tab.component';
 
@@ -27,7 +26,6 @@ import { TabComponent } from './components/tab/tab.component';
     TabComponent,
     CollapseComponent,
     Section5Component,
-    Section6Component,
     SocialComponent,
     LandingFooterComponent
   ],

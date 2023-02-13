@@ -1,7 +1,7 @@
+import { SocialI } from './../../interfaces/social';
 import { Component, OnInit } from '@angular/core';
 
 import { IG_SVG, FB_SVG, TW_SVG } from './../../constants/socialSVG';
-
 @Component({
   selector: 'app-section5',
   templateUrl: './section5.component.html',
@@ -9,11 +9,13 @@ import { IG_SVG, FB_SVG, TW_SVG } from './../../constants/socialSVG';
 })
 export class Section5Component implements OnInit {
 
-  fbSocial:any;
-  igSocial:any;
-  twSocial:any;
+  fbSocial:SocialI = { title: '', description: '', userSocial: '', svg: '' }
+  igSocial:SocialI = { title: '', description: '', userSocial: '', svg: '' }
+  twSocial:SocialI = { title: '', description: '', userSocial: '', svg: '' }
 
-  constructor() {
+  constructor() { }
+
+  ngOnInit(): void {
     this.fbSocial = {
       title: 'Alky Bank E-Wallet',
       description: 'Facebook',
@@ -34,14 +36,5 @@ export class Section5Component implements OnInit {
       userSocial: 'AlkyWallet',
       svg: TW_SVG
     }
-
   }
-
-  
-
-  ngOnInit(): void {
-  }
-
-
-
 }

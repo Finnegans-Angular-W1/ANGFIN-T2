@@ -1,3 +1,4 @@
+import { CollapseI } from './../../interfaces/collapse';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Section4Component implements OnInit {
 
-  questions:any = [];
+  questions:CollapseI[] = [{question:'', description:''}];
 
-  constructor() { 
+  constructor() {   }
+
+  ngOnInit(): void {
     this.questions = [
       {
         question: '¿Qué es una wallet digital?',
@@ -36,9 +39,6 @@ export class Section4Component implements OnInit {
         description: 'En caso de pérdida de dispositivo o problemas con tu cuenta, por favor contáctanos inmediatamente. Te guiaremos en el proceso para recuperar tus fondos y proteger tu información personal.'
       }
     ]
-  }
-
-  ngOnInit(): void {
   }
 
 }
