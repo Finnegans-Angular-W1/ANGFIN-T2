@@ -1,5 +1,8 @@
 <ng-container *ngIf="showAlert$ | async">
-    <app-alert></app-alert>
+    <app-alert
+    [msg]="(messageAlert$ | async) || ''"
+    [type]="(typeAlert$ | async) || 'error'"
+    ></app-alert>
 </ng-container>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

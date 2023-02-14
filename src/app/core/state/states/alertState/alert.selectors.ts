@@ -5,3 +5,4 @@ export const selectAlertState = createSelector(selectAppState, (state) => state.
 
 export const getAlertMessage = createSelector(selectAlertState, (state) => state.message);
 export const getAlertShow = createSelector(selectAlertState, (state) => state.show);
+export const getAlertType = createSelector(selectAlertState, (state) => state.alertType);
