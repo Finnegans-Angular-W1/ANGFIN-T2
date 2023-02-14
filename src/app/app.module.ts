@@ -5,13 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
+//NGRX
+import * as AppState from './core/state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './pages/auth-login/state/auth.effects';
+//-------------------//
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
-import * as AppState from './core/state/app.state';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,13 @@ import * as AppState from './core/state/app.state';
   imports: [
     BrowserModule,  
     BrowserAnimationsModule,
+    EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot(AppState.reducers, { initialState: AppState.initialAppState }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
