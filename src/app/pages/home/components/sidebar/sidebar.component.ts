@@ -13,4 +13,7 @@ export class SidebarComponent {
     // Deberá borrar los datos, setear el estado y
     // redireccionar a la página de login.
   }
+
+  modalOpen=false;
+  acceptModal=false;
 }

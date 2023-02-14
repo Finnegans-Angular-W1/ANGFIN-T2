@@ -34,7 +34,7 @@ import { LayoutComponent } from './layout/layout.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class HomeModule {}
