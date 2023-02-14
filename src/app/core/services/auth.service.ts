@@ -41,4 +41,17 @@ export class AuthService {
     return this.http.get<User>(`${this._apiURL}/auth/me`);
   }
 
+  checkTokenExpiration():boolean{
+    const data = localStorage.getItem('userExpiration');
+    if(data){
+      const userExpiration = JSON.parse(data);
+      const dateExpiration = new Date(userExpiration.dateExpiration);
+      const currentDate = new Date();
+      if(currentDate > dateExpiration){
+        return true;
+      }
+    }
+    return false; //not expired or not found(token)
+  }
+
 }

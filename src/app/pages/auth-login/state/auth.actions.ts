@@ -11,6 +11,6 @@ export const authMe = createAction( '- [AUTH] AUTH ME (INFO USER) -',  props<{ u
 export const loginStart = createAction('- [AUTH] LOGIN START -', props<{email:string, password:string}>() );
 export const logout = createAction( '- [AUTH] LOGOUT -' );
 
-//TODO: Crear un action para que se ejecute en: DateCreation + 24 horas
-// export const checkTokenExpiration = createAction('- [AUTH] INIT INTERVAL: CHECK TOKEN EXPIRATION -');
-
+//Actions Token 
+export const logoutExpiration = createAction('- [AUTH] INIT TIMEOUT: CHECK TOKEN EXPIRATION -');
+export const readToken = createAction('- [AUTH] READ TOKEN AND CHECK -');

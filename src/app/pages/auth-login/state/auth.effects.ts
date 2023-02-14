@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/state/app.state';
-import { catchError, exhaustMap, map, of, tap } from "rxjs";
+import { catchError, exhaustMap, map, of } from "rxjs";
 
 //Actions
 import * as AuthActions from './auth.actions';
@@ -93,7 +93,39 @@ export class AuthEffects {
     {dispatch:false}
     );
 
+    tokenRead$ = createEffect( ()=>{
+        return this.actions$.pipe(
+            ofType(AuthActions.readToken),
+            map((_)=>{
+                if(this.authService.checkTokenExpiration()){
+                    this.store.dispatch(showAlert({ message: `Su sesión ha expirado` }));
+                    this.store.dispatch(AuthActions.logout());
+                }
+            })
+        );
+    },
+    {dispatch:false}
+    );
 
-
+    logoutExpiration$ = createEffect( ()=>{
+        return this.actions$.pipe(
+            ofType(AuthActions.logoutExpiration),
+            map((_)=>{
+                const data = localStorage.getItem('userExpiration');
+                if (data !== null) {
+                    const userData = JSON.parse(data);
+                    const dateExpiration = new Date(userData.dateExpiration); const dateActual = new Date();
+                    const TimeoutCheck = dateExpiration.getTime() - dateActual.getTime() + 1000; //+ 1 segundo
+                    setTimeout(()=>{
+                        this.store.dispatch(AuthActions.readToken());
+                    }, TimeoutCheck);
+                    console.log('logoutExpiration$');
+                    console.log('EXPIRATION TIME:' , TimeoutCheck);
+                }
+            }
+        ));
+    },
+    {dispatch:false}
+    );
 
 }
