@@ -16,6 +16,7 @@ import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambi
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 import { LayoutComponent } from './layout/layout.component';
+import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LayoutComponent } from './layout/layout.component';
     CambiarMonedaComponent,
     DivisasComponent,
     SendMoneyComponent,
+    CargarSaldosComponent,
   ],
   imports: [
     CommonModule,
