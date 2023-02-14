@@ -1,11 +1,11 @@
 export interface AlertState {
     show: boolean;
-    alertMessage: string;
+    message: string;
 }
 
 export const initialAlertState = {
     show: false,
-    alertMessage: ''
+    message: ''
 }
 
 export const featureKey = 'alert';
