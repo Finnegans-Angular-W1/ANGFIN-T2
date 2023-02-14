@@ -1,18 +1,21 @@
-import { RedirectService } from './../../../core/services/redirect.service';
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
 
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from '@ngrx/store';
+
 import { AppState } from 'src/app/core/state/app.state';
 import { catchError, exhaustMap, map, of } from "rxjs";
-
+import { AuthService } from "src/app/core/services/auth.service";
+import { RedirectService } from './../../../core/services/redirect.service';
+//Interfaces
+import { ErrorResponse } from 'src/app/core/interfaces/errorResponse';
+import { User } from "src/app/core/interfaces/User";
+import { LoginSuccess } from '../interfaces/loginSuccess';
 //Actions
 import * as AuthActions from './auth.actions';
-import { AuthService } from "src/app/core/services/auth.service";
-import { LoginSuccess } from '../interfaces/loginSuccess';
-import { ErrorResponse } from 'src/app/core/interfaces/errorResponse';
+import { hideLoader, showLoader } from './../../../core/state/states/loaderState/loader.actions';
 import { showAlert } from "src/app/core/state/states/alertState/alert.actions";
-import { User } from "src/app/core/interfaces/User";
+
 
 @Injectable()
 export class AuthEffects {
@@ -31,7 +34,7 @@ export class AuthEffects {
                 return this.authService.login(action.email, action.password)
                 .pipe(
                     map(( respuesta ) => {
-                        //TODO: dispatchear state de loading(show)
+                        this.store.dispatch(showLoader({message: 'Cargando...'}));
                         const userExpiration = {
                             dateLogin: new Date(), //ONLY TEMPLATE (mostrar al usuario su fecha de ingreso)
                             dateExpiration: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)) //24 horas en milisegundos
@@ -42,7 +45,7 @@ export class AuthEffects {
                     catchError((error:ErrorResponse ) => {
                         console.log(action);
                         console.log(error);
-                        //TODO: hide loading (state)
+                        this.store.dispatch(hideLoader());
                         this.store.dispatch(showAlert({ message: `${error}`, alertType: 'error' }))
                         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
                         return of(AuthActions.loginFail())
@@ -61,13 +64,13 @@ export class AuthEffects {
                 .pipe(
                     map(( respuesta:User ) => {
                         console.log('loginSuccessWithAuthMe$');//?Borrar console.log
-                        //hide loading (state)
+                        this.store.dispatch(hideLoader());
                         this.redirect.redirectTo('/home');
                         return AuthActions.authMe({user:respuesta as User});
                     }),
                     catchError( (error) => {
                         console.log(error);
-                        //hide loading state
+                        this.store.dispatch(hideLoader());
                         this.store.dispatch(showAlert({ message: `${error}`, alertType: 'error' }))
                         return of(AuthActions.authMeFail());
                     })
@@ -134,14 +137,14 @@ export class AuthEffects {
                 return this.authService.register(action.requestBody)
                 .pipe(
                     map((_) => {
-                        //TODO: HIDE loading
+                        this.store.dispatch(hideLoader());//? TAP?
                         this.redirect.redirectTo('/login');
                         return AuthActions.registerSuccess();
                     }),
                     catchError((error:ErrorResponse ) => {
                         console.log(action);
                         console.log(error);
-                        //TODO: HIDE loading
+                        this.store.dispatch(hideLoader());
                         this.store.dispatch(showAlert({ message: `${error}` , alertType: 'error'}))
                         return of(AuthActions.registerFail());
                     })
