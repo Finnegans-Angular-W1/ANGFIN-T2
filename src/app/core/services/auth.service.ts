@@ -10,6 +10,7 @@ import { AuthState } from '../../pages/auth-login/state/auth.state';
 import { RegisterRequest } from '../../pages/auth-registro/interfaces/registerRequest';
 import { LoginSuccess } from 'src/app/pages/auth-login/interfaces/loginSuccess';
 import { ErrorResponse } from '../interfaces/errorResponse';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,10 @@ export class AuthService {
 
   register(requestBody:RegisterRequest) {
     return this.http.postGeneric(`${this._apiURL}/users`, requestBody);
+  }
+
+  authMe():Observable<User> {
+    return this.http.get<User>(`${this._apiURL}/auth/me`);
   }
 
 }
