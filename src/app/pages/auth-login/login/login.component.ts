@@ -1,5 +1,11 @@
+import { showAlert } from './../../../shared/states/alertState/alert.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Store } from '@ngrx/store';
+import { loginStart } from '../state/auth.actions';
+import { AuthState } from '../state/auth.state';
+import { AlertState } from './../../../shared/states/alertState/alert.state';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +13,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  
+  form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(
+    private formBuilder: FormBuilder,
+    private store:Store<AuthState | AlertState>
+  ) {   }
+
+  ngOnInit() {
     this.form = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
-
-  ngOnInit() {}
 
   get Password() {
     return this.form.get('password');
@@ -39,12 +49,10 @@ export class LoginComponent implements OnInit {
     event.preventDefault;
 
     if (this.form.valid) {
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert('Todo salio bien ¡Enviar formulario!');
+      this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template
       this.form.markAllAsTouched();
+      this.store.dispatch(showAlert({ message: 'Formulario invalido' }));
     }
   }
 

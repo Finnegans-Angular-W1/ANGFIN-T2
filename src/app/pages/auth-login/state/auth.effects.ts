@@ -45,7 +45,6 @@ export class AuthEffects {
                         // console.log(error);
 
                         //TODO: hide loading (state)
-
                         this.store.dispatch(showAlert({ message: `${error}` }))
                         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
                         return of(AuthActions.loginFail())
@@ -84,7 +83,6 @@ export class AuthEffects {
         return this.actions$.pipe(
             ofType(AuthActions.logout),
             map((_)=>{
-                //TODO: Resetear el store (state auth)
                 localStorage.removeItem('userExpiration');
                 this.redirect.redirectTo('/login');
             })
@@ -107,6 +105,7 @@ export class AuthEffects {
     {dispatch:false}
     );
 
+//Start timeout to check expiration
     logoutExpiration$ = createEffect( ()=>{
         return this.actions$.pipe(
             ofType(AuthActions.logoutExpiration),
