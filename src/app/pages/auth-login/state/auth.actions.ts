@@ -1,5 +1,6 @@
 import { User } from './../../../core/interfaces/User';
 import { createAction, props } from "@ngrx/store";
+import { RegisterRequest } from '../../auth-registro/interfaces/registerRequest';
 
 export const loginFail = createAction('- [AUTH] LOGIN FAIL -');
 export const authMeFail = createAction('- [AUTH] AUTH ME FAIL -');
@@ -14,3 +15,9 @@ export const logout = createAction( '- [AUTH] LOGOUT -' );
 //Actions Token 
 export const logoutExpiration = createAction('- [AUTH] INIT TIMEOUT: CHECK TOKEN EXPIRATION -');
 export const readToken = createAction('- [AUTH] READ TOKEN AND CHECK -');
+
+//Actions Register
+export const registerStart = createAction('- [AUTH] REGISTER START -', props<{requestBody:RegisterRequest}>() );
+
+export const registerSuccess = createAction('- [AUTH] REGISTER SUCCESS -');
+export const registerFail = createAction('- [AUTH] REGISTER FAIL -');

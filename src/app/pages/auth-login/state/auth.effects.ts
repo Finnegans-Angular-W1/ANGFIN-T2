@@ -16,7 +16,7 @@ import { User } from "src/app/core/interfaces/User";
 
 @Injectable()
 export class AuthEffects {
-    
+
     constructor(
         private actions$: Actions,
         private store:Store<AppState>,
@@ -26,24 +26,22 @@ export class AuthEffects {
 
     login$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(AuthActions.loginStart), //Exhaust map vs map?
+            ofType(AuthActions.loginStart),
             exhaustMap((action) => { 
                 return this.authService.login(action.email, action.password)
                 .pipe(
                     map(( respuesta ) => {
                         //TODO: dispatchear state de loading(show)
                         const userExpiration = {
-                            dateLogin: new Date(),
+                            dateLogin: new Date(), //ONLY TEMPLATE (mostrar al usuario su fecha de ingreso)
                             dateExpiration: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)) //24 horas en milisegundos
                         }
-                        localStorage.setItem('userExpiration', JSON.stringify(userExpiration));
-
+                        localStorage.setItem('userExpiration', JSON.stringify(userExpiration));//SAVE TOKEN EXPIRATION
                         return AuthActions.loginSuccess({accessToken:(respuesta as LoginSuccess).accessToken})
                     }),
                     catchError((error:ErrorResponse ) => {
-                        // console.log(action);
-                        // console.log(error);
-
+                        console.log(action);
+                        console.log(error);
                         //TODO: hide loading (state)
                         this.store.dispatch(showAlert({ message: `${error}` }))
                         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
@@ -85,6 +83,7 @@ export class AuthEffects {
             map((_)=>{
                 localStorage.removeItem('userExpiration');
                 this.redirect.redirectTo('/login');
+                //TODO: Alert (Session finalizada correctamente.)
             })
         );
     },
@@ -126,5 +125,29 @@ export class AuthEffects {
     },
     {dispatch:false}
     );
+
+    //Register
+    register$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AuthActions.registerStart), //Exhaust map vs map?
+            exhaustMap((action) => { 
+                return this.authService.register(action.requestBody)
+                .pipe(
+                    map((_) => {
+                        //TODO: HIDE loading
+                        this.redirect.redirectTo('/login');
+                        return AuthActions.registerSuccess();
+                    }),
+                    catchError((error:ErrorResponse ) => {
+                        console.log(action);
+                        console.log(error);
+                        //TODO: HIDE loading
+                        this.store.dispatch(showAlert({ message: `${error}` }))
+                        return of(AuthActions.registerFail());
+                    })
+                )
+            })
+        )
+    });
 
 }

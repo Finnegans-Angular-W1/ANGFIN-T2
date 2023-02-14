@@ -1,3 +1,6 @@
+import { showAlert } from './../../../shared/states/alertState/alert.actions';
+import { registerStart } from './../../auth-login/state/auth.actions';
+
 import { getModalAction } from './../../../shared/states/modalState/modal.selectors';
 import { TermsService } from './../services/terms.service';
 import { ModalInfo } from './../../../shared/interfaces/modal';
@@ -5,9 +8,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { ModalState } from './../../../shared/states/modalState/modal.state';
+
 import { openModal } from 'src/app/shared/states/modalState/modal.actions';
 import { Subscription } from 'rxjs';
+import { AppState } from 'src/app/core/state/app.state';
 
 @Component({
   selector: 'app-registro',
@@ -22,8 +26,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<ModalState>,
-    private terms:TermsService
+    private store: Store<AppState>,
+    private terms:TermsService,
   ) { 
     this.modalInfo = this.terms.getModalInfo();
 
@@ -87,10 +91,10 @@ export class RegistroComponent implements OnInit, OnDestroy {
     event.preventDefault;
 
     if (this.form.valid) {
-
-      alert('Todo salio bien ¡Enviar formulario!');
+      //TODO: START LOADING STATE
+      this.store.dispatch(registerStart(this.form.value));
     } else {
-
+      this.store.dispatch(showAlert({message:'Complete los campos requeridos'}));
       this.form.markAllAsTouched();
     }
   }
