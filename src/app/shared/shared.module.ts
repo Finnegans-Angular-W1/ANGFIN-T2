@@ -1,8 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertComponent } from './components/alert/alert.component';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
@@ -13,9 +11,7 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 @NgModule({
   declarations: [
     TitleComponent,
-    LoaderComponent,
     ModalComponent,
-    AlertComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
@@ -27,9 +23,7 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
   ],
   exports: [
     TitleComponent,
-    LoaderComponent,
     ModalComponent,
-    AlertComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,

@@ -1,4 +1,4 @@
-import { selectAppState } from './../../../core/state/app.state';
+import { selectAppState } from '../../app.state';
 import { createSelector } from '@ngrx/store';
 
 export const selectAlertState = createSelector(selectAppState, (state) => state.alert);

@@ -11,7 +11,7 @@ import * as AuthActions from './auth.actions';
 import { AuthService } from "src/app/core/services/auth.service";
 import { LoginSuccess } from '../interfaces/loginSuccess';
 import { ErrorResponse } from 'src/app/core/interfaces/errorResponse';
-import { showAlert } from "src/app/shared/states/alertState/alert.actions";
+import { showAlert } from "src/app/core/state/states/alertState/alert.actions";
 import { User } from "src/app/core/interfaces/User";
 
 @Injectable()
@@ -43,7 +43,7 @@ export class AuthEffects {
                         console.log(action);
                         console.log(error);
                         //TODO: hide loading (state)
-                        this.store.dispatch(showAlert({ message: `${error}` }))
+                        this.store.dispatch(showAlert({ message: `${error}`, alertType: 'error' }))
                         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
                         return of(AuthActions.loginFail())
                     })
@@ -68,7 +68,7 @@ export class AuthEffects {
                     catchError( (error) => {
                         console.log(error);
                         //hide loading state
-                        this.store.dispatch(showAlert({ message: `${error}` }))
+                        this.store.dispatch(showAlert({ message: `${error}`, alertType: 'error' }))
                         return of(AuthActions.authMeFail());
                     })
                 )
@@ -95,7 +95,7 @@ export class AuthEffects {
             ofType(AuthActions.readToken),
             map((_)=>{
                 if(this.authService.checkTokenExpiration()){
-                    this.store.dispatch(showAlert({ message: `Su sesión ha expirado` }));
+                    this.store.dispatch(showAlert({ message: `Su sesión ha expirado` , alertType: 'error'}));
                     this.store.dispatch(AuthActions.logout());
                 }
             })
@@ -142,7 +142,7 @@ export class AuthEffects {
                         console.log(action);
                         console.log(error);
                         //TODO: HIDE loading
-                        this.store.dispatch(showAlert({ message: `${error}` }))
+                        this.store.dispatch(showAlert({ message: `${error}` , alertType: 'error'}))
                         return of(AuthActions.registerFail());
                     })
                 )

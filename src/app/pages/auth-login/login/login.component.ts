@@ -1,11 +1,11 @@
-import { showAlert } from './../../../shared/states/alertState/alert.actions';
+import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import { loginStart } from '../state/auth.actions';
 import { AuthState } from '../state/auth.state';
-import { AlertState } from './../../../shared/states/alertState/alert.state';
+import { AlertState } from '../../../core/state/states/alertState/alert.state';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {
       this.form.markAllAsTouched();
-      this.store.dispatch(showAlert({ message: 'Formulario invalido' }));
+      this.store.dispatch(showAlert({ message: 'Formulario invalido', alertType: 'error' }));
     }
   }
 

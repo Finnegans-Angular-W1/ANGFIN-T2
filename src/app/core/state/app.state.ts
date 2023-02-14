@@ -3,12 +3,12 @@ import { Action, ActionReducerMap, createSelector } from '@ngrx/store';
 //*States and Keys
 import * as Auth from '../../pages/auth-login/state/auth.state';
 import * as Modal from '../../shared/states/modalState/modal.state';
-import * as Alert from '../../shared/states/alertState/alert.state';
+import * as Alert from './states/alertState/alert.state';
 
 //*Reducers
 import { authReducer  } from './../../pages/auth-login/state/auth.reducer';
 import { modalReducer } from 'src/app/shared/states/modalState/modal.reducer';
-import { alertReducer } from 'src/app/shared/states/alertState/alert.reducer';
+import { alertReducer } from 'src/app/core/state/states/alertState/alert.reducer';
 
 //Feature key === dinamic name(Variable) of State
 

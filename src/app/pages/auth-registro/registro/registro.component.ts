@@ -1,4 +1,4 @@
-import { showAlert } from './../../../shared/states/alertState/alert.actions';
+import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { registerStart } from './../../auth-login/state/auth.actions';
 
 import { getModalAction } from './../../../shared/states/modalState/modal.selectors';
@@ -94,7 +94,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
       //TODO: START LOADING STATE
       this.store.dispatch(registerStart(this.form.value));
     } else {
-      this.store.dispatch(showAlert({message:'Complete los campos requeridos'}));
+      this.store.dispatch(showAlert({message:'Complete los campos requeridos', alertType:'error'}));
       this.form.markAllAsTouched();
     }
   }
