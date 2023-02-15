@@ -26,6 +26,7 @@ export class AuthService {
 
   login(email: string, password: string):Observable<LoginSuccess | ErrorResponse> {
     const requestBody:RequestLogin = { email, password };
+    console.log('requestBody: ', requestBody);
     return this.http.postGeneric<LoginSuccess | ErrorResponse>(`${this._apiURL}/auth/login`, requestBody);
   }
 

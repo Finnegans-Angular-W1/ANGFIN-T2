@@ -29,8 +29,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule,
-    EffectsModule.forRoot([])
+    CoreModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

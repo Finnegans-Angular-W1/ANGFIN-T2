@@ -34,7 +34,7 @@ export class AuthEffects {
                 return this.authService.login(action.email, action.password)
                 .pipe(
                     map(( respuesta ) => {
-                        this.store.dispatch(showLoader({message: 'Cargando...'}));
+                        console.log('loginstart:' , respuesta);
                         const userExpiration = {
                             dateLogin: new Date(), //ONLY TEMPLATE (mostrar al usuario su fecha de ingreso)
                             dateExpiration: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)) //24 horas en milisegundos
