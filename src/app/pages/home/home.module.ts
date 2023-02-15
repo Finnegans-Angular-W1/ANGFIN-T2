@@ -1,5 +1,4 @@
 
-import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { CommonModule } from '@angular/common';
@@ -27,7 +26,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TipoDeCambioComponent,
     CambiarMonedaComponent,
     DivisasComponent,
-    SendMoneyComponent,,
+    SendMoneyComponent
   ],
   imports: [
     CommonModule,

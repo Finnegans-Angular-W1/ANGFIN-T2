@@ -33,6 +33,7 @@
     "@angular/compiler-cli": "^14.0.0",
     "@types/aos": "^3.0.4",
     "@types/jasmine": "~4.0.0",
+    "@types/jest": "^29.4.0",
     "@types/node": "^18.7.23",
     "autoprefixer": "^10.4.13",
     "jasmine-core": "~4.3.0",
