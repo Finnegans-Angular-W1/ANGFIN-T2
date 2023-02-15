@@ -3,7 +3,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from 'src/app/core/footer/footer.component';
 import { GananciaInversionComponent } from "./components/inversion/ganancia-inversion/ganancia-inversion.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HomeRoutingModule } from "./home-routing.module";
@@ -18,7 +17,6 @@ import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
-    FooterComponent,
     HomeComponent,
     SidebarComponent,
     TransactionListComponent,

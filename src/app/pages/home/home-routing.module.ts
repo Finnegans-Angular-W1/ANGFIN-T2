@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from 'src/app/shared/components/profile/profile.component';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
         {
           path: "profile",
           component: ProfileComponent
+        },
+        {
+          path: "modal",
+          component: ModalComponent
         }
     ]
   }
