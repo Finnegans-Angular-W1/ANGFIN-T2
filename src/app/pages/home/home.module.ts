@@ -14,7 +14,6 @@ import { TransactionsFormComponent } from "./components/transactions-form/transa
 import { DivisasComponent } from './components/divisas/divisas.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { SendMoneyComponent } from './components/home/send-money/send-money.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TipoDeCambioComponent,
     CambiarMonedaComponent,
     DivisasComponent,
-    SendMoneyComponent,,
+    SendMoneyComponent,
   ],
   imports: [
     CommonModule,
