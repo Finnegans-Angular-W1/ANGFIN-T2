@@ -1,8 +1,5 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AlertComponent } from './components/alert/alert.component';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
@@ -13,13 +10,8 @@ import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
-    SafeHTMLPipe,
-    AlertComponent,
-    CardComponent,
-    LoaderComponent,
-    ModalComponent,
     TitleComponent,
-    SafeHTMLPipe,
+    ModalComponent,
     PasswordResetComponent,
     ProfileComponent,
   ],
@@ -29,12 +21,8 @@ import { CardComponent } from './components/card/card.component';
     ReactiveFormsModule,
   ],
   exports: [
-    SafeHTMLPipe,
-    AlertComponent,
-    CardComponent,
-    LoaderComponent,
-    ModalComponent,
     TitleComponent,
+    ModalComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
