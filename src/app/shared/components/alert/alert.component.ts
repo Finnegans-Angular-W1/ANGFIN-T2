@@ -1,8 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
-import { AlertServiceService } from '../../services/alert-service.service';
->>>>>>> 6c918c1 (feat error interceptor)
 
 import { AlertServiceService } from '../../services/alert-service.service';
 
