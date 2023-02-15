@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { url } from 'inspector';
+import { HttpService } from 'src/app/core/services/http.service';
 import { Transaction } from '../../interfaces/transaction';
 import { TransactionsService } from '../../services/transactions.service';
 
@@ -12,14 +14,20 @@ export class TransactionListComponent implements OnInit {
   transaction: Transaction[] = [];
   filter: string | undefined;
 
-  constructor(private transactionsService: TransactionsService) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.transactionsService.getTransactions()
+    this.httpService.get("/transaction", true)
             .subscribe( (resp:any) => {
               console.log(resp);
               this.transaction = resp.data;
             });
+
+    //this.transactionsService.getTransactions()
+      //      .subscribe( (resp:any) => {
+        //      console.log(resp);
+          //    this.transaction = resp.data;
+            //});
   }
   
   opcionElegida(event: any){
