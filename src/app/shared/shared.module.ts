@@ -15,11 +15,16 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     TitleComponent,
     LoaderComponent,
     ModalComponent,
+<<<<<<< HEAD
     AlertComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
 ],
+=======
+    AlertComponent
+  ],
+>>>>>>> 6c918c1 (feat error interceptor)
   imports: [
     CommonModule,
     FormsModule,
@@ -29,10 +34,14 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
     TitleComponent,
     LoaderComponent,
     ModalComponent,
+<<<<<<< HEAD
     AlertComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
+=======
+    AlertComponent
+>>>>>>> 6c918c1 (feat error interceptor)
   ]
 })
 
