@@ -14,11 +14,7 @@ import { TitleComponent } from "./components/title/title.component";
     ModalComponent,
     SafeHTMLPipe,
     CardComponent,
-    ModalComponent,
-    SafeHTMLPipe,
     ProfileComponent,
-    CardComponent,
-    SafeHTMLPipe,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -27,7 +23,6 @@ import { TitleComponent } from "./components/title/title.component";
     SafeHTMLPipe,
     CardComponent,
     ProfileComponent,
-    SafeHTMLPipe,
   ],
 })
 export class SharedModule {}
