@@ -11,6 +11,7 @@ import { RegisterRequest } from '../../pages/auth-registro/interfaces/registerRe
 import { LoginSuccess } from 'src/app/pages/auth-login/interfaces/loginSuccess';
 import { ErrorResponse } from '../interfaces/errorResponse';
 import { User } from '../interfaces/User';
+import { BodyRequest } from 'src/app/pages/auth-login/interfaces/body-request';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,14 @@ export class AuthService {
       }
     }
     return false; //not expired or not found(token)
+  }
+
+  //Modal profile
+
+  editUser(requestBody :BodyRequest, id: number){
+    return this.http.put<User>(
+      `${this._apiURL}/user/${id}`, requestBody
+    );
   }
 
 }

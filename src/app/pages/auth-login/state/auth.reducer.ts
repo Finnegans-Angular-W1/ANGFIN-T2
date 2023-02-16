@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { AuthState, initialAuthState } from './auth.state';
+import { AuthEditState, AuthState, initialAuthEditState, initialAuthState } from './auth.state';
 import * as fromAuthActions from './auth.actions';
 
 export const authReducer = createReducer(
@@ -13,5 +13,9 @@ export const authReducer = createReducer(
     }),
     on(fromAuthActions.logout, (state:AuthState) => {
         return {...state, user: initialAuthState.user, accessToken: initialAuthState.accessToken}
-    })
+    }),
+    on(fromAuthActions.editProfileSuccess, (state:AuthState, action) => {
+            return {...state, user: action.updateUser}
+    }),
+
 );

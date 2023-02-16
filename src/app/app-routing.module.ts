@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found/page-not-found.component";
 
 import { AuthGuard } from './core/guards/auth.guard';
+import { ProfileComponent } from "./shared/components/profile/profile.component";
 
 const routes: Routes = [
   {

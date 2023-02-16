@@ -10,7 +10,7 @@ import { ModalState } from '../../states/modalState/modal.state';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  modalInfo = { title:'cosas etc etc', subtitle:'cosas etc etc' }
   constructor(private store: Store<ModalState> ) { }
 
   ngOnInit(): void {

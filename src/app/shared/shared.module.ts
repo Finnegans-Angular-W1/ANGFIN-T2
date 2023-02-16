@@ -14,6 +14,8 @@ import { CardComponent } from './components/card/card.component';
     ModalComponent,
     PasswordResetComponent,
     ProfileComponent,
+    CardComponent,
+    SafeHTMLPipe,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { CardComponent } from './components/card/card.component';
     TitleComponent,
     ModalComponent,
     PasswordResetComponent,
+    CardComponent,
     ProfileComponent,
     SafeHTMLPipe,
   ]
