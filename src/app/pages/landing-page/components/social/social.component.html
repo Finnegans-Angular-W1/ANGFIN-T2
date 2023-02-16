@@ -1,0 +1,17 @@
+<div class="py-3 bg-[#FEFEFE] rounded-md flex flex-col text-black m-4 w-60 border-t-2 border-[#b65ab0] shadow-xl">
+    
+    <div class="flex mx-4">
+        <div  [innerHTML]="socialItem.svg | safeHTML" class="flex rounded-full p-2 sm:p-2.5 justify-center items-center bg-[#b65ab0] w-fit mb-10 mt-2">
+        </div>
+        <div class="py-4 ml-3">
+            <p>{{socialItem.title | titlecase}}</p>
+            <p class="text-xs mt-1 text-gray-600">{{socialItem.description}}</p>
+        </div>
+
+    </div>
+    <a class="cursor-pointer transition self-center my-4 md:my-0
+    sm:hover:text-accent/75 sm:hover:scale-[1.05] font-light bg-[#E9E4F0]
+    sm:hover:font-normal flex justify-center cursor-pointer bg-gray-200 rounded-xl px-3 py-2 mx-2 text-black">
+    @{{socialItem.userSocial}}
+    </a>
+</div>
