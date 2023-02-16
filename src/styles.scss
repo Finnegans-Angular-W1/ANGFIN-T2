@@ -49,3 +49,19 @@ html, body { height: 100%; }
     /* box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff; */
     box-shadow:  -2px -2px 30px #b6b2b2a8, 5px 5px 20px #dcd3d38a;
 }
+
+.bg-cloud-pink{
+    background: url('./assets/home/bg-pink-cloud2.svg') ;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}
+
+.bg-cloud-pink-with-black{
+    background: url('./assets/home/bg-pink-cloud2.svg') ;
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}

@@ -1,18 +1,24 @@
+import { DivisasComponent } from './components/divisas/divisas.component';
+import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: SidebarComponent,
-    children: 
-      [{
-        path: "",
-        component: HomeComponent
-      }]
+    component: LayoutComponent,
+    children:
+      [
+        {
+          path:'',
+          component: HomeComponent
+        },
+        {
+          path: "divisas",
+          component: DivisasComponent
+        }
+    ]
   }
 ];
 
