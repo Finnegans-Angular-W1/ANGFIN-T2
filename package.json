@@ -19,10 +19,10 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
-    "aos": "^2.3.4",
-    "daisyui": "^2.49.0",
     "@ngrx/store": "^14.3.3",
     "@ngrx/store-devtools": "^14.3.3",
+    "aos": "^2.3.4",
+    "daisyui": "^2.49.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
