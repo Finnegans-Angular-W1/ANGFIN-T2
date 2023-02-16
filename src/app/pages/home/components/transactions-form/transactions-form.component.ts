@@ -1,7 +1,12 @@
-import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interfaces/transactionFormInterfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+
+import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interfaces/transactionFormInterfaces';
 import { Required } from 'src/app/shared/decorators/required.decorator';
+import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
+import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
 
 @Component({
   selector: 'app-transactions-form',
@@ -21,6 +26,7 @@ export class TransactionsFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private store:Store<AlertState>
   ) { }
 
   ngOnInit(): void {
@@ -101,7 +107,7 @@ export class TransactionsFormComponent implements OnInit {
       }
     }
     else{
-      //TODO: set stateAlert to true
+      this.store.dispatch(showAlert({alertType:'error', message:'Campos Invalidos'}))
       this.transactionForm.markAllAsTouched();
     }
   }
