@@ -1,3 +1,4 @@
+import { TESTING_MODULES, TESTING_PROVIDERS } from './../../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CambiarMonedaComponent } from './cambiar-moneda.component';
@@ -8,7 +9,9 @@ describe('CambiarMonedaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CambiarMonedaComponent ]
+      declarations: [ CambiarMonedaComponent ],
+      imports: [ TESTING_MODULES ],
+      providers: [ TESTING_PROVIDERS ]
     })
     .compileComponents();
 

@@ -1,3 +1,4 @@
+import { TESTING_PROVIDERS } from './../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistroComponent } from './registro.component';
@@ -8,7 +9,8 @@ describe('RegistroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegistroComponent ]
+      declarations: [ RegistroComponent ],
+      providers: [ TESTING_PROVIDERS ]
     })
     .compileComponents();
 
