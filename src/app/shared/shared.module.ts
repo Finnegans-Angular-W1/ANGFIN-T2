@@ -1,5 +1,4 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AlertComponent } from './components/alert/alert.component';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -18,6 +17,7 @@ import { CardComponent } from './components/card/card.component';
     CardComponent,
     LoaderComponent,
     ModalComponent,
+    AlertComponent,
     TitleComponent,
     SafeHTMLPipe,
     PasswordResetComponent,
@@ -34,11 +34,12 @@ import { CardComponent } from './components/card/card.component';
     CardComponent,
     LoaderComponent,
     ModalComponent,
+    AlertComponent,
     TitleComponent,
     PasswordResetComponent,
     ProfileComponent,
-    SafeHTMLPipe,
-  ]
+    SafeHTMLPipe
+    ]
 })
 
 export class SharedModule { }
