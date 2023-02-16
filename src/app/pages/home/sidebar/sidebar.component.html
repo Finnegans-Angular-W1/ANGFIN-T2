@@ -6,9 +6,14 @@
     <!-- Contenido de la página -->
     <div class="flex flex-row">
         <!-- Sidebar estática -->
+        <div class="flex h-28 absolute md:hidden w-full bg-orange-300 justify-center">
+          <p class="text-center text-6xl text-black">
+            <img class="mt-2 w-24 h-24" src="../../../../assets/images/AlkyBank_logo4.png" alt="logo"/>
+          </p>
+        </div>
         <div class="sm:bg-[#f2f2f2] md:bg-[#111827] sm:w-40 md:w-20 shrink-0 ">
           <div class="w-20 fixed flex flex-col h-full justify-evenly items-center">
-              <label for="my-drawer" class="flex  btn btn-circle btn-neutral drawer-button">
+              <label for="my-drawer" class="w-24 h-24 mt-2 ml-10 md:ml-0 md:mt-0 md:w-12  md:h-12  absolute top-0 md:static sm:flex btn btn-circle btn-neutral drawer-button">
                 <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
                 <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
               </label>
@@ -55,21 +60,21 @@
   </div>
 
   <!-- Drawer -->
-  <div class="drawer-side sm:text-2xl md:text-xl">
+  <div class="drawer-side sm:text-5xl md:text-xl">
     <label for="my-drawer" class="drawer-overlay"></label>
-    <div class="flex flex-col menu p-4 sm:w-1/2 md:w-80 bg-neutral text-base-content justify-between">
+    <div class="flex flex-col menu p-4 sm:w-2/3 md:w-80 bg-neutral text-base-content justify-between">
       <!-- Drawer content here -->
-      <div class="h-20 flex flex-row border-2 border-accent rounded-lg justify-evenly items-center">
-        <img class="w-14 h-14 rounded-full" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
+      <div class="h-60 md:h-20 flex flex-row border-2 border-accent rounded-lg justify-evenly items-center">
+        <img class="w-20 h-20 md:w-14 md:h-14 rounded-full" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
         <div class="flex flex-col w-3/5 border-l-2 px-3 border-accent items-center">
-          <p>usuario</p>
-          <p>ver perfil ➡</p>
+          <p class="pb-4">usuario</p>
+          <p class="pb-4">ver perfil ➡</p>
         </div>
       </div>
       
       <div class="p-4 border-t-2 border-accent">
-        <p>Ajustes</p>
-        <button (click)="onLogout()">Cerrar sesión</button>
+        <p class="pb-4">Ajustes</p>
+        <button class="pb-4" (click)="onLogout()">Cerrar sesión</button>
       </div>
       <!--  -->
     </div>
