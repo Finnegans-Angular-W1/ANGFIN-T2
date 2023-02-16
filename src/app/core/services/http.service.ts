@@ -23,7 +23,7 @@ export class HttpService {
     );
   }
 
-  public postGeneric<T>(api_url: string, body: T, idParam: string): Observable<T> {
+  public postGeneric<T>(api_url: string, idParam: number, body: T): Observable<T> {
     return this.http.post<T>(api_url + idParam, body);
   }
 

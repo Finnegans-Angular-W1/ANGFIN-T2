@@ -2,6 +2,7 @@ import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interf
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { Required } from 'src/app/shared/decorators/required.decorator';
+import { HttpService } from 'src/app/core/services/http.service';
 
 @Component({
   selector: 'app-transactions-form',
@@ -21,6 +22,7 @@ export class TransactionsFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private http: HttpService
   ) { }
 
   ngOnInit(): void {
@@ -92,6 +94,7 @@ export class TransactionsFormComponent implements OnInit {
 
         //*Send HTTP POST to create new transaction
         //!POST /accounts/{id} + body
+        this.http.postGeneric('/accounts/', idAccount, body);
 
       }else if (this.operation.type === 'edit'){
 

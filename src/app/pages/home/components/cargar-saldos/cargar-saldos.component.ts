@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HttpService } from 'src/app/core/services/http.service';
+
 
 @Component({
   selector: 'app-cargar-saldos',
@@ -7,17 +9,13 @@ import { HttpService } from 'src/app/core/services/http.service';
   styleUrls: ['./cargar-saldos.component.scss']
 })
 export class CargarSaldosComponent implements OnInit {
-  
+ 
   constructor(private http: HttpService) {  
   }
 
   ngOnInit() {
   
   }
-  
-  onSubmit(event: Event){
-     //this.http.postGeneric('/accounts/', body, idAccount);
-  }
-  
+   
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { url } from 'inspector';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Transaction } from '../../interfaces/transaction';
 import { TransactionsService } from '../../services/transactions.service';
+
 
 @Component({
   selector: 'app-transaction-list',
@@ -10,30 +10,40 @@ import { TransactionsService } from '../../services/transactions.service';
   styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent implements OnInit {
-
   transaction: Transaction[] = [];
-  filter: string | undefined;
+  opcionFiltrado !: string;
 
-  constructor(private httpService: HttpService) { }
+  textoBuscado !: any;
+  arrayFiltrado = []
+  
+  constructor(private transactionsService: TransactionsService) { } //, httpService: HttpService) { }
 
   ngOnInit() {
-    this.httpService.get("/transaction", true)
-            .subscribe( (resp:any) => {
-              console.log(resp);
-              this.transaction = resp.data;
-            });
-
-    //this.transactionsService.getTransactions()
+    //this.httpService.get<Transaction>("/transactions")
       //      .subscribe( (resp:any) => {
         //      console.log(resp);
           //    this.transaction = resp.data;
             //});
+
+    this.transactionsService.getTransactions()
+            .subscribe( (resp:any) => {
+              console.log(resp);
+             this.transaction = resp.data;
+            });
   }
   
   opcionElegida(event: any){
-    this.filter = event.target.value;
+    this.opcionFiltrado = event.target.value;
 
   }
 
-  
+  filtradoPorPalabra(){
+    
+  }
+
+  filtradoPorOperacion(event: any){
+    var operacionElegida = event.target.value;
+    //const datosFiltrados = this.transaction.filter();
+  }
+
 }

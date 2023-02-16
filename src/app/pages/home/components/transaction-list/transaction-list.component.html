@@ -24,13 +24,13 @@
         </div>
       </div-->
       
-      <div id="palabra" *ngIf="filter == 'palabraOption'">
+      <div id="palabra" *ngIf="opcionFiltrado == 'palabraOption'">
         <p class="text-white">Filtrar por palabra</p>
         <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" />
       </div>
       
-      <div id="operacion" *ngIf="filter == 'operacionOption'">
-        <p class="text-white">Filtrar por tipo de operación</p>
+      <div id="operacion" *ngIf="opcionFiltrado == 'operacionOption'">
+        <p class="text-white" (change)="filtradoPorOperacion($event)">Filtrar por tipo de operación</p>
         <select class="select select-bordered w-full max-w-xs">
           <option disabled selected>Elegir opción</option>
           <option>Payment</option>
@@ -40,7 +40,9 @@
       
 
       <div class="card-actions justify-end">
-        <button class="btn">Filtrar</button>
+        <button class="btn" 
+        
+        >Filtrar</button>
       </div>
     </div>
   </div>
