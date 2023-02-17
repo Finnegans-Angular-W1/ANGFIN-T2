@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    EffectsModule.forRoot([])
   ],
   providers: [
     {

@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
   },
   {
-    path: "**", 
+    path: "**",
     component: PageNotFoundComponent
   }
 ];

@@ -1,3 +1,4 @@
+
 import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { registerStart } from './../../auth-login/state/auth.actions';
 
@@ -6,12 +7,19 @@ import { TermsService } from './../services/terms.service';
 import { ModalInfo } from './../../../shared/interfaces/modal';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
-
-
-import { openModal } from 'src/app/shared/states/modalState/modal.actions';
 import { Subscription } from 'rxjs';
+
 import { AppState } from 'src/app/core/state/app.state';
+import { getModalAction } from './../../../shared/states/modalState/modal.selectors';
+import { ModalInfo } from './../../../shared/interfaces/modal';
+import { openModal } from 'src/app/shared/states/modalState/modal.actions';
+import { registerStart } from './../../auth-login/state/auth.actions';
+import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
+import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
+import { TermsService } from './../services/terms.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -91,7 +99,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
     event.preventDefault;
 
     if (this.form.valid) {
-      //TODO: START LOADING STATE
+      this.store.dispatch(showLoader({message: 'Cargando...'}));
+
       this.store.dispatch(registerStart(this.form.value));
     } else {
       this.store.dispatch(showAlert({message:'Complete los campos requeridos', alertType:'error'}));
