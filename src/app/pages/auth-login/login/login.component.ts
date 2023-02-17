@@ -1,12 +1,12 @@
-import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import { loginStart } from '../state/auth.actions';
 import { AuthState } from '../state/auth.state';
-import { AlertState } from '../../../core/state/states/alertState/alert.state';
-
+import { AlertState } from './../../../core/state/states/alertState/alert.state';
+import { showAlert } from '../../../core/state/states/alertState/alert.actions';
+import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.email]],
+//TODO: QUITAR EN PRODUCTION (DEMOFINAL)
+      password: ['12345678', [Validators.required, Validators.minLength(8)]],
+      email: ['exampleAdmin@gmail.com', [Validators.required, Validators.email]],
     });
   }
 
@@ -44,8 +45,10 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
+
   onEnviar() {
     if (this.form.valid) {
+      this.store.dispatch(showLoader({message: 'Cargando...'}));
       this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {
       this.form.markAllAsTouched();

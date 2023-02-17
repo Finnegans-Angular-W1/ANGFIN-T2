@@ -8,6 +8,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PasswordResetComponent } from './components/profile/renew-password/renew-password.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
+import { CardComponent } from './components/card/card.component';
 import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
