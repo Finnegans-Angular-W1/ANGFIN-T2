@@ -7,9 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit {
-  //Funciona con los inputs por el momento
-  //los demás valores de los inputs, lo tiene anotado Brian
-  
   alert:alertType = ALERTS_TYPES.error;
 
   @Input() type:string = 'error';

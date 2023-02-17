@@ -1,3 +1,10 @@
+
+import { showAlert } from '../../../core/state/states/alertState/alert.actions';
+import { registerStart } from './../../auth-login/state/auth.actions';
+
+import { getModalAction } from './../../../shared/states/modalState/modal.selectors';
+import { TermsService } from './../services/terms.service';
+import { ModalInfo } from './../../../shared/interfaces/modal';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,6 +19,7 @@ import { registerStart } from './../../auth-login/state/auth.actions';
 import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 import { TermsService } from './../services/terms.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -92,6 +100,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
     if (this.form.valid) {
       this.store.dispatch(showLoader({message: 'Cargando...'}));
+
       this.store.dispatch(registerStart(this.form.value));
     } else {
       this.store.dispatch(showAlert({message:'Complete los campos requeridos', alertType:'error'}));

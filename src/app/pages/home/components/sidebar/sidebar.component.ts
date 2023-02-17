@@ -13,4 +13,10 @@ export class SidebarComponent {
     // Deberá borrar los datos, setear el estado y
     // redireccionar a la página de login.
   }
+<<<<<<< HEAD:src/app/pages/home/components/sidebar/sidebar.component.ts
+
+  modalOpen=false;
+  acceptModal=false;
+=======
+>>>>>>> 6ac9f96e8013dbd58084f542248f16a160ca306c:src/app/pages/home/sidebar/sidebar.component.ts
 }

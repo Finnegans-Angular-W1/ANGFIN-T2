@@ -14,6 +14,7 @@ import { getAlertShow, getAlertMessage, getAlertType } from './core/state/states
 })
 export class AppComponent implements OnInit {
   title = 'Alky Bank';
+
   
   showAlert$:Observable<boolean>;
   messageAlert$:Observable<string>;
@@ -22,10 +23,12 @@ export class AppComponent implements OnInit {
   showLoader$:Observable<boolean>;
   messageLoader$:Observable<string>;
   
+
   constructor(private store:Store<AppState>) { 
     this.showAlert$ = this.store.select(getAlertShow);
     this.messageAlert$ = this.store.select(getAlertMessage);
     this.typeAlert$ = this.store.select(getAlertType);
+
 
     this.showLoader$ = this.store.select(getLoaderShow);
     this.messageLoader$ = this.store.select(getLoaderMessage);

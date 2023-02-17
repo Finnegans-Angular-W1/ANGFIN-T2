@@ -9,8 +9,6 @@ export class LoaderComponent implements OnInit {
 
   @Input() color: string = 'bg-stone-800/[0.40]';
   @Input() message:string = 'Cargando...';
-
-  
   constructor() { }
 
   ngOnInit(): void {

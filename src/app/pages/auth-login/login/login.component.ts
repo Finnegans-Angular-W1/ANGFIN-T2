@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -25,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+//TODO: QUITAR EN PRODUCTION (DEMOFINAL)
       password: ['12345678', [Validators.required, Validators.minLength(8)]],
       email: ['exampleAdmin@gmail.com', [Validators.required, Validators.email]],
     });
@@ -46,8 +45,8 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  onEnviar(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
+
+  onEnviar() {
     if (this.form.valid) {
       this.store.dispatch(showLoader({message: 'Cargando...'}));
       this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
