@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SocialComponent } from './social.component';
+import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
 
 describe('SocialComponent', () => {
   let component: SocialComponent;
@@ -8,7 +8,9 @@ describe('SocialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialComponent ]
+      declarations: [ SocialComponent ],
+      providers:[TESTING_PROVIDERS],
+      imports:[TESTING_MODULES]
     })
     .compileComponents();
 
