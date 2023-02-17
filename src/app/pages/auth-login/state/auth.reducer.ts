@@ -5,7 +5,7 @@ import * as fromAuthActions from './auth.actions';
 
 export const authReducer = createReducer(
     initialAuthState,
-    on(fromAuthActions.login, (state:AuthState, action) => {
+    on(fromAuthActions.loginSuccess, (state:AuthState, action) => {
         return {...state, accessToken: action.accessToken}
     }),
     on(fromAuthActions.authMe, (state:AuthState, action) => {
