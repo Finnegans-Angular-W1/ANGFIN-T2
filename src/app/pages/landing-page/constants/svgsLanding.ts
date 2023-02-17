@@ -1,3 +1,4 @@
+
 const cardSVG:string = `                            <svg class="absolute top-0 right-0" width="158" height="119" aria-hidden="true">
 <defs>
     <linearGradient x1="50%" y1="0%" x2="50%" y2="96.22%" id="a">
@@ -52,7 +53,5 @@ const cardSVG:string = `                            <svg class="absolute top-0 r
     <path d="M859.505-70.5c78.428 0 142.005 63.578 142.005 142.005 0 78.428-63.577 142.005-142.005 142.005-78.427 0-142.005-63.577-142.005-142.005C717.5-6.922 781.078-70.5 859.505-70.5Z" />
 </g>
 </svg>`
-
-
 
 export const CARD_SVG = cardSVG;

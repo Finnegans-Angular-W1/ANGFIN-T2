@@ -1,3 +1,4 @@
+
 import { SharedModule } from "src/app/shared/shared.module";
 import { NgModule } from "@angular/core";
 import { CambiarMonedaComponent } from "./components/cambiar-moneda/cambiar-moneda.component";
@@ -17,6 +18,8 @@ import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.
 
 @NgModule({
   declarations: [
+    FooterComponent,
+
     HomeComponent,
     SidebarComponent,
     TransactionListComponent,
@@ -29,6 +32,15 @@ import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.
     SendMoneyComponent,
     CargarGastosComponent,
   ],
+
   imports: [CommonModule, HomeRoutingModule, SharedModule, ReactiveFormsModule],
+
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
+  ]
+
 })
 export class HomeModule {}
