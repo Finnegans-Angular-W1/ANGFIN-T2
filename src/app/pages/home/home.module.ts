@@ -1,11 +1,10 @@
+
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-
 import { HomeRoutingModule } from "./home-routing.module";
 import { SharedModule } from 'src/app/shared/shared.module';
-
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { DivisasComponent } from './components/divisas/divisas.component';
 import { GananciaInversionComponent } from "./components/inversion/ganancia-inversion/ganancia-inversion.component";
@@ -18,10 +17,13 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
 import { LayoutComponent } from './layout/layout.component';
 import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
 
+
+
 @NgModule({
   declarations: [
-    HomeComponent, 
-    SidebarComponent, 
+    FooterComponent,
+    HomeComponent,
+    SidebarComponent,
     TransactionListComponent,
     TransactionsFormComponent,
     GananciaInversionComponent,
@@ -37,6 +39,6 @@ import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.
     HomeRoutingModule,
     SharedModule,
     ReactiveFormsModule
-  ],
+  ]
 })
 export class HomeModule {}

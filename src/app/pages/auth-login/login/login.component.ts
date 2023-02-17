@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -9,9 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private http:HttpClient) { 
     this.form = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
@@ -42,6 +43,9 @@ export class LoginComponent implements OnInit {
       // Llamamos a nuestro servicio para enviar los datos al servidor
       // También podríamos ejecutar alguna lógica extra
       alert('Todo salio bien ¡Enviar formulario!');
+      this.http.post("http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/auth/login",this.form.value).subscribe(res=>{
+        console.log(res);
+      })
     } else {
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template
       this.form.markAllAsTouched();
