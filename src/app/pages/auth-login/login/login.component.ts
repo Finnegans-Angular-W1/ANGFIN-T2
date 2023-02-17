@@ -44,10 +44,7 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  onEnviar(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault;
-
+  onEnviar() {
     if (this.form.valid) {
       this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {

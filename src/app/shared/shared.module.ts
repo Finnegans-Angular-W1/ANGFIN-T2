@@ -12,15 +12,11 @@ import { TitleComponent } from './components/title/title.component';
 @NgModule({
   declarations: [
     CardComponent,
-    TitleComponent,
     ModalComponent,
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
     TitleComponent,
-    SafeHTMLPipe,
-    PasswordResetComponent,
-    ProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -29,13 +25,13 @@ import { TitleComponent } from './components/title/title.component';
   ],
   exports: [
     CardComponent,
+    ModalComponent,
     TitleComponent,
     ModalComponent,
     PasswordResetComponent,
     ProfileComponent,
-    SafeHTMLPipe,
-    TitleComponent
-  ]
+    SafeHTMLPipe
+    ]
 })
 
 export class SharedModule { }
