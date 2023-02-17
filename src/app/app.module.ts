@@ -14,6 +14,11 @@ import { AuthEffects } from './pages/auth-login/state/auth.effects';
 //-------------------//
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
+<<<<<<< HEAD
+=======
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import * as AppState from './core/state/app.state';
+>>>>>>> 6ac9f96e8013dbd58084f542248f16a160ca306c
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 

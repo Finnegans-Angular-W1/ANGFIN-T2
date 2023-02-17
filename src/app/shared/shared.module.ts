@@ -17,8 +17,11 @@ import { TitleComponent } from './components/title/title.component';
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
-    TitleComponent
-],
+    TitleComponent,
+    SafeHTMLPipe,
+    PasswordResetComponent,
+    ProfileComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
