@@ -1,10 +1,6 @@
-
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 //NGRX
@@ -16,13 +12,11 @@ import { AuthEffects } from './pages/auth-login/state/auth.effects';
 //-------------------//
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
-
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,11 +33,17 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     CoreModule,
     EffectsModule.forRoot([])
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor
+    }
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

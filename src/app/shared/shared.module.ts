@@ -1,13 +1,14 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
+
+import { ModalComponent } from './components/modal/modal.component';
 import { PasswordResetComponent } from './components/profile/renew-password/renew-password.component';
-import { TitleComponent } from './components/title/title.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
-import { CardComponent } from './components/card/card.component';
+import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { CardComponent } from './components/card/card.component';
     SafeHTMLPipe,
     PasswordResetComponent,
     ProfileComponent,
+    SafeHTMLPipe,
+    TitleComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { CardComponent } from './components/card/card.component';
     PasswordResetComponent,
     ProfileComponent,
     SafeHTMLPipe,
-  ]
+    TitleComponent,
+    ]
 })
 
 export class SharedModule { }

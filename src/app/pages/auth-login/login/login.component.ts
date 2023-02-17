@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
@@ -44,10 +44,7 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  onEnviar(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault;
-
+  onEnviar() {
     if (this.form.valid) {
       this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {
