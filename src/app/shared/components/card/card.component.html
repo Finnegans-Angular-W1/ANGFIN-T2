@@ -1,0 +1,16 @@
+<div class="relative bg-[#19181a]/[0.90] max-w-xs shadow-lg rounded-lg shadow-lg p-5 overflow-hidden mx-8">
+    <ng-container *ngIf="svg">
+        <span [innerHTML]="svg | safeHTML"></span>
+    </ng-container>
+    <div class="relative pt-[6.25rem] pb-14">
+        <div class="text-xs font-bold uppercase text-[#b65ab0] tracking-widest mb-2">{{feature}}</div>
+        <h3 class="text-2xl font-extrabold text-gray-50 leading-snug mb-2">{{title}}</h3>
+        <p class="text-pink-50">{{description}}</p>
+    </div>
+    <!-- Card footer -->
+    <ng-container *ngIf="button">
+        <div class="relative text-right">
+            <button class="btn-accent btn-sm rounded-xl">Registrarse</button>
+        </div>
+    </ng-container>
+</div>
