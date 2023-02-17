@@ -1,5 +1,6 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +33,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     HttpClientModule,
     CoreModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
