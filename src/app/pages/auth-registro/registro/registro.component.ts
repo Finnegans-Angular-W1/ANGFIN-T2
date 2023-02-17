@@ -86,9 +86,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
     this.store.dispatch(openModal());
   }
 
-  onEnviar(event: Event) {
-
-    event.preventDefault;
+  onEnviar() {
 
     if (this.form.valid) {
       this.store.dispatch(showLoader({message: 'Cargando...'}));

@@ -17,11 +17,9 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
-
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,  

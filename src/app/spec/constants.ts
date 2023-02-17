@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { of } from 'rxjs';
 
-
 const testingModules = [
     BrowserAnimationsModule,
     HttpClientModule,
