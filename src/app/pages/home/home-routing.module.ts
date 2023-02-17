@@ -14,15 +14,15 @@ const routes: Routes = [
       [
         {
           path:'',
-          component: HomeComponent
+          component: ProfileComponent
         },
         {
           path: "divisas",
           component: DivisasComponent
         },
         {
-          path: "profile",
-          component: ProfileComponent
+          path: "x",
+          component: HomeComponent
         },
         {
           path: "modal",
