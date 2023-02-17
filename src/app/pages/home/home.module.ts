@@ -1,4 +1,3 @@
-
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
@@ -32,7 +31,7 @@ import { LayoutComponent } from './layout/layout.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule {}

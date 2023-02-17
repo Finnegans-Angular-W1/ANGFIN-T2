@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +32,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     HttpClientModule,
     CoreModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

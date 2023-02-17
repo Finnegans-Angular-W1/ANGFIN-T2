@@ -1,3 +1,4 @@
+import { TESTING_MODULES, TESTING_PROVIDERS } from './../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
@@ -8,7 +9,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      imports: [ TESTING_MODULES ],
+      providers: [ TESTING_PROVIDERS ]
     })
     .compileComponents();
 
