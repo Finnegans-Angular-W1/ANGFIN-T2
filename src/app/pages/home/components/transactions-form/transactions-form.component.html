@@ -8,7 +8,7 @@
                 </ng-container>
             </div>
             <div class="mt-5">
-                <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm">
+                <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm" id="form">
                     <ng-container *ngIf="operationTypeEqualToNew()">
                         <div class="flex h-16 flex-col">
                             <div class="relative  mt-6">
@@ -108,7 +108,7 @@
                         </ng-template>
                     </div>
                     <div class="mt-2 mb-4">
-                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200">{{buttonText}}</button>
+                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton">{{buttonText}}</button>
                     </div>
                 </form>
             </div>

@@ -16,11 +16,11 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { TransactionsFormComponent } from './components/transactions-form/transactions-form.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
-import { FooterComponent } from 'src/app/core/components/footer/footer.component';
+
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
-    FooterComponent,
     HomeComponent,
     SidebarComponent,
     TransactionListComponent,
@@ -37,7 +37,8 @@ import { FooterComponent } from 'src/app/core/components/footer/footer.component
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CoreModule
   ]
 })
 export class HomeModule {}
