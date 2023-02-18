@@ -14,10 +14,8 @@ import { CardComponent } from './components/card/card.component';
     SafeHTMLPipe,
     CardComponent,
     ModalComponent,
-    SafeHTMLPipe,
     ProfileComponent,
     CardComponent,
-    SafeHTMLPipe,
   ],
   imports: [
     CommonModule,
@@ -30,7 +28,6 @@ import { CardComponent } from './components/card/card.component';
     SafeHTMLPipe,
     CardComponent,
     ProfileComponent,
-    SafeHTMLPipe,
   ]
 })
 

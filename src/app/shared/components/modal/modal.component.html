@@ -2,6 +2,7 @@
     <div class="modal-box">
         <h2 class="text-xl font-bold mb-1 text-accent underline underline-offset-4 text-center">{{modalInfo.title}}</h2>
         <h3 class="font-bold text-md">{{modalInfo.subtitle}}</h3>
+        
         <ng-container *ngIf="!formModal; else formModalTemplate">
             <p class="py-3 text-xs" *ngFor="let p of modalInfo.paragraphs; index as i"><span class="font-semibold text-accent">{{i+1 + '. '}}</span>{{p}}</p>
         </ng-container>
@@ -31,6 +32,7 @@
                 </div>
             </form>
         </ng-template>
+
         <div class="modal-action">
             <label for="my-modal" class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()">Aceptar</label>
             <label for="my-modal" class="btn btn-sm text-md py-1" (click)="onCloseModal()">Cancelar</label>

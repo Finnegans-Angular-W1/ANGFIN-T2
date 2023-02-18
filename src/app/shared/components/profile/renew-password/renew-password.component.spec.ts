@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
 
 import { RenewPasswordComponent } from './renew-password.component';
 
@@ -8,7 +9,8 @@ describe('RenewPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RenewPasswordComponent ]
+      imports: [ TESTING_MODULES],
+      providers: [ TESTING_PROVIDERS]
     })
     .compileComponents();
 

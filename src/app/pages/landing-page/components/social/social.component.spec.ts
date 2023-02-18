@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
 
 import { SocialComponent } from './social.component';
 
@@ -8,7 +9,9 @@ describe('SocialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialComponent ]
+      imports: [ TESTING_MODULES],
+      declarations: [SocialComponent],
+    providers: [ TESTING_PROVIDERS]
     })
     .compileComponents();
 
@@ -21,3 +24,4 @@ describe('SocialComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
