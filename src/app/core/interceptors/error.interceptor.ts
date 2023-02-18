@@ -1,20 +1,22 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
+  HttpErrorResponse,
   HttpEvent,
+  HttpHandler,
   HttpInterceptor,
-  HttpErrorResponse
-} from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
+  HttpRequest,
+} from "@angular/common/http";
+import { Observable, catchError, map, throwError } from "rxjs";
 
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-
   constructor() {}
-//TODO: lanzar alerta
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //TODO: lanzar alerta
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
@@ -23,6 +25,4 @@ export class ErrorInterceptor implements HttpInterceptor {
       })
     );
   }
-  
-
 }

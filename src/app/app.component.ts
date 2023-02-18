@@ -1,11 +1,10 @@
-import { getLoaderShow, getLoaderMessage } from './core/state/states/loaderState/loader.selectors';
 import { Component, OnInit } from '@angular/core';
+import { getAlertMessage, getAlertShow, getAlertType } from './core/state/states/alertState/alert.selectors';
+import { getLoaderMessage, getLoaderShow } from './core/state/states/loaderState/loader.selectors';
 
 import { AppState } from 'src/app/core/state/app.state';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-
-import { getAlertShow, getAlertMessage, getAlertType } from './core/state/states/alertState/alert.selectors';
 
 @Component({
   selector: 'app-root',
