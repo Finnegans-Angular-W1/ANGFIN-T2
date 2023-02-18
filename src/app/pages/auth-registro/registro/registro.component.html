@@ -208,7 +208,7 @@
                                     class="checkbox checkbox-accent" />
                                     <label class="label-text ml-2">Acepto los <a class="z-20 link link-accent" (click)="onOpenModal()">terminos y condiciones</a>.</label>
                                 </div>
-                                <ng-container *ngIf="ConditionsTermsValid" class="w-full min-h-max">
+                                <ng-container *ngIf="ConditionsTermsInvalid" class="w-full min-h-max">
                                     <span class="text-red-500 text-xs">Debes aceptar los terminos y condiciones para continuar.</span>
                                 </ng-container>
                             </div>
