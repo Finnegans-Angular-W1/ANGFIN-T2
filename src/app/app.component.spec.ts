@@ -1,3 +1,4 @@
+import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -6,11 +7,13 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TESTING_MODULES
       ],
       declarations: [
-        AppComponent
-      ],
+        AppComponent,
+        
+      ],providers: [TESTING_PROVIDERS]
     }).compileComponents();
   });
 
