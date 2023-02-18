@@ -6,24 +6,18 @@ import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found/pag
 
 const routes: Routes = [
   {
-    path: "",
-    loadChildren: () =>
-      import("./pages/landing-page/landing-page.module").then(
-        (m) => m.LandingPageModule
-      ),
+    path: '',
+    loadChildren: () => import('./pages/landing-page/landing-page.module').then( m => m.LandingPageModule)
   },
   {
     path: "home",
     loadChildren: () =>
       import("./pages/home/home.module").then((m) => m.HomeModule),
-    canLoad: [AuthGuard],
+      canLoad: [AuthGuard],
   },
   {
-    path: "login",
-    loadChildren: () =>
-      import("./pages/auth-login/auth-login.module").then(
-        (m) => m.AuthLoginModule
-      ),
+    path: 'login',
+    loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
     path: "register",
@@ -33,9 +27,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: "**",
-    component: PageNotFoundComponent,
-  },
+    path: "**", 
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

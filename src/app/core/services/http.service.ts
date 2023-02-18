@@ -23,10 +23,6 @@ export class HttpService {
     );
   }
 
-  public put<T>(url: string, body: any, activateHeader: boolean = false):Observable<T>{
-    return this.http.put<T>(url, body, activateHeader ? { headers: this._headers}: {})
-  }
-
   public postGeneric<T>(api_url: string, body:any, idParam:string = ''): Observable<T> {
     return this.http.post<T>(api_url + idParam, body);
   }

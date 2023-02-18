@@ -1,19 +1,22 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Input, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-social",
-  templateUrl: "./social.component.html",
-  styleUrls: ["./social.component.scss"],
+  selector: 'app-social',
+  templateUrl: './social.component.html',
+  styleUrls: ['./social.component.scss']
 })
 export class SocialComponent implements OnInit {
-  @Input() socialItem: any = {};
 
-  @Input() title: string = "";
-  @Input() description: string = "";
+  @Input() socialItem:any = {};
 
-  @Input() userSocial: string = "";
+  @Input() title:string = '';
+  @Input() description:string = '';
 
-  constructor() {}
+  @Input() userSocial:string = '';
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
