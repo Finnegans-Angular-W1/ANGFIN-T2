@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+import { Store } from '@ngrx/store';
+import { loginStart } from '../state/auth.actions';
+import { AuthState } from '../state/auth.state';
+import { AlertState } from './../../../core/state/states/alertState/alert.state';
+import { showAlert } from '../../../core/state/states/alertState/alert.actions';
+import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  
+  form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(
+    private formBuilder: FormBuilder,
+    private store:Store<AuthState | AlertState>
+  ) {   }
+
+  ngOnInit() {
     this.form = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      email: ['', [Validators.required, Validators.email]],
+//TODO: QUITAR EN PRODUCTION (DEMOFINAL)
+      password: ['12345678', [Validators.required, Validators.minLength(8)]],
+      email: ['exampleAdmin@gmail.com', [Validators.required, Validators.email]],
     });
   }
 
-  ngOnInit() {}
-
   get Password() {
-    return this.form.get('password');
+    return this.form.get("password");
   }
 
   get Mail() {
-    return this.form.get('email');
+    return this.form.get("email");
   }
 
   get PasswordValid() {
@@ -34,18 +45,14 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  onEnviar(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault;
 
+  onEnviar() {
     if (this.form.valid) {
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert('Todo salio bien ¡Enviar formulario!');
+      this.store.dispatch(showLoader({message: 'Cargando...'}));
+      this.store.dispatch(loginStart({email: this.Mail?.value, password: this.Password?.value}));
     } else {
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template
       this.form.markAllAsTouched();
+      this.store.dispatch(showAlert({ message: 'Formulario invalido', alertType: 'error' }));
     }
   }
-
 }

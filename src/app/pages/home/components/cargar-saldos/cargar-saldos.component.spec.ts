@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertComponent } from './alert.component';
+import { CargarSaldosComponent } from './cargar-saldos.component';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('CargarSaldosComponent', () => {
+  let component: CargarSaldosComponent;
+  let fixture: ComponentFixture<CargarSaldosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ CargarSaldosComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(CargarSaldosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

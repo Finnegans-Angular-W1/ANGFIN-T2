@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
@@ -14,7 +14,8 @@ export class AuthGuard implements CanLoad {
   constructor( private store: Store<AuthState>, private router: Router ){  }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean>{
-    return this.store.select(getToken).pipe(
+    return of(true);
+/*     return this.store.select(getToken).pipe(
       map( (token) => {
         if(!token){
           this.router.navigateByUrl('/login');
@@ -22,6 +23,6 @@ export class AuthGuard implements CanLoad {
         }
         return true;
       })
-    );
+    ); */
   }
 }

@@ -1,24 +1,34 @@
+import { DivisasComponent } from './components/divisas/divisas.component';
+import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { DivisasComponent } from './components/divisas/divisas.component';
 import { HomeComponent } from './components/home/home.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { ProfileComponent } from 'src/app/shared/components/profile/profile.component';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: SidebarComponent,
-    children: 
-      [{
-        path: "home",
-        component: HomeComponent
-      },
-      {
-        path: 'divisas',
-        component: DivisasComponent,
-      }]
+    component: LayoutComponent,
+    children:
+      [
+        {
+          path:'',
+          component: HomeComponent
+        },
+        {
+          path: "divisas",
+          component: DivisasComponent
+        },
+        {
+          path: "profile",
+          component: ProfileComponent
+        },
+        {
+          path: "modal",
+          component: ModalComponent
+        }
+    ]
   }
 ];
 
