@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-title',
@@ -10,9 +10,7 @@ export class TitleComponent implements OnInit {
   
   title : string | undefined = "Titulo";
 
-  constructor(private route: ActivatedRoute) { 
-    
-  }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(){
     this.route.title.subscribe(resp => {

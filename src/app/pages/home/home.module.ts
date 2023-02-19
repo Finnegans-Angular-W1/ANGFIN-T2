@@ -1,7 +1,5 @@
-
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
@@ -22,7 +20,6 @@ import { TransactionsFormComponent } from "./components/transactions-form/transa
   declarations: [
     HomeComponent,
     SidebarComponent,
-    HomeComponent,
     TransactionListComponent,
     TransactionsFormComponent,
     GananciaInversionComponent,

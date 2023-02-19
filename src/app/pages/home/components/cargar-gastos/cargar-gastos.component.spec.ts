@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AlertComponent } from "./alert.component";
+import { CargarGastosComponent } from "./cargar-gastos.component";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 
-describe("AlertComponent", () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe("CargarGastosComponent", () => {
+  let component: CargarGastosComponent;
+  let fixture: ComponentFixture<CargarGastosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AlertComponent, HttpClientTestingModule],
+      declarations: [CargarGastosComponent, HttpClientTestingModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(CargarGastosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

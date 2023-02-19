@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { Store } from '@ngrx/store';
 import { loginStart } from '../state/auth.actions';
@@ -8,9 +8,9 @@ import { AlertState } from './../../../core/state/states/alertState/alert.state'
 import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   
@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
   }
 
   get Password() {
-    return this.form.get('password');
+    return this.form.get("password");
   }
 
   get Mail() {
-    return this.form.get('email');
+    return this.form.get("email");
   }
 
   get PasswordValid() {
@@ -55,5 +55,4 @@ export class LoginComponent implements OnInit {
       this.store.dispatch(showAlert({ message: 'Formulario invalido', alertType: 'error' }));
     }
   }
-
 }

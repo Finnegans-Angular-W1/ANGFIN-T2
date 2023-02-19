@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from '@ngrx/store';
 
 import { AppState } from 'src/app/core/state/app.state';
@@ -15,9 +16,6 @@ import * as AuthActions from './auth.actions';
 import { hideLoader, showLoader } from './../../../core/state/states/loaderState/loader.actions';
 import { showAlert } from "src/app/core/state/states/alertState/alert.actions";
 
-//Actions
-import { AuthService } from "src/app/core/services/auth.service";
-import { showAlert } from "src/app/core/state/states/alertState/alert.actions";
 
 @Injectable()
 export class AuthEffects {
@@ -154,5 +152,36 @@ export class AuthEffects {
             })
         )
     });
+
+    edit$= createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AuthActions.editProfileStart),
+            exhaustMap((action) => { 
+                return this.authService.editUser(action.updateUser, action.id)
+                .pipe(
+                    map(( respuesta ) => {
+                        return AuthActions.editProfileSuccess({updateUser: respuesta})
+                    }),
+                    catchError((error:ErrorResponse ) => {
+                        console.log(action);
+                        console.log(error);
+                        this.store.dispatch(hideLoader());
+                        this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse${error}`, alertType: 'error' }))
+                        //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
+                        return of(AuthActions.editProfileFail())
+                    })
+                )
+            })
+        )
+    });
+
+    editSuccess$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AuthActions.editProfileSuccess), 
+            map((_) => {
+                this.store.dispatch(hideLoader())
+            })
+        )
+    }, {dispatch:false});
 
 }

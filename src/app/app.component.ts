@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
 
   showLoader$:Observable<boolean>;
   messageLoader$:Observable<string>;
-  
 
   constructor(private store:Store<AppState>) { 
     this.showAlert$ = this.store.select(getAlertShow);

@@ -22,18 +22,20 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,  
+    BrowserModule,
     BrowserAnimationsModule,
     EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     StoreModule.forRoot(AppState.reducers, { initialState: AppState.initialAppState }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [
     {
@@ -48,4 +50,4 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
