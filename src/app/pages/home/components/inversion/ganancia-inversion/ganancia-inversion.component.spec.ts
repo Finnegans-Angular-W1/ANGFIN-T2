@@ -1,3 +1,4 @@
+import { TESTING_MODULES, TESTING_PROVIDERS } from './../../../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GananciaInversionComponent } from './ganancia-inversion.component';
@@ -8,7 +9,9 @@ describe('GananciaInversionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GananciaInversionComponent ]
+      declarations: [ GananciaInversionComponent ],
+      imports: [ TESTING_MODULES ],
+      providers: [ TESTING_PROVIDERS ]
     })
     .compileComponents();
 
