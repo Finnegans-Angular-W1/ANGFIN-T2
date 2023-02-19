@@ -15,6 +15,8 @@ import { AuthEffects } from './pages/auth-login/state/auth.effects';
 //-------------------//
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
+import { HomeModule } from "./pages/home/home.module";
+import { AuthLoginModule } from './pages/auth-login/auth-login.module';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
@@ -40,12 +42,12 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor
+      useClass: TokenInterceptor,
+      multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor
-    }
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: ErrorInterceptor, 
+      multi: true }
   ],
 
   bootstrap: [AppComponent]
