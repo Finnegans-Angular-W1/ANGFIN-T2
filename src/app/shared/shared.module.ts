@@ -1,4 +1,8 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+<<<<<<<<< Temporary merge branch 1
+import { AlertComponent } from './components/alert/alert.component';
+=========
+>>>>>>>>> Temporary merge branch 2
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -10,6 +14,18 @@ import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
+<<<<<<<<< Temporary merge branch 1
+    SafeHTMLPipe,
+    AlertComponent,
+    CardComponent,
+    LoaderComponent,
+    ModalComponent,
+    AlertComponent,
+    TitleComponent,
+    SafeHTMLPipe,
+    PasswordResetComponent,
+    ProfileComponent,
+=========
     TitleComponent,
     ModalComponent,
     SafeHTMLPipe,
@@ -18,7 +34,7 @@ import { TitleComponent } from './components/title/title.component';
     SafeHTMLPipe,
     ProfileComponent,
     SafeHTMLPipe,
-    TitleComponent,
+>>>>>>>>> Temporary merge branch 2
   ],
   imports: [
     CommonModule,
@@ -26,11 +42,21 @@ import { TitleComponent } from './components/title/title.component';
     ReactiveFormsModule,
   ],
   exports: [
+<<<<<<<<< Temporary merge branch 1
+    SafeHTMLPipe,
+    AlertComponent,
+    CardComponent,
+    LoaderComponent,
+    ModalComponent,
+    AlertComponent,
+    TitleComponent,
+    PasswordResetComponent,
+=========
     TitleComponent,
     ModalComponent,
     SafeHTMLPipe,
     CardComponent,
-    ModalComponent,
+>>>>>>>>> Temporary merge branch 2
     ProfileComponent,
     SafeHTMLPipe,
     TitleComponent,
