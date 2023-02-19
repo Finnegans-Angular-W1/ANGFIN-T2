@@ -8,6 +8,7 @@ import { BodyRequest } from 'src/app/pages/auth-login/interfaces/body-request';
 import * as exp from 'constants';
 import { editProfileFail, editProfileStart } from 'src/app/pages/auth-login/state/auth.actions';
 import { User } from 'src/app/core/interfaces/User';
+import { By } from '@angular/platform-browser';
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -122,6 +123,17 @@ describe('ModalComponent', () => {
 
   });
  
+  it('should disabled button if form is invalid', ()=>{
+    const elementRef = fixture.debugElement.query(By.css('.modal-action button'));
+    const getInnerTextButton = elementRef.nativeElement;
+
+    //MOCK DATA (INVALID)
+    component.formEditUser.controls['nombreUsuario'].setValue('abcd')
+    component.formEditUser.controls['nombre'].setValue('ab');
+
+    fixture.detectChanges();
+    expect(getInnerTextButton.disabled).toBeTrue();
+  }); 
 
 });
 
