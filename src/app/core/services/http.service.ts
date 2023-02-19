@@ -35,4 +35,8 @@ export class HttpService {
     return this.http.delete<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
   }
 
+  public getId<T>(url: string, id: number, activateHeader: boolean = false): Observable<T>{
+    return this.http.get<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
+
+  }
 }
