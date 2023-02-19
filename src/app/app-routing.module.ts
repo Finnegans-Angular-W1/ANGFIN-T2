@@ -1,9 +1,8 @@
 import { RouterModule, Routes } from "@angular/router";
+
+import { AuthGuard } from "./core/guards/auth.guard";
 import { NgModule } from "@angular/core";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found/page-not-found.component";
-
-import { AuthGuard } from './core/guards/auth.guard';
-import { ProfileComponent } from "./shared/components/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -21,8 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
-    path: 'register',
-    loadChildren: () => import ('./pages/auth-registro/auth-registro.module').then( m => m.AuthRegistroModule)
+    path: "register",
+    loadChildren: () =>
+      import("./pages/auth-registro/auth-registro.module").then(
+        (m) => m.AuthRegistroModule
+      ),
   },
   {
     path: "**",

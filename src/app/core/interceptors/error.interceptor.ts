@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -7,18 +8,18 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
-
+import { AlertState } from '../state/states/alertState/alert.state';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
-//TODO: lanzar alerta
+  constructor(private store:Store<AlertState>) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
-        //TODO: Iniciar STATE ALERT
+        this.store.dispatch({ type: '[Alert] Show Alert', message: error.message, alertType: 'error' });
         return throwError(error);
       })
     );

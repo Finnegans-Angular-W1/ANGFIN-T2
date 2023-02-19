@@ -1,15 +1,15 @@
-import { AlertServiceService } from "./alert-service.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
+import { TransactionsService } from "./transactions.service";
 
-describe("AlertServiceService", () => {
-  let service: AlertServiceService;
+describe("TransactionsService", () => {
+  let service: TransactionsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(AlertServiceService);
+    service = TestBed.inject(TransactionsService);
   });
 
   it("should be created", () => {
