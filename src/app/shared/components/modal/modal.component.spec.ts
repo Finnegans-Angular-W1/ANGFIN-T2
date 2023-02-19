@@ -3,6 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
 import { Store } from '@ngrx/store';
+import { acceptModal, cancelModal, closeModal } from '../../states/modalState/modal.actions';
+import { BodyRequest } from 'src/app/pages/auth-login/interfaces/body-request';
+import * as exp from 'constants';
+import { editProfileFail, editProfileStart } from 'src/app/pages/auth-login/state/auth.actions';
+import { User } from 'src/app/core/interfaces/User';
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -29,7 +34,39 @@ describe('ModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('It should return invalid', () => {
+ /*  it('It should dispatch editProfileStart action in onSubmit()', () => {
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const mockNombres = {
+      name :'Roberto',
+      userName:'Walshs'
+    }
+
+    const mockUser = {
+        id:1,
+        first_name: 'Roberto',
+        last_name: 'Walshsssss',
+        email: 'juan.perez@example.com',
+        points: 500,
+        roleId: 1,
+        createdAt: '0',//Creation date
+        updatedAt: '1',
+    
+    }
+    const updateUser: BodyRequest = mockNombres;
+   
+    const user: User = mockUser;
+
+
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(editProfileStart({ updateUser, id: user.id}));
+  }); */
+
+  it('should return invalid', () => {
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
 
     const mockNombres = {
       nombre:'Ya',
@@ -42,8 +79,49 @@ describe('ModalComponent', () => {
     nombreUsuarioForm?.setValue(mockNombres.nombreUsuario);
     nombreForm?.setValue(mockNombres.nombre);
 
+    fixture.detectChanges();
     expect(component.formEditUser.invalid).toEqual(true);
   });
+
+  it('should dispatch openModal() in onAcceptModal', ()=>{
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
+    component.onAcceptModal();
+
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(acceptModal());
+  });
+
+  it('should dispatch closeModal() in onAcceptModal()', ()=>{
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
+    component.onAcceptModal();
+
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(closeModal());
+
+  });
+  
+  it('should dispatch cancelModal() in onCloseModal()', ()=>{
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
+    component.onCloseModal();
+
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(cancelModal());
+
+  });
+
+  it('should dispatch closeModal() in onCloseModal()', ()=>{
+    fixture = TestBed.createComponent(ModalComponent);
+    component = fixture.componentInstance;
+    component.onCloseModal();
+
+    fixture.detectChanges();
+    expect(store.dispatch).toHaveBeenCalledWith(cancelModal());
+
+  });
+ 
 
 });
 

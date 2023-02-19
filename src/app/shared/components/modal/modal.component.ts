@@ -26,12 +26,15 @@ export class ModalComponent {
   formEditUser: FormGroup;
   open$:Observable<boolean>;
 
+
   constructor( private store:Store<AppState>, private fb: FormBuilder) {
     this.open$ = this.store.select(getModalOpen);
+
     this.formEditUser = this.fb.group({
       nombre: ['', [Validators.minLength(3)]],
       nombreUsuario: ['', [Validators.minLength(5)]],
-    })
+    });
+
   }
 
   onCloseModal(){
@@ -62,5 +65,5 @@ export class ModalComponent {
       this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse`, alertType: 'error' }))
     }
   }
-
+  
 }
