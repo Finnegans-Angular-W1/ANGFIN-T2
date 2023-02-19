@@ -1,2 +1,11 @@
+<ng-container *ngIf="showAlert$ | async">
+    <app-alert [msg]="(messageAlert$ | async) || ''" [type]="(typeAlert$ | async) || 'error'"></app-alert>
+</ng-container>
+
+<ng-container *ngIf="showLoader$ | async">
+    <app-loader [message]="(messageLoader$ | async) || 'Cargando...'"></app-loader>
+</ng-container>
+
 <router-outlet></router-outlet>
+
 <app-footer></app-footer>

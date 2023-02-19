@@ -1,32 +1,43 @@
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+
+//NGRX
+import * as AppState from './core/state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './pages/auth-login/state/auth.effects';
+//-------------------//
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 import { HomeModule } from "./pages/home/home.module";
 import { AuthLoginModule } from './pages/auth-login/auth-login.module';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
-import * as AppState from './core/state/app.state';
+
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,  
+    BrowserModule,
     BrowserAnimationsModule,
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     StoreModule.forRoot(AppState.reducers, { initialState: AppState.initialAppState }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     AppRoutingModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [
     {
@@ -41,4 +52,4 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

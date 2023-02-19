@@ -23,7 +23,7 @@ export class HttpService {
     );
   }
 
-  public postGeneric<T>(api_url: string, body: T, idParam: string): Observable<T> {
+  public postGeneric<T>(api_url: string, body:any, idParam:string = ''): Observable<T> {
     return this.http.post<T>(api_url + idParam, body);
   }
 
@@ -31,4 +31,8 @@ export class HttpService {
     return this.http.delete<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
   }
 
+  public getId<T>(url: string, id: number, activateHeader: boolean = false): Observable<T>{
+    return this.http.get<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
+
+  }
 }

@@ -1,3 +1,4 @@
+import { TESTING_PROVIDERS, TESTING_MODULES } from './../../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TipoDeCambioComponent } from './tipo-de-cambio.component';
@@ -8,7 +9,9 @@ describe('TipoDeCambioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TipoDeCambioComponent ]
+      declarations: [ TipoDeCambioComponent ],
+      imports: [ TESTING_MODULES ],
+      providers: [ TESTING_PROVIDERS ],
     })
     .compileComponents();
 
