@@ -34,7 +34,6 @@ export class ModalComponent {
       nombre: ['', [Validators.minLength(3)]],
       nombreUsuario: ['', [Validators.minLength(5)]],
     });
-
   }
 
   onCloseModal(){
@@ -56,7 +55,7 @@ export class ModalComponent {
           let auxData: BodyRequest = {
             userName: (this.formEditUser.controls['nombreUsuario'].value as string),
             name: (this.formEditUser.controls['nombre'].value as string),
-            }
+          }
           this.store.dispatch(editProfileStart({ updateUser: (auxData), id:user.id}) )
           this.store.dispatch(showLoader({ message: "cargando" }))
         }
