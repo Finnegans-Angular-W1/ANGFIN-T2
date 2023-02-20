@@ -14,6 +14,7 @@ import { Section4Component } from './components/section4/section4.component';
 import { Section5Component } from './components/section5/section5.component';
 import { SocialComponent } from './components/social/social.component';
 import { TabComponent } from './components/tab/tab.component';
+import { SectionMapaComponent } from './components/section-mapa/section-mapa.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TabComponent } from './components/tab/tab.component';
     CollapseComponent,
     Section5Component,
     SocialComponent,
-    LandingFooterComponent
+    LandingFooterComponent,
+    SectionMapaComponent
   ],
   imports: [
     CommonModule,
