@@ -108,7 +108,7 @@
                         </ng-template>
                     </div>
                     <div class="mt-2 mb-4">
-                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton">{{buttonText}}</button>
+                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton" [disabled]="transactionForm.invalid">{{buttonText}}</button>
                     </div>
                 </form>
             </div>

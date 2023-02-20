@@ -18,9 +18,10 @@ describe('TransactionsFormComponent', () => {
       imports:[ TESTING_MODULES, 
         ReactiveFormsModule],
       providers: [ TESTING_PROVIDERS,
-                HttpClientModule ]
+                HttpService ]
     })
     .compileComponents();
+   
     fixture = TestBed.createComponent(TransactionsFormComponent);
     component = fixture.componentInstance;
     component.operation = { type: 'new' }; //Required Decorator, en cada test modificar segun necesidad
@@ -39,7 +40,7 @@ describe('TransactionsFormComponent', () => {
     expect(component.operation).toEqual({ type: 'new'});
   });
 
-   
+
   it('should validate form fields for topup transaction', () => {
     component.operation = { type: 'new'};
     fixture.detectChanges();
@@ -62,40 +63,64 @@ describe('TransactionsFormComponent', () => {
     expect(component.transactionForm.valid).toEqual(true);
   });
 
-  it('should called ngSubmit when click the submit button', () => {
+  it('should invalidate form fields for topup transaction', () => {
     component.operation = { type: 'new'};
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
+    
+    const mockVariable ={
+      concept: '',
+      amount: '',
+      transactionDate: '',
+    }
+
+    const conceptForm: any = component.transactionForm.get('concept')
+    const amountForm: any = component.transactionForm.get('amount')
+    const dateForm: any = component.transactionForm.get('transactionDate')
+
+    const buttonElement = fixture.debugElement.nativeElement.querySelector('#submitButton');
+
+    conceptForm.setValue(mockVariable.concept)
+    amountForm.setValue(mockVariable.amount)
+    dateForm.setValue(mockVariable.transactionDate)
+    
+    expect(buttonElement.disabled).toEqual(true)
+    expect(component.operation).toEqual({ type: 'new'});
+    expect(component.transactionForm.valid).toEqual(false);
+  });
+
+  it('should called onSubmitForm when click the submit button', () => {
+    component.operation = { type: 'new'};
+    fixture.detectChanges();
       
-      const mockVariable ={
-        concept: 'Supermercado',
-        amount: 23000,
-        transactionDate: '18/02/2023',
-      }
-  
-      const conceptForm: any = component.transactionForm.get('concept')
-      const amountForm: any = component.transactionForm.get('amount')
-      const dateForm: any = component.transactionForm.get('transactionDate')
-  
-      conceptForm.setValue(mockVariable.concept)
-      amountForm.setValue(mockVariable.amount)
-      dateForm.setValue(mockVariable.transactionDate)
+    const mockVariable ={
+      concept: 'Supermercado',
+      amount: 23000,
+      transactionDate: '18/02/2023',
+    }
 
-      expect(component.transactionForm.valid).toEqual(true)
-      expect(component.operation).toEqual({ type: 'new'})
+    const conceptForm: any = component.transactionForm.get('concept')
+    const amountForm: any = component.transactionForm.get('amount')
+    const dateForm: any = component.transactionForm.get('transactionDate')
+    
+    conceptForm.setValue(mockVariable.concept)
+    amountForm.setValue(mockVariable.amount)
+    dateForm.setValue(mockVariable.transactionDate)
 
-      component.onSubmitForm()
+    expect(component.transactionForm.valid).toEqual(true)
+    expect(component.operation).toEqual({ type: 'new'})
 
-      fixture.detectChanges()
+    fixture.detectChanges()
 
-      const mockFunction = spyOn(component, 'onSubmitForm').and.callThrough()
-      const buttonElement = fixture.debugElement.nativeElement.querySelector('#submitButton');
-      
-      buttonElement.click()
-      
-      expect(mockFunction).toHaveBeenCalled()
-     
-    })
+    const mockFunction = spyOn(component, 'onSubmitForm').and.callThrough()
+    const buttonElement = fixture.debugElement.nativeElement.querySelector('#submitButton')
+    
+    fixture.detectChanges()
+    
+    buttonElement.click()
+
+    fixture.detectChanges()
+    
+    expect(mockFunction).toHaveBeenCalled()
     
   });
 
