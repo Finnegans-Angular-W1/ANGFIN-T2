@@ -2,6 +2,8 @@ import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { CollapseComponent } from './components/collapse/collapse.component';
 import { LandingFooterComponent } from './components/landing-footer/landing-footer.component';
@@ -33,6 +35,7 @@ import { SectionMapaComponent } from './components/section-mapa/section-mapa.com
   ],
   imports: [
     CommonModule,
+    LeafletModule,
     SharedModule,
     LandingPageRoutingModule
   ]
