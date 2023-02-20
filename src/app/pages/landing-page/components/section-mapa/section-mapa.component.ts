@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Map, Marker , MapOptions, tileLayer, latLng, icon } from 'leaflet';
 
 @Component({
@@ -7,8 +7,8 @@ import { Map, Marker , MapOptions, tileLayer, latLng, icon } from 'leaflet';
   styleUrls: ['./section-mapa.component.scss']
 })
 export class SectionMapaComponent implements OnInit, OnDestroy {
-  @Output() map$: EventEmitter<Map> = new EventEmitter;
-  @Output() zoom$: EventEmitter<number> = new EventEmitter;
+  // @Output() map$: EventEmitter<Map> = new EventEmitter;
+  // @Output() zoom$: EventEmitter<number> = new EventEmitter;
 
   markerIcon = icon({
     iconSize: [ 35, 35 ],
@@ -47,7 +47,8 @@ export class SectionMapaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.map.clearAllEventListeners;
-    this.map.remove();
+    // this.map.remove();
+    this.map.off();
   };
 
   onMapReady(map: Map) {
@@ -55,14 +56,14 @@ export class SectionMapaComponent implements OnInit, OnDestroy {
     new Marker([-34.5860537773849, -58.45226180185607], {icon: this.markerIcon}).addTo(map);
     new Marker([-34.914759, -57.949463], {icon: this.markerIcon}).addTo(map);
     this.map = map;
-    this.map$.emit(map);
-    this.zoom = map.getZoom();
-    this.zoom$.emit(this.zoom);
+    // this.map$.emit(map);
+    // this.zoom = map.getZoom();
+    // this.zoom$.emit(this.zoom);
     
   }
   // ZoomAnimEvent
-  onMapZoomEnd(e: any) {
-    this.zoom = e.target.getZoom();
-    this.zoom$.emit(this.zoom);
-  }
+  // onMapZoomEnd(e: any) {
+  //   this.zoom = e.target.getZoom();
+  //   this.zoom$.emit(this.zoom);
+  // }
 }
