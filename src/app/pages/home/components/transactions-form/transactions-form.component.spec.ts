@@ -2,9 +2,7 @@ import { TESTING_PROVIDERS, TESTING_MODULES } from './../../../../spec/constants
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionsFormComponent } from './transactions-form.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from 'src/app/core/services/http.service';
-import { By } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
 

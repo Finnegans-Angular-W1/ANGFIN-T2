@@ -1,4 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
+
+import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { TESTING_MODULES, TESTING_PROVIDERS } from './spec/constants';

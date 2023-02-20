@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgModule } from '@angular/core';
-import { TitleComponent } from './components/title/title.component';
+
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { CardComponent } from './components/card/card.component';
+import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { CardComponent } from './components/card/card.component';
     ModalComponent,
     SafeHTMLPipe,
     ProfileComponent,
+    SafeHTMLPipe,
+    TitleComponent,
   ],
   imports: [
     CommonModule,
@@ -27,9 +30,10 @@ import { CardComponent } from './components/card/card.component';
     ModalComponent,
     SafeHTMLPipe,
     CardComponent,
+    ModalComponent,
     ProfileComponent,
     SafeHTMLPipe,
-  ]
+    TitleComponent,
+    ]
 })
-
-export class SharedModule { }
+export class SharedModule {}
