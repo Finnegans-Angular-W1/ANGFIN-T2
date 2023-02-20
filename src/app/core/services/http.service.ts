@@ -27,6 +27,10 @@ export class HttpService {
     return this.http.post<T>(api_url + idParam, body);
   }
 
+  public put<T>(api_url: string, body:any, idParam:string = ''): Observable<T> {
+    return this.http.put<T>(api_url + idParam, body);
+  }
+
   public delete<T>(url: string, id:number, activateHeader:boolean = false ):Observable<T> {
     return this.http.delete<T>(url + `/${id}`, activateHeader ? { headers: this._headers }: {});
   }
