@@ -7,8 +7,8 @@
             <p class="py-3 text-xs" *ngFor="let p of modalInfo.paragraphs; index as i"><span class="font-semibold text-accent">{{i+1 + '. '}}</span>{{p}}</p>
         </ng-container>
         <ng-template #formModalTemplate>
-                
-            <form (ngSubmit)="onSubmit()" [formGroup]="formEditUser">
+            
+            <form (ngSubmit)="onSubmit()" [formGroup]="formEditUser" >
                 <div class="flex h-16 flex-col">
                     <div class="relative mt-6">
                     
@@ -30,6 +30,12 @@
                         class="label-style">Nombre</label>
                     </div>  
                 </div>
+
+                <div class="modal-action">
+                    <label for="my-modal" class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()">Aceptar</label>
+                    <label for="my-modal" class="btn btn-sm text-md py-1" (click)="onCloseModal()">Cancelar</label>
+                </div>
+                
             </form>
         </ng-template>
 

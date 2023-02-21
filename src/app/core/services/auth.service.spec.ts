@@ -7,10 +7,16 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+<<<<<<< HEAD
       imports: [ TESTING_MODULES],
       providers: [ TESTING_PROVIDERS]
     });
     
+=======
+      providers: [ TESTING_PROVIDERS ],
+      imports: [ TESTING_MODULES ]
+    });
+>>>>>>> develop
     service = TestBed.inject(AuthService);
   });
 

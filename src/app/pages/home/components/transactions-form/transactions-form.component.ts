@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interfaces/transactionFormInterfaces';
 import { Required } from 'src/app/shared/decorators/required.decorator';
+import { HttpService } from 'src/app/core/services/http.service';
 import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
 
@@ -26,6 +27,7 @@ export class TransactionsFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private http: HttpService,
     private store:Store<AlertState>
   ) { }
 
@@ -98,6 +100,7 @@ export class TransactionsFormComponent implements OnInit {
 
         //*Send HTTP POST to create new transaction
         //!POST /accounts/{id} + body
+        this.http.postGeneric('/accounts/', body, (idAccount + '') );
 
       }else if (this.operation.type === 'edit'){
 
