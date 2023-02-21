@@ -1,14 +1,14 @@
 <!-- <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"> -->
-    <div class="relative mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 my-5">
+    <div class="relative container_form sm:mx-auto w-full sm:max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 my-5">
         <div class="w-full">
             <div class="text-center">
-                <h1 class="text-3xl font-semibold text-gray-900">{{titleForm}}</h1>
+                <h1 class="text-xl font-bold sm:text-3xl sm:font-semibold text-gray-900">{{titleForm}}</h1>
                 <ng-container *ngIf="!(operationTypeEqualToNew())">
                     <p class="mt-2 text-gray-500">Id de la transaccion...</p>
                 </ng-container>
             </div>
             <div class="mt-5">
-                <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm">
+                <form (ngSubmit)="onSubmitForm()" [formGroup]="transactionForm" id="form">
                     <ng-container *ngIf="operationTypeEqualToNew()">
                         <div class="flex h-16 flex-col">
                             <div class="relative  mt-6">
@@ -16,7 +16,7 @@
                                 [ngClass]="{'invalid-input':(transactionForm.controls['transactionDate'].invalid && transactionForm.controls['transactionDate'].touched),
                                 'valid-or-untouched-input': (transactionForm.controls['transactionDate'].valid || transactionForm.controls['transactionDate'].untouched)}"
                                 formControlName="transactionDate" type="date" name="transactionDate" id="transactionDate"
-                                    class="input-style"/>
+                                    class="input-style select-none"/>
                                 <label for="transactionDate"
                                 [ngClass]="{ 'text-red-800' : touchedAndInvalid('transactionDate'), 'valid-label': !touchedAndInvalid('transactionDate')}"
                                     class="label-style">Fecha de transaccion</label>
@@ -108,7 +108,7 @@
                         </ng-template>
                     </div>
                     <div class="mt-2 mb-4">
-                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200">{{buttonText}}</button>
+                        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton" [disabled]="transactionForm.invalid">{{buttonText}}</button>
                     </div>
                 </form>
             </div>

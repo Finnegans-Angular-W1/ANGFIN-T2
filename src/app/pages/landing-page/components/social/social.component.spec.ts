@@ -1,6 +1,7 @@
+import { TESTING_PROVIDERS, TESTING_MODULES } from 'src/app/spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SafeHTMLPipe } from 'src/app/shared/pipes/safe-html.pipe';
 import { SocialComponent } from './social.component';
-import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
 
 describe('SocialComponent', () => {
   let component: SocialComponent;
@@ -23,3 +24,4 @@ describe('SocialComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

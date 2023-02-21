@@ -33,7 +33,7 @@ export class Section5Component implements OnInit {
     this.twSocial = {
       title: 'Alky Bank',
       description: 'Twitter',
-      userSocial: 'AlkyWallet',
+      userSocial: 'AlkyBank',
       svg: TW_SVG
     }
   }

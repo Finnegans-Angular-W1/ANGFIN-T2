@@ -1,6 +1,5 @@
 import { TESTING_MODULES, TESTING_PROVIDERS } from './../../../spec/constants';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginComponent } from './login.component';
 import { By } from '@angular/platform-browser';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';

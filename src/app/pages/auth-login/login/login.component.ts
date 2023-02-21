@@ -7,9 +7,9 @@ import { AlertState } from './../../../core/state/states/alertState/alert.state'
 import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     private store:Store<AuthState | AlertState>
   ) {   }
 
+
   ngOnInit() {
     this.form = this.formBuilder.group({
       password: ['12345678', [Validators.required, Validators.minLength(6)]],
@@ -27,11 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   get Password() {
-    return this.form.get('password');
+    return this.form.get("password");
   }
 
   get Mail() {
-    return this.form.get('email');
+    return this.form.get("email");
   }
 
   get PasswordValid() {
@@ -52,5 +53,4 @@ export class LoginComponent implements OnInit {
       this.store.dispatch(showAlert({ message: 'Formulario invalido', alertType: 'error' }));
     }
   }
-
 }

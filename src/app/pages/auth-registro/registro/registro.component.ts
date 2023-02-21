@@ -1,3 +1,4 @@
+import { RegisterRequest } from './../interfaces/registerRequest';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -78,7 +79,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
     return false;
   }
   
-  get ConditionsTermsValid() {
+  get ConditionsTermsInvalid() {
     return this.form.get('conditionsTerms')?.touched && !this.form.get('conditionsTerms')?.valid;
   }
 
@@ -86,13 +87,17 @@ export class RegistroComponent implements OnInit, OnDestroy {
     this.store.dispatch(openModal());
   }
 
-  onEnviar(event: Event) {
-
-    event.preventDefault;
+  onEnviar() {
 
     if (this.form.valid) {
       this.store.dispatch(showLoader({message: 'Cargando...'}));
-      this.store.dispatch(registerStart(this.form.value));
+      const registerRequest: RegisterRequest = {
+        first_name: this.form.value.nombre,
+        last_name: this.form.value.apellido,
+        password: this.form.value.password,
+        email: this.form.value.email
+      };
+      this.store.dispatch(registerStart({requestBody: registerRequest}));
     } else {
       this.store.dispatch(showAlert({message:'Complete los campos requeridos', alertType:'error'}));
       this.form.markAllAsTouched();

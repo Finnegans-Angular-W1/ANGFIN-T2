@@ -1,3 +1,4 @@
+import { BodyRequest } from '../interfaces/body-request';
 import { User } from './../../../core/interfaces/User';
 
 export interface AuthState {
@@ -12,3 +13,11 @@ export const initialAuthState = {
 
 //*Selector key
 export const featureKey = 'auth';
+
+export interface AuthEditState {
+    bodyRequest: BodyRequest;
+}
+
+export const initialAuthEditState = {
+    bodyRequest: {userName: '', name:''}
+}
