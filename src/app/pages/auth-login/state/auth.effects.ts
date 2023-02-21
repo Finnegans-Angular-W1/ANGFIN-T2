@@ -153,4 +153,35 @@ export class AuthEffects {
         )
     });
 
+    edit$= createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AuthActions.editProfileStart),
+            exhaustMap((action) => { 
+                return this.authService.editUser(action.updateUser, action.id)
+                .pipe(
+                    map(( respuesta ) => {
+                        return AuthActions.editProfileSuccess({updateUser: respuesta})
+                    }),
+                    catchError((error:ErrorResponse ) => {
+                        console.log(action);
+                        console.log(error);
+                        this.store.dispatch(hideLoader());
+                        this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse${error}`, alertType: 'error' }))
+                        //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
+                        return of(AuthActions.editProfileFail())
+                    })
+                )
+            })
+        )
+    });
+
+    editSuccess$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(AuthActions.editProfileSuccess), 
+            map((_) => {
+                this.store.dispatch(hideLoader())
+            })
+        )
+    }, {dispatch:false});
+
 }
