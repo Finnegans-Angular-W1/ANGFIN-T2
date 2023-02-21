@@ -9,11 +9,9 @@ describe('SocialComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-
-      declarations: [ SocialComponent,
-        SafeHTMLPipe ],
-      providers: [ TESTING_PROVIDERS ],
-      imports: [ TESTING_MODULES ]
+      declarations: [ SocialComponent ],
+      providers:[TESTING_PROVIDERS],
+      imports:[TESTING_MODULES]
     })
     .compileComponents();
 

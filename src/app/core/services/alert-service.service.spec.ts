@@ -1,16 +1,15 @@
 
 import { TestBed } from '@angular/core/testing';
 import { TESTING_MODULES, TESTING_PROVIDERS } from 'src/app/spec/constants';
-import { AlertServiceService } from "./alert-service.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-describe("AlertServiceService", () => {
+import { AlertServiceService } from './alert-service.service';
+
+describe('AlertServiceService', () => {
   let service: AlertServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ TESTING_MODULES,
-        HttpClientTestingModule ], 
-      providers: [ TESTING_PROVIDERS]
+      providers:[TESTING_PROVIDERS],
+      imports:[TESTING_MODULES]
     });
     service = TestBed.inject(AlertServiceService);
   });
