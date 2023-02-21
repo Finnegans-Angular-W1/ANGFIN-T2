@@ -22,7 +22,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
