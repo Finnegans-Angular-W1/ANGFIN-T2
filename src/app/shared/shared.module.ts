@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { ProfileComponent } from './components/profile/profile.component';
+import { TitleComponent } from './components/title/title.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
 import { CardComponent } from './components/card/card.component';
-import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
     TitleComponent,
     ModalComponent,
     SafeHTMLPipe,
-    CardComponent,
     ProfileComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -26,8 +26,8 @@ import { TitleComponent } from './components/title/title.component';
     TitleComponent,
     ModalComponent,
     SafeHTMLPipe,
-    CardComponent,
     ProfileComponent,
+    CardComponent,
     ]
 })
 export class SharedModule {}

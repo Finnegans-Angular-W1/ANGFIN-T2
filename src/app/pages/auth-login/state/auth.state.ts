@@ -14,8 +14,6 @@ export const initialAuthState = {
 //*Selector key
 export const featureKey = 'auth';
 
-
-//Espero que esté bien. Si no lo está, sacar importación.
 export interface AuthEditState {
     bodyRequest: BodyRequest;
 }
