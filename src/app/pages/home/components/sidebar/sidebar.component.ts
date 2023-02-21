@@ -1,3 +1,6 @@
+import { darkModeON, darkModeOFF } from './../../../../core/state/states/darkmodeState/darkmode.actions';
+import { FormControl } from '@angular/forms';
+import { DarkModeState } from './../../../../core/state/states/darkmodeState/darkmode.state';
 import { NavMobileLink } from './../../interfaces/nav-mobile-link';
 import { logout } from './../../../auth-login/state/auth.actions';
 import { Store } from '@ngrx/store';
@@ -17,9 +20,11 @@ export class SidebarComponent {
   navLinks:NavStaticLink[];
   navMobileLinks:NavMobileLink[];
 
+  checkboxControl:FormControl = new FormControl(false);
+
   constructor(
     private navLinksService:NavLinksService,
-    private store:Store<AuthState>
+    private store:Store<AuthState | DarkModeState>
   ) {
     this.navMobileLinks = this.navLinksService.navMobileLinks;
     this.navLinks = this.navLinksService.navStaticLinks;
@@ -28,6 +33,15 @@ export class SidebarComponent {
   onLogout(){
 //TODO: Modal preguntando si esta seguro de querer cerrar sesion
     this.store.dispatch(logout());
+  }
+
+  switchDarkMode(){
+    if( this.checkboxControl.value ){
+      this.store.dispatch(darkModeON());
+    }else{
+      this.store.dispatch(darkModeOFF());
+    }
+      
   }
 
 }
