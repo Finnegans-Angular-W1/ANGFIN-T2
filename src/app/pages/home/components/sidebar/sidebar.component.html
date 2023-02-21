@@ -12,22 +12,15 @@
           </p>
         </div>
         <div class="sm:bg-[#f2f2f2] md:bg-[#111827] sm:w-40 md:w-20 shrink-0 ">
-          <div class="w-20 fixed flex flex-col h-full justify-evenly items-center">
+          <div class="w-20 fixed flex flex-col h-full items-center">
               <label for="my-drawer" class="w-24 h-24 mt-2 ml-10 md:ml-0 md:mt-0 md:w-12  md:h-12  absolute top-0 md:static sm:flex btn btn-circle btn-neutral drawer-button">
                 <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
                 <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
               </label>
-            <button class="sm:hidden md:flex btn btn-circle btn-secondary w-12">
-              <img class="w-10 h-10" src="../../../../assets/images/home.png" alt="home">
-            </button>
-
-            <button class="sm:hidden md:flex btn btn-circle btn-secondary w-12">
-              <img class="w-10 h-10" src="../../../../assets/images/ingresos.png" alt="ingresos">
-            </button>
-
-            <button class="sm:hidden md:flex btn btn-circle btn-secondary w-12">
-              <img class="w-10 h-10" src="../../../../assets/images/egresos.png" alt="egresos">
-            </button>
+            <hr class="bg-gray-50/75 my-2 w-full mx-1 rounded">
+            <app-nav-static-link class="my-3" *ngFor="let navLink of navLinks"
+            [navStaticLink]="navLink"></app-nav-static-link>
+<!-- 
             
             <button class="sm:hidden md:flex btn btn-circle btn-secondary w-12">
               <img class="w-10 h-10" src="../../../../assets/images/send.png" alt="transferencias">
@@ -47,7 +40,7 @@
 
             <button class="sm:hidden md:flex btn btn-circle btn-secondary w-12">
               <img class="w-10 h-10" src="../../../../assets/images/wallet.png" alt="wallet">
-            </button>
+            </button> -->
 
           </div>
         </div>
@@ -67,12 +60,17 @@
     <label for="my-drawer" class="drawer-overlay"></label>
     <div class="flex flex-col menu p-4 sm:w-2/3 md:w-80 bg-neutral text-base-content justify-between">
       <!-- Drawer content here -->
-      <div class="h-60 md:h-20 flex flex-row border-2 border-accent rounded-lg justify-evenly items-center">
+      <div class="h-60 md:h-20 flex flex-row border-2 border-accent rounded-lg justify-evenly items-center flex-wrap">
         <img class="w-20 h-20 md:w-14 md:h-14 rounded-full" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"/>
         <div class="flex flex-col w-3/5 border-l-2 px-3 border-accent items-center">
           <p class="pb-4">usuario</p>
           <p class="pb-4">ver perfil ➡</p>
         </div>
+        <ul class="flex flex-col w-full">
+          <li *ngFor="let navMobile of navMobileLinks" class="mb-2 p-1 border-[#c262bb] border rounded mx-4" [routerLink]="'/'+navMobile.link">
+            {{navMobile.name}}
+          </li>
+        </ul>
       </div>
       <div class="p-4 border-t-2 border-accent">
         <p class="pb-4">Ajustes</p>

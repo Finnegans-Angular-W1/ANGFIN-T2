@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingFooterComponent } from './landing-footer.component';
+import { NavStaticLinkComponent } from './nav-static-link.component';
 
-describe('LandingFooterComponent', () => {
-  let component: LandingFooterComponent;
-  let fixture: ComponentFixture<LandingFooterComponent>;
+describe('NavStaticLinkComponent', () => {
+  let component: NavStaticLinkComponent;
+  let fixture: ComponentFixture<NavStaticLinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandingFooterComponent ]
+      declarations: [ NavStaticLinkComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LandingFooterComponent);
+    fixture = TestBed.createComponent(NavStaticLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

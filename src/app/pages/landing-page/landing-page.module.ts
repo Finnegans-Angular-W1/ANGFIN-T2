@@ -6,7 +6,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { CollapseComponent } from './components/collapse/collapse.component';
-import { LandingFooterComponent } from './components/landing-footer/landing-footer.component';
 import { LandingLayoutComponent } from './landing-layout/landing-layout.component';
 import { LandingNavbarComponent } from './components/landing-navbar/landing-navbar.component';
 import { Section1Component } from './components/section1/section1.component';
@@ -30,7 +29,6 @@ import { SectionMapaComponent } from './components/section-mapa/section-mapa.com
     CollapseComponent,
     Section5Component,
     SocialComponent,
-    LandingFooterComponent,
     SectionMapaComponent
   ],
   imports: [

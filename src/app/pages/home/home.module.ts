@@ -16,6 +16,7 @@ import { TransactionsFormComponent } from './components/transactions-form/transa
 import { LayoutComponent } from './layout/layout.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
+import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
 
 
 
@@ -33,7 +34,8 @@ import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.
     DivisasComponent,
     SendMoneyComponent,
     CargarSaldosComponent,
-    SendMoneyComponent
+    SendMoneyComponent,
+    NavStaticLinkComponent
   ],
   imports: [
     CommonModule,
