@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { HttpService } from 'src/app/core/services/http.service';
+
 
 
 @Component({
@@ -10,7 +9,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 })
 export class CargarSaldosComponent implements OnInit {
  
-  constructor(private http: HttpService) {  
+  constructor() {  
   }
 
   ngOnInit() {

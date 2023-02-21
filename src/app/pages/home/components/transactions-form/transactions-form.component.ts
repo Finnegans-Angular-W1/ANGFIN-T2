@@ -5,9 +5,12 @@ import { Store } from '@ngrx/store';
 
 import { TransactionNewDTO, TransactionEditDTO, Operation } from './../../interfaces/transactionFormInterfaces';
 import { Required } from 'src/app/shared/decorators/required.decorator';
+
 import { HttpService } from 'src/app/core/services/http.service';
+
 import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
+
 
 @Component({
   selector: 'app-transactions-form',
@@ -27,8 +30,11 @@ export class TransactionsFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+
     private http: HttpService,
+
     private store:Store<AlertState>
+
   ) { }
 
   ngOnInit(): void {
@@ -87,7 +93,7 @@ export class TransactionsFormComponent implements OnInit {
     if (this.transactionForm.valid){
       if (this.operation.type === 'new'){
 
-        let idAccount = 0; //TODO: Inicializar con el ID de la cuenta del usuario(HTTP) ACCOUNT_ID
+        let idAccount = ""; //TODO: Inicializar con el ID de la cuenta del usuario(HTTP) ACCOUNT_ID
         if(( {...this.transaction} as TransactionNewDTO).transactionType === 'payment'){
           idAccount = this.transactionForm.get('toAccountID')!.value;
         }

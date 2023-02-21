@@ -34,7 +34,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     }),
     StoreModule.forRoot(AppState.reducers, { initialState: AppState.initialAppState }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    AppRoutingModule,
     HttpClientModule,
     CoreModule,
   ],
@@ -44,9 +43,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
       useClass: TokenInterceptor,
       multi: true
     },
-    { provide: HTTP_INTERCEPTORS, 
-      useClass: ErrorInterceptor, 
-      multi: true }
   ],
 
   bootstrap: [AppComponent]
