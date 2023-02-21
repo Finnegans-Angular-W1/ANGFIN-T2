@@ -36,6 +36,7 @@ import { AppComponent } from './app.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     HttpClientModule,
     CoreModule,
+    AppRoutingModule
   ],
   providers: [
     {
@@ -43,6 +44,11 @@ import { AppComponent } from './app.component';
       useClass: TokenInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

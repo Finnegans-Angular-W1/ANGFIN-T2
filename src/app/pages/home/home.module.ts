@@ -18,7 +18,6 @@ import { CambiarMonedaComponent } from "./components/cambiar-moneda/cambiar-mone
 
 import { SendMoneyComponent } from "./components/home/send-money/send-money.component";
 import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.component";
-import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
 import { SharedModule } from 'src/app/shared/shared.module';
