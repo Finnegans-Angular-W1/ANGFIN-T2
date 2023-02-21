@@ -24,3 +24,4 @@ describe('SocialComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

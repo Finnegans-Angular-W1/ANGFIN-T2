@@ -35,7 +35,7 @@ import { SectionMapaComponent } from './components/section-mapa/section-mapa.com
     CommonModule,
     LeafletModule,
     SharedModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
   ]
 })
 export class LandingPageModule { }
