@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 import { TitleComponent } from './components/title/title.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
