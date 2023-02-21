@@ -11,6 +11,9 @@ import { TransactionsFormComponent } from "./components/transactions-form/transa
 import { DivisasComponent } from './components/divisas/divisas.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { LayoutComponent } from './layout/layout.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
+
 import { CambiarMonedaComponent } from "./components/cambiar-moneda/cambiar-moneda.component";
 
 import { SendMoneyComponent } from "./components/home/send-money/send-money.component";
@@ -43,6 +46,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HomeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    CoreModule
   ]
 })
 export class HomeModule {}
