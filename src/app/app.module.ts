@@ -1,4 +1,3 @@
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,8 +14,6 @@ import { AuthEffects } from './pages/auth-login/state/auth.effects';
 //-------------------//
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
-import { HomeModule } from "./pages/home/home.module";
-import { AuthLoginModule } from './pages/auth-login/auth-login.module';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 

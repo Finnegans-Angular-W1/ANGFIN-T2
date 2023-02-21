@@ -15,7 +15,7 @@ export class AuthGuard implements CanLoad {
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean>{
     return of(true);
-/*     return this.store.select(getToken).pipe(
+    /* return this.store.select(getToken).pipe(
       map( (token) => {
         if(!token){
           this.router.navigateByUrl('/login');
