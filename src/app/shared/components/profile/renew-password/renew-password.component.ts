@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   templateUrl: "./renew-password.component.html",
   styleUrls: ["./renew-password.component.scss"],
 })
-export class PasswordResetComponent implements OnInit {
+export class RenewPasswordComponent implements OnInit {
   formulario!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {

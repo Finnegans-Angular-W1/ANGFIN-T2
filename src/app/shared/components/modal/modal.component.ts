@@ -26,12 +26,14 @@ export class ModalComponent {
   formEditUser: FormGroup;
   open$:Observable<boolean>;
 
+
   constructor( private store:Store<AppState>, private fb: FormBuilder) {
     this.open$ = this.store.select(getModalOpen);
+
     this.formEditUser = this.fb.group({
       nombre: ['', [Validators.minLength(3)]],
       nombreUsuario: ['', [Validators.minLength(5)]],
-    })
+    });
   }
 
   onCloseModal(){
@@ -53,7 +55,7 @@ export class ModalComponent {
           let auxData: BodyRequest = {
             userName: (this.formEditUser.controls['nombreUsuario'].value as string),
             name: (this.formEditUser.controls['nombre'].value as string),
-            }
+          }
           this.store.dispatch(editProfileStart({ updateUser: (auxData), id:user.id}) )
           this.store.dispatch(showLoader({ message: "cargando" }))
         }
@@ -62,5 +64,5 @@ export class ModalComponent {
       this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse`, alertType: 'error' }))
     }
   }
-
+  
 }

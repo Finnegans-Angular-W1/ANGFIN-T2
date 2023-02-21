@@ -15,8 +15,17 @@ import { PasswordResetComponent } from './components/profile/renew-password/rene
     CardComponent,
     ModalComponent,
     TitleComponent,
+<<<<<<< HEAD
+    ModalComponent,
+    SafeHTMLPipe,
+    CardComponent,
+    ModalComponent,
+    ProfileComponent,
+    CardComponent,
+=======
     PasswordResetComponent,
     ProfileComponent,
+>>>>>>> develop
   ],
   imports: [
     CommonModule,
@@ -31,6 +40,10 @@ import { PasswordResetComponent } from './components/profile/renew-password/rene
     TitleComponent,
     PasswordResetComponent,
     ProfileComponent,
+<<<<<<< HEAD
+  ]
+=======
     ]
+>>>>>>> develop
 })
 export class SharedModule {}

@@ -1,7 +1,6 @@
 import { TESTING_PROVIDERS, TESTING_MODULES } from 'src/app/spec/constants';
 import { TestBed } from '@angular/core/testing';
 import { AlertServiceService } from "./alert-service.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe("AlertServiceService", () => {
   let service: AlertServiceService;
