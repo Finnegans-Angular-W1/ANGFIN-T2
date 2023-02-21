@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 00bf7ece8afeccae41b8d9dd3662f50944f7e7c5
 const cardSVG:string = `                            <svg class="absolute top-0 right-0" width="158" height="119" aria-hidden="true">
 <defs>
     <linearGradient x1="50%" y1="0%" x2="50%" y2="96.22%" id="a">
@@ -57,9 +53,4 @@ const cardSVG:string = `                            <svg class="absolute top-0 r
 </g>
 </svg>`
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 00bf7ece8afeccae41b8d9dd3662f50944f7e7c5
 export const CARD_SVG = cardSVG;

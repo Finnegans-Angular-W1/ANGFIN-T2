@@ -24,10 +24,6 @@ export class HttpService {
     );
   }
 
-  public put<T>(url: string, body: any, activateHeader: boolean = false):Observable<T>{
-    return this.http.put<T>(url, body, activateHeader ? { headers: this._headers}: {})
-  }
-
   public postGeneric<T>(api_url: string, body:any, idParam:string = ''): Observable<T> {
     return this.http.post<T>(api_url + idParam, body);
   }
@@ -38,8 +34,8 @@ export class HttpService {
     return this.http.patch<T>(api_url + id, body, activateHeader ? {headers: this._headers}: {})
   }
 
-  public put<T>(api_url: string, body: T, id: number, activateHeader:boolean = false): Observable<T> {
-    return this.http.put<T>(api_url + id, body, activateHeader ? {headers: this._headers}: {})
+  public put<T>(api_url: string, body:any, idParam:string = ''): Observable<T> {
+   return this.http.put<T>(api_url + idParam, body);   
   }
 
   public delete<T>(url: string, id:number, activateHeader:boolean = false ):Observable<T> {

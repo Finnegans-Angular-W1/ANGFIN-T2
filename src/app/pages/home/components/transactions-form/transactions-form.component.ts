@@ -100,7 +100,7 @@ export class TransactionsFormComponent implements OnInit {
 
         //*Send HTTP POST to create new transaction
         //!POST /accounts/{id} + body
-        this.http.postGeneric('/accounts/',idAccount,body  );
+        this.http.postGeneric('/accounts/', body, (idAccount + '') );
 
       }else if (this.operation.type === 'edit'){
 
