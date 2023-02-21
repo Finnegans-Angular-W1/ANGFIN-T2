@@ -4,6 +4,7 @@
 
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
+  darkMode: 'class',
   theme: {
     screens: {
       'xs': '375px',
