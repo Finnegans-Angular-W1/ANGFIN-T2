@@ -1,0 +1,46 @@
+<div class="modal" [ngClass]="{ 'modal-open' : (open$ | async)}">
+    <div class="modal-box dark:bg-stone-800">
+        <h2 class="text-xl font-bold mb-1 text-accent underline underline-offset-4 text-center">{{modalInfo.title}}</h2>
+        <h3 class="font-bold text-md">{{modalInfo.subtitle}}</h3>
+        
+        <ng-container *ngIf="!formModal; else formModalTemplate">
+            <p class="py-3 text-xs" *ngFor="let p of modalInfo.paragraphs; index as i"><span class="font-semibold text-accent">{{i+1 + '. '}}</span>{{p}}</p>
+        </ng-container>
+        <ng-template #formModalTemplate>
+            
+            <form (ngSubmit)="onSubmit()" [formGroup]="formEditUser" >
+                <div class="flex h-16 flex-col">
+                    <div class="relative mt-6">
+                        <input formControlName="nombreUsuario" type="text" name="nombreUsuario"  placeholder="Nombre de Usuario"
+                            class="peer input-style dark:bg-stone-700 dark:text-gray-300" autocomplete="NA" />
+                        <label for="nombreUsuario"
+                        class="label-style">Nombre de usuario</label>
+                    </div>
+                    
+                </div>
+                <div class="flex h-16 flex-col">
+                    <div class="relative mt-6">
+                        
+                        <input formControlName="nombre" type="text" name="nombre" placeholder="Nombre"
+                            class="peer input-style dark:bg-stone-700 dark:text-gray-300" autocomplete="NA" />
+                            
+                        <label for="nombre"
+                        class="label-style">Nombre</label>
+                    </div>  
+                </div>
+
+                <div class="modal-action">
+                    <label for="my-modal" class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()">Aceptar</label>
+                    <label for="my-modal" class="btn btn-sm text-md py-1" (click)="onCloseModal()">Cancelar</label>
+                </div>
+                
+            </form>
+        </ng-template>
+
+        <div class="modal-action">
+            <button type="submit" class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()" [disabled]="formEditUser.invalid">Aceptar</button>
+            <button type="submit" class="btn btn-sm text-md py-1" (click)="onCloseModal()">Cancelar</button>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,22 @@
+<div 
+ class="w-full flex justify-center flex-wrap sm:flex-nowrap xs:flex-row-reverse overflow-x-hidden sm:flex-row">
+    <div class="div_cards w-full sm:w-3/6">
+        <div class="flex flex-col justify-center text-gray-600 min-h-screen p-4">
+            <div class="h-full flex-wrap sm:flex-nowrap flex w-full">
+                <app-card class="my-2"  [feature]="'Eficiencia'" [title]="'Pagos en tiempo real'" data-aos="fade-right" data-aos-duration="1300" data-aos-once="true" 
+                [description]="'Realiza pagos y transferencias al instante, sin esperar días o horas de procesamiento.'"
+                [svg]="cardSVG" ></app-card>
+                <app-card class="my-2" [feature]="'Seguridad'" [title]="'Transacciones seguras'" data-aos="fade-right" data-aos-duration="2000"  data-aos-once="true"
+                [description]="'Nuestra tecnología avanzada de cifrado garantiza la seguridad de todas tus transacciones.'"></app-card>
+            </div>
+        </div>
+    </div>
+    <div class="w-full flex justify-center flex-col items-center sm:w-3/6 my-8 sm:my-0 sm:mr-24 h-fit overflow-x-hidden" data-aos="fade-left" data-aos-duration="2000" data-aos-once="true">
+        <h2 class="font-['ABeeZee'] font-bold text-4xl sm:text-6xl tracking-widest text-center text-white mt-1">Beneficios</h2>
+        <div class="justify-center flex mt-1">
+            <div class="w-3/6">
+                <p class="text-white mb-4 sm:mb-0 text-center text-md font-light sm:text-xl">Con nuestra wallet puede llevar un control detallado de sus ingresos y gastos, almacenar de manera segura sus fondos y realizar pagos y transferencias con solo unos pocos clicks y desde nuestra app.</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="hero min-h-screen bg-base">
+    <div class="hero-content flex flex-col lg:flex-row space-x-32"> <!-- hero-content flex-col lg:flex-row-reverse -->
+
+        <div class="justify-center" style="height: 89%;"> <!-- text-center  text-black --> <!-- max-x-full h-auto -->
+            <!-- <h1 class="text-7xl font-bold text-info">Login now</h1>
+            <p class="py-6 ">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.</p> -->
+            <!-- <img    style="height: auto; width: 46rem;" 
+                    src="https://img.freepik.com/vector-gratis/ilustracion-concepto-billetera-electronica_114360-7561.jpg?w=740&t=st=1675270555~exp=1675271155~hmac=457db3f4ccbe861893e3b954a5b400df70bdf27e54d7c76e0b46d4ad7646c36a" 
+                    alt=""> -->
+                    <img    style="height: auto; width: 46rem;" 
+                    src="https://i.postimg.cc/HnJPRbZ7/login-img.png"
+                    alt="">
+        </div>
+
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-primary">
+            <div class="card-body">
+
+                <form [formGroup]="form" (ngSubmit)="onEnviar()">
+                    <!-- formGroup is used to bind an existing FormGroup to a DOM element-->
+
+                    <!--======================Mail===================-->
+                    <div class="form-control">
+                        <label class="label" for="email">
+                            <span class="label-text text-white font-bold">Correo electrónico</span>
+                        </label>
+
+                        <input type="email" formControlName="email" class="input input-bordered" />
+                    </div>
+
+                    <div *ngIf="Mail?.errors && Mail?.touched">
+                        <p *ngIf="Mail?.hasError('required')" class="text-error">
+                            El correo electrónico es requerido.
+                        </p>
+                        <p *ngIf="Mail?.hasError('email')" class="text-error">
+                            El formato del correo electrónico debe ser válido.
+                        </p>
+                    </div>
+
+                    <!--======================Contraseña===================-->
+                    <div class="form-control">
+                        <label for="password" class="form-label label">
+                            <span class="label-text text-white font-bold">Contraseña</span>
+                        </label>
+
+                        <input type="password" formControlName="password" [class.border-danger]="MailValid"
+                            class="input input-bordered" />
+                    </div>
+
+                    <div *ngIf="Password?.errors && Password?.touched">
+                        <p *ngIf="Password?.hasError('required')" class="text-error">
+                            La contraseña es requerida.
+                        </p>
+                        <p *ngIf="Password?.errors?.['minlength']" class="text-error">
+                            La contraseña debe ser de 8 o más caracteres.
+                        </p>
+                    </div>
+
+                    <div class="form-control mt-6">
+                        <button type="submit" [disabled]="form.invalid" 
+                        class="btn bg-success border-success text-white">
+                        INICIAR SESIÓN</button>
+                    </div>
+
+                </form>
+                <!-- Este tag después pasa a ser un routerLink para que guíe al componente registro -->
+                <a href="" class="flex justify-center hover:text-success">¿Has olvidado la contraseña?</a> 
+
+                <div class="items-center border-x border-y border-base border-solid text-center my-5 mx-3"></div>
+
+                <button routerLink="/registrarse" type="button" class="btn w-1/2 self-center bg-error border-error text-white">Crear cuenta nueva</button>
+        </div>
+
+    </div>
+</div>

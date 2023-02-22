@@ -1,0 +1,72 @@
+<div class="dropdown dropdown-right">
+  <label tabindex="0" class="px-2 py-1 uppercase text-xl text-gray-50/[0.90] font-['Kanit'] font-semibold text-white
+    bg-gradient-to-b from-[#b65ab0] to-[#eaa3e4] 
+    flex rounded-md w-fit shadow-3xl my-2 sm:hover:scale-[1.03] transition duration-300">
+    Filtrar
+  </label>
+  <div tabindex="0" class="dropdown-content card card-normal w-96 h-auto shadow bg-secondary/90 text-primary-content">
+    <div class="card-body">
+      <h3 class="card-title  text-white">Filtrar</h3>
+      <p class=" text-white">Filtrar por:</p>
+      <div>
+        <select name="selectorInicial" class="select select-bordered w-full max-w-xs" (change)="opcionElegida($event)">
+          <option disabled selected>Elegir filtrado</option>
+          <!--option id="fechaOption" value="fechaOption">Fecha</option-->
+          <option id="palabraOption" value="palabraOption">Palabra</option>
+          <option id="operacionOption" value="operacionOption">Tipo de operación</option>
+        </select>
+      </div>
+      <!--div id="fecha" *ngIf="filter == 'fechaOption'">
+        <p class=" text-white">Elegir fecha: </p>
+        <div class="grid grid-cols-2 content-start">
+          <div><input type="date" id="fechaInicial" name="fecha" required="required" class="input input-bordered w-full max-w-xs"></div>
+          <div><input type="date" id="fechaFinal" name="fecha" required="required" class="input input-bordered w-full max-w-xs"></div>
+        </div>
+      </div-->
+      
+      <div id="palabra" *ngIf="opcionFiltrado == 'palabraOption'">
+        <p class="text-white">Filtrar por palabra</p>
+        <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" />
+      </div>
+      
+      <div id="operacion" *ngIf="opcionFiltrado == 'operacionOption'">
+        <p class="text-white" (change)="filtradoPorOperacion($event)">Filtrar por tipo de operación</p>
+        <select class="select select-bordered w-full max-w-xs">
+          <option disabled selected>Elegir opción</option>
+          <option>Payment</option>
+          <option>Topup</option>
+        </select>
+      </div>
+      
+
+      <div class="card-actions justify-end">
+        <button class="btn" 
+        
+        >Filtrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-5 px-0.5 py-0.5 bg-[#c2c9ce] shadow-xl rounded-lg">
+  <table class="table-auto w-full border-separate">
+    <thead class="text-neutral bg-[#749496] text-center ">
+      <tr  class="text-white font-semibold">
+        <th class="hidden">ID</th>
+        <th class="py-2 px-4">FECHA</th>
+        <th class="py-2 px-4">CONCEPTO</th>
+        <th class="py-2 px-4">TIPO</th>
+        <th class="py-2 px-4">MONTO</th>
+      </tr>
+    </thead>
+    <tbody class="text-neutral text-center ">
+      <tr *ngFor="let transaction of transaction; index as i">
+        <td class="hidden">{{ transaction.id }}</td>
+        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.date | date : "dd/mm/yyyy HH:MM"}}</td>
+        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.concept }}</td>
+        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.type | titlecase}}</td>
+        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.amount | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

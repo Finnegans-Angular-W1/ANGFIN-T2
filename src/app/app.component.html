@@ -1,0 +1,17 @@
+<div [ngClass]="{'dark' : (darkMode$ | async)}">
+
+    <ng-container *ngIf="showAlert$ | async">
+        <app-alert [msg]="(messageAlert$ | async) || ''" [type]="(typeAlert$ | async) || 'error'"></app-alert>
+    </ng-container>
+
+    <ng-container *ngIf="showLoader$ | async">
+        <app-loader [message]="(messageLoader$ | async) || 'Cargando...'"></app-loader>
+    </ng-container>
+
+        <router-outlet></router-outlet>    
+
+    <ng-container *ngIf="actualRoute === '/' || actualRoute === '/iniciar-sesion' || actualRoute === '/registrarse'">
+        <app-footer></app-footer>
+    </ng-container>
+
+</div>
