@@ -20,6 +20,7 @@ import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.
 import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.component";
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
+import { PrestamosComponent } from './components/prestamos/prestamos.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav
     CargarSaldosComponent,
     NavStaticLinkComponent,
     CargarGastosComponent,
-    ProfileComponent
+    ProfileComponent,
+    PrestamosComponent
   ],
   imports: [
     CommonModule,

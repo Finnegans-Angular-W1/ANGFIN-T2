@@ -1,6 +1,6 @@
 import { RegisterRequest } from './../interfaces/registerRequest';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -37,6 +37,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
       nombre: [''],
       apellido: [''],
       password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
       bornDate: ['', [Validators.required, Validators.minLength(6),adultAgeValidator]],
       conditionsTerms: [false, [Validators.requiredTrue]]
@@ -57,6 +58,14 @@ export class RegistroComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit(): void {
+    if(this.form !== undefined && this.form.get('password') !== undefined){
+        this.form.get('confirmPassword')?.addValidators(
+          this.passwordMatchValidator.bind(this)
+      );
+    }
+  }
+
   get Nombre() {
     return this.form.get('nombre');
   }
@@ -71,6 +80,10 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   get Mail() {
     return this.form.get('email');
+  }
+
+  get ConfirmPassword(){
+    return this.form.get('confirmPassword')
   }
 
   get PasswordValid() {
@@ -119,6 +132,16 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subActionModal.unsubscribe();
+  }
+
+  //Validator
+  passwordMatchValidator(confirm: AbstractControl):{ [key: string]: boolean } | null {
+    if(this.form){
+      if (this.form.get('password')?.value !== confirm.value) {
+          return { 'passwordMismatch': true };
+      }
+    }
+    return null;
   }
 
 }

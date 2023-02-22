@@ -10,17 +10,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/landing-page/landing-page.module').then( m => m.LandingPageModule)
   },
   {
-    path: "home",
+    path: "inicio",
     loadChildren: () =>
       import("./pages/home/home.module").then((m) => m.HomeModule),
       canLoad: [AuthGuard],
   },
   {
-    path: 'login',
+    path: 'iniciar-sesion',
     loadChildren: () => import('./pages/auth-login/auth-login.module').then( m => m.AuthLoginModule) 
   },
   {
-    path: "register",
+    path: "registrarse",
     loadChildren: () =>
       import("./pages/auth-registro/auth-registro.module").then(
         (m) => m.AuthRegistroModule

@@ -4,11 +4,15 @@ const coinSvg:string = `<img class="w-[32px] h-[32px]" src="data:image/png;base6
 const ingresos:string = `<img class="w-[35px] h-[35px]" src="../../../../../assets/images/ingresos.png" alt="ingresos">`;
 const egresos:string = `<img class="w-[35px] h-[35px]" src="../../../../../assets/images/egresos.png" alt="egresos">`;
 
+const plazoFijo:string = `<img class="w-10 h-10" src="../../../../../assets/images/prestamos.png" alt="prestamos">`;
+const prestamos:string = `<img class="w-10 h-10" src="../../../../../assets/images/send.png" alt="transferencias">`;
 
 export const NAV_SVGS = {
     profile: profileSvg,
     home: homeSvg,
     divisas: coinSvg,
     ingresos: ingresos,
-    egresos: egresos
+    egresos: egresos,
+    prestamos: prestamos,
+    plazoFijo: plazoFijo,
 }

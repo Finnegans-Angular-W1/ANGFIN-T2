@@ -1,3 +1,7 @@
+import { PrestamosComponent } from './components/prestamos/prestamos.component';
+import { GananciaInversionComponent } from './components/inversion/ganancia-inversion/ganancia-inversion.component';
+import { CargarGastosComponent } from './components/cargar-gastos/cargar-gastos.component';
+import { CargarSaldosComponent } from './components/cargar-saldos/cargar-saldos.component';
 import { DivisasComponent } from './components/divisas/divisas.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
@@ -21,8 +25,24 @@ const routes: Routes = [
           component: DivisasComponent
         },
         {
-          path: "profile",
+          path: "perfil",
           component: ProfileComponent
+        },
+        {
+          path: "ingresos",
+          component: CargarSaldosComponent
+        },
+        {
+          path: "egresos",
+          component: CargarGastosComponent
+        },
+        {
+          path: "plazo-fijo",
+          component: GananciaInversionComponent
+        },
+        {
+          path: "prestamos",
+          component: PrestamosComponent
         },
         {
           path: "modal",
