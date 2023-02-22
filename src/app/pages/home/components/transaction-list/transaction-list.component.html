@@ -1,10 +1,10 @@
 <div class="dropdown dropdown-right">
-  <label tabindex="0" class="px-2 py-1 uppercase text-xl text-gray-50/[0.90] font-['Kanit'] font-semibold text-white
-    bg-gradient-to-b from-[#b65ab0] to-[#eaa3e4] 
+  <label tabindex="0" class="px-2 py-1 uppercase text-xl font-['Kanit'] font-semibold text-white
+    bg-gradient-to-b from-[#5A0026] to-[#C80155] 
     flex rounded-md w-fit shadow-3xl my-2 sm:hover:scale-[1.03] transition duration-300">
-    Filtrar
+    Filtro
   </label>
-  <div tabindex="0" class="dropdown-content card card-normal w-96 h-auto shadow bg-secondary/90 text-primary-content">
+  <div tabindex="0" class="dropdown-content card card-normal w-96 h-auto shadow bg-[#692A45] text-primary-content">
     <div class="card-body">
       <h3 class="card-title  text-white">Filtrar</h3>
       <p class=" text-white">Filtrar por:</p>
@@ -26,7 +26,7 @@
       
       <div id="palabra" *ngIf="opcionFiltrado == 'palabraOption'">
         <p class="text-white">Filtrar por palabra</p>
-        <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" />
+        <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" oninput="filtradoPorPalabra($event)"/>
       </div>
       
       <div id="operacion" *ngIf="opcionFiltrado == 'operacionOption'">
@@ -40,7 +40,7 @@
       
 
       <div class="card-actions justify-end">
-        <button class="btn" 
+        <button class="btn" (click)="filtrarTabla($event)"
         
         >Filtrar</button>
       </div>
@@ -49,8 +49,8 @@
 </div>
 
 <div class="mb-5 px-0.5 py-0.5 bg-[#c2c9ce] shadow-xl rounded-lg">
-  <table class="table-auto w-full border-separate">
-    <thead class="text-neutral bg-[#749496] text-center ">
+  <table class="table-auto w-full border-separate text-sm md:text-lg">
+    <thead class="text-neutral bg-[#749496] text-center">
       <tr  class="text-white font-semibold">
         <th class="hidden">ID</th>
         <th class="py-2 px-4">FECHA</th>
@@ -59,7 +59,7 @@
         <th class="py-2 px-4">MONTO</th>
       </tr>
     </thead>
-    <tbody class="text-neutral text-center ">
+    <tbody class="text-neutral text-center">
       <tr *ngFor="let transaction of transaction; index as i">
         <td class="hidden">{{ transaction.id }}</td>
         <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.date | date : "dd/mm/yyyy HH:MM"}}</td>
