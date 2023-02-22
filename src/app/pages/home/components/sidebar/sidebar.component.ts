@@ -39,19 +39,12 @@ export class SidebarComponent {
   }
 
   switchMobile(){
-    if( this.checkboxMobile.value ){
-      this.openMobileMenu = true;
-    }else{
-      this.openMobileMenu = false;
-    }
+    this.openMobileMenu = this.checkboxMobile.value ? true : false;
   }
 
   switchDarkMode(){
-    if( this.checkboxControl.value ){
-      this.store.dispatch(darkModeON());
-    }else{
-      this.store.dispatch(darkModeOFF());
-    }
+    this.checkboxControl.value ? this.store.dispatch(darkModeON()) : this.store.dispatch(darkModeOFF());
+
   }
 
 }
