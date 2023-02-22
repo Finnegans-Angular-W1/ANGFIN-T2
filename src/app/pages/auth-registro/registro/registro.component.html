@@ -180,7 +180,27 @@
                         </div>
                     </div>
 
-                    
+                    <!--====================== Fecha de nacimiento ===================-->
+                    <div class="form-control h-28">
+                        <label class="label" for="birthdate">
+                            <span class="label-text text-white font-bold">Fecha de nacimiento</span>
+                        </label>
+
+                        <input type="date" formControlName="bornDate" class="input input-bordered" />
+
+                       <ng-container *ngIf="Birthdate?.hasError('required') && Birthdate?.touched; else second_condition_bornDate">
+                            <p  class="text-error">
+                                El correo electrónico es requerido.
+                            </p>  
+                       </ng-container>
+                       <ng-template #second_condition_bornDate>
+                            <ng-container *ngIf="Birthdate?.errors && Birthdate?.touched">
+                                <p  class="text-error">
+                                    Debe ser mayor de 18 años para registrarse en nuestra aplicación.
+                                </p> 
+                            </ng-container>
+                       </ng-template>
+                    </div>                    
 
                     <!--======================Contraseña===================-->
                     <div class="form-control h-28">
