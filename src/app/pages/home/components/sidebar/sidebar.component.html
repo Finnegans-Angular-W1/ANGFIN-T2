@@ -5,14 +5,40 @@
 
     <!-- Contenido de la página -->
     <div class="flex flex-row">
-        <!-- Sidebar estática -->
-        <div class="flex h-28 absolute z-[3500] md:hidden w-full bg-gradient-to-b from-[#c262bb]/90 to-[#f2c5ee] justify-center">
-          <p class="text-center text-6xl text-black">
-            <img class="mt-2 w-24 h-24" src="../../../../assets/images/AlkyBank_logo4.png" alt="logo"/>
-          </p>
+
+        <!-- mobile sidebar -->
+        <div class="flex h-24 absolute z-[400] md:hidden w-full bg-[#19181A] items-center flex-wrap">
+          <div class="w-full flex justify-between items-center">
+            <label class="btn-accent btn-circle swap swap-rotate mx-2">
+              <input (change)="switchMobile()" [formControl]="checkboxMobile" type="checkbox"/>
+
+              <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+              <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+            </label>
+
+            <img class="mt-2 mx-2 w-20 h-20" src="../../../../assets/images/AlkyBank_logo4.png" alt="logo"/>
+          </div>
+          <div class="w-full">
+            <div class="collapse" [ngClass]="{'collapse-open' : openMobileMenu , 'collapse-close' : !openMobileMenu}">
+              <div
+              class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"> 
+                <ul>
+                  <li [routerLink]="mobiLink.link" *ngFor="let mobiLink of navMobileLinks">
+                    {{mobiLink.name}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+
+
+<!-- Sidebar estática -->
         <div class="sm:bg-[#f2f2f2] dark:md:bg-[#19181A] md:bg-[#111827] sm:w-40 md:w-20 shrink-0 z-[300]">
-          <div class="w-20 fixed flex flex-col h-full items-center">
+
+
+          <!-- desktop sidebar -->
+          <div class="hidden w-20 md:fixed md:flex flex-col h-full items-center">
               <label for="my-drawer" class="w-24 h-24 mt-2 ml-10 md:ml-0 md:mt-0 md:w-12  md:h-12  absolute top-0 md:static sm:flex btn btn-circle btn-neutral drawer-button">
                 <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
                 <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
