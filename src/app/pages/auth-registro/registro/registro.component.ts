@@ -13,6 +13,7 @@ import { registerStart } from './../../auth-login/state/auth.actions';
 import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 import { TermsService } from './../services/terms.service';
+import { adultAgeValidator } from './customValidators/adultage';
 
 @Component({
   selector: 'app-registro',
@@ -37,6 +38,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
       apellido: [''],
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
+      bornDate: ['', [Validators.required, Validators.minLength(6),adultAgeValidator]],
       conditionsTerms: [false, [Validators.requiredTrue]]
     });
   }
@@ -73,6 +75,17 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   get PasswordValid() {
     return this.Password?.touched && !this.Password?.valid;
+  }
+
+  get Birthdate() {
+    return this.form.get('bornDate');
+  }
+
+  get BirthdateValid(){
+    if(this.form.get('bornDate')?.touched){
+      return this.Birthdate?.hasError('age');
+    }
+    return this.Birthdate;
   }
 
   get MailValid() {
