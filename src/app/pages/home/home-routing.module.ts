@@ -21,7 +21,7 @@ const routes: Routes = [
           component: DivisasComponent
         },
         {
-          path: "profile",
+          path: "perfil",
           component: ProfileComponent
         },
         {

@@ -14,24 +14,24 @@ export class NavLinksService {
   constructor() { 
     this.navMobileLinks = [
       {
-        name: 'Home',
-        link: '/home',
+        name: 'Inicio',
+        link: '/inicio',
       },
       {
         name: 'Perfil',
-        link: 'home/profile',
+        link: 'inicio/perfil',
       },
       {
         name: 'Divisas',
-        link: 'home/divisas',
+        link: 'inicio/divisas',
       },
       {
         name: 'Ingresos' ,
-        link: 'home/ingresos',
+        link: 'inicio/ingresos',
       },
       {
         name: 'Egresos',
-        link: 'home/egresos',
+        link: 'inicio/egresos',
       },
       {
         name: 'Contactanos',
@@ -42,27 +42,27 @@ export class NavLinksService {
     this.navStaticLinks = [
       {
         name: 'Home',
-        link: '/home',
+        link: '/inicio',
         svg: NAV_SVGS.home
       },
       {
         name: 'Perfil',
-        link: 'home/profile',
+        link: 'inicio/perfil',
         svg: NAV_SVGS.profile
       },
       {
         name: 'Divisas',
-        link: 'home/divisas',
+        link: 'inicio/divisas',
         svg: NAV_SVGS.divisas
       },
       {
         name: 'Ingresos' ,
-        link: 'home/ingresos',
+        link: 'inicio/ingresos',
         svg: NAV_SVGS.ingresos
       },
       {
         name: 'Egresos',
-        link: 'home/egresos',
+        link: 'inicio/egresos',
         svg: NAV_SVGS.egresos
       }
     ];
