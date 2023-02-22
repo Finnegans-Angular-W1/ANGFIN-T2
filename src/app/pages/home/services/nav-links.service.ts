@@ -34,6 +34,14 @@ export class NavLinksService {
         link: 'inicio/egresos',
       },
       {
+        name: 'Plazo Fijo',
+        link: 'inicio/plazo-fijo'
+      },
+      {
+        name: 'Prestamos',
+        link: 'inicio/prestamos'
+      },
+      {
         name: 'Contactanos',
         link: 'TODOHacerModalContacto',
       },
@@ -64,6 +72,16 @@ export class NavLinksService {
         name: 'Egresos',
         link: 'inicio/egresos',
         svg: NAV_SVGS.egresos
+      },
+      {
+        name: 'Plazo Fijo',
+        link: 'inicio/plazo-fijo',
+        svg: NAV_SVGS.plazoFijo
+      },
+      {
+        name: 'Prestamos',
+        link: 'inicio/prestamos',
+        svg: NAV_SVGS.prestamos
       }
     ];
 
