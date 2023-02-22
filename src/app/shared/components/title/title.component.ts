@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,13 +8,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TitleComponent implements OnInit {
   
-  title : string | undefined = "Titulo";
+  @Input() title: String = 'titulo';
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(){
-    this.route.title.subscribe(resp => {
-      this.title = resp?.toString();
-    })
+
   }
 }
