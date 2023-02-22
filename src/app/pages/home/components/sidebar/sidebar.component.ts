@@ -44,7 +44,6 @@ export class SidebarComponent {
 
   switchDarkMode(){
     this.checkboxControl.value ? this.store.dispatch(darkModeON()) : this.store.dispatch(darkModeOFF());
-
   }
 
 }

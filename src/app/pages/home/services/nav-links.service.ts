@@ -19,27 +19,27 @@ export class NavLinksService {
       },
       {
         name: 'Perfil',
-        link: 'inicio/perfil',
+        link: '/inicio/perfil',
       },
       {
         name: 'Divisas',
-        link: 'inicio/divisas',
+        link: '/inicio/divisas',
       },
       {
         name: 'Ingresos' ,
-        link: 'inicio/ingresos',
+        link: '/inicio/ingresos',
       },
       {
         name: 'Egresos',
-        link: 'inicio/egresos',
+        link: '/inicio/egresos',
       },
       {
         name: 'Plazo Fijo',
-        link: 'inicio/plazo-fijo'
+        link: '/inicio/plazo-fijo'
       },
       {
         name: 'Prestamos',
-        link: 'inicio/prestamos'
+        link: '/inicio/prestamos'
       },
       {
         name: 'Contactanos',
@@ -82,7 +82,7 @@ export class NavLinksService {
         name: 'Prestamos',
         link: 'inicio/prestamos',
         svg: NAV_SVGS.prestamos
-      }
+      },
     ];
 
   }
