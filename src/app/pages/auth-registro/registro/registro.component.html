@@ -219,7 +219,38 @@
                             </p>
                         </div>
                     </div>
-                    
+
+                    <!--======================Confirmar contraseña===================-->
+                    <div class="form-control h-28">
+                        <label for="password" class="form-label label">
+                            <span class="label-text text-white font-bold">Confirmar contraseña</span>
+                        </label>
+
+                        <input type="password" formControlName="confirmPassword" [class.border-danger]="MailValid"
+                            class="input input-bordered" />
+
+                        
+
+                        <ng-container *ngIf="ConfirmPassword?.errors?.['minlength'];
+                        else second_condition_confirmPassword">
+                            <span class="text-red-500 text-xs">La contraseña debe tener al menos 8 caracteres.</span>
+                        </ng-container>
+                        <ng-template #second_condition_confirmPassword>
+                            <ng-container class="w-full min-h-max"
+                             *ngIf="ConfirmPassword?.touched && ConfirmPassword?.hasError('passwordMismatch');
+                             else third_condition_confirmPassword">
+                            <span class="text-red-500 text-xs">Las contraseñas deben coincidir.</span>
+                            </ng-container> 
+                        </ng-template>
+                        <ng-template #third_condition_confirmPassword>
+                            <ng-container class="w-full min-h-max"
+                            *ngIf="ConfirmPassword?.hasError('required') && ConfirmPassword?.touched">
+                                <span class="text-red-500 text-xs">Este campo es requerido.</span>
+                            </ng-container>
+                        </ng-template>
+                    </div>
+
+                    <!--====================== Botones ===================-->
                     <div>
                         <label class="label cursor-pointer w-fit mt-2">
                             <div class="flex flex-col h-8">
