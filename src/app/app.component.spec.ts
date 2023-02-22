@@ -11,9 +11,9 @@ describe('AppComponent', () => {
         TESTING_MODULES
       ],
       declarations: [
-        AppComponent,
-        
-      ],providers: [TESTING_PROVIDERS]
+        AppComponent
+      ],
+      providers:[TESTING_PROVIDERS]      
     }).compileComponents();
   });
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { openModal } from '../../states/modalState/modal.actions';
-import { ModalState } from '../../states/modalState/modal.state';
+import { ModalState } from 'src/app/shared/states/modalState/modal.state';
+import { openModal } from 'src/app/shared/states/modalState/modal.actions';
 
 
 @Component({

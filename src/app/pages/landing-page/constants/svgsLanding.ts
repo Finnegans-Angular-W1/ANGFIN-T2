@@ -53,6 +53,4 @@ const cardSVG:string = `                            <svg class="absolute top-0 r
 </g>
 </svg>`
 
-
-
 export const CARD_SVG = cardSVG;

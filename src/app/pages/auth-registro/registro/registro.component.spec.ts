@@ -22,8 +22,6 @@ const mockData = {
   email: 'juan.perez@example.com'
 };
 
-
-
 describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
@@ -41,6 +39,7 @@ describe('RegistroComponent', () => {
 
     store = TestBed.inject(Store);
     spyOn(store, 'dispatch').and.callThrough();//"espiamos" el dispatch del store
+    // spyOn(store, 'select').and.callThrough();//Para poder hacer el mock del observable del selector( getModalAction )
 
     fixture.detectChanges();
   });
@@ -60,7 +59,6 @@ describe('RegistroComponent', () => {
     const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    //Name and lastname not required
     const password = component.form.controls['password'];
     const email = component.form.controls['email'];
     const conditionsTerms = component.form.controls['conditionsTerms'];
@@ -74,6 +72,7 @@ describe('RegistroComponent', () => {
     component.onEnviar();
     fixture.detectChanges();
 
+    //Name and lastname not required
     expect(password.errors).not.toBeNull();//!toBeNull()  (Negado)
     expect(email.errors).not.toBeNull();
     expect(conditionsTerms.errors).not.toBeNull();

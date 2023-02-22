@@ -9,7 +9,6 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { AlertState } from '../state/states/alertState/alert.state';
-
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
