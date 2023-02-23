@@ -1,1 +1,38 @@
-<p>prestamos works!</p>
+<div class="card w-96 bg-[#f2f2f2] shadow-xl text-primary-content">
+    <div class="card-body">
+      <h2 class="card-title">Inversiones</h2>
+      <label>Cantidad a invertir</label>
+        <input type="number" id="inversionInicial" placeholder="Ingrese cantidad" 
+            data-type="currency" required class="input 
+              input-bordered input-secondary w-full max-w-xs" 
+              (input)="prestamo($event)">
+      <label>Plazo</label>
+        <select type="date" id="fecha" placeholder="" required (change)="plazoSeleccionado($event)" 
+            class="input input-bordered input-secondary w-full max-w-xs">
+          <option value="" disabled selected>Seleccionar plazo</option>
+          <option value="30"></option>
+          <option value="60"></option>
+          <option value="90"></option>
+          <option value="120"></option> 
+        </select> 
+      <label>Fecha de finalización</label>
+        <label class="textarea textarea-bordered textarea-success w-full 
+          max-w-xs text-[#97a2a8]">
+          {{ calcularFechaFinal() }}</label>
+      <label>Ganancia</label>
+      <label class="textarea textarea-bordered textarea-success w-full 
+        max-w-xs text-[#97a2a8]">
+        {{ calcularCuota()}}</label>
+      <label>Total</label>
+      <label class="textarea textarea-bordered textarea-success w-full 
+        max-w-xs text-[#97a2a8]">
+        {{ calcularTotal()  }}</label>
+      <br>
+      <div class="card-actions justify-center">
+        <button class="btn border-transparent text-white 
+          bg-[#b3bec5]">Cancelar</button>
+        <button class="btn border-transparent text-white 
+          bg-[#e785e3]">Invertir</button>
+      </div>
+    </div>
+  </div>

@@ -19,6 +19,13 @@
         <label class="textarea textarea-bordered textarea-success w-full 
           max-w-xs text-[#97a2a8]">
           {{ calcularFechaFinal() }}</label>
+      <div class="card-actions justify-center">
+        <button class="btn border-transparent text-white 
+          bg-[#b3bec5]">Cancelar</button>
+        <button class="btn border-transparent text-white 
+          bg-accent">Simular</button>
+      </div>
+      <br>
       <label>Ganancia</label>
       <label class="textarea textarea-bordered textarea-success w-full 
         max-w-xs text-[#97a2a8]">
@@ -28,11 +35,7 @@
         max-w-xs text-[#97a2a8]">
         {{ calcularTotal() | currency  }}</label>
       <br>
-      <div class="card-actions justify-center">
-        <button class="btn border-transparent text-white 
-          bg-[#b3bec5]">Cancelar</button>
-        <button class="btn border-transparent text-white 
-          bg-[#e785e3]">Invertir</button>
-      </div>
+      <button class="btn border-transparent text-white 
+          bg-accent">Invertir</button>
     </div>
   </div>
