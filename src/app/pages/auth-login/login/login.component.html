@@ -1,11 +1,11 @@
-<div class="hero min-h-screen bg-base bg-cloud-pink-login ">
+<div class="hero min-h-screen bg-base bg-cloud-pink-login flex-col justify-center overflow-hidden">   
     <div class="hero-content flex space-x-32"> 
 
         <div class="hidden md:shrink md:flex md:justify-center md:max-lg:pl-16" style="height: 89%;">
             <img src="../../../../assets/home/Login.png" alt="">
         </div>
 
-        <div class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center md:max-lg:pr-16">
+        <div class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center xs:max-sm:pr-16  md:max-lg:pr-16">
 
             <form [formGroup]="form" (ngSubmit)="onEnviar()">
                 
@@ -16,7 +16,8 @@
                         <span class="label-text text-black font-bold">Correo electrónico</span>
                     </label>
 
-                    <input type="email" formControlName="email" class="input input-bordered text-black focus:border-accent" />
+                    <input type="email" formControlName="email" 
+                        class="input input-bordered text-black focus:border-accent" />
                 </div>
 
                 <div *ngIf="Mail?.errors && Mail?.touched">
