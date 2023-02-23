@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cargar-saldos.component.scss']
 })
 export class CargarSaldosComponent implements OnInit {
- 
+  cargaSaldosTitle= "Ingresos";
+
   constructor() {  
   }
 
