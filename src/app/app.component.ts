@@ -1,3 +1,4 @@
+import { NavigationEnd, Router } from '@angular/router';
 import { getDarkMode } from './core/state/states/darkmodeState/darkmode.selectors';
 import { getLoaderShow, getLoaderMessage } from './core/state/states/loaderState/loader.selectors';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ import { getAlertShow, getAlertMessage, getAlertType } from './core/state/states
 export class AppComponent implements OnInit {
   title = 'Alky Bank';
 
+  actualRoute:string = '';
   
   showAlert$:Observable<boolean>;
   messageAlert$:Observable<string>;
@@ -26,7 +28,10 @@ export class AppComponent implements OnInit {
 
   darkMode$:Observable<boolean>;
 
-  constructor(private store:Store<AppState>) { 
+  constructor(
+    private store:Store<AppState>,
+    private router:Router
+    ) { 
     this.showAlert$ = this.store.select(getAlertShow);
     this.messageAlert$ = this.store.select(getAlertMessage);
     this.typeAlert$ = this.store.select(getAlertType);
@@ -35,6 +40,13 @@ export class AppComponent implements OnInit {
 
     this.showLoader$ = this.store.select(getLoaderShow);
     this.messageLoader$ = this.store.select(getLoaderMessage);
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.actualRoute = event.url;
+        // console.log('La ruta actual es:', event.url);
+      }
+    });
   }
 
   ngOnInit(): void {  }

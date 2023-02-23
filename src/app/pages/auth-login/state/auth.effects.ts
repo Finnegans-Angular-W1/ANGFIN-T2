@@ -65,7 +65,7 @@ export class AuthEffects {
                     map(( respuesta:User ) => {
                         console.log('loginSuccessWithAuthMe$');//?Borrar console.log
                         this.store.dispatch(hideLoader());
-                        this.redirect.redirectTo('/home');
+                        this.redirect.redirectTo('/inicio');
                         return AuthActions.authMe({user:respuesta as User});
                     }),
                     catchError( (error) => {
@@ -85,7 +85,7 @@ export class AuthEffects {
             ofType(AuthActions.logout),
             map((_)=>{
                 localStorage.removeItem('userExpiration');
-                this.redirect.redirectTo('/login');
+                this.redirect.redirectTo('/iniciar-sesion');
                 //TODO: Alert (Session finalizada correctamente.)
             })
         );
@@ -138,7 +138,7 @@ export class AuthEffects {
                 .pipe(
                     map((_) => {
                         this.store.dispatch(hideLoader());//? TAP?
-                        this.redirect.redirectTo('/login');
+                        this.redirect.redirectTo('/iniciar-sesion');
                         return AuthActions.registerSuccess();
                     }),
                     catchError((error:ErrorResponse ) => {

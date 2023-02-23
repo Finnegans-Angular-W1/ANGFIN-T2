@@ -22,6 +22,9 @@ export class SidebarComponent {
 
   checkboxControl:FormControl = new FormControl(false);
 
+  checkboxMobile:FormControl = new FormControl(false);
+  openMobileMenu:boolean = false;
+
   constructor(
     private navLinksService:NavLinksService,
     private store:Store<AuthState | DarkModeState>
@@ -35,13 +38,12 @@ export class SidebarComponent {
     this.store.dispatch(logout());
   }
 
+  switchMobile(){
+    this.openMobileMenu = this.checkboxMobile.value ? true : false;
+  }
+
   switchDarkMode(){
-    if( this.checkboxControl.value ){
-      this.store.dispatch(darkModeON());
-    }else{
-      this.store.dispatch(darkModeOFF());
-    }
-      
+    this.checkboxControl.value ? this.store.dispatch(darkModeON()) : this.store.dispatch(darkModeOFF());
   }
 
 }
