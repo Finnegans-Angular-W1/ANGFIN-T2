@@ -19,14 +19,14 @@ export class ProfileComponent implements OnInit {
   modalInfo = { title:'Edición del Usuario', subtitle:'' }
   user: User = { } as User;
 
-  constructor(private store: Store<ModalState>, private _store: Store<AuthState> ) { }
+  constructor(private store: Store<ModalState | AuthState> ) { }
 
   ngOnInit(): void {
-    this._store.select(getUser)
+    this.store.select(getUser)
       .pipe(
         take(1)
         )
-        .subscribe( (authMe) => { this.user = authMe.first_name, authMe.last_name, authMe.email
+        .subscribe( (auth) => { this.user = auth 
       });
   }
 
