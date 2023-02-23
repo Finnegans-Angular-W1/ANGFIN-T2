@@ -27,7 +27,7 @@ export class TransactionListComponent implements OnInit {
          // this.transaction = resp.data;
          // });
 
-     this.httpService.get<Transaction>(this.apiUrl + "/transactions", true)
+     this.httpService.get<Transaction>(this.apiUrl + "/transactions")
          .subscribe( (resp:any) => {
          console.log(resp);
           this.transaction = resp.data;
