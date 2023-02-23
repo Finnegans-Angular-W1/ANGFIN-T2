@@ -13,37 +13,51 @@ export class TransactionListComponent implements OnInit {
   transaction: Transaction[] = [];
   opcionFiltrado !: string;
 
+  private apiUrl: string = 'http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com' ;
+
   textoBuscado !: any;
   arrayFiltrado = []
   
-  constructor(private transactionsService: TransactionsService) { } //, httpService: HttpService) { }
+  constructor(private httpService: HttpService, private transactionsService: TransactionsService) { }  
 
   ngOnInit() {
-    //this.httpService.get<Transaction>("/transactions")
-      //      .subscribe( (resp:any) => {
-        //      console.log(resp);
-          //    this.transaction = resp.data;
-            //});
+      //this.transactionsService.getTransactions()
+        // .subscribe( (resp:any) => {
+          // console.log(resp);
+         // this.transaction = resp.data;
+         // });
 
-    this.transactionsService.getTransactions()
-            .subscribe( (resp:any) => {
-              console.log(resp);
-              this.transaction = resp.data;
-            });
+     this.httpService.get<Transaction>(this.apiUrl + "/transactions")
+         .subscribe( (resp:any) => {
+         console.log(resp);
+          this.transaction = resp.data;
+        });
   }
   
   opcionElegida(event: any){
     this.opcionFiltrado = event.target.value;
-
   }
 
-  filtradoPorPalabra(){
-    
+  filtradoPorPalabra(event: any){
+    var operacionElegida = event.target.value;
+    const arrayFiltrado = this.transaction.filter(function (funcion){
+      return funcion.concept = operacionElegida;
+    });
   }
 
   filtradoPorOperacion(event: any){
     var operacionElegida = event.target.value;
-    //const datosFiltrados = this.transaction.filter();
+    const arrayFiltrado = this.transaction.filter(function (funcion){
+      return funcion.type = operacionElegida;
+    });
+  }
+
+  filtrarTabla(event: any){
+    if (this.opcionFiltrado ==  "palabraOption"){
+      this.filtradoPorPalabra(event);
+    } else {
+      this.filtradoPorOperacion(event);
+    }
   }
 
 }
