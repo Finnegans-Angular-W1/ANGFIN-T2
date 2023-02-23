@@ -21,6 +21,7 @@ import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
+import { ModalGastosComponent } from './components/modal-gastos/modal-gastos.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PrestamosComponent } from './components/prestamos/prestamos.component';
     NavStaticLinkComponent,
     CargarGastosComponent,
     ProfileComponent,
-    PrestamosComponent
+    PrestamosComponent,
+    ModalGastosComponent
   ],
   imports: [
     CommonModule,
