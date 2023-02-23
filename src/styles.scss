@@ -65,3 +65,27 @@ html, body { height: 100%; }
     background-size: cover;
     // background-size: 500px 500px;
 }
+
+.bg-cloud-pink-lower-left{
+    background: url('./assets/home/cloud-lower-left.svg');
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}
+
+.bg-cloud-pink-lower-right{
+    background: url('./assets/home/cloud-lower-right.svg') ;
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}
+
+.bg-cloud-pink-login{
+    background: url('./assets/home/Fondo-login.svg');
+    /* background-color: #19181a; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}
