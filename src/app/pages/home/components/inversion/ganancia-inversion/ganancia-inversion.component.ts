@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-ganancia-inversion',
@@ -13,20 +14,34 @@ export class GananciaInversionComponent implements OnInit {
   
   private plazo!: number;
   private fechaNueva !: Date;
-  private inversionInicial!: number;
+  private inversionInicial: number = 0;
+
+  plazoDias:number = 0;
+
+  inversionBehavior: BehaviorSubject<number> = new BehaviorSubject(0);
+
+  getInversionObservable(){
+    return this.inversionBehavior.asObservable();
+  }
+  setInversionObservable(num:number){
+    this.inversionBehavior.next(num);
+  }
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    ;   
+    
   }
   
   agregarInversionInicial(event: Event){
+    console.log(event);
+    console.log((<HTMLInputElement>event.target).value);
     this.inversionInicial = Number((<HTMLInputElement>event.target).value);
   }
 
   plazoSeleccionado(event: Event){
-    this.plazo= (Number((<HTMLInputElement>event.target).value))*86400000;
+    this.plazoDias = Number((<HTMLInputElement>event.target).value);
+    this.plazo = (Number((<HTMLInputElement>event.target).value)) * 86400000;
   }
 
   calcularFechaFinal(){
@@ -39,11 +54,16 @@ export class GananciaInversionComponent implements OnInit {
   }
 
   calcularGanancia(){
-    return this.ganancia = (this.inversionInicial*this.tasaInversion);
+    return this.ganancia = (this.inversionInicial * this.tasaInversion);
   }
 
   calcularTotal() {
-    return this.ganancia + this.inversionInicial;
+    const plusMesesAcumulados = ( (this.plazoDias / 30) * 0.0037);
+    return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial;
+  }
+
+  onInvertirButton(){
+    this.setInversionObservable(this.inversionInicial);
   }
 
 }
