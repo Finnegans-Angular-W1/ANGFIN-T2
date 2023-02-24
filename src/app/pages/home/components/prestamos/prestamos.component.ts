@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
+import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
 
 @Component({
   selector: 'app-prestamos',
@@ -14,7 +18,6 @@ export class PrestamosComponent implements OnInit {
   //Mostrar contenido luego del click
   mostrarInfo:boolean = true;
   visible:boolean = false;
-  deshabilitarBoton: boolean = false;
     
   private plazo!: number;
   private montoPrestamo !: number;
@@ -24,10 +27,18 @@ export class PrestamosComponent implements OnInit {
       capital: number, montoInteresConIva: number, cuotaFinal: number}> = [];
 
   private cuotaFija !: number; //Es el valor de la cuota calculado por formula usando el monto del prestamo, el interes y el plazo
+  
+  form: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder,
+    private store:Store<AuthState | AlertState>
+  ) {   }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1)]],
+      plazo: ['', [Validators.required]],
+    });
   }
   
   prestamo(event: Event) {
@@ -42,7 +53,6 @@ export class PrestamosComponent implements OnInit {
     if(this.plazo && this.montoPrestamo) { 
       let mFechaActual = this.fechaActual.setDate(this.fechaActual.getDate());
       let sumaMiliSegundos = new Date (mFechaActual + (this.plazo*2629800000));
-      this.deshabilitarBoton = false;
       return sumaMiliSegundos.toLocaleDateString();
     }
       return;
@@ -72,7 +82,7 @@ export class PrestamosComponent implements OnInit {
   }
 
   
-  simularClick(): void{
+  simularClick(){
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;
   }
@@ -80,7 +90,7 @@ export class PrestamosComponent implements OnInit {
   cancelarClick(){
     this.mostrarInfo = true; //not equal to condition
     this.visible = false;
-    this.deshabilitarBoton = true;
+   
   }
   
 }

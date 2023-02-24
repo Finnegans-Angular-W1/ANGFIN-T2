@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
@@ -18,10 +18,13 @@ export class GananciaInversionComponent implements OnInit {
   //Mostrar contenido luego del click
   mostrarInfo:boolean = true;
   visible:boolean = false;
-  deshabilitarBoton: boolean = true;
   
   private plazo!: number;
-  private inversionInicial!: number;
+  inversionInicial: number = 0;
+
+  plazoDias:number = 0;
+
+  inversionBehavior: BehaviorSubject<any> = new BehaviorSubject({});
 
   form: FormGroup = new FormGroup({});
   
@@ -30,17 +33,29 @@ export class GananciaInversionComponent implements OnInit {
     private store:Store<AuthState | AlertState>
   ) {   }
 
-
   ngOnInit(): void {
-    ;   
+    this.form = this.formBuilder.group({
+      inversionInicial: ['', [Validators.required, Validators.minLength(1)]],
+      plazo: ['', [Validators.required]],
+    });
+  }
+
+  getInversionObservable(){
+    return this.inversionBehavior.asObservable();
+  }
+  setInversionObservable(obj:any){
+    this.inversionBehavior.next(obj);
   }
   
   agregarInversionInicial(event: Event){
+    console.log(event);
+    console.log((<HTMLInputElement>event.target).value);
     this.inversionInicial = Number((<HTMLInputElement>event.target).value);
   }
 
   plazoSeleccionado(event: Event){
-    this.plazo= (Number((<HTMLInputElement>event.target).value))*86400000;
+    this.plazoDias = Number((<HTMLInputElement>event.target).value);
+    this.plazo = (Number((<HTMLInputElement>event.target).value)) * 86400000;
     
   }
 
@@ -48,33 +63,46 @@ export class GananciaInversionComponent implements OnInit {
     if(this.plazo && this.inversionInicial) { 
       let mFechaActual = this.fechaActual.setDate(this.fechaActual.getDate());
       let sumaMiliSegundos = new Date (mFechaActual + this.plazo);
-      this.deshabilitarBoton = false;
       return sumaMiliSegundos.toLocaleDateString();
     }
       return;
   }
 
   calcularGanancia(){
-    return this.ganancia = (this.inversionInicial*this.tasaInversion);
+    return this.ganancia = (this.inversionInicial * this.tasaInversion);
   }
 
   calcularTotal() {
-    return this.ganancia + this.inversionInicial;
+    const plusMesesAcumulados = ( (this.plazoDias / 30) * 0.0037);
+    return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial + plusMesesAcumulados;
   }
 
-  simularClick(): void{
+  onInvertirButton(){
+    this.setInversionObservable({
+        plazodias: this.plazoDias,
+        inversionInicial: this.inversionInicial,
+        total: this.calcularTotal()
+      });
+  }
+
+  simularClick(){
+    this.setInversionObservable({
+      plazodias: this.plazoDias,
+      inversionInicial: this.inversionInicial,
+      total: this.calcularTotal()
+    });
+
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;    
+    
   }
 
   cancelarClick(){
     this.mostrarInfo = true; //not equal to condition
     this.visible = false;
-    this.deshabilitarBoton = true;
     this.inversionInicial = 0;
 
-    
-    
+
   }
 
 }

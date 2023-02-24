@@ -4,6 +4,10 @@
         <app-alert [msg]="(messageAlert$ | async) || ''" [type]="(typeAlert$ | async) || 'error'"></app-alert>
     </ng-container>
 
+    <ng-container *ngIf="actualRoute === '/iniciar-sesion' || actualRoute === '/registrarse'">
+        <app-nav-auth></app-nav-auth>
+    </ng-container>
+
     <ng-container *ngIf="showLoader$ | async">
         <app-loader [message]="(messageLoader$ | async) || 'Cargando...'"></app-loader>
     </ng-container>
