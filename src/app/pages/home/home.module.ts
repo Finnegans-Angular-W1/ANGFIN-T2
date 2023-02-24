@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CambiarMonedaComponent } from './components/cambiar-moneda/cambiar-moneda.component';
 import { GananciaInversionComponent } from "./components/inversion/ganancia-inversion/ganancia-inversion.component";
 
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { HomeComponent } from "./components/home/home.component";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
@@ -21,6 +23,8 @@ import { CargarGastosComponent } from "./components/cargar-gastos/cargar-gastos.
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
+import { ModalGastosComponent } from './components/modal-gastos/modal-gastos.component';
+import { PlazofijoChartComponent } from './components/plazofijo-chart/plazofijo-chart.component';
 
 
 @NgModule({
@@ -39,13 +43,18 @@ import { PrestamosComponent } from './components/prestamos/prestamos.component';
     NavStaticLinkComponent,
     CargarGastosComponent,
     ProfileComponent,
-    PrestamosComponent
+    PrestamosComponent,
+    ModalGastosComponent,
+    PlazofijoChartComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
     CoreModule
   ]
 })

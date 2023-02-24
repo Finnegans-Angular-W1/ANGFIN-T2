@@ -1,0 +1,55 @@
+<label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2" (click)="onCloseModal()">✕</label>
+<h2 class="my-2 text-accent">Editar Gasto</h2>
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <div class="flex h-16 flex-col">
+        <input type="text" name="typeTransaction" id="typeTransaction" placeholder="Tipo de transaccion"
+        disabled
+        class="peer peer input-style disabled" [value]="transactionActual.type" />
+        <label for="typeTransaction" class="label-style"></label>
+    </div>
+    <div class="flex h-16 flex-col">
+        <input type="text" name="amount" id="amount" placeholder="Monto"
+        disabled
+        class="peer peer input-style" [value]="transactionActual.amount"/>
+        <label for="amount" class="label-style"></label>
+    </div>
+    <div class="flex h-16 flex-col">
+        <input type="text" name="date" id="date" placeholder="Fecha"
+        disabled
+        class="peer peer input-style" [value]="transactionActual.date | date : 'dd/MM/yyyy HH:MM'"/>
+        <label for="date" class="label-style"></label>
+    </div>
+    <div class="flex h-16 flex-col mb-8">
+        <div class="relative mt-2">
+            <input formControlName="concept"
+            [ngClass]="{'invalid-input': touchedAndInvalid('concept'),
+            'valid-or-untouched-input': !touchedAndInvalid('concept')}"
+            type="text" name="concept" id="concept" placeholder="Descripcion"
+                class="peer peer input-style"/>
+            <label for="concept" 
+            [ngClass]="{'invalid-label': touchedAndInvalid('concept'),
+            'valid-label': !touchedAndInvalid('concept')}"
+            class="label-style">Descripcion / Concepto</label>
+        </div>
+        <ng-container class="w-full min-h-max"
+        *ngIf="touchedAndHasError('concept', 'required');
+        else second_transaction_amount">
+            <span class="text-red-500 text-xs">Este campo es requerido.</span>
+        </ng-container>
+        <ng-template #second_transaction_amount>
+            <ng-container class="w-full min-h-max"
+            *ngIf="touchedAndHasError('concept', 'minlength'); else third_transaction_amount">
+                <span class="text-red-500 text-xs">El concepto/descripcion debe contener al menos 8 caracteres</span>
+            </ng-container>
+        </ng-template>
+        <ng-template #third_transaction_amount>
+            <ng-container class="w-full min-h-max"
+            *ngIf="touchedAndHasError('concept', 'maxlength')">
+                <span class="text-red-500 text-xs">El concepto/descripcion debe tener un maximo de 35 caracteres</span>
+            </ng-container>
+        </ng-template>
+    </div>
+    <div class="mt-2 mb-4">
+        <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton" [disabled]="transactionForm.invalid">Editar Concepto</button>
+    </div>
+</form>

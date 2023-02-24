@@ -3,6 +3,8 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { Transaction } from '../../interfaces/transaction';
 import { TransactionsService } from '../../services/transactions.service';
 
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-transaction-list',
@@ -21,17 +23,11 @@ export class TransactionListComponent implements OnInit {
   constructor(private httpService: HttpService, private transactionsService: TransactionsService) { }  
 
   ngOnInit() {
-      //this.transactionsService.getTransactions()
-        // .subscribe( (resp:any) => {
-          // console.log(resp);
-         // this.transaction = resp.data;
-         // });
-
-     this.httpService.get<Transaction>(this.apiUrl + "/transactions")
-         .subscribe( (resp:any) => {
-         console.log(resp);
-          this.transaction = resp.data;
-        });
+    this.httpService.get<Transaction>(this.apiUrl + "/transactions")
+        .subscribe( (resp:any) => {
+        console.log(resp);
+        this.transaction = resp.data;
+      });
   }
   
   opcionElegida(event: any){
@@ -58,6 +54,19 @@ export class TransactionListComponent implements OnInit {
     } else {
       this.filtradoPorOperacion(event);
     }
+  }
+
+  openEdit:boolean = false;
+
+  idBehaviorSubject = new BehaviorSubject<number>(0);
+
+  getIdObservable(){
+    return this.idBehaviorSubject.asObservable();
+  }
+
+  openEditModal(id:number){
+    this.idBehaviorSubject.next(id);
+    this.openEdit = true;
   }
 
 }
