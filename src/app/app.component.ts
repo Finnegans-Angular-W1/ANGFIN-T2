@@ -4,7 +4,7 @@ import { getLoaderShow, getLoaderMessage } from './core/state/states/loaderState
 import { Component, OnInit } from '@angular/core';
 
 import { AppState } from 'src/app/core/state/app.state';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { getAlertShow, getAlertMessage, getAlertType } from './core/state/states/alertState/alert.selectors';
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   title = 'Alky Bank';
 
   actualRoute:string = '';
+  route$:BehaviorSubject<string> = new BehaviorSubject<string>('');
   
   showAlert$:Observable<boolean>;
   messageAlert$:Observable<string>;
@@ -40,15 +41,21 @@ export class AppComponent implements OnInit {
 
     this.showLoader$ = this.store.select(getLoaderShow);
     this.messageLoader$ = this.store.select(getLoaderMessage);
+  }
 
+  getRoute():Observable<string>{
+    return this.route$.asObservable();
+  }
+
+  ngOnInit(): void { 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.actualRoute = event.url;
+        this.route$.next(event.url);
         // console.log('La ruta actual es:', event.url);
       }
     });
   }
 
-  ngOnInit(): void {  }
 
 }

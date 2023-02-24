@@ -43,7 +43,7 @@ export class NavLinksService {
       },
       {
         name: 'Contactanos',
-        link: 'TODOHacerModalContacto',
+        link: '/inicio/contacto',
       },
     ];
 
@@ -83,6 +83,11 @@ export class NavLinksService {
         link: 'inicio/prestamos',
         svg: NAV_SVGS.prestamos
       },
+      {
+        name: 'Contactanos',
+        link: '/inicio/contacto',
+        svg: NAV_SVGS.contactanos
+      }
     ];
 
   }

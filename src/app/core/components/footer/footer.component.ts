@@ -8,7 +8,7 @@ import { Input, Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  @Input() RouteActual:Observable<string> = of('');
+  @Input() routeActual$:Observable<string> = of('');
 
   constructor() { }
 

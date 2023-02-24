@@ -6,6 +6,7 @@ const egresos:string = `<img class="w-[35px] h-[35px]" src="../../../../../asset
 
 const plazoFijo:string = `<img class="w-10 h-10" src="../../../../../assets/images/prestamos.png" alt="prestamos">`;
 const prestamos:string = `<img class="w-10 h-10" src="../../../../../assets/images/send.png" alt="transferencias">`;
+const contactanos:string = `<img class="w-10 h-10" src="../../../../../assets/images/contacts.png" alt="contactos">`;
 
 export const NAV_SVGS = {
     profile: profileSvg,
@@ -15,4 +16,5 @@ export const NAV_SVGS = {
     egresos: egresos,
     prestamos: prestamos,
     plazoFijo: plazoFijo,
+    contactanos: contactanos
 }

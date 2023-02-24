@@ -15,7 +15,7 @@
         <router-outlet></router-outlet>    
 
     <ng-container *ngIf="actualRoute === '/' || actualRoute === '/iniciar-sesion' || actualRoute === '/registrarse'">
-        <app-footer></app-footer>
+        <app-footer [routeActual$]="getRoute()"></app-footer>
     </ng-container>
 
 </div>

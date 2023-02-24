@@ -70,9 +70,6 @@
   </table>
 </div>
 
-<label for="my-modal-4" class="btn">open modal</label>
-<!-- Put this part before </body> tag -->
-<!-- <input type="checkbox" id="my-modal-4" class="modal-toggle" /> -->
 <label [ngClass]="{'modal-open' : openEdit,  '' : !openEdit}" for="my-modal-4" class="modal cursor-pointer">
   <label class="modal-box relative" for="">
     <app-modal-gastos [id$]="getIdObservable()" (closeModal)="openEdit = !$event"></app-modal-gastos>
