@@ -12,7 +12,7 @@ export class GananciaInversionComponent implements OnInit {
   private fechaActual = new Date ();
   
   private plazo!: number;
-  private fechaNueva !: Date;
+  //private fechaNueva !: Date;
   private inversionInicial!: number;
 
   constructor(private http: HttpClient) { }
@@ -45,5 +45,7 @@ export class GananciaInversionComponent implements OnInit {
   calcularTotal() {
     return this.ganancia + this.inversionInicial;
   }
+
+  
 
 }

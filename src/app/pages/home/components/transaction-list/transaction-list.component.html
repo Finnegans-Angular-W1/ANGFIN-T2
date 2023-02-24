@@ -1,5 +1,5 @@
 <div class="dropdown dropdown-right">
-  <label tabindex="0" class="px-2 py-1 uppercase text-xl font-['Kanit'] font-semibold text-[#9F0A48]
+  <label tabindex="0" class="px-2 py-1 uppercase text-xl font-['Kanit'] font-normal text-[#9F0A48]
     flex rounded-md w-fit shadow-3xl my-2 sm:hover:scale-[1.03] transition duration-300">
     Filtro
   </label>
@@ -10,7 +10,7 @@
       <div>
         <select name="selectorInicial" class="select select-bordered w-full max-w-xs" (change)="opcionElegida($event)">
           <option disabled selected>Elegir filtrado</option>
-          <!--option id="fechaOption" value="fechaOption">Fecha</option-->
+          <!--ption id="fechaOption" value="fechaOption">Fecha</option-->
           <option id="palabraOption" value="palabraOption">Palabra</option>
           <option id="operacionOption" value="operacionOption">Tipo de operación</option>
         </select>
@@ -25,7 +25,7 @@
       
       <div id="palabra" *ngIf="opcionFiltrado == 'palabraOption'">
         <p class="text-white">Filtrar por palabra</p>
-        <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" oninput="filtradoPorPalabra($event)"/>
+        <input type="text" placeholder="Escribir palabra" class="input input-bordered w-full max-w-xs" (oninput)="filtradoPorPalabra($event)"/>
       </div>
       
       <div id="operacion" *ngIf="opcionFiltrado == 'operacionOption'">

@@ -27,7 +27,7 @@ export class TransactionListComponent implements OnInit {
          // this.transaction = resp.data;
          // });
 
-     this.httpService.get<Transaction>(this.apiUrl + "/transactions", true)
+     this.httpService.get<Transaction>(this.apiUrl + "/transactions")
          .subscribe( (resp:any) => {
          console.log(resp);
           this.transaction = resp.data;
@@ -39,10 +39,11 @@ export class TransactionListComponent implements OnInit {
   }
 
   filtradoPorPalabra(event: any){
-    var operacionElegida = event.target.value;
+    var operacionElegida = String ((<HTMLInputElement>event.target).value);
     const arrayFiltrado = this.transaction.filter(function (funcion){
       return funcion.concept = operacionElegida;
     });
+    console.log(arrayFiltrado);
   }
 
   filtradoPorOperacion(event: any){
@@ -50,6 +51,7 @@ export class TransactionListComponent implements OnInit {
     const arrayFiltrado = this.transaction.filter(function (funcion){
       return funcion.type = operacionElegida;
     });
+    console.log(arrayFiltrado);
   }
 
   filtrarTabla(event: any){
