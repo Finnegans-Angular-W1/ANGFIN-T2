@@ -1,10 +1,11 @@
-<div class="hero-content flex space-x-32"> 
+<div class="hero min-h-screen flex-col justify-center overflow-hidden bg-cloud-pink-login" [ngClass]="{'bg-cloud-pink-login-darkmode': darkmode$ | async}">  <!-- bg-base  -->
+    <div class="hero-content flex space-x-32"> 
 
         <div class="hidden md:shrink md:flex md:justify-center md:max-lg:pl-16" style="height: 89%;">
             <img src="../../../../assets/home/Login.png" alt="">
         </div>
 
-        <div class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center xs:max-sm:pr-16  md:max-lg:pr-16">
+        <div class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center xs:max-sm:pr-16 md:max-lg:pr-16 dark:ring-gray-900/50">
 
             <form [formGroup]="form" (ngSubmit)="onEnviar()">
                 

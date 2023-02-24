@@ -1,17 +1,11 @@
-<div class="hero min-h-screen flex-col justify-center overflow-hidden bg-base bg-cloud-pink-login">  
-    
-    <!-- <div class="flex w-full justify-center">
-        <h3 class="font-[Kanit] 
-        text-xl md:text-4xl absolute translate-y-8 lg:translate-y-16 font-semibold -skew-y-2">Registrarse en <span class="text-2xl md:text-5xl text-accent">Alkemy Bank Wallet!</span></h3>
-    </div> -->
-
+<div class="dark:bg-stone-800  hero min-h-screen flex-col justify-center overflow-hidden bg-cloud-pink-register">  
         <div class="hero-content flex space-x-32">
             
             <div class="hidden mr-16 md:shrink md:flex md:justify-center">
                 <img src="../../../../assets/home/Registro.png" alt="">
             </div>
 
-            <div class="card flex justify-center w-full max-w-sm shadow-2xl bg-[#B65AB0] neumorphism ml-16 my-16">
+            <div class="card flex justify-center w-full max-w-sm shadow-2xl bg-gray-600 dark:bg-ring-gray-900/50 neumorphism ml-16 mt-36 sm:my-16">
                 <div class="card-body">
             
                     <form [formGroup]="form" (ngSubmit)="onEnviar()">
@@ -147,8 +141,7 @@
                     </form>
             </div>
 
-        </div>
-
+        </div>   
 
 <app-modal [modalInfo]="modalInfo"></app-modal>
 

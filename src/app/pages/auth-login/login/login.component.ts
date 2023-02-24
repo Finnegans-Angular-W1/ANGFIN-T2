@@ -6,6 +6,8 @@ import { AuthState } from '../state/auth.state';
 import { AlertState } from './../../../core/state/states/alertState/alert.state';
 import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
+import { Observable } from 'rxjs';
+import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -13,11 +15,15 @@ import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions
 })
 export class LoginComponent implements OnInit {
   
+  darkmode$: Observable<boolean>
+
   form: FormGroup = new FormGroup({});
   constructor(
     private formBuilder: FormBuilder,
     private store:Store<AuthState | AlertState>
-  ) {   }
+  ) {  
+    this.darkmode$ = store.select(getDarkMode)
+   }
 
 
   ngOnInit() {
