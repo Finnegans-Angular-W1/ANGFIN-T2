@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Input, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+
+  @Input() RouteActual:Observable<string> = of('');
 
   constructor() { }
 
