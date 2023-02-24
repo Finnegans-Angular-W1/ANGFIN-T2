@@ -63,7 +63,6 @@ html, body { height: 100%; }
     background-color: #19181a;
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
 }
 
 .bg-cloud-pink-lower-left{
@@ -71,7 +70,6 @@ html, body { height: 100%; }
     background-color: #19181a;
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
 }
 
 .bg-cloud-pink-lower-right{
@@ -79,15 +77,12 @@ html, body { height: 100%; }
     background-color: #19181a;
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
 }
 
 .bg-cloud-pink-login{
     background: url('./assets/home/Fondo-login.svg');
-    /* background-color: #19181a; */
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
 }
 
 .bg-cloud-pink-login-darkmode{
@@ -96,10 +91,14 @@ html, body { height: 100%; }
     background-size: cover;
 }
 
-.bg-cloud-pink-register{
-    background: url('./assets/home/bg-pink-register.svg');
-    /* background-color: #19181a; */
+.bg-cloud-register{
+    background: url('./assets/home/bg-register.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
+}
+
+.bg-cloud-register-darkmode{
+    background: url('./assets/home/bg-register-darkmode.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
