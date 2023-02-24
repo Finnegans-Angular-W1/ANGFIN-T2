@@ -47,20 +47,28 @@ export class GananciaInversionComponent implements OnInit {
     this.inversionBehavior.next(obj);
   }
   
-  agregarInversionInicial(event: Event){
-    console.log(event);
-    console.log((<HTMLInputElement>event.target).value);
-    this.inversionInicial = Number((<HTMLInputElement>event.target).value);
+  getInversionInicial(){
+    return this.form.get("inversionInicial");
   }
+  
+  getPlazo(){
+    return this.form.get("plazo")
+  }
+  //agregarInversionInicial(event: Event){
+    //console.log(event);
+    //console.log((<HTMLInputElement>event.target).value);
+    //this.inversionInicial = Number((<HTMLInputElement>event.target).value);
+  //}
 
-  plazoSeleccionado(event: Event){
-    this.plazoDias = Number((<HTMLInputElement>event.target).value);
-    this.plazo = (Number((<HTMLInputElement>event.target).value)) * 86400000;
+  //plazoSeleccionado(event: Event){
+    //this.plazoDias = Number((<HTMLInputElement>event.target).value);
+    //this.plazo = (Number((<HTMLInputElement>event.target).value)) * 86400000;
     
-  }
+  //}
 
   calcularFechaFinal(){
-    if(this.plazo && this.inversionInicial) { 
+    if(this.form.valid) { 
+      this.plazo = (Number(this.getPlazo()?.value)) * 86400000;
       let mFechaActual = this.fechaActual.setDate(this.fechaActual.getDate());
       let sumaMiliSegundos = new Date (mFechaActual + this.plazo);
       return sumaMiliSegundos.toLocaleDateString();
@@ -69,10 +77,13 @@ export class GananciaInversionComponent implements OnInit {
   }
 
   calcularGanancia(){
+    this.inversionInicial=this.getInversionInicial()?.value
     return this.ganancia = (this.inversionInicial * this.tasaInversion);
   }
 
   calcularTotal() {
+    this.plazoDias = this.getPlazo()?.value;
+    this.inversionInicial = this.getInversionInicial()?.value
     const plusMesesAcumulados = ( (this.plazoDias / 30) * 0.0037);
     return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial + plusMesesAcumulados;
   }
@@ -98,6 +109,10 @@ export class GananciaInversionComponent implements OnInit {
   }
 
   cancelarClick(){
+    if (this.form.valid) {
+      this.form.reset();
+    }
+
     this.mostrarInfo = true; //not equal to condition
     this.visible = false;
     this.inversionInicial = 0;

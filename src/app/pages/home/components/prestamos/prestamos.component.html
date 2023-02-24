@@ -12,12 +12,12 @@
             <label>Cantidad a Solicitar</label>
             <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" 
                 data-type="currency" class="input input-bordered input-secondary w-full max-w-xs" 
-                (input)="prestamo($event)" required>
+                 required>
           </div>
           
           <div class="form-control my-2">
             <label>Plazo en meses</label>
-            <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" (change)="plazoSeleccionado($event)" 
+            <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
                 class="input input-bordered input-secondary w-full max-w-xs" required>
               <option value="" disabled selected>Seleccionar plazo</option>
               <option value="6">6 meses</option>
@@ -34,7 +34,7 @@
           <div class="card-actions items-center">
             <div class="form-control w-36 mx-2">
               <button class="btn border-transparent text-white 
-                bg-[#b3bec5]" (click)="cancelarClick()">Cancelar</button>
+                bg-[#939ca1]" (click)="cancelarClick()">Cancelar</button>
             </div>
             <div class="form-control w-36 mx-2">
               <button id="botonSimular" [disabled]="form.invalid" (click)="simularClick()" 
@@ -46,7 +46,7 @@
         
       
       <ng-container *ngIf="visible">
-        <div id="elementosCalculados" class="card">
+        <div id="elementosCalculados" class="card  text-stone-800">
           <div class="card-body">
             <label class="font-semibold text-stone-800">Fecha de finalización:</label> 
             
@@ -58,10 +58,10 @@
             <label class="w-44 h-6 text-stone-800">
             {{ calcularCuotaFija() | currency }}</label>
     
-            <label class="font-semibold">Total</label>
+            <label class="font-semibold">Total a devolver: </label>
             
             <label class="w-44 h-6 text-stone-800">
-            {{ rellenarArray() }}</label>  
+            {{ calcularTotal() | currency }}</label>  
     
           </div>    
     

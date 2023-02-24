@@ -3,7 +3,7 @@
     <div class="card w-full bg-[#f2f2f2] shadow-xl text-primary-content">
       <div class="card-body place-items-center">
 
-        <div [formGroup]="form" class="w-96 mb-10">
+        <div [formGroup]="form" (ngSubmit)="simularClick()" class="w-96 mb-10">
           
           <div class="form-control my-2">
             <h2 class="card-title">Inversiones</h2>
@@ -14,12 +14,12 @@
             <input type="number" formControlName="inversionInicial" placeholder="Ingrese cantidad" 
               min="1" data-type="currency" required class="input 
                 input-bordered input-secondary w-full max-w-xs" 
-                (input)="agregarInversionInicial($event)">
+                >
           </div>
 
           <div class="form-control mb-2">
             <label>Plazo</label>
-            <select type="date" formControlName="plazo" placeholder="" required (change)="plazoSeleccionado($event)" 
+            <select type="date" formControlName="plazo" placeholder="Elegir plazo en días" required 
               class="input input-bordered input-secondary w-full max-w-xs">
             <option value="" disabled selected>Seleccionar plazo</option>
             <option value="30">30 días</option>
@@ -42,7 +42,7 @@
             <div class="grid grid-cols-2 my-1">
               <div class="form-control w-36 mx-2">
                 <button type="reset" class="btn border-transparent text-white 
-                  bg-[#b3bec5]" (click)="cancelarClick()">Cancelar</button>
+                  bg-[#939ca1]" (click)="cancelarClick()">Cancelar</button>
               </div>
               <div class="form-control w-36 mx-2">
                   <button type="submit" class="btn border-transparent text-white 
