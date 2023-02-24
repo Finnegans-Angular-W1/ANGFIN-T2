@@ -8,6 +8,7 @@ export class CollapseComponent {
 
   @Input() question:string = '';
   @Input() description:string = '';
+  @Input() index:number | undefined;
 
   constructor() { }
 }

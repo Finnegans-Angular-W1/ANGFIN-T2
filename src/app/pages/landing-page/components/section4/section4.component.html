@@ -1,11 +1,12 @@
 <div class="flex justify-around flex-wrap min-h-screen">
-    <div class="w-full text-center mb-16 sm:mb-0">
-        <h2 data-aos="fade" data-aos-duration="1000" data-aos-once="true" class="text-4xl mb-0 pb-0 text-white font-bold tracking-widest my-16 sm:my-0">Preguntas Frecuentes</h2>
+    <div class="w-full text-center mb-16 sm:mb-0 ">
+        <h2 data-aos="fade" data-aos-duration="1000" data-aos-once="true" class="inline-block align-middle text-4xl mb-0 pb-0 text-white font-bold tracking-widest my-16 sm:my-0">Preguntas Frecuentes</h2>
+        <img class="inline-block align-middle w-8 h-8 ml-4" src="../../../../../assets/landing-images/interrogatorio.svg"/>
     </div>
     <ng-container *ngFor="let q of questions; index as i">
         <app-collapse data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" 
         [ngClass]="{'sm:mt-0 mt-20' : i === 5}"
-        class="w-full mx-8 sm:mx-4 sm:w-3/12 h-64 max-h-fit" [question]="q.question" [description]="q.description"></app-collapse>
+        class="w-full mx-8 sm:mx-4 sm:w-3/12 h-64 max-h-fit" [question]="q.question" [description]="q.description" [index]="i"></app-collapse>
     </ng-container>
 </div>
 
