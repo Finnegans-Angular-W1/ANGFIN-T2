@@ -1,12 +1,18 @@
-<div class="card w-96 bg-[#f2f2f2] shadow-xl text-primary-content">
-    <div class="card-body">
+<div class="card w-full bg-[#f2f2f2] shadow-xl text-primary-content">
+  <div class="card-body place-items-center">
+    
+    <div [formGroup]="form" (ngSubmit)="simularClick()">
       <h2 class="card-title">Inversiones</h2>
-      <label>Cantidad a invertir</label>
+      <div class="form-control">
+        <label>Cantidad a invertir</label>
         <input type="number" id="inversionInicial" placeholder="Ingrese cantidad" 
             data-type="currency" required class="input 
               input-bordered input-secondary w-full max-w-xs" 
               (input)="agregarInversionInicial($event)">
-      <label>Plazo</label>
+      </div>
+      
+      <div class="form-control">
+        <label>Plazo</label>
         <select type="date" id="fecha" placeholder="" required (change)="plazoSeleccionado($event)" 
             class="input input-bordered input-secondary w-full max-w-xs">
           <option value="" disabled selected>Seleccionar plazo</option>
@@ -15,27 +21,35 @@
           <option value="90">90 días</option>
           <option value="120">120 días</option> 
         </select> 
-      <label>Fecha de finalización</label>
+      </div>
+      
+      <div class="form-control">
+        <label>Fecha de finalización</label>
         <label class="textarea textarea-bordered textarea-success w-full 
           max-w-xs text-[#97a2a8]">
           {{ calcularFechaFinal() }}</label>
-      <div class="card-actions justify-center">
-        <button class="btn border-transparent text-white 
-          bg-[#b3bec5]">Cancelar</button>
-        <button class="btn border-transparent text-white 
-          bg-accent">Simular</button>
+      </div>
+                  
+      <div class="form-control justify-center">
+        <button type="reset" class="input border-transparent text-white 
+          bg-[#b3bec5]" (click)="cancelarClick()">Cancelar</button>
+        <button type="submit" class="btn border-transparent text-white 
+          bg-accent" (click)="simularClick()" [disabled]="form.invalid" >Simular</button>
       </div>
       <br>
-      <label>Ganancia</label>
-      <label class="textarea textarea-bordered textarea-success w-full 
-        max-w-xs text-[#97a2a8]">
-        {{ calcularGanancia() | currency }}</label>
-      <label>Total</label>
-      <label class="textarea textarea-bordered textarea-success w-full 
-        max-w-xs text-[#97a2a8]">
-        {{ calcularTotal() | currency  }}</label>
-      <br>
-      <button class="btn border-transparent text-white 
-          bg-accent">Invertir</button>
+  
+      <ng-container *ngIf="visible">
+        <label class="font-semibold">Ganancia: </label>
+        <label class="w-full max-w-xs text-stone-700 text-center">
+          {{ calcularGanancia() | currency }}</label>
+        <br>
+        <label class="font-semibold">Total: </label>
+        <label class="w-full max-w-xs text-stone-700 text-center">
+          {{ calcularTotal() | currency  }}</label>
+        <br>
+        <button class="btn border-transparent text-white 
+            bg-accent">Invertir</button>
+      </ng-container>
     </div>
   </div>
+</div>

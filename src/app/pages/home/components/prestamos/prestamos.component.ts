@@ -12,15 +12,16 @@ export class PrestamosComponent implements OnInit {
   private fechaActual = new Date ();
 
   //Mostrar contenido luego del click
-  mostrarInfo:boolean = true
-  visible:boolean = false
+  mostrarInfo:boolean = true;
+  visible:boolean = false;
+  deshabilitarBoton: boolean = false;
     
   private plazo!: number;
   private montoPrestamo !: number;
   private montoDisponible !: number
 
   infoPrestamo: Array<{nroCuota: number, saldo: number, montoInteres: number, 
-      capital: number, montoInteresesConIva: number, cuotaFinal: number}> = [];
+      capital: number, montoInteresConIva: number, cuotaFinal: number}> = [];
 
   private cuotaFija !: number; //Es el valor de la cuota calculado por formula usando el monto del prestamo, el interes y el plazo
 
@@ -41,6 +42,7 @@ export class PrestamosComponent implements OnInit {
     if(this.plazo && this.montoPrestamo) { 
       let mFechaActual = this.fechaActual.setDate(this.fechaActual.getDate());
       let sumaMiliSegundos = new Date (mFechaActual + (this.plazo*2629800000));
+      this.deshabilitarBoton = false;
       return sumaMiliSegundos.toLocaleDateString();
     }
       return;
@@ -58,27 +60,27 @@ export class PrestamosComponent implements OnInit {
     this.montoDisponible = this.montoPrestamo;
     
     for (let i = 0; i < this.plazo; i++ ){
-      this.infoPrestamo[i].nroCuota = i +1;
+      this.infoPrestamo[i].nroCuota = i + 1;
       this.infoPrestamo[i].saldo = this.montoDisponible;
       this.infoPrestamo[i].capital = this.cuotaFija - (this.montoPrestamo * this.interes);
       this.infoPrestamo[i].montoInteres = this.montoPrestamo * this.interes;
-      this.infoPrestamo[i].montoInteresesConIva = this.infoPrestamo[i].montoInteres * this.iva;
-      this.infoPrestamo[i].cuotaFinal = this.infoPrestamo[i].capital + this.infoPrestamo[i].montoInteres + this.infoPrestamo[i].montoInteresesConIva;
+      this.infoPrestamo[i].montoInteresConIva = this.infoPrestamo[i].montoInteres * this.iva;
+      this.infoPrestamo[i].cuotaFinal = this.infoPrestamo[i].capital + this.infoPrestamo[i].montoInteres + this.infoPrestamo[i].montoInteresConIva;
       
       this.montoDisponible = this.montoDisponible - this.infoPrestamo[i].capital;
-
-      console.log(this.infoPrestamo);
     } 
   }
 
   
   simularClick(): void{
-    this.mostrarInfo = !this.mostrarInfo; //not equal to condition
-    this.visible = !this.visible
-
-    this.rellenarArray();
+    this.mostrarInfo = false; //not equal to condition
+    this.visible = true;
   }
     
-    
+  cancelarClick(){
+    this.mostrarInfo = true; //not equal to condition
+    this.visible = false;
+    this.deshabilitarBoton = true;
+  }
   
 }

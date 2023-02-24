@@ -1,11 +1,10 @@
 <div class="form grid-rows-2 w-full bg-[#f2f2f2] shadow-xl text-primary-content items-center">
-  <div class="card-body mx-auto max-w-md">
+  <div class="card-body mx-auto max-w-md place-items-center">
     <h2 class="card-title">Prestamos</h2>
     <label>Cantidad a Solicitar</label>
       <input type="number" id="cantidadSolicitada" placeholder="Ingrese cantidad" 
-          data-type="currency" class="input 
-            input-bordered input-secondary w-full max-w-xs" 
-            (input)="prestamo($event)" required>
+          data-type="currency" class="input input-bordered input-secondary w-full max-w-xs" 
+          (input)="prestamo($event)" required>
 
     <label>Plazo en meses</label>
       <select type="date" id="fecha" placeholder="Seleccionar plazo" (change)="plazoSeleccionado($event)" 
@@ -22,9 +21,9 @@
     <br>
     <div class="card-actions items-end ">
       <button class="btn border-transparent text-white 
-        bg-[#b3bec5]">Cancelar</button>
-      <button id="botonSimular" (click)="simularClick()" class="btn border-transparent text-white 
-        bg-accent" >Simular</button>
+        bg-[#b3bec5]" (click)="cancelarClick()">Cancelar</button>
+      <button id="botonSimular" [disabled]="deshabilitarBoton" (click)="simularClick()" 
+      class="btn border-transparent text-white bg-accent">Simular</button>
     </div>
   </div>
   
@@ -44,7 +43,7 @@
         <label class="font-semibold">Total</label>
         
         <label class="w-44 h-6 text-stone-800">
-        {{ rellenarArray()  }}</label>  
+        {{ rellenarArray() }}</label>  
 
       </div>    
 
@@ -66,7 +65,7 @@
               <td >{{ info.saldo }}</td>
               <td >{{ info.montoInteres}}</td>
               <td >{{ info.capital }}</td>
-              <td >{{ info.montoInteresesConIva }}</td>
+              <td >{{ info.montoInteresConIva }}</td>
               <td >{{ info.cuotaFinal }}</td>
             </tr>
           </tbody>
