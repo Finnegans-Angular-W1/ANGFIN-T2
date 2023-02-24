@@ -8,11 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TitleComponent implements OnInit {
   
-  @Input() title: String = 'titulo';
+  title : string | undefined = "Titulo";
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(){
-
+    this.route.title.subscribe(resp => {
+      this.title = resp?.toString();
+    })
   }
 }
