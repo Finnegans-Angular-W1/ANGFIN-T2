@@ -18,13 +18,13 @@ export class GananciaInversionComponent implements OnInit {
 
   plazoDias:number = 0;
 
-  inversionBehavior: BehaviorSubject<number> = new BehaviorSubject(0);
+  inversionBehavior: BehaviorSubject<any> = new BehaviorSubject({});
 
   getInversionObservable(){
     return this.inversionBehavior.asObservable();
   }
-  setInversionObservable(num:number){
-    this.inversionBehavior.next(num);
+  setInversionObservable(obj:any){
+    this.inversionBehavior.next(obj);
   }
 
   constructor(private http: HttpClient) { }
@@ -59,11 +59,15 @@ export class GananciaInversionComponent implements OnInit {
 
   calcularTotal() {
     const plusMesesAcumulados = ( (this.plazoDias / 30) * 0.0037);
-    return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial;
+    return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial + plusMesesAcumulados;
   }
 
   onInvertirButton(){
-    this.setInversionObservable(this.inversionInicial);
+    this.setInversionObservable({
+        plazodias: this.plazoDias,
+        inversionInicial: this.inversionInicial,
+        total: this.calcularTotal()
+      });
   }
 
 }
