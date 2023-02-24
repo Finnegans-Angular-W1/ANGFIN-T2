@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { AppState } from 'src/app/core/state/app.state';
 import { getModalAction } from './../../../shared/states/modalState/modal.selectors';
@@ -14,6 +14,7 @@ import { showAlert } from 'src/app/core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 import { TermsService } from './../services/terms.service';
 import { adultAgeValidator } from './customValidators/adultage';
+import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
 
 @Component({
   selector: 'app-registro',
@@ -25,6 +26,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   modalInfo:ModalInfo;
   subActionModal!:Subscription;
+  darkmode$: Observable<boolean>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +44,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
       bornDate: ['', [Validators.required, Validators.minLength(6),adultAgeValidator]],
       conditionsTerms: [false, [Validators.requiredTrue]]
     });
+    this.darkmode$ = store.select(getDarkMode)
   }
 
   ngOnInit(): void {

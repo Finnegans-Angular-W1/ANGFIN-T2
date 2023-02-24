@@ -63,5 +63,42 @@ html, body { height: 100%; }
     background-color: #19181a;
     background-repeat: no-repeat;
     background-size: cover;
-    // background-size: 500px 500px;
+}
+
+.bg-cloud-pink-lower-left{
+    background: url('./assets/home/cloud-lower-left.svg');
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-lower-right{
+    background: url('./assets/home/cloud-lower-right.svg') ;
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-login{
+    background: url('./assets/home/Fondo-login.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-login-darkmode{
+    background: url('./assets/home/Fondo-login-darkmode2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-register{
+    background: url('./assets/home/bg-register.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-register-darkmode{
+    background: url('./assets/home/bg-register-darkmode.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
