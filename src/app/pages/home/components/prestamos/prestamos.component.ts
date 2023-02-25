@@ -30,9 +30,7 @@ export class PrestamosComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder,
-    private store:Store<AuthState | AlertState>
-  ) {   }
+  constructor(private formBuilder: FormBuilder) {   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -59,7 +57,7 @@ export class PrestamosComponent implements OnInit {
 
   calcularFechaFinal(){
     if(this.form.valid) { 
-      this.plazo = this.getPlazo()?.value
+      this.plazo = this.getPlazo()?.value;
       let mFechaActual = this.fechaActual.setDate(this.fechaActual.getDate());
       let sumaMiliSegundos = new Date (mFechaActual + (this.plazo*2629800000));
       return sumaMiliSegundos.toLocaleDateString();
