@@ -82,7 +82,7 @@
 </div>
 
 <label [ngClass]="{'modal-open' : openEdit,  '' : !openEdit}" for="my-modal-4" class="modal cursor-pointer">
-  <label class="modal-box relative" for="">
+  <label class="modal-box relative dark:bg-[#19181A]" for="">
     <app-modal-gastos [id$]="getIdObservable()" (closeModal)="openEdit = !$event"></app-modal-gastos>
   </label>
 </label>

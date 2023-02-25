@@ -16,7 +16,7 @@
 
 @layer components{
     .valid-or-untouched-input{
-        @apply border-gray-300 text-gray-400 focus:border-gray-500 focus:text-gray-500;
+        @apply border-gray-300 text-stone-600 focus:border-gray-500 focus:text-stone-500;
     }
 
     .invalid-input{
@@ -24,7 +24,7 @@
     }
     
     .input-style{
-        @apply mt-[0.34rem] rounded-t bg-gray-100
+        @apply mt-[0.34rem] rounded-t bg-gray-100 dark:bg-stone-800
         w-full border-b-2 px-0 py-1 placeholder:text-transparent focus:outline-none;
     }
     
@@ -35,7 +35,8 @@
     }
     
     .valid-label{
-        @apply peer-focus:text-gray-800 text-gray-800 peer-placeholder-shown:text-gray-500;
+        @apply peer-focus:text-stone-800 text-stone-600 peer-placeholder-shown:text-stone-700
+        dark:peer-focus:text-gray-100 dark:text-gray-300 dark:peer-placeholder-shown:text-gray-400;
     }
     
     .invalid-label{

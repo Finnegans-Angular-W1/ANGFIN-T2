@@ -24,6 +24,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambio.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionsFormComponent } from "./components/transactions-form/transactions-form.component";
+import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TransactionsFormComponent } from "./components/transactions-form/transa
     PrestamosComponent,
     ModalGastosComponent,
     PlazofijoChartComponent,
-    ContactoComponent
+    ContactoComponent,
+    ProfileSidebarComponent
   ],
   imports: [
     CommonModule,
