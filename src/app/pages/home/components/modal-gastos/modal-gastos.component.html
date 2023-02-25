@@ -1,19 +1,22 @@
+<div class="dark:bg-[#19181A]">
+
+
 <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2" (click)="onCloseModal()">✕</label>
-<h2 class="my-2 text-accent">Editar Gasto</h2>
-<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
-    <div class="flex h-16 flex-col">
+<h2 class="my-2 text-accent text-xl mb-2 font-semibold">Editar Concepto de Transaccion</h2>
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="text-base ">
+    <div class="flex h-12 flex-col">
         <input type="text" name="typeTransaction" id="typeTransaction" placeholder="Tipo de transaccion"
         disabled
         class="peer peer input-style disabled" [value]="transactionActual.type" />
         <label for="typeTransaction" class="label-style"></label>
     </div>
-    <div class="flex h-16 flex-col">
+    <div class="flex h-12 flex-col">
         <input type="text" name="amount" id="amount" placeholder="Monto"
         disabled
         class="peer peer input-style" [value]="transactionActual.amount"/>
         <label for="amount" class="label-style"></label>
     </div>
-    <div class="flex h-16 flex-col">
+    <div class="flex h-12 flex-col">
         <input type="text" name="date" id="date" placeholder="Fecha"
         disabled
         class="peer peer input-style" [value]="transactionActual.date | date : 'dd/MM/yyyy HH:MM'"/>
@@ -53,3 +56,4 @@
         <button class="btn w-full mt-4 btn-accent normal-case text-base text-gray-200" id="submitButton" name="submitButton" [disabled]="transactionForm.invalid">Editar Concepto</button>
     </div>
 </form>
+</div>
