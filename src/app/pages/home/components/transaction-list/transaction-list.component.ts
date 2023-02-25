@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
 import { Transaction } from '../../interfaces/transaction';
-import { TransactionsService } from '../../services/transactions.service';
 
 import { BehaviorSubject } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -19,8 +19,10 @@ export class TransactionListComponent implements OnInit {
 
   textoBuscado !: any;
   arrayFiltrado = []
+
+  form: FormGroup = new FormGroup({});
   
-  constructor(private httpService: HttpService, private transactionsService: TransactionsService) { }  
+  constructor(private httpService: HttpService, private formBuilder: FormBuilder) { }  
 
   ngOnInit() {
     this.httpService.get<Transaction>(this.apiUrl + "/transactions")
@@ -28,17 +30,37 @@ export class TransactionListComponent implements OnInit {
         console.log(resp);
         this.transaction = resp.data;
       });
+
+    this.form = this.formBuilder.group({
+      selectorInicial: ['', [Validators.required]],
+      palabra: ['', [Validators.required]],
+      operacion: ['', [Validators.required]]
+    });
   }
   
   opcionElegida(event: any){
     this.opcionFiltrado = event.target.value;
   }
 
-  filtradoPorPalabra(event: any){
-    var operacionElegida = event.target.value;
+  getOpcionInicial(){
+    this.form.get("selectorInicial");
+  }
+
+  getPalabra() {
+    this.form.get("palabra");
+  }
+
+  getOperacion(){
+    this.form.get("operacion")
+  }
+
+  filtradoPorPalabra(){ // event: any (oninput)="filtradoPorPalabra($event)"
+    //var operacionElegida = String ((<HTMLInputElement>event.target).value);
+    
     const arrayFiltrado = this.transaction.filter(function (funcion){
-      return funcion.concept = operacionElegida;
+      return funcion.concept //= //operacionElegida;
     });
+    console.log(arrayFiltrado);
   }
 
   filtradoPorOperacion(event: any){
@@ -46,11 +68,12 @@ export class TransactionListComponent implements OnInit {
     const arrayFiltrado = this.transaction.filter(function (funcion){
       return funcion.type = operacionElegida;
     });
+    console.log(arrayFiltrado);
   }
 
   filtrarTabla(event: any){
     if (this.opcionFiltrado ==  "palabraOption"){
-      this.filtradoPorPalabra(event);
+      this.filtradoPorPalabra(); //event
     } else {
       this.filtradoPorOperacion(event);
     }

@@ -1,17 +1,25 @@
-<div class="flex min-h-screen bg-gray-50 dark:bg-stone-800 flex-col justify-center">
+<div class="flex bg-gray-50 dark:bg-stone-800 flex-col justify-center">
+  <div class="w-full flex">
+    <div class="card w-full bg-[#f2f2f2] shadow-xl text-primary-content">
+      <div class="card-body place-items-center">
 
-  <div class="w-full flex justify-center">
-    <div class="card w-96 bg-[#f2f2f2] shadow-xl text-primary-content">
-      <div class="card-body">
-        <h2 class="card-title">Inversiones</h2>
-        <label>Cantidad a invertir</label>
-          <input type="number" id="inversionInicial" placeholder="Ingrese cantidad" 
-              min="0"
-              data-type="currency" required class="input 
+        <div [formGroup]="form" (ngSubmit)="simularClick()" class="w-96 mb-10">
+          
+          <div class="form-control my-2">
+            <h2 class="card-title">Inversiones</h2>
+          </div>
+          
+          <div class="form-control mb-2">
+            <label>Cantidad a invertir</label>
+            <input type="number" formControlName="inversionInicial" placeholder="Ingrese cantidad" 
+              min="1" data-type="currency" required class="input 
                 input-bordered input-secondary w-full max-w-xs" 
-                (input)="agregarInversionInicial($event)">
-        <label>Plazo</label>
-          <select type="date" id="fecha" placeholder="" required (change)="plazoSeleccionado($event)" 
+                >
+          </div>
+
+          <div class="form-control mb-2">
+            <label>Plazo</label>
+            <select type="date" formControlName="plazo" placeholder="Elegir plazo en días" required 
               class="input input-bordered input-secondary w-full max-w-xs">
             <option value="" disabled selected>Seleccionar plazo</option>
             <option value="30">30 días</option>
@@ -19,30 +27,66 @@
             <option value="90">90 días</option>
             <option value="120">120 días</option> 
             <option value="150">150 días</option>
-          </select> 
-        <label>Fecha de finalización</label>
-          <label class="textarea textarea-bordered textarea-success w-full 
-            max-w-xs text-[#97a2a8]">
-            {{ calcularFechaFinal() }}</label>
-        <label>Ganancia Mensual Estimada:</label>
-        <label class="textarea textarea-bordered textarea-success w-full 
-          max-w-xs text-[#97a2a8]">
-          {{ calcularGanancia() | currency }}</label>
-        <label>Total</label>
-        <label class="textarea textarea-bordered textarea-success w-full 
-          max-w-xs text-[#97a2a8]">
-          {{ calcularTotal() | currency  }}</label>
-        <br>
-        <div class="card-actions justify-center">
-          <button class="btn border-transparent text-white 
-            bg-[#b3bec5]">Cancelar</button>
-          <button (click)="onInvertirButton()" class="btn border-transparent text-white 
-            bg-[#e785e3]">Invertir</button>
-        </div>
+            </select> 
+          </div>
+          
+          <div class="form-control mb-2">
+            <label>Fecha de finalización</label>
+            <label class="textarea textarea-bordered textarea-success w-full 
+              max-w-xs text-[#97a2a8]">
+              {{ calcularFechaFinal() }}</label>
+            <br>
+          </div>  
+
+          <div class="card-actions items-center">
+            <div class="grid grid-cols-2 my-1">
+              <div class="form-control w-36 mx-2">
+                <button type="reset" class="btn border-transparent text-white 
+                  bg-[#939ca1]" (click)="cancelarClick()">Cancelar</button>
+              </div>
+              <div class="form-control w-36 mx-2">
+                  <button type="submit" class="btn border-transparent text-white 
+                  bg-accent" [disabled]="form.invalid" (click)="simularClick()">Simular</button>
+              </div>
+            </div>
+          </div>
+          
+       
+        </div>  
+        
+        <ng-container *ngIf="visible">
+          <div class="w-full justify-center">
+            <div class="grid grid-cols-3 my-5">
+              <div>
+                <label class="font-semibold">Ganancia Mensual Estimada: </label>
+                <label class="w-full max-w-xs text-stone-700 text-center">
+                {{ calcularGanancia() | currency }}</label>
+                <br>
+              </div>
+              
+              <div>
+                <label class="font-semibold">Total: </label>
+                <label class="w-full max-w-xs text-stone-700 text-center">
+                {{ calcularTotal() | currency  }}</label>
+              <br>
+              </div>
+              <div class="items-end">
+                <button (click)="onInvertirButton()" class="btn border-transparent text-white 
+                bg-[#e785e3]">Invertir</button> 
+              </div>
+            </div>            
+              
+            <app-plazofijo-chart [amountInversion]="inversionBehavior"></app-plazofijo-chart>
+            
+            
+          </div>
+          
+        </ng-container>
+        
       </div>
     </div>
   </div>
   
-  <app-plazofijo-chart [amountInversion]="inversionBehavior"></app-plazofijo-chart>
+  
 
-</div>
+
