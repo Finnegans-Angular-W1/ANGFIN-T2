@@ -1,6 +1,6 @@
 
 <div class="dropdown dropdown-right">
-  <label tabindex="0" class="px-2 py-1 uppercase text-xl font-['Kanit'] font-normal text-[#9F0A48]
+  <label tabindex="0" class="neumorphism px-2 py-1 uppercase text-xl font-['Kanit'] font-semibold text-[#9F0A48] dark:text-[#FFDE38] bg-[#19181A]
     flex rounded-md w-fit shadow-3xl my-2 sm:hover:scale-[1.03] transition duration-300">
     Filtro
   </label>
@@ -17,7 +17,7 @@
           
           <select name="selectorInicial" class="select select-bordered w-full max-w-xs" 
           formControlName="selectorInicial" [(ngModel)]="valorBuscado">
-          <option ></option>
+          <option></option>
           <option id="Payment">Payment</option>
           <option id="Topup">Topup</option>
 
@@ -31,7 +31,7 @@
 </div>
 
 
-<div class="mb-5 px-0.5 py-0.5 bg-[#c2c9ce] shadow-xl rounded-lg">
+<div class="mb-5 px-0.5 py-0.5 bg-[#c2c9ce] shadow-xl rounded-lg min-h-[380px]">
   <table class="table-auto w-full border-separate text-sm md:text-lg">
     <thead class="text-neutral bg-[#749496] text-center">
       <tr  class="text-white font-semibold">
@@ -48,7 +48,7 @@
         <td class="hidden">{{ transaction.id }}</td>
         <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.date | date : 'dd/MM/yyyy HH:MM'}}</td>
         <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.concept | titlecase}}</td>
-        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.type | titlecase}}</td>
+        <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.type === 'topup' ? 'Ingreso' : 'Egreso'}}</td>
         <td [class.bg-gray-100]="i % 2 === 0">{{ transaction.amount | currency }}</td>
         <td [class.bg-gray-100]="i % 2 === 0" class="btn-sm cursor-pointer sm:hover:bg-accent/25"
         (click)="openEditModal(transaction.id)">Editar</td>

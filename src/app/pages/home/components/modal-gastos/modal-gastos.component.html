@@ -7,7 +7,7 @@
     <div class="flex h-12 flex-col">
         <input type="text" name="typeTransaction" id="typeTransaction" placeholder="Tipo de transaccion"
         disabled
-        class="peer peer input-style disabled" [value]="transactionActual.type" />
+        class="peer peer input-style disabled" [value]="transactionActual.type === 'topup' ? 'Ingreso' : 'Egreso'" />
         <label for="typeTransaction" class="label-style"></label>
     </div>
     <div class="flex h-12 flex-col">
