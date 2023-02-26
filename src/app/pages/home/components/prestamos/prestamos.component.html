@@ -9,16 +9,16 @@
           </div>
           
           <div class="form-control my-2">
-            <label>Cantidad a Solicitar</label>
+            <label class="font-semibold mb-1 pl-2">Cantidad a Solicitar</label>
             <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" 
-                data-type="currency" class="input input-bordered input-secondary w-full max-w-xs" 
+                data-type="currency" class="peer input-style bg-white w-full max-w-xs" 
                  required>
           </div>
           
           <div class="form-control my-2">
-            <label>Plazo en meses</label>
+            <label class="font-semibold mb-1">Plazo en Meses</label>
             <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
-                class="input input-bordered input-secondary w-full max-w-xs" required>
+                class="peer input-style bg-white w-full max-w-xs" required>
               <option value="" disabled selected>Seleccionar plazo</option>
               <option value="6">6 meses</option>
               <option value="12">12 meses</option>
@@ -46,26 +46,28 @@
         
       
       <ng-container *ngIf="visible">
-        <div id="elementosCalculados" class="card  text-stone-800">
+        <div id="elementosCalculados" class="card grid grid-cols-5 text-stone-800 ">
           <div class="card-body">
             <label class="font-semibold text-stone-800">Fecha de finalización:</label> 
-            
             <label class="w-44 h-6 text-stone-800">
             {{ calcularFechaFinal() }}</label>
                 
             <label class="font-semibold">Cuota Fija sin IVA: </label>
-            
             <label class="w-44 h-6 text-stone-800">
             {{ calcularCuotaFija() | currency }}</label>
     
             <label class="font-semibold">Total a devolver: </label>
-            
             <label class="w-44 h-6 text-stone-800">
             {{ calcularTotal() | currency }}</label>  
-    
-          </div>    
-    
-          <div class="mb-5 px-0.5 py-0.5 bg-[#c2c9ce] shadow-xl rounded-lg">
+
+            <div class="form-control w-36 mx-2 mt-3 justify-self-center">
+              <button id="botonSolicitar" [disabled]="form.invalid" (click)="simularClick()" 
+              class="btn border-transparent text-white bg-accent">Solicitar</button>
+            </div>
+        
+          </div> 
+          
+          <div class="mb-5 px-0.5 py-0.5 bg-transparent h-auto rounded-lg col-span-4">
             <table class="table-auto w-full border-separate text-sm md:text-lg">
               <thead class="text-neutral bg-[#749496] text-center">
                 <tr  class="text-white font-semibold">
@@ -77,14 +79,14 @@
                   <th class="py-2 px-4">Cuota Final Mensual</th>
                 </tr>
               </thead>
-              <tbody class="text-neutral text-center">
-                <tr *ngFor="let info of infoPrestamo; index as i">
-                  <td >{{ info.nroCuota }}</td>
-                  <td >{{ info.saldo }}</td>
-                  <td >{{ info.montoInteres}}</td>
-                  <td >{{ info.capital }}</td>
-                  <td >{{ info.montoInteresConIva }}</td>
-                  <td >{{ info.cuotaFinal }}</td>
+              <tbody class="text-neutral text-center bg-gray-200/70">
+                <tr *ngFor="let cuota of prestamo; index as i">
+                  <td >{{ cuota.nroCuota }}</td>
+                  <td >{{ cuota.saldo | currency }}</td>
+                  <td >{{ cuota.montoInteres | currency }}</td>
+                  <td >{{ cuota.capital | currency  }}</td>
+                  <td >{{ cuota.montoInteresConIva | currency  }}</td>
+                  <td >{{ cuota.cuotaFinal | currency  }}</td>
                 </tr>
               </tbody>
             </table>
