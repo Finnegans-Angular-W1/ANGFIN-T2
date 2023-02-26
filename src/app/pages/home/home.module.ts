@@ -17,7 +17,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NavStaticLinkComponent } from './components/sidebar/nav-static-link/nav-static-link.component';
 import { PrestamosComponent } from './components/prestamos/prestamos.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SendMoneyComponent } from './components/home/send-money/send-money.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -25,6 +25,7 @@ import { TipoDeCambioComponent } from './components/tipo-de-cambio/tipo-de-cambi
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { TransactionsFormComponent } from "./components/transactions-form/transactions-form.component";
 import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
+import { FiltrarTablaPipe } from './components/transaction-list/filtrar-tabla.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProfileSidebarComponent } from './components/profile/profile-sidebar/pr
     ModalGastosComponent,
     PlazofijoChartComponent,
     ContactoComponent,
-    ProfileSidebarComponent
+    ProfileSidebarComponent,
+    FiltrarTablaPipe,
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { ProfileSidebarComponent } from './components/profile/profile-sidebar/pr
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class HomeModule {}
