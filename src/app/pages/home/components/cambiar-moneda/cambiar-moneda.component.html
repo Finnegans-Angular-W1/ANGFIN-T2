@@ -1,10 +1,7 @@
 <div class="dark:bg-stone-800 relative flex min-h-screen flex-col justify-center overflow-hidden bg-cloud-pink py-6 sm:py-12">
 
-    <div class="w-full flex flex-wrap sm:flex-nowrap">
-        <div class="flex w-full ml-52">
-            <span [innerHTML]="coinsAndPaperSVG | safeHTML"></span>
-        </div>
-        <div class="relative sm:mr-64 w-full px-6 pt-4 pb-10 sm:px-10 my-5 shadow-lg ring-1 ring-gray-900/5 dark:bg-stone-700 dark:ring-gray-900/50 rounded-lg">
+    <div class="w-full flex  justify-center overflow-x-auto"> <!-- flex-wrap sm:flex-nowrap -->
+        <div class="relative ml-48 sm:mr-64 w-full px-6 pt-4 pb-10 sm:px-10 my-5 shadow-lg ring-1 ring-gray-900/5 dark:bg-stone-700 dark:ring-gray-900/50 rounded-lg">
             <div class="w-full text-justify">
                 <div class="w-full flex justify-between">
                     <h4 class="text-2xl font-light mb-6 text-[#b65ab0]/[0.90] tracking-wider sm:tracking-widest">Servicios Finacieros</h4>
@@ -61,7 +58,7 @@
                         </ng-container>
                     </ng-template>
                 </div>
-                <div class="mx-6 indicator text-black font-semibold sm:hover:shadow-xl sm:transition sm:hover:scale-[1.03] sm:duration-300 flex h-16 mt-8 w-2/6 mt-6 bg-accent/50 py-3 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg justify-center">
+                <div class="mx-6 indicator text-black font-semibold sm:hover:shadow-xl sm:transition sm:hover:scale-[1.03] sm:duration-300 h-16 mt-8 w-2/6 mt-6 bg-accent/50 py-3 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg flex flex-colsm:flex-row justify-center">
                         <span class="indicator-item px-1.5 text-regular sm:px-2.5 font-semibold sm:text-lg bg-[#2b2a2d] rounded-full text-white">*</span> 
                     <label class="swap">
                         <input (change)="rotateCurrency()" type="checkbox"/>
@@ -76,7 +73,7 @@
                     </label>
                 </div>
             </div>
-            <div class="flex justify-center items-center w-full lg:flex-row mt-12">
+            <div class="flex flex-col justify-center items-center w-full dm:flex-row mt-12 dm:mt-12"> <!-- <div class="flex flex-col justify-center items-center w-full sm:flex-row sm:mt-12"> -->
                 <div class="grid grow-0 h-32 card bg-base-300/75 rounded-box place-items-center">
                     <div class="stack h-full w-full">
                         <div class="text-center text-[#f2c5ee] shadow-md  max-w-[16rem] h-full w-64 card bg-[#b65ab0] ring-1 ring-gray-900/[0.03]">
@@ -98,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="divider lg:divider-horizontal"></div>
+                <div class="divider dm:divider-horizontal  "></div>
                 <div class="grid grow-0 h-32 card bg-base-300/75 rounded-box place-items-center">
                     <div class="stack h-full w-full">
                         <div class="text-center shadow-md max-w-[16rem]	h-full w-64 card bg-stone-800 ring-1 ring-gray-900/[0.03]">
