@@ -1,25 +1,24 @@
 <div class="flex bg-[#f2f2f2] dark:bg-stone-800 flex-col items-center min-h-screen">
   <div class="w-full flex">
-    <div  class="card w-full bg-[#f2f2f2] mb-2 text-primary-content">
+    <div  class="card w-full mb-2 text-primary-content">
       <div class="card-body place-items-center">
 
         <div [formGroup]="form" (ngSubmit)="simularClick()" class="w-96 mb-10">
 
           <div class="form-control my-2">
-            <h2 class="card-title">Inversiones</h2>
+            <h2 class="card-title text-center font-semibold">Inversiones</h2>
           </div>
 
-          <div class="form-control mb-2">
-            <label>Cantidad a invertir</label>
+          <div class="form-control mb-3">
+            <label class="font-semibold mb-1">Cantidad a Invertir</label>
             <input type="number" formControlName="inversionInicial" placeholder="Ingrese cantidad" min="1"
-              data-type="currency" required class="input 
-                input-bordered input-secondary w-full max-w-xs">
+              data-type="currency" required class="peer input-style w-full max-w-xs bg-white">
           </div>
 
-          <div class="form-control mb-2">
-            <label>Plazo</label>
+          <div class="form-control mb-3">
+            <label class="font-semibold mb-1">Plazo en Días</label>
             <select type="date" formControlName="plazo" placeholder="Elegir plazo en días" required
-              class="input input-bordered input-secondary w-full max-w-xs">
+              class="peer input-style w-full max-w-xs bg-white">
               <option value="" disabled selected>Seleccionar plazo</option>
               <option value="30">30 días</option>
               <option value="60">60 días</option>
@@ -29,9 +28,9 @@
             </select>
           </div>
 
-          <div class="form-control mb-2">
-            <label>Fecha de finalización</label>
-            <label class="textarea textarea-bordered textarea-success w-full 
+          <div class="form-control mb-3">
+            <label class="font-semibold mb-1">Fecha de Finalización</label>
+            <label class="peer input-style bg-white w-full h-8
               max-w-xs text-[#97a2a8]">
               {{ calcularFechaFinal() }}</label>
             <br>
@@ -54,8 +53,8 @@
         </div>
 
         <ng-container *ngIf="visible">
-          <div class="w-full justify-center">
-            <div class="grid grid-cols-3 my-5">
+          <div class="w-full ">
+            <div class="grid grid-cols-4 my-5 justify-items-center items-center">
               <div>
                 <label class="font-semibold">Ganancia Mensual Estimada: </label>
                 <label class="w-full max-w-xs text-stone-700 text-center">
@@ -69,14 +68,17 @@
                   {{ calcularTotal() | currency }}</label>
                 <br>
               </div>
-              <div class="items-end">
-                <button (click)="onInvertirButton()" class="btn border-transparent text-white 
-                bg-[#e785e3]">Invertir</button>
+              <div class="">
+                <button (click)="clickProyectar()" class="btn border-transparent text-white 
+                bg-accent">Proyectar</button>
+              </div>
+              <div class="">
+                <button (click)="clickInvertir()" class="btn border-transparent text-white 
+                bg-accent">Invertir</button>
               </div>
             </div>
 
             <app-plazofijo-chart [amountInversion]="inversionBehavior"></app-plazofijo-chart>
-
 
           </div>
 

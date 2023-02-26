@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
+import { Prestamo } from '../../interfaces/prestamo';
 
 @Component({
   selector: 'app-prestamos',
@@ -22,11 +23,16 @@ export class PrestamosComponent implements OnInit {
   private plazo!: number;
   private montoPrestamo !: number;
   private montoDisponible !: number
-  private cuotaFija !: number; //Es el valor de la cuota calculado por formula usando el monto del prestamo, el interes y el plazo
-  private totalPrestamo !: number;
-
-  infoPrestamo: Array<{nroCuota: number, saldo: number, montoInteres: number, 
-      capital: number, montoInteresConIva: number, cuotaFinal: number}> = [];
+  
+  prestamo: Prestamo[] = [];
+  cuota: Prestamo = {
+    nroCuota: 0,
+    saldo: 0,
+    montoInteres: 0,
+    capital: 0,
+    montoInteresConIva: 0,
+    cuotaFinal: 0,
+  }; 
 
   form: FormGroup = new FormGroup({});
 
@@ -39,14 +45,6 @@ export class PrestamosComponent implements OnInit {
     });
   }
   
-  /*prestamo(event: Event) {
-    this.montoPrestamo = Number((<HTMLInputElement>event.target).value);
-  }
-
-  plazoSeleccionado(event: Event) {
-    this.plazo= (Number((<HTMLInputElement>event.target).value));
-  }*/
-
   getValorPrestamo(){
     return this.form.get("cantidadSolicitada");
   }
@@ -66,38 +64,51 @@ export class PrestamosComponent implements OnInit {
   }
   
   calcularCuotaFija(){
+    var cuotaFija : number = 0; //Es el valor de la cuota calculado por formula usando el monto del prestamo, el interes y el plazo
     if(this.form.valid) {
       this.montoPrestamo = this.getValorPrestamo()?.value;
-      this.cuotaFija = this.montoPrestamo / ((1 - (Math.pow((1+this.interes), (-this.plazo)))) / this.interes);
-      return this.cuotaFija;
+      cuotaFija = this.montoPrestamo / ((1 - (Math.pow((1+this.interes), (-this.plazo)))) / this.interes);
     }
-    return;
+    return cuotaFija;
   }
   calcularTotal (){
+    var totalPrestamo : number = 0;
     this.plazo = this.getPlazo()?.value
-    return this.totalPrestamo = this.cuotaFija * this.plazo;
+    return totalPrestamo = this.calcularCuotaFija() * this.plazo;
   }
 
-  rellenarArray(){
-    this.montoDisponible = this.getValorPrestamo()?.value;
-    
-    for (let i = 0; i < this.plazo; i++ ){
-      this.infoPrestamo[i].nroCuota = i + 1;
-      this.infoPrestamo[i].saldo = this.montoDisponible;
-      this.infoPrestamo[i].capital = this.cuotaFija - (this.montoPrestamo * this.interes);
-      this.infoPrestamo[i].montoInteres = this.montoPrestamo * this.interes;
-      this.infoPrestamo[i].montoInteresConIva = this.infoPrestamo[i].montoInteres * this.iva;
-      this.infoPrestamo[i].cuotaFinal = this.infoPrestamo[i].capital + this.infoPrestamo[i].montoInteres + this.infoPrestamo[i].montoInteresConIva;
-      
-      this.montoDisponible = this.montoDisponible - this.infoPrestamo[i].capital;
-    } 
-  }
-
-  
   simularClick(){
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;
+    
+    this.prestamo = [];
 
+    this.montoDisponible = this.getValorPrestamo()?.value;
+    this.plazo = this.getPlazo()?.value;
+
+    for (let i = 0 ; i < this.plazo ; i++ ){
+      
+      this.cuota.nroCuota = i + 1;
+      this.cuota.saldo = this.montoDisponible;            
+      this.cuota.capital = this.calcularCuotaFija() - (this.cuota.saldo * this.interes);
+      this.cuota.montoInteres = this.montoDisponible * this.interes;
+      this.cuota.montoInteresConIva = this.cuota.montoInteres * this.iva;
+      this.cuota.cuotaFinal = this.cuota.capital + this.cuota.montoInteres + this.cuota.montoInteresConIva;     
+
+      this.prestamo.push(this.cuota);
+
+      this.montoDisponible  = this.cuota.saldo - this.cuota.capital;
+      
+      this.cuota = { nroCuota: 0,
+                    saldo: 0,
+                    montoInteres: 0,
+                    capital: 0,
+                    montoInteresConIva: 0,
+                    cuotaFinal: 0,
+      };
+
+    }
+    
   }
     
   cancelarClick(){
