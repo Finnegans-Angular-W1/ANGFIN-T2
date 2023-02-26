@@ -26,7 +26,7 @@ export const registerFail = createAction('- [AUTH] REGISTER FAIL -');
 //Actions Edit Profile
 export const editProfileStart = createAction(
     '[PROFILE EDIT] EDIT START',
-    props<{ updateUser: BodyRequest, id:number}>()   
+    props<{ updateUser: any, id:number}>()   
 );
 
 export const editProfileSuccess = createAction(

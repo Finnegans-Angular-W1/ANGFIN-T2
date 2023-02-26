@@ -28,12 +28,25 @@
                         class="label-style valid-label">Nombre</label>
                     </div>  
                 </div>
+                <div class="flex h-16 flex-col">
+                    <div class="relative mt-6">
+                        
+                        <input formControlName="password" type="password" name="password" placeholder="Nombre"
+                            class="peer input-style  valid-or-untouched-input" autocomplete="NA" />
+                        <label for="password" class="label-style valid-label">Contraseña Actual*</label>
+                    </div>  
+                </div>
                 
             </form>
         </ng-template>
 
         <div class="modal-action">
-            <button type="submit" class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()" [disabled]="formEditUser.invalid">Aceptar</button>
+            <ng-container *ngIf="formModal; else notFormModal">
+                <button type="submit" class="btn btn-sm btn-accent text-md py-1" (click)="onSubmit()" [disabled]="formEditUser.invalid">Aceptar</button>
+            </ng-container>
+            <ng-template #notFormModal>
+                <button class="btn btn-sm btn-accent text-md py-1" (click)="onAcceptModal()">Aceptar</button>
+            </ng-template>
             <button type="submit" class="btn btn-sm text-md py-1" (click)="onCloseModal()">Cancelar</button>
         </div>
     </div>
