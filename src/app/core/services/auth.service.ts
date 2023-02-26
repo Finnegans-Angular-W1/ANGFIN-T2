@@ -58,7 +58,7 @@ export class AuthService {
 
   //Modal profile
 
-  editUser(requestBody:any, id: number):Observable<User>{
+  editUser(requestBody :any, id: number):Observable<User>{
     return this.http.put<User>(
       `${this._apiURL}/user/`, requestBody, (id + '')
     );
