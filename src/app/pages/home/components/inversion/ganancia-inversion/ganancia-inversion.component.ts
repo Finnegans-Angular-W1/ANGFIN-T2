@@ -57,17 +57,6 @@ export class GananciaInversionComponent implements OnInit {
   getPlazo(){
     return this.form.get("plazo")
   }
-  //agregarInversionInicial(event: Event){
-    //console.log(event);
-    //console.log((<HTMLInputElement>event.target).value);
-    //this.inversionInicial = Number((<HTMLInputElement>event.target).value);
-  //}
-
-  //plazoSeleccionado(event: Event){
-    //this.plazoDias = Number((<HTMLInputElement>event.target).value);
-    //this.plazo = (Number((<HTMLInputElement>event.target).value)) * 86400000;
-    
-  //}
 
   calcularFechaFinal(){
     if(this.form.valid) { 
@@ -91,7 +80,7 @@ export class GananciaInversionComponent implements OnInit {
     return ( this.ganancia * (this.plazoDias / 30) ) + this.inversionInicial + plusMesesAcumulados;
   }
 
-  onInvertirButton(){
+  clickProyectar(){
     this.setInversionObservable({
         plazodias: this.plazoDias,
         inversionInicial: this.inversionInicial,
@@ -100,12 +89,6 @@ export class GananciaInversionComponent implements OnInit {
   }
 
   simularClick(){
-    this.setInversionObservable({
-      plazodias: this.plazoDias,
-      inversionInicial: this.inversionInicial,
-      total: this.calcularTotal()
-    });
-
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;    
     
@@ -119,7 +102,9 @@ export class GananciaInversionComponent implements OnInit {
     this.mostrarInfo = true; //not equal to condition
     this.visible = false;
     this.inversionInicial = 0;
-
+  }
+  
+  clickInvertir(){
 
   }
 

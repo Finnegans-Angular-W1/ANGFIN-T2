@@ -1,43 +1,47 @@
-<div class="sm:text-4xl md:text-4xl dark:bg-stone-800	bg-[#f2f2f2] min-h-screen h-full flex justify-center items-center flex-col">
-  <div class="container mb-10 mx-auto font-['Kanit']">
-    <div class="w-full text-3xl flex justify-center items-center py-4">
-      <div class="avatar mr-4">
-        <div class="w-24 mask mask-hexagon">
-          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+<div class="dark:bg-stone-800	bg-gray-50">
+  <div class="sm:text-4xl md:text-4xl bg-cloud-pink-lower-right min-h-screen h-full flex justify-center items-center flex-col">
+    <div class="container mb-10 mx-auto font-['Kanit']">
+      <div class="w-full text-3xl flex justify-center items-center py-4">
+        <div class="avatar mr-4">
+          <div class="w-24 mask mask-hexagon">
+            <img class="w-full object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=top&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;h=100&amp;ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2Mjk2MTgwNw&amp;ixlib=rb-1.2.1&amp;q=80&amp;utm_campaign=api-credit&amp;utm_medium=referral&amp;utm_source=unsplash_source&amp;w=100" alt="Profile">
+          </div>
+        </div>
+        <h1 data-aos="fade" data-aos-duration="1300" data-aos-once="true" class="sm:text-5xl md:text-4xl dark:text-[#FFDE38] first-letter:font-['Kanit'] text-[#4d4d9f] mb-3">Hola, {{username}}</h1>
+      </div>
+      <div class="stats bg-gradient-to-b from-[#c262bb]/90 
+        to-[#f2c5ee] text-primary-content w-full pt-2 pb-6
+        stats-vertical lg:stats-horizontal divide-x-4 divide-gray-100/[0.15]">
+        <div class="stat ">
+          <div class="stat-title text-white">Balance</div>
+          <div class="stat-value text-white">$59.423</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title text-white">Ultimo Ingreso</div>
+          <div class="stat-value text-white">$200</div>
+          <!--div class="stat-actions">
+            <button class="btn btn-sm btn-accent bg-gradient-to-t
+            from-pink-600 to-accent text-white sm:hover:scale-[1.03] 
+            transition duration-300">Añadir ingreso</button>
+          </div-->
+        </div>
+        <div class="stat">
+          <div class="stat-title text-white">Ultimo Egreso</div>
+          <div class="stat-value text-white">$200</div>
+          <!--div class="stat-actions">
+            <button class="btn btn-sm btn-accent bg-gradient-to-t from-orange-700 to-info  text-white
+            sm:hover:scale-[1.03] transition duration-300">Añadir egreso</button>
+          </div-->
+  
         </div>
       </div>
       <h1 class="sm:text-5xl md:text-4xl first-letter:font-['Kanit'] text-[#4d4d9f] dark:text-white mb-3">Hola, <span class="dark:text-[#FFDE38]">{{username}}</span></h1>
     </div>
-    <div class="stats bg-gradient-to-b from-[#c262bb]/90 
-      to-[#f2c5ee] text-primary-content w-full pt-2 pb-6
-      stats-vertical lg:stats-horizontal divide-x-4 divide-gray-100/[0.15]">
-      <div class="stat ">
-        <div class="stat-title text-white">Balance</div>
-        <div class="stat-value text-white">$89,400</div>
-      </div>
-      <div class="stat">
-        <div class="stat-title text-white">Ingreso</div>
-        <div class="stat-value text-white">$79,400</div>
-        <!--div class="stat-actions">
-          <button class="btn btn-sm btn-accent bg-gradient-to-t
-          from-pink-600 to-accent text-white sm:hover:scale-[1.03] 
-          transition duration-300">Añadir ingreso</button>
-        </div-->
-      </div>
-      <div class="stat">
-        <div class="stat-title text-white">Egreso</div>
-        <div class="stat-value text-white">$10,000</div>
-        <!--div class="stat-actions">
-          <button class="btn btn-sm btn-accent bg-gradient-to-t from-orange-700 to-info  text-white
-          sm:hover:scale-[1.03] transition duration-300">Añadir egreso</button>
-        </div-->
-
-      </div>
+  
+    <div class="container mt-10 mx-auto">
+      <app-transaction-list></app-transaction-list>
     </div>
-  </div>
-
-  <div class="container mt-10 mx-auto">
-    <app-transaction-list></app-transaction-list>
+    
   </div>
   
 </div>

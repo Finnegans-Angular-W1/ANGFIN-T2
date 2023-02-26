@@ -13,12 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TransactionListComponent implements OnInit {
   transaction: Transaction[] = [];
-  opcionFiltrado !: string;
-
+  
   private apiUrl: string = 'http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com' ;
-
-  textoBuscado !: any;
-  arrayFiltrado = []
+  
+  opcionFiltrado !: string;
+  valorBuscado !: string;
+  arrayFiltrado: Transaction[] = []
 
   form: FormGroup = new FormGroup({});
   
@@ -52,31 +52,6 @@ export class TransactionListComponent implements OnInit {
 
   getOperacion(){
     this.form.get("operacion")
-  }
-
-  filtradoPorPalabra(){ // event: any (oninput)="filtradoPorPalabra($event)"
-    //var operacionElegida = String ((<HTMLInputElement>event.target).value);
-    
-    const arrayFiltrado = this.transaction.filter(function (funcion){
-      return funcion.concept //= //operacionElegida;
-    });
-    console.log(arrayFiltrado);
-  }
-
-  filtradoPorOperacion(event: any){
-    var operacionElegida = event.target.value;
-    const arrayFiltrado = this.transaction.filter(function (funcion){
-      return funcion.type = operacionElegida;
-    });
-    console.log(arrayFiltrado);
-  }
-
-  filtrarTabla(event: any){
-    if (this.opcionFiltrado ==  "palabraOption"){
-      this.filtradoPorPalabra(); //event
-    } else {
-      this.filtradoPorOperacion(event);
-    }
   }
 
   openEdit:boolean = false;

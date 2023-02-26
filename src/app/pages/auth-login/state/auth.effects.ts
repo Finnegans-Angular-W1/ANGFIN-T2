@@ -46,7 +46,7 @@ export class AuthEffects {
                         console.log(action);
                         console.log(error);
                         this.store.dispatch(hideLoader());
-                        this.store.dispatch(showAlert({ message: `${error}`, alertType: 'error' }))
+                        this.store.dispatch(showAlert({ message: 'Correo electronico o Contraseña incorrecta', alertType: 'error' }))
                         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
                         return of(AuthActions.loginFail())
                     })

@@ -1,14 +1,14 @@
 <div class="dark:bg-stone-800  hero min-h-screen flex-col justify-center overflow-hidden bg-cloud-register" [ngClass]="{'bg-cloud-register-darkmode': darkmode$ | async}">  
         <div class="hero-content flex space-x-32">
             
-            <div class="hidden mr-16 md:shrink md:flex md:flex-col md:justify-center">
+            <div data-aos="fade-right" data-aos-duration="1700" data-aos-once="true" class="hidden mr-16 md:shrink md:flex md:flex-col md:justify-center">
                 <h1 class="font-[Kanit] text-xl md:text-4xl pb-16 pl-20 text-black dark:text-white">Regístrate en 
                     <span class="text-2xl md:text-5xl text-red-500 dark:text-[#FFDE38]">Alkemy Bank Wallet!</span>
                 </h1>
                 <img src="../../../../assets/home/AlkyBank_registro_2.png" alt="">
             </div>
 
-            <div class="card flex justify-center w-full max-w-sm shadow-2xl bg-gray-600 dark:bg-ring-gray-900/50 neumorphism ml-16 mt-36 sm:my-16">
+            <div data-aos="fade-left" data-aos-duration="1700" data-aos-once="true" class="card flex justify-center w-full max-w-sm shadow-2xl bg-gray-600 dark:bg-ring-gray-900/50 neumorphism ml-16 mt-36 sm:my-16">
                 <div class="card-body">
             
                     <form [formGroup]="form" (ngSubmit)="onEnviar()">
@@ -40,11 +40,11 @@
                             <input type="email" formControlName="email" class="input input-bordered text-black focus:border-[#BC94AF]" />
             
                             <div class="min-h-max" *ngIf="Mail?.errors && Mail?.touched">
-                                <p *ngIf="Mail?.hasError('required')" class="text-error">
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Mail?.hasError('required')" class="text-error">
                                     El correo electrónico es requerido.
                                 </p>
-                                <p *ngIf="Mail?.hasError('email')" class="text-error">
-                                    El formato del correo electrónico debe ser válido.
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Mail?.hasError('email')" class="text-error">
+                                    Formato de correo inválido.
                                 </p>
                             </div>
                         </div>
@@ -58,13 +58,13 @@
                             <input type="date" formControlName="bornDate" class="input input-bordered text-black focus:border-[#BC94AF]" />
             
                            <ng-container *ngIf="Birthdate?.hasError('required') && Birthdate?.touched; else second_condition_bornDate">
-                                <p  class="text-error">
-                                    El correo electrónico es requerido.
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true"  class="text-error">
+                                    La fecha de nacimiento es requerida.
                                 </p>  
                            </ng-container>
                            <ng-template #second_condition_bornDate>
                                 <ng-container *ngIf="Birthdate?.errors && Birthdate?.touched">
-                                    <p  class="text-error">
+                                    <p data-aos="fade" data-aos-duration="700" data-aos-once="true"  class="text-error">
                                         Debe ser mayor de 18 años para registrarse en nuestra aplicación.
                                     </p> 
                                 </ng-container>
@@ -80,10 +80,10 @@
                             <input type="password" formControlName="password" [class.border-danger]="MailValid"
                                 class="input input-bordered text-black focus:border-[#BC94AF]" />
                             <div class="min-h-max" *ngIf="Password?.errors && Password?.touched">
-                                <p *ngIf="Password?.hasError('required')" class="text-error">
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Password?.hasError('required')" class="text-error">
                                     La contraseña es requerida.
                                 </p>
-                                <p *ngIf="Password?.errors?.['minlength']" class="text-error">
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Password?.errors?.['minlength']" class="text-error">
                                     La contraseña debe ser de 8 o más caracteres.
                                 </p>
                             </div>
@@ -102,19 +102,19 @@
             
                             <ng-container *ngIf="ConfirmPassword?.errors?.['minlength'];
                             else second_condition_confirmPassword">
-                                <span class="text-red-500 text-xs">La contraseña debe tener al menos 8 caracteres.</span>
+                                <span data-aos="fade" data-aos-duration="700" data-aos-once="true" class="text-red-500 text-xs">La contraseña debe tener al menos 8 caracteres.</span>
                             </ng-container>
                             <ng-template #second_condition_confirmPassword>
                                 <ng-container class="w-full min-h-max"
                                  *ngIf="ConfirmPassword?.touched && ConfirmPassword?.hasError('passwordMismatch');
                                  else third_condition_confirmPassword">
-                                <span class="text-red-500 text-xs">Las contraseñas deben coincidir.</span>
+                                <span data-aos="fade" data-aos-duration="700" data-aos-once="true" class="text-red-500 text-xs">Las contraseñas deben coincidir.</span>
                                 </ng-container> 
                             </ng-template>
                             <ng-template #third_condition_confirmPassword>
                                 <ng-container class="w-full min-h-max"
                                 *ngIf="ConfirmPassword?.hasError('required') && ConfirmPassword?.touched">
-                                    <span class="text-red-500 text-xs">Este campo es requerido.</span>
+                                    <span data-aos="fade" data-aos-duration="700" data-aos-once="true" class="text-red-500 text-xs">Este campo es requerido.</span>
                                 </ng-container>
                             </ng-template>
                         </div>
@@ -129,7 +129,7 @@
                                         <label class="label-text ml-2">Acepto los <a class="z-20 link link-black" (click)="onOpenModal()">terminos y condiciones</a>.</label>
                                     </div>
                                     <ng-container *ngIf="ConditionsTermsInvalid" class="w-full min-h-max">
-                                        <span class="text-red-500 text-xs">Debes aceptar los terminos y condiciones para continuar.</span>
+                                        <span data-aos="fade" data-aos-duration="700" data-aos-once="true" class="text-red-500 text-xs">Debes aceptar los terminos y condiciones para continuar.</span>
                                     </ng-container>
                                 </div>
                             </label>

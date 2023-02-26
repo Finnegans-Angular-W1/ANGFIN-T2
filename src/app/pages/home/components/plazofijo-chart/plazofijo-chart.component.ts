@@ -44,7 +44,7 @@ export class PlazofijoChartComponent implements OnInit {
       this.options.next({
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
         title: {
-          text: 'Proyeccion de la Inversion'
+          text: ''
         },
         tooltip: {
           trigger: 'axis',
@@ -231,7 +231,7 @@ export class PlazofijoChartComponent implements OnInit {
     this.options.next({
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
         title: {
-          text: 'Proyeccion de la Inversion'
+          text: ''
         },
         tooltip: {
           trigger: 'axis',
