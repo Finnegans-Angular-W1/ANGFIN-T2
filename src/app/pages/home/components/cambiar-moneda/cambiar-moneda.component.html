@@ -31,14 +31,14 @@
                 
             </div>
             <div class="w-full flex justify-center">
-                <div class="flex h-16 flex-col mt-8 w-2/6 dark:bg-stone-700 bg-gray-100 px-2 py-1 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg">
+                <div class="flex h-16 flex-col mt-8 w-2/6 dark:bg-[#e5e7eb] bg-gray-100 px-2 py-1 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg">
                     <div class="relative">
                         <input 
                         [formControl]="amountFormControl" type="number" name="amount" id="amount" placeholder="Ingrese un monto"
-                        class="peer border-[#b65ab0]/50  text-[#b65ab0] dark:bg-stone-700 dark:text-gray-300 input-style " autocomplete="NA"
+                        class="peer border-[#b65ab0]/50  text-[#b65ab0] dark:bg-[#e5e7eb] dark:text-gray-300 input-style " autocomplete="NA"
                         [ngClass]="{'border-red-600 text-red-600 invalid-input': amountFormControl.invalid && amountFormControl.touched, 
                         'border-[#b65ab0] valid-input': amountFormControl.valid && !amountFormControl.touched}"/>
-                        <label for="toAccountID" class="text-[#b65ab0] dark:text-gray-300 rounded-none label-style"
+                        <label for="toAccountID" class="text-[#b65ab0] dark:text-red-600 rounded-none label-style"
                         [ngClass]="{'text-red-600 invalid-label': amountFormControl.invalid && amountFormControl.touched,
                         'valid-label': amountFormControl.valid && !amountFormControl.touched}"
                         >Ingrese un monto</label>
