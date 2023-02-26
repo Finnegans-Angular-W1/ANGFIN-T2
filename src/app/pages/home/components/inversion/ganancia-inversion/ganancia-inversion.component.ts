@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
+import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
 
 @Component({
   selector: 'app-ganancia-inversion',
@@ -14,6 +15,8 @@ export class GananciaInversionComponent implements OnInit {
   private ganancia!: number;
   private tasaInversion: number = 0.07;
   private fechaActual = new Date ();
+
+  darkmode$: Observable<boolean>
 
   //Mostrar contenido luego del click
   mostrarInfo:boolean = true;
@@ -31,7 +34,7 @@ export class GananciaInversionComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private store:Store<AuthState | AlertState>
-  ) {   }
+  ) {   this.darkmode$ = store.select(getDarkMode) }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

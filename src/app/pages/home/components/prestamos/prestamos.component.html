@@ -5,18 +5,18 @@
         <div [formGroup]="form" class="w-96 mb-10">
           
           <div class="form-control mb-5">
-            <h2 class="card-title">Prestamos</h2>
+            <h2 class="card-title dark:text-white">Prestamos</h2>
           </div>
           
           <div class="form-control my-2">
-            <label>Cantidad a Solicitar</label>
+            <label class="dark:text-white">Cantidad a Solicitar</label>
             <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" 
                 data-type="currency" class="input input-bordered input-secondary w-full max-w-xs" 
                  required>
           </div>
           
           <div class="form-control my-2">
-            <label>Plazo en meses</label>
+            <label class="dark:text-white">Plazo en meses</label>
             <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
                 class="input input-bordered input-secondary w-full max-w-xs" required>
               <option value="" disabled selected>Seleccionar plazo</option>

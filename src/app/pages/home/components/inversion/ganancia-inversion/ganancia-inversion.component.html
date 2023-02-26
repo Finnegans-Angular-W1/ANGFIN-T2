@@ -1,23 +1,24 @@
 <div class="flex bg-[#f2f2f2] dark:bg-stone-800 flex-col items-center min-h-screen">
   <div class="w-full flex">
-    <div  class="card w-full bg-[#f2f2f2] mb-2 text-primary-content">
+    <div  class="card w-full bg-[#f2f2f2] dark:bg-stone-800 mb-2 text-primary-content">
       <div class="card-body place-items-center">
-
-        <div [formGroup]="form" (ngSubmit)="simularClick()" class="w-96 mb-10">
+        
+      <div class="container_form sm:mx-auto w-full sm:max-w-md px-6 pt-10 py-8 sm:rounded-xl sm:pr-10 sm:pl-16 flex justify-center" [ngClass]="{'bg-stone-700': darkmode$ | async}">
+        <div [formGroup]="form" (ngSubmit)="simularClick()" class="w-96 mb-8">
 
           <div class="form-control my-2">
-            <h2 class="card-title">Inversiones</h2>
+            <h2 class="card-title dark:text-white">Inversiones</h2>
           </div>
 
           <div class="form-control mb-2">
-            <label>Cantidad a invertir</label>
+            <label class="dark:text-white">Cantidad a invertir</label>
             <input type="number" formControlName="inversionInicial" placeholder="Ingrese cantidad" min="1"
               data-type="currency" required class="input 
                 input-bordered input-secondary w-full max-w-xs">
           </div>
 
           <div class="form-control mb-2">
-            <label>Plazo</label>
+            <label class="dark:text-white">Plazo</label>
             <select type="date" formControlName="plazo" placeholder="Elegir plazo en días" required
               class="input input-bordered input-secondary w-full max-w-xs">
               <option value="" disabled selected>Seleccionar plazo</option>
@@ -30,7 +31,7 @@
           </div>
 
           <div class="form-control mb-2">
-            <label>Fecha de finalización</label>
+            <label class="dark:text-white">Fecha de finalización</label>
             <label class="textarea textarea-bordered textarea-success w-full 
               max-w-xs text-[#97a2a8]">
               {{ calcularFechaFinal() }}</label>
@@ -39,11 +40,11 @@
 
           <div class="card-actions items-center">
             <div class="grid grid-cols-2 my-1">
-              <div class="form-control w-36 mx-2">
+              <div class="form-control w-36 ml-2">
                 <button type="reset" class="btn border-transparent text-white 
                   bg-[#939ca1]" (click)="cancelarClick()">Cancelar</button>
               </div>
-              <div class="form-control w-36 mx-2">
+              <div class="form-control w-36 ml-2">
                 <button type="submit" class="btn border-transparent text-white 
                   bg-accent" [disabled]="form.invalid" (click)="simularClick()">Simular</button>
               </div>
