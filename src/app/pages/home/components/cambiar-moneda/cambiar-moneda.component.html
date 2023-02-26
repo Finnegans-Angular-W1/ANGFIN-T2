@@ -27,8 +27,8 @@
                 <h2 class="text-2xl text-center sm:text-3xl font-semibold  text-[#19181a] dark:text-white">Simular conversión de divisas</h2>
                 
             </div>
-            <div class="w-full flex justify-center">
-                <div class="flex h-16 flex-col mt-8 w-2/6 dark:bg-[#e5e7eb] bg-gray-100 px-2 py-1 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg">
+            <div class="w-full flex flex-col dm:flex-row align-center dm:justify-center ">
+                <div class="w-full flex h-16 flex-col self-center mt-8 w-2/6 dark:bg-[#e5e7eb] bg-gray-100 px-2 py-1 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg">
                     <div class="relative">
                         <input 
                         [formControl]="amountFormControl" type="number" name="amount" id="amount" placeholder="Ingrese un monto"
@@ -58,7 +58,7 @@
                         </ng-container>
                     </ng-template>
                 </div>
-                <div class="mx-6 indicator text-black font-semibold sm:hover:shadow-xl sm:transition sm:hover:scale-[1.03] sm:duration-300 h-16 mt-8 w-2/6 mt-6 bg-accent/50 py-3 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg flex flex-colsm:flex-row justify-center">
+                <div class="self-center w-full mx-6 indicator text-black font-semibold sm:hover:shadow-xl sm:transition sm:hover:scale-[1.03] sm:duration-300 h-16 mt-8 w-2/6 mt-6 bg-accent/50 py-3 ring-1 ring-gray-900/[0.03] rounded-lg shadow-lg flex flex-colsm:flex-row justify-center">
                         <span class="indicator-item px-1.5 text-regular sm:px-2.5 font-semibold sm:text-lg bg-[#2b2a2d] rounded-full text-white">*</span> 
                     <label class="swap">
                         <input (change)="rotateCurrency()" type="checkbox"/>
