@@ -8,6 +8,10 @@ import { showAlert } from '../../../core/state/states/alertState/alert.actions';
 import { showLoader } from 'src/app/core/state/states/loaderState/loader.actions';
 import { Observable } from 'rxjs';
 import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
+
+
+import * as AOS from "aos";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -31,6 +35,8 @@ export class LoginComponent implements OnInit {
       password: ['12345678', [Validators.required, Validators.minLength(6)]],
       email: ['exampleAdmin@gmail.com', [Validators.required, Validators.email]],
     });
+    AOS.init();
+    AOS.refresh();
   }
 
   get Password() {

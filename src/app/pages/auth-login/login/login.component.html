@@ -1,11 +1,11 @@
 <div class="hero min-h-screen flex-col justify-center overflow-hidden bg-cloud-pink-login" [ngClass]="{'bg-cloud-pink-login-darkmode': darkmode$ | async}">
     <div class="hero-content flex space-x-32"> 
 
-        <div class="hidden md:shrink md:flex md:justify-center md:max-lg:pl-16" style="height: 89%;">
+        <div data-aos="fade-right" data-aos-duration="1700" data-aos-once="true" class="hidden md:shrink md:flex md:justify-center md:max-lg:pl-16" style="height: 89%;">
             <img src="../../../../assets/home/Login.png" alt="">
         </div>
 
-        <div class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center xs:max-sm:pr-16 md:max-lg:pr-16 dark:ring-gray-900/50">
+        <div data-aos="fade-left" data-aos-duration="1700" data-aos-once="true" class="card flex-shrink-0 w-full max-w-sm flex justify-center self-center xs:max-sm:pr-16 md:max-lg:pr-16 dark:ring-gray-900/50">
 
             <form [formGroup]="form" (ngSubmit)="onEnviar()">
                 
@@ -21,10 +21,10 @@
                 </div>
 
                 <div *ngIf="Mail?.errors && Mail?.touched">
-                    <p *ngIf="Mail?.hasError('required')" class="text-error">
+                    <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Mail?.hasError('required')" class="text-error">
                         El correo electrónico es requerido.
                     </p>
-                    <p *ngIf="Mail?.hasError('email')" class="text-error">
+                    <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Mail?.hasError('email')" class="text-error">
                         El formato del correo electrónico debe ser válido.
                     </p>
                 </div>
@@ -40,10 +40,10 @@
                 </div>
 
                 <div *ngIf="Password?.errors && Password?.touched">
-                    <p *ngIf="Password?.hasError('required')" class="text-error">
+                    <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Password?.hasError('required')" class="text-error">
                         La contraseña es requerida.
                     </p>
-                    <p *ngIf="Password?.errors?.['minlength']" class="text-error">
+                    <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Password?.errors?.['minlength']" class="text-error">
                         La contraseña debe ser de 8 o más caracteres.
                     </p>
                 </div>

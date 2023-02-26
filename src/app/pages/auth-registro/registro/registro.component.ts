@@ -16,6 +16,8 @@ import { TermsService } from './../services/terms.service';
 import { adultAgeValidator } from './customValidators/adultage';
 import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
 
+import * as AOS from "aos";
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -59,6 +61,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
         this.form.controls['conditionsTerms'].markAsTouched();
       }
     });
+    AOS.init();
+    AOS.refresh()
   }
 
   ngAfterViewInit(): void {
