@@ -49,6 +49,7 @@ export class ModalComponent {
 
   onSubmit(){
     if (this.formEditUser.valid){
+      this.store.dispatch(showLoader({ message: "cargando" }));
       console.log('ENTRE EN CONDICION');
       let auxData: BodyRequest = { userName: (this.formEditUser.controls['nombreUsuario'].value as string), name: (this.formEditUser.controls['nombre'].value as string), }
       this.store.select(getUser).pipe(
@@ -56,7 +57,7 @@ export class ModalComponent {
       ).subscribe( (user:User) => {
         const updateUser:any = {
           first_name: auxData.name,
-          last_name: auxData.name,
+          last_name: auxData.userName,
           email: user.email,
           password: this.formEditUser.controls['password'].value,
           points: user.points,
@@ -64,7 +65,6 @@ export class ModalComponent {
         }
         this.store.dispatch(editProfileStart({ updateUser, id:user.id}) )
       });
-      this.store.dispatch(showLoader({ message: "cargando" }));
     }
     else{
       this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse`, alertType: 'error' }))

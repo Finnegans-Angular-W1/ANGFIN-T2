@@ -1,3 +1,5 @@
+import { closeModal } from './../../../shared/states/modalState/modal.actions';
+import { getUser } from 'src/app/pages/auth-login/state/auth.selectors';
 import { accountStartMe } from './../../../core/state/states/accountState/account.actions';
 import { Injectable } from "@angular/core";
 
@@ -5,7 +7,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from '@ngrx/store';
 
 import { AppState } from 'src/app/core/state/app.state';
-import { catchError, exhaustMap, map, of } from "rxjs";
+import { catchError, debounce, debounceTime, exhaustMap, map, of, take, tap, throttleTime, timer } from "rxjs";
 import { AuthService } from "src/app/core/services/auth.service";
 import { RedirectService } from './../../../core/services/redirect.service';
 //Interfaces
@@ -159,30 +161,48 @@ export class AuthEffects {
     edit$= createEffect(() => {
         return this.actions$.pipe(
             ofType(AuthActions.editProfileStart),
-            exhaustMap((action) => { 
-                return this.authService.editUser(action.updateUser, action.id)
-                .pipe(
-                    map(( respuesta ) => {
-                        return AuthActions.editProfileSuccess({updateUser: respuesta})
-                    }),
-                    catchError((error:ErrorResponse ) => {
-                        console.log(action);
-                        console.log(error);
-                        this.store.dispatch(hideLoader());
-                        this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse`, alertType: 'error' }))
-                        //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
-                        return of(AuthActions.editProfileFail())
-                    })
+            map((action) => { 
+                this.store.select(getUser)
+                .pipe(  
+                    take(1)
                 )
+                .subscribe((user:User)=>{
+                    const auxUser = {...user, ...action.updateUser};
+                    this.store.dispatch(AuthActions.editProfileSuccess({updateUser:auxUser}));
+                })
+                //
+                
+                //No anda API de edicion
+                // return this.authService.editUser(action.updateUser, action.id)
+                // .pipe(
+                //     map(( respuesta ) => {
+                //         return AuthActions.editProfileSuccess({updateUser: respuesta})
+                //     }),
+                //     catchError((error:ErrorResponse ) => {
+                //         console.log(action);
+                //         console.log(error);
+                //         this.store.dispatch(hideLoader());
+                //         this.store.dispatch(showAlert({ message: `La edición no ha podido realizarse`, alertType: 'error' }))
+                //         //TODO: Mostrar segun response el mensaje, por ej 404: no encontado, 401 forbidden: denegado, etc
+                //         return of(AuthActions.editProfileFail())
+                //     })
+                // )
             })
         )
-    });
+    },
+    {dispatch:false});
 
     editSuccess$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(AuthActions.editProfileSuccess), 
-            map((_) => {
-                this.store.dispatch(hideLoader())
+            exhaustMap((_) => {
+                return timer(1000).pipe(
+                    tap(()=>{
+                        this.store.dispatch(closeModal());
+                        this.store.dispatch(hideLoader());
+                        this.store.dispatch(showAlert({ message: `La edición se ha realizado correctamente`, alertType: 'success' }))
+                    })
+                );
             })
         )
     }, {dispatch:false});

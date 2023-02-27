@@ -1,4 +1,4 @@
 import { createAction, props } from '@ngrx/store';
 
-export const showLoader = createAction( '- [Alert] Show Loader -', props<{ message: string }>());
-export const hideLoader = createAction( '- [Alert] Hide Loader -');
+export const showLoader = createAction( '- [Loader] Show Loader -', props<{ message: string }>());
+export const hideLoader = createAction( '- [Loader] Hide Loader -');
