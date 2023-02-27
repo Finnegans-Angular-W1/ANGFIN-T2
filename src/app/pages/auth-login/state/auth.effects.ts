@@ -1,3 +1,4 @@
+import { accountStartMe } from './../../../core/state/states/accountState/account.actions';
 import { Injectable } from "@angular/core";
 
 import { Actions, createEffect, ofType } from "@ngrx/effects";
@@ -66,6 +67,8 @@ export class AuthEffects {
                         console.log('loginSuccessWithAuthMe$');//?Borrar console.log
                         this.store.dispatch(hideLoader());
                         this.redirect.redirectTo('/inicio');
+                        this.store.dispatch(showAlert({ message: `Bienvenido ${respuesta.first_name}`, alertType: 'success' }));
+                        this.store.dispatch(accountStartMe());
                         return AuthActions.authMe({user:respuesta as User});
                     }),
                     catchError( (error) => {

@@ -1,3 +1,6 @@
+import { TransactionState } from './../../../../core/state/states/transactionsState/transactions.state';
+import { Store } from '@ngrx/store';
+import { getAllTransactions } from './../../../../core/state/states/transactionsState/transactions.actions';
 import { take, Observable } from 'rxjs';
 import { HttpService } from './../../../../core/services/http.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -23,7 +26,8 @@ export class ModalGastosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private fb:FormBuilder,
-    private httpS:HttpService
+    private httpS:HttpService,
+    private store:Store<TransactionState>
   ) {
 
   }
@@ -83,6 +87,7 @@ export class ModalGastosComponent implements OnInit, AfterViewInit {
           console.log('complete');
         }
       } );
+      this.store.dispatch(getAllTransactions());
       console.log('submit form', bodyRequest);
       this.onCloseModal();
     } else {

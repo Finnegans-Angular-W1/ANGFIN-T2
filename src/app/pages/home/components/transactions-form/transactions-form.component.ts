@@ -1,3 +1,7 @@
+import { TransactionRequest } from 'src/app/core/interfaces/transaction-request';
+import { createTransaction } from './../../../../core/state/states/transactionsState/transactions.actions';
+import { getAccount } from './../../../../core/state/states/accountState/account.selectors';
+import { TransactionState } from './../../../../core/state/states/transactionsState/transactions.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -25,19 +29,25 @@ export class TransactionsFormComponent implements OnInit {
 
   transactionForm!:FormGroup;
 
+  idActualAccount:number = 0;
+  userActualID:number = 0;
+
   titleForm:string = '';
   buttonText:string = '';
 
   constructor(
     private fb: FormBuilder,
-
     private http: HttpService,
-
-    private store:Store<AlertState>
-
+    private store:Store<AlertState | TransactionState>
   ) { }
 
   ngOnInit(): void {
+    this.store.select(getAccount).subscribe( account => {
+      if (account){
+        this.idActualAccount = account.id;
+        this.userActualID = account.userId;
+      }
+    })
 
     if (this.operation.type === 'new') {
       this.titleForm = 'Registrar nuevo ingreso'
@@ -92,23 +102,24 @@ export class TransactionsFormComponent implements OnInit {
 
     if (this.transactionForm.valid){
       if (this.operation.type === 'new'){
+        //TODO: Inicializar con el ID de la cuenta del usuario(HTTP) ACCOUNT_ID
 
-        let idAccount = ""; //TODO: Inicializar con el ID de la cuenta del usuario(HTTP) ACCOUNT_ID
+        let toIdAccount = this.idActualAccount;
         if(( {...this.transaction} as TransactionNewDTO).transactionType === 'payment'){
-          idAccount = this.transactionForm.get('toAccountID')!.value;
+          //SI es pago mando el accoutn del form, SINO ES INGRESO, por lo tanto mando el mismo account
+          toIdAccount = this.transactionForm.get('toAccountID')!.value;
         }
-        body = {
-          type: ( {...this.transaction} as TransactionNewDTO).transactionType,
+        const body:TransactionRequest = {
+          type: ( ( {...this.transaction} as TransactionNewDTO).transactionType ) as 'topup' | 'payment',
           concept: this.transactionForm.get('concept')!.value,
           amount: this.transactionForm.get('amount')!.value,
-          // date: this.transactionForm.get('transactionDate')!.value //Not required
+          to_account_id: toIdAccount,
+          accountId: toIdAccount,
+          userId: this.userActualID,
+          date: this.transactionForm.get('transactionDate')!.value //Not required
         }
 
-        //*Send HTTP POST to create new transaction
-        //!POST /accounts/{id} + body
-        this.http.postGeneric('/accounts/', body, `${idAccount}`);
-        // this.http.postGeneric('/accounts/', body, (idAccount + '') );
-
+        this.store.dispatch(createTransaction( { transactionRequest: body }));
       }else if (this.operation.type === 'edit'){
 
         //TODO:USERID(ORIGEN) + TRANSACTION DATA(get by id transaction) + CONCEPT EDITED

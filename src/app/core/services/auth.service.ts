@@ -1,3 +1,6 @@
+import { TransactionRequest } from 'src/app/core/interfaces/transaction-request';
+import { Transaction } from './../../pages/home/interfaces/transaction';
+import { Account } from './../interfaces/account';
 import { RequestLogin } from './../../pages/auth-login/interfaces/requestLogin';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -43,6 +46,20 @@ export class AuthService {
     return this.http.get<User>(`${this._apiURL}/auth/me`);
   }
 
+  //TODO: Mover a service independiente (Transaction)
+  getAllTransactions():Observable<Transaction[]>{
+    return this.http.get<Transaction[]>(`${this._apiURL}/transactions`);
+  }
+  createTransaction(requestBody:TransactionRequest):Observable<Transaction>{
+    return this.http.postGeneric<Transaction>(`${this._apiURL}/transactions`, requestBody);
+  }
+//--------------
+//!ACCOUNT ME <> AuthMe
+  accountMe():Observable<Account>{
+    return this.http.get<Account>(`${this._apiURL}/accounts/me`);
+  }
+
+
   checkTokenExpiration():boolean{
     const data = localStorage.getItem('userExpiration');
     if(data){
@@ -63,5 +80,6 @@ export class AuthService {
       `${this._apiURL}/user/`, requestBody, (id + '')
     );
   }
+
 
 }

@@ -1,3 +1,5 @@
+import { TransactionsEffects } from './core/state/states/transactionsState/transactions.effects';
+import { AccountEffects } from './core/state/states/accountState/account.effects';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +35,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, AccountEffects, TransactionsEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

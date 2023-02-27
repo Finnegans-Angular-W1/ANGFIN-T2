@@ -15,7 +15,7 @@ import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
     AlertComponent,
     LoaderComponent,
     DarkmodeToggleComponent,
-    NavAuthComponent
+    NavAuthComponent,
   ],
   imports: [
     CommonModule,

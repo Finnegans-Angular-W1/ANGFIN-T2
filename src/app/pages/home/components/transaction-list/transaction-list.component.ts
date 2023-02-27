@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/core/services/http.service';
+import { getTransactions } from './../../../../core/state/states/transactionsState/transactions.selectors';
+import { TransactionState } from './../../../../core/state/states/transactionsState/transactions.state';
+import { Store } from '@ngrx/store';
+import { Component, OnInit, Output } from '@angular/core';
 import { Transaction } from '../../interfaces/transaction';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, debounceTime } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -14,22 +16,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TransactionListComponent implements OnInit {
   transaction: Transaction[] = [];
   
-  private apiUrl: string = 'http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com' ;
-  
   opcionFiltrado !: string;
   valorBuscado !: string;
   arrayFiltrado: Transaction[] = []
 
+  money:number = 0;
+
+  //TODO: Hacer otuptu de estas 2 variables asi lo consume el home
+  lastPaymentPrice:number = 0;
+  lastTopUpPrice:number = 0;
+
   form: FormGroup = new FormGroup({});
   
-  constructor(private httpService: HttpService, private formBuilder: FormBuilder) { }  
+  constructor(private formBuilder: FormBuilder, private store:Store<TransactionState>) { }  
 
   ngOnInit() {
-    this.httpService.get<Transaction>(this.apiUrl + "/transactions")
-        .subscribe( (resp:any) => {
-        console.log(resp);
-        this.transaction = resp.data;
-      });
+    this.store.select(getTransactions)
+    .subscribe( (resp:Transaction[]) => {
+      console.log('TRANSACTION RESPONSE', resp);
+      //TODO: NO anda, tira errores, asiq ver q onda
+      // const aux = resp.filter( (transaction:Transaction) => transaction.type === 'payment');
+      // this.lastPaymentPrice = aux[aux.length - 1].amount;
+      // const aux2 = resp.filter( (transaction:Transaction) => transaction.type === 'topup');
+      // this.lastTopUpPrice = aux2[aux2.length - 1].amount;
+
+      this.transaction = resp;
+    });
 
     this.form = this.formBuilder.group({
       selectorInicial: ['', [Validators.required]],
