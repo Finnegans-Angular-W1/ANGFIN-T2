@@ -19,10 +19,23 @@
               'valid-or-untouched-input': (form.controls['inversionInicial'].valid || form.controls['inversionInicial'].untouched)}">
             </div>
             <ng-container class="w-full min-h-max"
-              *ngIf="touchedAndHasError('inversionInicial', 'required');">
+              *ngIf="touchedAndHasError('inversionInicial', 'required');  
+              else mayor">
                   <span class="text-red-500 text-xs">Este campo es requerido.</span>
             </ng-container>
-
+            <ng-template #mayor>
+              <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('inversionInicial', 'max');
+              else menor">
+                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000</span>
+              </ng-container>
+            </ng-template>
+            <ng-template #menor>
+              <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('inversionInicial', 'min');">
+                  <span class="text-red-500 text-xs">El monto debe ser mayor a $1</span>
+              </ng-container>
+            </ng-template>
           </div>
           
           <div class="mb-3">
