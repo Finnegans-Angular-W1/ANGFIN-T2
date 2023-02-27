@@ -1,7 +1,7 @@
 import { getTransactions } from './../../../../core/state/states/transactionsState/transactions.selectors';
 import { TransactionState } from './../../../../core/state/states/transactionsState/transactions.state';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Transaction } from '../../interfaces/transaction';
 
 import { BehaviorSubject, debounceTime } from 'rxjs';
@@ -23,8 +23,10 @@ export class TransactionListComponent implements OnInit {
   money:number = 0;
 
   //TODO: Hacer otuptu de estas 2 variables asi lo consume el home
-  lastPaymentPrice:number = 0;
-  lastTopUpPrice:number = 0;
+  @Output() lastPaymentPrice = new EventEmitter<number>;
+  @Output() lastTopUpPrice = new EventEmitter<number>;
+ /*  lastPaymentPrice:number = 0;
+  lastTopUpPrice:number = 0; */
 
   form: FormGroup = new FormGroup({});
   
@@ -78,5 +80,13 @@ export class TransactionListComponent implements OnInit {
     this.idBehaviorSubject.next(id);
     this.openEdit = true;
   }
+
+    mostrarEgreso(value: number){
+    this.lastPaymentPrice.emit(value)
+  }
+  mostrarIngreso(value:number){
+    this.lastTopUpPrice.emit(value)
+  }
+
 
 }
