@@ -1,4 +1,7 @@
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
+import { AppState } from 'src/app/core/state/app.state';
+import { Store } from '@ngrx/store';
+import { Observable, of, BehaviorSubject, switchMap } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { EChartsOption, graphic } from 'echarts';
 
@@ -19,30 +22,28 @@ export class PlazofijoChartComponent implements OnInit {
   mesesInvertidos: number = 0;
   plusMesesAcumulados:number = 0.0037;
 
-  constructor() { }
-
-  // this.chartData = {
-  //   30: [inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07), inversion.inversionInicial + (inversion.inversionInicial * 0.07 * 3),  inversion.inversionInicial +  (inversion.inversionInicial * 0.07 * 4), inversion.inversionInicial +  (inversion.inversionInicial * 0.07 * 5)],
-  //   60: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus],
-  //   90: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus],
-  //   120: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus],
-  //   150: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus]
-  // }
+  constructor(private store:Store<AppState>) { }
 
   ngOnInit(): void {
+    let inversion:any;
+
     this.amountInversion
-    .subscribe((inversion) => {
+    .pipe(
+      switchMap((inversionParam)=>{
+        inversion = inversionParam;
+        return this.store.select(getDarkMode);
+      })
+    )
+    .subscribe((darkMode) => {
       const plus = ( this.plusMesesAcumulados);
       this.mesesInvertidos = inversion.plazodias;
-      this.chartData = {
-        30: [inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07 ,inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07],
-        60: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2],
-        90: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3],
-        120: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 4,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 4],
-        150: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 5,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus * 5]
-      }
+      this.initData(inversion, plus);
+
+      //TODO: Cambiar el color de la linea de acuerdo al modo oscuro , terniario:
+      // darkMode ? 'negro' : 'blanco'
+
       this.options.next({
-        color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+        color: darkMode ? ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'] : ['#4ECDC4', '#F7FFF7', '#F78888', '#7E5E60', '#9D8189'],
         title: {
           text: ''
         },
@@ -224,9 +225,7 @@ export class PlazofijoChartComponent implements OnInit {
         ]
       });
 
-    }
-
-    )
+    })
 
     this.options.next({
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
@@ -412,47 +411,14 @@ export class PlazofijoChartComponent implements OnInit {
       });
   }
 
+  initData(inversion:any, plus:number){
+    this.chartData = {
+      30: [inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07 ,inversion.inversionInicial + inversion.inversionInicial * 0.07, inversion.inversionInicial + inversion.inversionInicial * 0.07],
+      60: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 2],
+      90: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 3],
+      120: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 4,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 4, inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 4],
+      150: [inversion.inversionInicial + inversion.inversionInicial * 0.07 + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 2 * 0.07) + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 3 * 0.07) + plus * 5,  inversion.inversionInicial + (inversion.inversionInicial * 4 * 0.07) + plus * 5, inversion.inversionInicial + (inversion.inversionInicial * 5 * 0.07) + plus * 5]
+    }
+  }
+
 }
-
-
-// this.http.get(ROOT_PATH + '/data/asset/data/life-expectancy-table.json').subscribe((data: any) => {
-//   this.option = {
-//     grid3D: {},
-//     tooltip: {},
-//     xAxis3D: {
-//       type: 'category'
-//     },
-//     yAxis3D: {
-//       type: 'category'
-//     },
-//     zAxis3D: {},
-//     visualMap: {
-//       max: 1e8,
-//       dimension: 'Population'
-//     },
-//     dataset: {
-//       dimensions: [
-//         'Income',
-//         'Life Expectancy',
-//         'Population',
-//         'Country',
-//         { name: 'Year', type: 'ordinal' }
-//       ],
-//       source: data
-//     },
-//     series: [
-//       {
-//         type: 'bar3D',
-//         // symbolSize: symbolSize,
-//         shading: 'lambert',
-//         encode: {
-//           x: 'Year',
-//           y: 'Country',
-//           z: 'Life Expectancy',
-//           tooltip: [0, 1, 2, 3, 4]
-//         }
-//       }
-//     ]
-//   };
-//   this.loading = false;
-// });

@@ -1,7 +1,7 @@
 import { getAccount } from './../../../../core/state/states/accountState/account.selectors';
 import { getAllTransactions } from './../../../../core/state/states/transactionsState/transactions.actions';
 import { getUser } from './../../../auth-login/state/auth.selectors';
-import { take, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       console.log('ACCOUNT RESPONSE', account);
       this.money = account.money;
     });
-
 
     this.subUser = this.store.select(getUser)
     .subscribe(auth => {
