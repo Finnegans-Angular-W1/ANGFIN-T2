@@ -33,8 +33,8 @@ export class GananciaInversionComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   
-  money : number = 70000;
-  subAccount!:Subscription;
+  private money: number = 76980;
+  private subAccount!:Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,7 +43,7 @@ export class GananciaInversionComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      inversionInicial: ['', [Validators.required, Validators.minLength(1), Validators.min(1), Validators.max(5000000)]],
+      inversionInicial: ['', [Validators.required, Validators.minLength(1), Validators.min(100), Validators.max(5000000)]],
       plazo: ['', [Validators.required]],
     });
 
@@ -119,7 +119,7 @@ export class GananciaInversionComponent implements OnInit {
   simularClick(){
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;    
-    console.log(this.getInversionInicial()?.value);
+
   }
 
   cancelarClick(){
@@ -133,12 +133,13 @@ export class GananciaInversionComponent implements OnInit {
   }
   
   clickInvertir(){
-    console.log(this.getInversionInicial()?.value);
+    var esMayor : boolean = false;
+    
     if (Number (this.getInversionInicial()?.value) > this.money){
-      console.log("esto no se puede");
-    } else {
-      console.log("esto si se puede");
+      esMayor = true;
     }
+    return esMayor;
+    
   }
 
 }

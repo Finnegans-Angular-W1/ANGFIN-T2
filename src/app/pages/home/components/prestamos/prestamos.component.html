@@ -28,13 +28,13 @@
               <ng-container class="w-full min-h-max"
               *ngIf="touchedAndHasError('cantidadSolicitada', 'max');
               else menor">
-                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000</span>
+                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000.</span>
               </ng-container>
             </ng-template>
             <ng-template #menor>
               <ng-container class="w-full min-h-max"
               *ngIf="touchedAndHasError('cantidadSolicitada', 'min');">
-                  <span class="text-red-500 text-xs">El monto debe ser mayor a $1</span>
+                  <span class="text-red-500 text-xs">El monto debe ser mayor a $100.</span>
               </ng-container>
             </ng-template>
           </div>
@@ -105,8 +105,8 @@
               <div class="modal">
                 <div class="modal-box relative">
                   <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                  <h3 class="text-lg font-bold">Felicitaciones! Estás más cerca de tu proyecto!</h3>
-                  <p class="py-4">Un representante se va a estar contactando con vos para verificar las condiciones necesarias para la solicitud del préstamo.</p>
+                  <h3 class="text-lg font-bold text-center">¡Felicitaciones! Estás más cerca de tu proyecto.</h3>
+                  <p class="py-4 text-center">Un representante se va a estar contactando con vos para verificar las condiciones necesarias para la solicitud del préstamo.</p>
                 </div>
               </div>
 

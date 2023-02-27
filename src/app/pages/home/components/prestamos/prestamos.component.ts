@@ -37,7 +37,7 @@ export class PrestamosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1), Validators.min(1), Validators.max(5000000)]],
+      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1), Validators.min(100), Validators.max(5000000)]],
       plazo: ['', [Validators.required]],
     });
   }

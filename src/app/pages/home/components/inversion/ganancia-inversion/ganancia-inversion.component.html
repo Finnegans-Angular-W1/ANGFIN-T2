@@ -13,7 +13,7 @@
               <label class="dark:text-white font-semibold" 
               [ngClass]="{ 'text-red-800' : touchedAndInvalid('inversionInicial'), 'valid-label': !touchedAndInvalid('inversionInicial')}"
               >Cantidad a Invertir</label>
-              <input type="number" formControlName="inversionInicial" placeholder="Ingrese cantidad" min="1"
+              <input type="number" placeholder="Ingrese cantidad" formControlName="inversionInicial" min="100"
                 data-type="currency" required class="peer input-style w-full max-w-xs bg-white dark:text-white pl-2"
                 [ngClass]="{'invalid-input':(form.controls['inversionInicial'].invalid && form.controls['inversionInicial'].touched),
               'valid-or-untouched-input': (form.controls['inversionInicial'].valid || form.controls['inversionInicial'].untouched)}">
@@ -27,17 +27,24 @@
               <ng-container class="w-full min-h-max"
               *ngIf="touchedAndHasError('inversionInicial', 'max');
               else menor">
-                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000</span>
+                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000.</span>
               </ng-container>
             </ng-template>
             <ng-template #menor>
               <ng-container class="w-full min-h-max"
-              *ngIf="touchedAndHasError('inversionInicial', 'min');">
-                  <span class="text-red-500 text-xs">El monto debe ser mayor a $1</span>
+              *ngIf="touchedAndHasError('inversionInicial', 'min');
+              else mayorDisponible">
+                  <span class="text-red-500 text-xs">El monto debe ser mayor a $100.</span>
+              </ng-container>
+            </ng-template>
+            <ng-template #mayorDisponible>
+              <ng-container class="w-full min-h-max"
+              *ngIf="clickInvertir() == true">
+                  <span class="text-red-500 text-xs">El monto debe ser menor a lo disponible en cuenta.</span>
               </ng-container>
             </ng-template>
           </div>
-          
+
           <div class="mb-3">
             <div class="form-control mb-3">
               <label class="dark:text-white font-semibold mb-1" 
@@ -107,8 +114,19 @@
                 bg-accent">Proyectar</button>
               </div>
               <div class="">
-                <button (click)="clickInvertir()" class="btn border-transparent text-white 
-                bg-accent">Invertir</button>
+                <!--button (click)="clickInvertir()" class="btn border-transparent text-white 
+                bg-accent">Invertir</button-->
+                
+                <label for="my-modal-3" class="btn border-transparent text-white bg-accent">Solicitar</label>
+
+                <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                <div class="modal" *ngIf="clickInvertir() == false">
+                  <div class="modal-box relative">
+                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 class="text-lg font-bold text-center">¡Gracias por confiar en nosotros!</h3>
+                    <p class="py-4 text-center">En unos instantes verás reflejada la solicitud de tu plazo fijo.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
