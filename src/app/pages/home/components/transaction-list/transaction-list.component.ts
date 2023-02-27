@@ -85,7 +85,7 @@ export class TransactionListComponent implements OnInit {
     this.openEdit = true;
   }
 
-    mostrarEgreso(value: number){
+  mostrarEgreso(value: number){
     this.lastPaymentPrice.emit(value)
   }
   mostrarIngreso(value:number){
