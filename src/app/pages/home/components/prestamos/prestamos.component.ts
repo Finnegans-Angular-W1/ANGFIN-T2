@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
-import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
 import { Prestamo } from '../../interfaces/prestamo';
 
 @Component({
@@ -40,7 +37,7 @@ export class PrestamosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1)]],
+      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1), Validators.min(1), Validators.max(5000000)]],
       plazo: ['', [Validators.required]],
     });
   }

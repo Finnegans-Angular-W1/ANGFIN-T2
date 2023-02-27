@@ -5,7 +5,7 @@
         <div [formGroup]="form" class="w-96 mb-10">
           
           <div class="form-control mb-5">
-            <h2 class="card-title dark:text-white">Prestamos</h2>
+            <h2 class="card-title dark:text-white">Préstamos</h2>
           </div>
           
           <div class="form-control my-2">
@@ -61,8 +61,21 @@
             {{ calcularTotal() | currency }}</label>  
 
             <div class="form-control w-36 mx-2 mt-3 justify-self-center">
-              <button id="botonSolicitar" [disabled]="form.invalid" (click)="simularClick()" 
-              class="btn border-transparent text-white bg-accent">Solicitar</button>
+              <!--button id="botonSolicitar" [disabled]="form.invalid"  
+              class="btn border-transparent text-white bg-accent">Solicitar</button-->
+              
+              <label for="my-modal-3" class="btn border-transparent text-white bg-accent">Solicitar</label>
+
+              <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+              <div class="modal">
+                <div class="modal-box relative">
+                  <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <h3 class="text-lg font-bold">Felicitaciones! Estás más cerca de tu proyecto!</h3>
+                  <p class="py-4">Un representante se va a estar contactando con vos para verificar las condiciones necesarias para la solicitud del préstamo.</p>
+                </div>
+              </div>
+
+
             </div>
         
           </div> 

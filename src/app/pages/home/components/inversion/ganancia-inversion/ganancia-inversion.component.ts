@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
 import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
 import { getDarkMode } from 'src/app/core/state/states/darkmodeState/darkmode.selectors';
+import { Account } from 'src/app/core/interfaces/account';
+import { getAllTransactions } from 'src/app/core/state/states/transactionsState/transactions.actions';
+import { getAccount } from 'src/app/core/state/states/accountState/account.selectors';
 
 @Component({
   selector: 'app-ganancia-inversion',
@@ -31,16 +33,26 @@ export class GananciaInversionComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   
+  money !:number;
+  subAccount!:Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
-    private store:Store<AuthState | AlertState>
+    private store:Store<AuthState>
   ) {   this.darkmode$ = store.select(getDarkMode) }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      inversionInicial: ['', [Validators.required, Validators.minLength(1)]],
+      inversionInicial: ['', [Validators.required, Validators.minLength(1), Validators.min(1), Validators.max(5000000)]],
       plazo: ['', [Validators.required]],
     });
+
+    /*this.store.dispatch(getAllTransactions());
+    this.subAccount = this.store.select(getAccount)
+    .subscribe( (account: Account) => {
+      console.log('ACCOUNT RESPONSE', account);
+      this.money = account.money;
+    });*/
   }
 
   getInversionObservable(){
@@ -105,7 +117,12 @@ export class GananciaInversionComponent implements OnInit {
   }
   
   clickInvertir(){
-
+    console.log(this.getInversionInicial());
+    if (Number (this.getInversionInicial()) > this.money){
+      console.log("esto no se puede");
+    } else {
+      console.log("esto si se puede");
+    }
   }
 
 }
