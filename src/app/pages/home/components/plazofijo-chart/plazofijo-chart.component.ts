@@ -14,10 +14,8 @@ export class PlazofijoChartComponent implements OnInit {
 
   options: BehaviorSubject<any> = new BehaviorSubject({});
 
-
   @Input() amountInversion:Observable<any> = of({});
   chartData: any;
-
 
   mesesInvertidos: number = 0;
   plusMesesAcumulados:number = 0.0037;
@@ -25,23 +23,18 @@ export class PlazofijoChartComponent implements OnInit {
   constructor(private store:Store<AppState>) { }
 
   ngOnInit(): void {
-    let inversion:any;
-
     this.amountInversion
     .pipe(
       switchMap((inversionParam)=>{
-        inversion = inversionParam;
+        const plus = ( this.plusMesesAcumulados);
+        this.mesesInvertidos = inversionParam.plazodias;
+        this.initData(inversionParam, plus);
         return this.store.select(getDarkMode);
       })
     )
     .subscribe((darkMode) => {
-      const plus = ( this.plusMesesAcumulados);
-      this.mesesInvertidos = inversion.plazodias;
-      this.initData(inversion, plus);
-
       //TODO: Cambiar el color de la linea de acuerdo al modo oscuro , terniario:
       // darkMode ? 'negro' : 'blanco'
-
       this.options.next({
         color: darkMode ? ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'] : ['#4ECDC4', '#F7FFF7', '#F78888', '#7E5E60', '#9D8189'],
         title: {
