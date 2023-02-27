@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   subUser!:Subscription;
   subAccount!:Subscription;
+
+  lastTopup:number = 200;
+  lastPayment:number = 200;
+
   
   constructor(private store:Store<AuthState>) { }
 

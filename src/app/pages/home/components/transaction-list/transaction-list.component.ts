@@ -41,8 +41,12 @@ export class TransactionListComponent implements OnInit {
       // this.lastPaymentPrice = aux[aux.length - 1].amount;
       // const aux2 = resp.filter( (transaction:Transaction) => transaction.type === 'topup');
       // this.lastTopUpPrice = aux2[aux2.length - 1].amount;
-
       this.transaction = resp;
+
+      this.lastPaymentPrice.emit(this.getLastTransactionsByType('payment')[0].amount);
+      this.lastTopUpPrice.emit(this.getLastTransactionsByType('topup')[0].amount);
+      // console.log(this.getLastTransactionsByType('payment'));
+      // console.log(this.getLastTransactionsByType('topup'));
     });
 
     this.form = this.formBuilder.group({
@@ -86,6 +90,14 @@ export class TransactionListComponent implements OnInit {
   }
   mostrarIngreso(value:number){
     this.lastTopUpPrice.emit(value)
+  }
+
+  getLastTransactionsByType(type: string): Transaction[] {
+    const transactions = this.transaction;
+    return transactions
+      .filter((transaction) => transaction.type === type) // Filtramos solo las transacciones de ese tipo
+      .sort((a, b) => b.date.localeCompare(a.date)) // Las ordenamos por fecha de manera descendente
+      .slice(0, 2); 
   }
 
 
