@@ -5,6 +5,7 @@ import { ModalState } from "src/app/shared/states/modalState/modal.state";
 import { Store } from "@ngrx/store";
 import { openModal } from "src/app/shared/states/modalState/modal.actions";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { showAlert } from "src/app/core/state/states/alertState/alert.actions";
 
 @Component({
   selector: "app-contacto",
@@ -22,6 +23,10 @@ export class ContactoComponent implements OnInit {
       descripcion: ['', Validators.required],
     });
   }
+  
+ onEnviar() {
+  this.store.dispatch(showAlert({message:'La solicitud de contacto ha sido enviada. En breve nos comunicaremos', alertType:'success'}));
+ }
 
   ngOnInit(): void {
     this.map.buildMap();

@@ -16,7 +16,7 @@
       </div>
 
       <div class="w-full mb-28 mt-20 pt-10 sm:flex sm:justify-evenly">  
-        <form class="mb-5 mt-28" [formGroup]="form">
+        <form class="mb-5 mt-28" [formGroup]="form" (ngSubmit)="onEnviar()">
           <div class="dark:text-white font-semibold text-2xl md:text-4xl">
             <span>Formulario de contacto</span>
           </div>
@@ -32,7 +32,7 @@
               <span class="label-text text-black dark:text-white font-bold">Descripción</span>
             </label>
             <input formControlName="descripcion" type="text" name="descripcion"  placeholder="Descripción"
-              class="input input-bordered text-black focus:border-accent" autocomplete="NA" />
+              class="input input-bordered text-black focus:border-accent input-lg" autocomplete="NA" />
           </div>
           <div class="form-control mt-6">
             <button type="submit" [disabled]="form.invalid" 
