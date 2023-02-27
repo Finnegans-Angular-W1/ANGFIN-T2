@@ -11,14 +11,14 @@
           <div class="form-control my-2">
             <label class="font-semibold dark:text-white mb-1 pl-2">Cantidad a Solicitar</label>
             <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" 
-                data-type="currency" class="peer input-style bg-white w-full max-w-xs" 
+                data-type="currency" class="peer input-style bg-white w-full max-w-xs dark:text-white" 
                  required>
           </div>
           
           <div class="form-control my-2">
             <label class="font-semibold mb-1 dark:text-white">Plazo en Meses</label>
             <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
-                class="peer input-style bg-white w-full max-w-xs" required>
+                class="peer input-style bg-white w-full max-w-xs dark:text-white" required>
               <option value="" disabled selected>Seleccionar plazo</option>
               <option value="6">6 meses</option>
               <option value="12">12 meses</option>
@@ -48,16 +48,16 @@
       <ng-container *ngIf="visible">
         <div id="elementosCalculados" class="card grid grid-cols-5 text-stone-800 ">
           <div class="card-body">
-            <label class="font-semibold text-stone-800">Fecha de finalización:</label> 
-            <label class="w-44 h-6 text-stone-800">
+            <label class="font-semibold text-stone-800 dark:text-white">Fecha de finalización:</label> 
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
             {{ calcularFechaFinal() }}</label>
                 
-            <label class="font-semibold">Cuota Fija sin IVA: </label>
-            <label class="w-44 h-6 text-stone-800">
+            <label class="font-semibold dark:text-white">Cuota Fija sin IVA: </label>
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
             {{ calcularCuotaFija() | currency }}</label>
     
-            <label class="font-semibold">Total a devolver: </label>
-            <label class="w-44 h-6 text-stone-800">
+            <label class="font-semibold dark:text-white">Total a devolver: </label>
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
             {{ calcularTotal() | currency }}</label>  
 
             <div class="form-control w-36 mx-2 mt-3 justify-self-center">
