@@ -33,7 +33,7 @@ export class GananciaInversionComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   
-  money !:number;
+  money : number = 70000;
   subAccount!:Subscription;
 
   constructor(
@@ -60,6 +60,22 @@ export class GananciaInversionComponent implements OnInit {
   }
   setInversionObservable(obj:any){
     this.inversionBehavior.next(obj);
+  }
+
+  touchedAndInvalid(field:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.invalid  );
+    }
+    return false;
+  }
+
+  touchedAndHasError(field:string, error:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.hasError(error)  );
+    }
+    return false;
   }
   
   getInversionInicial(){
@@ -103,7 +119,7 @@ export class GananciaInversionComponent implements OnInit {
   simularClick(){
     this.mostrarInfo = false; //not equal to condition
     this.visible = true;    
-    
+    console.log(this.getInversionInicial()?.value);
   }
 
   cancelarClick(){
@@ -117,8 +133,8 @@ export class GananciaInversionComponent implements OnInit {
   }
   
   clickInvertir(){
-    console.log(this.getInversionInicial());
-    if (Number (this.getInversionInicial()) > this.money){
+    console.log(this.getInversionInicial()?.value);
+    if (Number (this.getInversionInicial()?.value) > this.money){
       console.log("esto no se puede");
     } else {
       console.log("esto si se puede");

@@ -42,6 +42,22 @@ export class PrestamosComponent implements OnInit {
     });
   }
   
+  touchedAndInvalid(field:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.invalid  );
+    }
+    return false;
+  }
+
+  touchedAndHasError(field:string, error:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.hasError(error)  );
+    }
+    return false;
+  }
+
   getValorPrestamo(){
     return this.form.get("cantidadSolicitada");
   }

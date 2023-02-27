@@ -8,27 +8,48 @@
             <h2 class="card-title dark:text-white">Préstamos</h2>
           </div>
           
-          <div class="form-control my-2">
-            <label class="font-semibold dark:text-white mb-1 pl-2">Cantidad a Solicitar</label>
-            <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" 
-                data-type="currency" class="peer input-style bg-white w-full max-w-xs dark:text-white" 
-                 required>
+          <div class="my-2">
+            <div class="form-control">
+              <label class="font-semibold dark:text-white mb-1" 
+              [ngClass]="{ 'text-red-800' : touchedAndInvalid('cantidadSolicitada'), 'valid-label': !touchedAndInvalid('cantidadSolicitada')}">
+              Cantidad a Solicitar</label>
+  
+              <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" required
+                  data-type="currency" class="peer input-style bg-white w-full max-w-xs dark:text-white pl-2" 
+                  [ngClass]="{'invalid-input':(form.controls['cantidadSolicitada'].invalid && form.controls['cantidadSolicitada'].touched),
+              'valid-or-untouched-input': (form.controls['cantidadSolicitada'].valid || form.controls['cantidadSolicitada'].untouched)}">
+            </div>
+            <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('cantidadSolicitada', 'required');">
+                  <span class="text-red-500 text-xs">Este campo es requerido.</span>
+            </ng-container>
           </div>
           
-          <div class="form-control my-2">
-            <label class="font-semibold mb-1 dark:text-white">Plazo en Meses</label>
-            <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
-                class="peer input-style bg-white w-full max-w-xs dark:text-white" required>
-              <option value="" disabled selected>Seleccionar plazo</option>
-              <option value="6">6 meses</option>
-              <option value="12">12 meses</option>
-              <option value="18">18 meses</option>
-              <option value="24">24 meses</option> 
-              <option value="36">36 meses</option> 
-              <option value="48">48 meses</option> 
-              <option value="60">60 meses</option> 
-            </select> 
+          <div class="my-2">
+            <div class="form-control">
+              <label class="font-semibold mb-1 dark:text-white"
+              [ngClass]="{ 'text-red-800' : touchedAndInvalid('plazo'), 'valid-label': !touchedAndInvalid('plazo')}"
+              >Plazo en Meses</label>
+              <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
+                  class="peer input-style bg-white w-full max-w-xs dark:text-white pl-2" required
+                  [ngClass]="{'invalid-input':(form.controls['plazo'].invalid && form.controls['plazo'].touched),
+                'valid-or-untouched-input': (form.controls['plazo'].valid || form.controls['plazo'].untouched)}">
+                <option value="" disabled selected>Seleccionar plazo</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
+                <option value="18">18 meses</option>
+                <option value="24">24 meses</option> 
+                <option value="36">36 meses</option> 
+                <option value="48">48 meses</option> 
+                <option value="60">60 meses</option> 
+              </select> 
+            </div>
+            <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('plazo', 'required');">
+                  <span class="text-red-500 text-xs">Este campo es requerido.</span>
+            </ng-container>
           </div>
+          
           <br>
   
           <div class="card-actions items-center">
