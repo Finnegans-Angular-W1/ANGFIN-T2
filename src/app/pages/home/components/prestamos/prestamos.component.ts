@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { AlertState } from 'src/app/core/state/states/alertState/alert.state';
-import { AuthState } from 'src/app/pages/auth-login/state/auth.state';
 import { Prestamo } from '../../interfaces/prestamo';
 
 @Component({
@@ -40,11 +37,27 @@ export class PrestamosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1)]],
+      cantidadSolicitada: ['', [Validators.required, Validators.minLength(1), Validators.min(100), Validators.max(5000000)]],
       plazo: ['', [Validators.required]],
     });
   }
   
+  touchedAndInvalid(field:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.invalid  );
+    }
+    return false;
+  }
+
+  touchedAndHasError(field:string, error:string):boolean {
+    if (this.form){
+      return ( this.form.get(field)!.touched
+        && this.form.get(field)!.hasError(error)  );
+    }
+    return false;
+  }
+
   getValorPrestamo(){
     return this.form.get("cantidadSolicitada");
   }
