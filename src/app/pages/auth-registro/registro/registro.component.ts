@@ -38,8 +38,8 @@ export class RegistroComponent implements OnInit, OnDestroy {
     this.modalInfo = this.terms.getModalInfo();
 
     this.form = this.formBuilder.group({
-      nombre: [''],
-      apellido: [''],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
@@ -91,6 +91,10 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   get ConfirmPassword(){
     return this.form.get('confirmPassword')
+  }
+
+  get NombreValid() {
+    return this.Nombre?.touched 
   }
 
   get PasswordValid() {

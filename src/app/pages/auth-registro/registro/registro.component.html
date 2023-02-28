@@ -20,6 +20,12 @@
                             </label>
             
                             <input type="text" formControlName="nombre" class="input input-bordered text-black focus:border-white" />
+
+                            <div class="min-h-max" *ngIf="Nombre?.errors && Nombre?.touched">
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Nombre?.hasError('required')" class="text-error">
+                                    El nombre es requerido.
+                                </p>
+                            </div>
                         </div>
             
                         <!-- ====================== Apellido =================== -->
@@ -29,6 +35,11 @@
                             </label>
             
                             <input type="text" formControlName="apellido" class="input input-bordered text-black focus:border-[#BC94AF]" />
+                            <div class="min-h-max" *ngIf="Apellido?.errors && Apellido?.touched">
+                                <p data-aos="fade" data-aos-duration="700" data-aos-once="true" *ngIf="Apellido?.hasError('required')" class="text-error">
+                                    El apellido es requerido.
+                                </p>
+                            </div>
                         </div>
                         
                         <!-- ======================Mail=================== -->
