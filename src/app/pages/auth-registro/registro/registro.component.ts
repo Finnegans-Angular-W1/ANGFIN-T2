@@ -97,6 +97,10 @@ export class RegistroComponent implements OnInit, OnDestroy {
     return this.Nombre?.touched 
   }
 
+  get ApellidoValid() {
+    return this.Apellido?.touched 
+  }
+
   get PasswordValid() {
     return this.Password?.touched && !this.Password?.valid;
   }
