@@ -1,10 +1,10 @@
 <div class="modal" [ngClass]="{ 'modal-open' : (open$ | async)}">
     <div class="modal-box dark:bg-stone-800">
         <h2 class="text-xl font-bold mb-1 text-accent underline underline-offset-4 text-center">{{modalInfo.title}}</h2>
-        <h3 class="font-bold text-md">{{modalInfo.subtitle}}</h3>
+        <h3 class="font-bold text-md text-gray-500">{{modalInfo.subtitle}}</h3>
         
         <ng-container *ngIf="!formModal; else formModalTemplate">
-            <p class="py-3 text-xs" *ngFor="let p of modalInfo.paragraphs; index as i"><span class="font-semibold text-accent">{{i+1 + '. '}}</span>{{p}}</p>
+            <p class="py-3 text-xs text-gray-400" *ngFor="let p of modalInfo.paragraphs; index as i"><span class="font-semibold text-accent">{{i+1 + '. '}}</span>{{p}}</p>
         </ng-container>
         <ng-template #formModalTemplate>
             
