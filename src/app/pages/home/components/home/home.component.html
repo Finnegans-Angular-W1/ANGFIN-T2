@@ -1,0 +1,46 @@
+<div class="dark:bg-stone-800	bg-gray-50">
+  <div class="sm:text-4xl md:text-4xl bg-cloud-pink-lower-right min-h-screen h-full flex justify-center items-center flex-col">
+    <div class="container mb-10 mx-auto font-['Kanit']">
+      <div class="w-full text-3xl flex justify-center items-center py-4">
+        <div class="avatar mr-4">
+          <div class="w-24 mask mask-hexagon">
+            <img class="w-full object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=top&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;h=100&amp;ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2Mjk2MTgwNw&amp;ixlib=rb-1.2.1&amp;q=80&amp;utm_campaign=api-credit&amp;utm_medium=referral&amp;utm_source=unsplash_source&amp;w=100" alt="Profile">
+          </div>
+        </div>
+        <h1 class="sm:text-5xl md:text-4xl first-letter:font-['Kanit'] text-[#4d4d9f] dark:text-white mb-3">Hola, <span class="dark:text-[#FFDE38]">{{username}}</span></h1>
+      </div>
+      <div class="stats bg-gradient-to-b from-[#c262bb]/90 
+        to-[#f2c5ee] text-primary-content w-full pt-2 pb-6
+        stats-vertical lg:stats-horizontal divide-x-4 divide-gray-100/[0.15]">
+        <div class="stat ">
+          <div class="stat-title text-white">Balance</div>
+          <div class="stat-value text-white">{{money | currency}}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title text-white">Ultimo Ingreso</div>
+          <div class="stat-value text-white">{{lastTopup | currency}}</div>
+          <!--div class="stat-actions">
+            <button class="btn btn-sm btn-accent bg-gradient-to-t
+            from-pink-600 to-accent text-white sm:hover:scale-[1.03] 
+            transition duration-300">Añadir ingreso</button>
+          </div-->
+        </div>
+        <div class="stat">
+          <div class="stat-title text-white">Ultimo Egreso</div>
+          <div class="stat-value text-white">{{lastPayment | currency}}</div>
+          <!--div class="stat-actions">
+            <button class="btn btn-sm btn-accent bg-gradient-to-t from-orange-700 to-info  text-white
+            sm:hover:scale-[1.03] transition duration-300">Añadir egreso</button>
+          </div-->
+  
+        </div>
+      </div>
+    </div>
+  
+    <div class="container mt-10 mx-auto">
+      <app-transaction-list (lastPaymentPrice)="lastPayment = $event" (lastTopUpPrice)="lastTopup = $event"></app-transaction-list>
+    </div>
+    
+  </div>
+  
+</div>

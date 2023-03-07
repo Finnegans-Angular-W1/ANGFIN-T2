@@ -1,0 +1,150 @@
+<div class="flex dark:bg-stone-800 bg-[#f2f2f2] justify-center min-h-screen">
+  <div class="w-full mt-36 md:mt-0">
+    <div class="card">
+      <div class="card-body mx-auto max-w-md place-items-center text-stone-800">
+        <div [formGroup]="form" class="w-96 mb-10">
+          
+          <div class="form-control mb-5">
+            <h2 class="card-title dark:text-white">Préstamos</h2>
+          </div>
+          
+          <div class="my-2">
+            <div class="form-control">
+              <label class="font-semibold dark:text-white mb-1" 
+              [ngClass]="{ 'text-red-800' : touchedAndInvalid('cantidadSolicitada'), 'valid-label': !touchedAndInvalid('cantidadSolicitada')}">
+              Cantidad a Solicitar</label>
+  
+              <input type="number" formControlName="cantidadSolicitada" placeholder="Ingrese cantidad" required
+                  data-type="currency" class="peer input-style bg-white w-full max-w-xs dark:text-white pl-2" 
+                  [ngClass]="{'invalid-input':(form.controls['cantidadSolicitada'].invalid && form.controls['cantidadSolicitada'].touched),
+              'valid-or-untouched-input': (form.controls['cantidadSolicitada'].valid || form.controls['cantidadSolicitada'].untouched)}">
+            </div>
+            <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('cantidadSolicitada', 'required');
+                else mayor">
+                  <span class="text-red-500 text-xs">Este campo es requerido.</span>
+            </ng-container>
+            <ng-template #mayor>
+              <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('cantidadSolicitada', 'max');
+              else menor">
+                  <span class="text-red-500 text-xs">El monto debe ser menor a $5.000.000.</span>
+              </ng-container>
+            </ng-template>
+            <ng-template #menor>
+              <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('cantidadSolicitada', 'min');">
+                  <span class="text-red-500 text-xs">El monto debe ser mayor a $100.</span>
+              </ng-container>
+            </ng-template>
+          </div>
+          
+          <div class="my-2">
+            <div class="form-control">
+              <label class="font-semibold mb-1 dark:text-white"
+              [ngClass]="{ 'text-red-800' : touchedAndInvalid('plazo'), 'valid-label': !touchedAndInvalid('plazo')}"
+              >Plazo en Meses</label>
+              <select type="date" formControlName="plazo" placeholder="Seleccionar plazo" 
+                  class="peer input-style bg-white w-full max-w-xs dark:text-white pl-2" required
+                  [ngClass]="{'invalid-input':(form.controls['plazo'].invalid && form.controls['plazo'].touched),
+                'valid-or-untouched-input': (form.controls['plazo'].valid || form.controls['plazo'].untouched)}">
+                <option value="" disabled selected>Seleccionar plazo</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
+                <option value="18">18 meses</option>
+                <option value="24">24 meses</option> 
+                <option value="36">36 meses</option> 
+                <option value="48">48 meses</option> 
+                <option value="60">60 meses</option> 
+              </select> 
+            </div>
+            <ng-container class="w-full min-h-max"
+              *ngIf="touchedAndHasError('plazo', 'required');">
+                  <span class="text-red-500 text-xs">Este campo es requerido.</span>
+            </ng-container>
+          </div>
+          
+          <br>
+  
+          <div class="card-actions items-center">
+            <div class="form-control w-36 mx-2">
+              <button class="btn border-transparent text-white 
+                bg-[#939ca1]" (click)="cancelarClick()">Cancelar</button>
+            </div>
+            <div class="form-control w-36 mx-2">
+              <button id="botonSimular" [disabled]="form.invalid" (click)="simularClick()" 
+              class="btn border-transparent text-white bg-accent">Simular</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      
+      <ng-container *ngIf="visible">
+        <div id="elementosCalculados" class="card grid grid-cols-5 text-stone-800 ">
+          <div class="card-body">
+            <label class="font-semibold text-stone-800 dark:text-white">Fecha de finalización:</label> 
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
+            {{ calcularFechaFinal() }}</label>
+                
+            <label class="font-semibold dark:text-white">Cuota Fija sin IVA: </label>
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
+            {{ calcularCuotaFija() | currency }}</label>
+    
+            <label class="font-semibold dark:text-white">Total a devolver: </label>
+            <label class="w-44 h-6 text-stone-800 dark:text-white">
+            {{ calcularTotal() | currency }}</label>  
+
+            <div class="form-control w-36 mx-2 mt-3 justify-self-center">
+              <!--button id="botonSolicitar" [disabled]="form.invalid"  
+              class="btn border-transparent text-white bg-accent">Solicitar</button-->
+              
+              <label for="my-modal-3" class="btn border-transparent text-white bg-accent">Solicitar</label>
+
+              <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+              <div class="modal">
+                <div class="modal-box relative">
+                  <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <h3 class="text-lg font-bold text-center">¡Felicitaciones! Estás más cerca de tu proyecto.</h3>
+                  <p class="py-4 text-center">Un representante se va a estar contactando con vos para verificar las condiciones necesarias para la solicitud del préstamo.</p>
+                </div>
+              </div>
+
+
+            </div>
+        
+          </div> 
+          
+          <div class="mb-5 px-0.5 py-0.5 bg-transparent h-auto rounded-lg col-span-4">
+            <table class="table-auto w-full border-separate text-sm md:text-lg">
+              <thead class="text-neutral bg-[#749496] text-center">
+                <tr  class="text-white font-semibold">
+                  <th class="py-2 px-4">Nro Cuota</th>
+                  <th class="py-2 px-4">Saldo</th>
+                  <th class="py-2 px-4">Interes</th>
+                  <th class="py-2 px-4">Capital</th>
+                  <th class="py-2 px-4">Interes con IVA</th>
+                  <th class="py-2 px-4">Cuota Final Mensual</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral text-center bg-gray-200/70">
+                <tr *ngFor="let cuota of prestamo; index as i">
+                  <td >{{ cuota.nroCuota }}</td>
+                  <td >{{ cuota.saldo | currency }}</td>
+                  <td >{{ cuota.montoInteres | currency }}</td>
+                  <td >{{ cuota.capital | currency  }}</td>
+                  <td >{{ cuota.montoInteresConIva | currency  }}</td>
+                  <td >{{ cuota.cuotaFinal | currency  }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </ng-container>
+    </div>
+    
+  </div>
+  
+  
+</div>

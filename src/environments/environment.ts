@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  api_url: "http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com",
+  mapBox:
+    "pk.eyJ1IjoicGFibG9wZXJlejM4IiwiYSI6ImNsZWhnYnM2dzBjZXYzcW53aTVia3dnMTgifQ.blLwyOBPcfajOkFdAGvhqg",
 };
 /*
  * For easier debugging in development mode, you can import the following file

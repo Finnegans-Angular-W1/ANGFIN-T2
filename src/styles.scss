@@ -1,4 +1,104 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Tipografia Exo para títulos y subtítulos. Italic 500 y Regular 400.
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;1,400&display=swap');
+
+// Tipografia ABeeZee para el cuerpo y párrafos. Regular 400. 
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+// Tipografia Kanit para el cuerpo y párrafos. Thin 100 Ligth 300 Regular 400. 
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400;500;600;700;800;900&display=swap');
+
+// Directivas para Tailwind. 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .valid-or-untouched-input{
+        @apply border-gray-300 text-stone-600 focus:border-gray-500 focus:text-stone-500;
+    }
+
+    .invalid-input{
+        @apply text-red-500 focus:text-red-800 focus:border-red-800 border-red-500;
+    }
+    
+    .input-style{
+        @apply mt-[0.34rem] rounded-t bg-gray-100 dark:bg-stone-800
+        w-full border-b-2 px-0 py-1 placeholder:text-transparent focus:outline-none;
+    }
+    
+    .label-style{
+        @apply pointer-events-none ml-0.5 absolute top-0 left-0 origin-left
+        -translate-y-1/2 transform text-sm opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base
+        peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm;
+    }
+    
+    .valid-label{
+        @apply peer-focus:text-stone-800 text-stone-600 peer-placeholder-shown:text-stone-700
+        dark:peer-focus:text-gray-100 dark:text-gray-300 dark:peer-placeholder-shown:text-gray-400;
+    }
+    
+    .invalid-label{
+        @apply text-red-500 peer-focus:text-red-800;
+    }
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.neumorphism{
+    /* box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff; */
+    box-shadow:  -2px -2px 30px #b6b2b2a8, 5px 5px 20px #dcd3d38a;
+}
+
+.bg-cloud-pink{
+    background: url('./assets/home/bg-pink-cloud2.svg') ;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: 500px 500px;
+}
+
+.bg-cloud-pink-with-black{
+    background: url('./assets/home/bg-pink-cloud2.svg') ;
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-lower-left{
+    background: url('./assets/home/cloud-lower-left.svg');
+    background-color: #19181a;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-lower-right{
+    background: url('./assets/home/cloud-lower-right.svg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-login{
+    background: url('./assets/home/Fondo-login.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-pink-login-darkmode{
+    background: url('./assets/home/Fondo-login-darkmode2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-register{
+    background: url('./assets/home/bg-register.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-cloud-register-darkmode{
+    background: url('./assets/home/bg-register-darkmode.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

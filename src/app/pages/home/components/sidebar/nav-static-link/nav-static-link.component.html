@@ -1,0 +1,13 @@
+<div class="tooltip tooltip-right" [attr.data-tip]="navStaticLink.name">
+    <ng-container *ngIf="navStaticLink.name !== 'Perfil'; else profileCondition">
+        <span [innerHTML]="navStaticLink.svg | safeHTML"
+        [routerLink]="'/'+navStaticLink.link" class="p-2 sm:hover:bg-accent/[0.90] bg-accent dark:bg-accent/75 rounded-full flex cursor-pointer">
+        </span>
+    </ng-container>
+    <ng-template #profileCondition>
+        <span [innerHTML]="navStaticLink.svg | safeHTML"
+        class="p-2 sm:hover:bg-accent/[0.90] bg-accent dark:bg-accent/75 rounded-full flex cursor-pointer">
+        </span>
+    </ng-template>
+    
+</div>
